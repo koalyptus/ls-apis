@@ -5,9 +5,7 @@ import { SourceFetcher } from '../types';
 const sourcesDir = new URL('.', import.meta.url).pathname;
 
 export async function loadAllFetchers(): Promise<SourceFetcher[]> {
-  const files = (await fs.readdir(sourcesDir))
-    .filter((f: string) => f.endsWith('.ts') && !f.startsWith('index'))
-    .filter((f: string) => f !== 'types.ts');
+  const files = (await fs.readdir(sourcesDir)).filter((f: string) => f.endsWith('.fetcher.ts'));
 
   const fetchers: SourceFetcher[] = [];
 
@@ -32,3 +30,5 @@ function isSourceFetcher(obj: unknown): obj is SourceFetcher {
     typeof (obj as SourceFetcher).fetchApis === 'function'
   );
 }
+
+export { isSourceFetcher };
