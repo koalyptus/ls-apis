@@ -22,6 +22,19 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
   const html = marked.parse(markdown) as string;
   const $ = cheerio.load(html);
 
+  // Build a map of section IDs to category names
+  // Find all h3s and their next table
+  const sectionToCategory = new Map<string, string>();
+
+  $('h3').each((_i, h3) => {
+    const category = $(h3).text().trim();
+    const nextTable = $(h3).next('table')[0];
+    if (nextTable) {
+      const tableId = $.html(nextTable).substring(0, 50);
+      sectionToCategory.set(tableId, category);
+    }
+  });
+
   // Skip first table (it's metadata), process all other tables
   const tables = $('table');
   tables.each((tableIdx, table) => {
@@ -30,13 +43,27 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
     }
 
     const $table = $(table);
-    const tdCount = $table.find('td').length;
-
-    if (tdCount === 0) {
+    // marked wraps tbody with thead for headers
+    const $tbody = $table.find('tbody');
+    if ($tbody.length > 0 && $tbody.find('td').length === 0) {
+      return;
+    }
+    if ($tbody.length === 0 && $table.find('td').length === 0) {
       return;
     }
 
-    $table.find('tr').each((_i, row) => {
+    // Find category by looking at preceding elements
+    let category = 'Public';
+    let prev = $table[0].prev;
+    while (prev && prev.type !== 'tag') {
+      prev = prev.prev;
+    }
+    if (prev && prev.name === 'h3') {
+      category = $(prev).text().trim();
+    }
+
+    const rows = $tbody.length > 0 ? $tbody.find('tr') : $table.find('tr');
+    rows.each((_i, row) => {
       const $row = $(row);
       const $cells = $row.find('td');
 
@@ -44,8 +71,6 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
         return;
       }
 
-      // Format: API Name | Description | Auth | HTTPS | CORS
-      // Link is inside the first cell as <a href="...">
       const nameCell = $cells.eq(0);
       const name = nameCell.text().trim();
       const link = nameCell.find('a').attr('href') || nameCell.text().trim();
@@ -63,10 +88,12 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
         name,
         description,
         link,
-        https: https.toLowerCase() === 'yes',
-        cors: cors.toLowerCase() || undefined,
-        categories: ['Public'],
+        https: https.toLowerCase() === 'yes' ? true : null,
+        cors: cors.toLowerCase() || null,
+        categories: [category],
         sources: [fetcher.name],
+        auth: null,
+        openapiSpec: null,
       };
 
       if (auth.toLowerCase() === 'yes') {

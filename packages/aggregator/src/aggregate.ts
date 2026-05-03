@@ -28,8 +28,18 @@ export async function runAggregation(): Promise<void> {
   const deduped = deduplicate(allEntries);
   console.log(`Total entries after dedupe: ${deduped.length}`);
 
-  await writeFile(DATA_FILE, JSON.stringify(deduped, null, 2));
+  const json = JSON.stringify(deduped, null, 2);
+  await writeFile(DATA_FILE, json);
   console.log(`Written to ${DATA_FILE}`);
+
+  // Validate JSON
+  try {
+    const parsed = JSON.parse(json);
+    console.log(`Validated: ${parsed.length} entries`);
+  } catch (error) {
+    console.error(`JSON validation failed: ${error}`);
+    process.exit(1);
+  }
 }
 
 function deduplicate(entries: ApiEntry[]): ApiEntry[] {
@@ -49,11 +59,25 @@ function deduplicate(entries: ApiEntry[]): ApiEntry[] {
         categories: combinedCategories,
       });
     } else {
-      byLink.set(normalizedLink, entry);
+      byLink.set(normalizedLink, normalizeEntry(entry));
     }
   }
 
   return Array.from(byLink.values());
+}
+
+function normalizeEntry(entry: ApiEntry): ApiEntry {
+  return {
+    name: entry.name,
+    description: entry.description ?? null,
+    link: entry.link,
+    auth: entry.auth ?? null,
+    https: entry.https ?? null,
+    cors: entry.cors ?? null,
+    categories: entry.categories,
+    openapiSpec: entry.openapiSpec ?? null,
+    sources: entry.sources,
+  };
 }
 
 function normalizeLink(link: string): string {
@@ -67,4 +91,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   runAggregation().catch(console.error);
 }
 
-export { deduplicate, normalizeLink };
+export { deduplicate };

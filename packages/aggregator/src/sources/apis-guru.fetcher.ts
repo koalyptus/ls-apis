@@ -13,6 +13,7 @@ interface ApisGuruEntry {
         description?: string;
         'x-origin'?: Array<{ url: string }>;
         tags?: string[];
+        'x-apisguru-categories'?: string[];
       };
     }
   >;
@@ -31,11 +32,13 @@ const fetcher: SourceFetcher = {
       const preferredVersion = value.preferred || Object.keys(value.versions)[0];
       const info = value.versions[preferredVersion]?.info || {};
 
+      const categories = info['x-apisguru-categories'] || info.tags || ['Uncategorized'];
+
       return {
         name: info.title || key,
         description: info.description,
         link: info['x-origin']?.[0]?.url || '',
-        categories: info.tags || ['Uncategorized'],
+        categories,
         sources: [fetcher.name],
       };
     });

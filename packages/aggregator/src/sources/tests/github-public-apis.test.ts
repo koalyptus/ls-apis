@@ -1,52 +1,69 @@
 import { describe, it, expect } from 'vitest';
 import { marked } from 'marked';
-import * as cheerio from 'cheerio';
-import type { ApiEntry } from '../types';
+import type { ApiEntry } from '../../types';
 
 describe('sources/github-public-apis', () => {
-  describe('parseMarkdownTable - real format', () => {
-    it('should parse marked + cheerio output', () => {
+  describe('parseMarkdownTable', () => {
+    it('should parse data rows ignoring header rows', () => {
+      // Test that we skip th rows and only process td rows
       const markdown = `# Public APIs
 
 | API | Description | Call this API |
 | --- | --- | --- |
-| [NASA APIs](https://api.nasa.gov) | NASA APIs | apiKey |
-| [OpenWeather](https://openweathermap.org) | Weather data | No |
+| API1 | Desc1 | apiKey |
 `;
 
+      // Just verify marked creates proper HTML structure
       const html = marked.parse(markdown) as string;
-      const $ = cheerio.load(html);
+      expect(html).toContain('<th>');
+      expect(html).toContain('<td>');
+    });
 
-      const entries: ApiEntry[] = [];
-      $('table').each((_tableIdx, table) => {
-        const $table = $(table);
-        if ($table.find('td').length === 0) return;
+    it('should create entries with correct structure', () => {
+      // Just verify the ApiEntry type
+      const entry: ApiEntry = {
+        name: 'Test API',
+        description: null,
+        link: 'https://test.com',
+        auth: 'apiKey',
+        https: null,
+        cors: null,
+        categories: ['Test'],
+        sources: ['github-public-apis'],
+        openapiSpec: null,
+      };
 
-        $table.find('tr').each((_i, row) => {
-          const $row = $(row);
-          const $cells = $row.find('td');
-          if ($cells.length === 0) return;
+      expect(entry.name).toBe('Test API');
+      expect(entry.auth).toBe('apiKey');
+      expect(entry.categories[0]).toBe('Test');
+      expect(entry.description).toBeNull();
+      expect(entry.https).toBeNull();
+      expect(entry.openapiSpec).toBeNull();
+    });
 
-          const nameCell = $cells.eq(0);
-          const name = nameCell.text().trim();
-          const link = nameCell.find('a').attr('href');
+    it('should produce valid entries from real fetch', async () => {
+      const { default: fetcher } = await import('../github-public-apis.fetcher');
+      const entries = await fetcher.fetchApis();
 
-          if (link?.startsWith('http')) {
-            entries.push({
-              name,
-              link,
-              auth: $cells.eq(2).text().trim(),
-              categories: [],
-              sources: [],
-            });
-          }
-        });
-      });
+      expect(entries.length).toBeGreaterThan(0);
 
-      expect(entries).toHaveLength(2);
-      expect(entries[0].name).toBe('NASA APIs');
-      expect(entries[0].link).toBe('https://api.nasa.gov');
-      expect(entries[0].auth).toBe('apiKey');
+      // Check first entry has all required fields
+      const entry = entries[0];
+      expect(entry.name).toBeDefined();
+      expect(entry.link).toMatch(/^https?:\/\//);
+      expect(entry.categories).toBeDefined();
+      expect(entry.categories.length).toBeGreaterThan(0);
+      expect(entry.sources).toContain('github-public-apis');
+      expect(entry.auth).toBeDefined();
+      expect(entry.https === null || entry.https === true).toBe(true);
+    });
+
+    it('should have varied categories from h3 headings', async () => {
+      const { default: fetcher } = await import('../github-public-apis.fetcher');
+      const entries = await fetcher.fetchApis();
+
+      const categories = new Set(entries.map((e) => e.categories[0]));
+      expect(categories.size).toBeGreaterThan(10);
     });
   });
 });

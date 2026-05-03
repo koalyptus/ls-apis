@@ -1,12 +1,12 @@
 export interface ApiEntry {
   name: string;
-  description?: string;
+  description: string | null;
   link: string;
-  auth?: string;
-  https?: boolean;
-  cors?: string;
+  auth: string | null;
+  https: boolean | null;
+  cors: string | null;
   categories: string[];
-  openapiSpec?: string;
+  openapiSpec: string | null;
   sources: string[];
 }
 
