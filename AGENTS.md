@@ -24,10 +24,13 @@ ls-apis/
 npm install
 
 # Run aggregator (fetch all sources → dedupe → data/apis.json)
-cd packages/aggregator && npm run aggregate
+npm run aggregate
 
-# Test
-cd packages/aggregator && npm run test
+# Test with coverage (workspace: packages/aggregator)
+npm test
+
+# Typecheck all workspaces
+npm run typecheck
 
 # Lint & format
 npm run lint

@@ -1,8 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { SourceFetcher } from '../types';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import type { SourceFetcher } from '../types';
 
-const sourcesDir = new URL('.', import.meta.url).pathname;
+const sourcesDir = dirname(fileURLToPath(import.meta.url));
 
 export async function loadAllFetchers(): Promise<SourceFetcher[]> {
   const files = (await fs.readdir(sourcesDir)).filter((f: string) => f.endsWith('.fetcher.ts'));

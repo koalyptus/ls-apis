@@ -6,18 +6,25 @@ describe('types', () => {
     it('should have required fields', () => {
       const entry: ApiEntry = {
         name: 'Test API',
+        description: null,
         link: 'https://test.com',
+        auth: 'apiKey',
+        https: null,
+        cors: null,
         categories: ['Test'],
         sources: ['test-source'],
+        openapiSpec: null,
       };
 
       expect(entry.name).toBe('Test API');
       expect(entry.link).toBe('https://test.com');
       expect(entry.categories).toEqual(['Test']);
       expect(entry.sources).toEqual(['test-source']);
+      expect(entry.description).toBeNull();
+      expect(entry.https).toBeNull();
     });
 
-    it('should allow optional fields', () => {
+    it('should allow all fields', () => {
       const entry: ApiEntry = {
         name: 'Test API',
         description: 'A test API',
@@ -54,9 +61,14 @@ describe('types', () => {
       const entries: ApiEntry[] = [
         {
           name: 'Test API',
+          description: null,
           link: 'https://test.com',
+          auth: null,
+          https: null,
+          cors: null,
           categories: ['Test'],
           sources: ['test-fetcher'],
+          openapiSpec: null,
         },
       ];
 

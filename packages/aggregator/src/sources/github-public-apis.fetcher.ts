@@ -43,14 +43,6 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
     }
 
     const $table = $(table);
-    // marked wraps tbody with thead for headers
-    const $tbody = $table.find('tbody');
-    if ($tbody.length > 0 && $tbody.find('td').length === 0) {
-      return;
-    }
-    if ($tbody.length === 0 && $table.find('td').length === 0) {
-      return;
-    }
 
     // Find category by looking at preceding elements
     let category = 'Public';
@@ -62,14 +54,13 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
       category = $(prev).text().trim();
     }
 
+    const $tbody = $table.find('tbody');
     const rows = $tbody.length > 0 ? $tbody.find('tr') : $table.find('tr');
     rows.each((_i, row) => {
       const $row = $(row);
       const $cells = $row.find('td');
 
-      if ($cells.length === 0) {
-        return;
-      }
+      if ($cells.length === 0) return;
 
       const nameCell = $cells.eq(0);
       const name = nameCell.text().trim();

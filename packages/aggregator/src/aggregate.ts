@@ -87,8 +87,4 @@ function normalizeLink(link: string): string {
     .replace(/^http:/, 'https:');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  runAggregation().catch(console.error);
-}
-
-export { deduplicate };
+export { deduplicate, normalizeEntry };

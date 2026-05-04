@@ -36,9 +36,13 @@ const fetcher: SourceFetcher = {
 
       return {
         name: info.title || key,
-        description: info.description,
+        description: info.description || null,
         link: info['x-origin']?.[0]?.url || '',
+        auth: null,
+        https: null,
+        cors: null,
         categories,
+        openapiSpec: null,
         sources: [fetcher.name],
       };
     });
