@@ -12,12 +12,6 @@ describe('sources/github-public-apis', () => {
       expect(entries.length).toBeGreaterThan(100);
     }, 30000);
 
-    it('should have entries with https true', async () => {
-      const entries = await fetcher.fetchApis();
-      const httpsEntries = entries.filter((e) => e.https === true);
-      expect(httpsEntries.length).toBeGreaterThan(0);
-    }, 30000);
-
     it('should have entries with apiKey auth', async () => {
       const entries = await fetcher.fetchApis();
       const authEntries = entries.filter((e) => e.auth === 'apiKey');

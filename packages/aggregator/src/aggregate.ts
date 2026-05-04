@@ -1,8 +1,8 @@
 import { writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { loadAllFetchers } from './sources/index.js';
-import type { ApiEntry } from './types.js';
+import { loadAllFetchers } from './sources/index';
+import type { ApiEntry } from './types';
 
 const DATA_FILE = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
 
@@ -32,7 +32,6 @@ export async function runAggregation(): Promise<void> {
   await writeFile(DATA_FILE, json);
   console.log(`Written to ${DATA_FILE}`);
 
-  // Validate JSON
   try {
     const parsed = JSON.parse(json);
     console.log(`Validated: ${parsed.length} entries`);
@@ -42,7 +41,7 @@ export async function runAggregation(): Promise<void> {
   }
 }
 
-function deduplicate(entries: ApiEntry[]): ApiEntry[] {
+export function deduplicate(entries: ApiEntry[]): ApiEntry[] {
   const byLink = new Map<string, ApiEntry>();
 
   for (const entry of entries) {
@@ -66,13 +65,12 @@ function deduplicate(entries: ApiEntry[]): ApiEntry[] {
   return Array.from(byLink.values());
 }
 
-function normalizeEntry(entry: ApiEntry): ApiEntry {
+export function normalizeEntry(entry: ApiEntry): ApiEntry {
   return {
     name: entry.name,
     description: entry.description ?? null,
     link: entry.link,
     auth: entry.auth ?? null,
-    https: entry.https ?? null,
     cors: entry.cors ?? null,
     categories: entry.categories,
     openapiSpec: entry.openapiSpec ?? null,
@@ -80,11 +78,9 @@ function normalizeEntry(entry: ApiEntry): ApiEntry {
   };
 }
 
-function normalizeLink(link: string): string {
+export function normalizeLink(link: string): string {
   return link
     .toLowerCase()
     .replace(/\/+$/, '')
     .replace(/^http:/, 'https:');
 }
-
-export { deduplicate, normalizeEntry };

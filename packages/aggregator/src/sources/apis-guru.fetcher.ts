@@ -39,7 +39,6 @@ const fetcher: SourceFetcher = {
         description: info.description || null,
         link: info['x-origin']?.[0]?.url || '',
         auth: null,
-        https: null,
         cors: null,
         categories,
         openapiSpec: null,

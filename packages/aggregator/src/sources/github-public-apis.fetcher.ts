@@ -68,7 +68,6 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
 
       const description = $cells.eq(1).text().trim();
       const auth = $cells.eq(2).text().trim();
-      const https = $cells.eq(3).text().trim();
       const cors = $cells.eq(4).text().trim();
 
       if (!link.startsWith('http')) {
@@ -79,7 +78,6 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
         name,
         description,
         link,
-        https: https.toLowerCase() === 'yes' ? true : null,
         cors: cors.toLowerCase() || null,
         categories: [category],
         sources: [fetcher.name],

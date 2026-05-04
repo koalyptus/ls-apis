@@ -3,7 +3,6 @@ export interface ApiEntry {
   description: string | null;
   link: string;
   auth: string | null;
-  https: boolean | null;
   cors: string | null;
   categories: string[];
   openapiSpec: string | null;
