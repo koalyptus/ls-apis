@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "bin": {
-    "ls-apis": "./bin/ls-apis.sh"
+    "ls-apis": "./src/index.ts"
   },
   "scripts": {
     "test": "vite"
