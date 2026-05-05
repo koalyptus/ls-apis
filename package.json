@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "aggregate": "cd packages/aggregator && npm run aggregate"
+    "aggregate": "cd packages/aggregator && npm run aggregate",
+    "ls-apis": "cd packages/cli && npx tsx src/index.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

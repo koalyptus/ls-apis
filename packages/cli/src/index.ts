@@ -1,8 +1,11 @@
+#!/usr/bin/env node
 import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
-export interface ApiEntry {
+interface ApiEntry {
   name: string;
   description?: string;
   link: string;
@@ -18,10 +21,11 @@ interface SearchOptions {
   query?: string;
   category?: string;
   auth?: string;
+  output?: 'text' | 'json';
 }
 
 async function search(options: SearchOptions): Promise<void> {
-  const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../../data/apis.json');
+  const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
   const data = await readFile(dataFile, 'utf-8');
   const apis: ApiEntry[] = JSON.parse(data);
 
@@ -30,7 +34,7 @@ async function search(options: SearchOptions): Promise<void> {
   if (options.query) {
     const q = options.query.toLowerCase();
     results = results.filter(
-      (api) => api.name.toLowerCase().includes(q) || api.description?.toLowerCase().includes(q)
+      (api) => api.name.toLowerCase().includes(q) || api.description?.toLowerCase().includes(q),
     );
   }
 
@@ -49,10 +53,15 @@ async function search(options: SearchOptions): Promise<void> {
     });
   }
 
+  if (options.output === 'json') {
+    console.log(JSON.stringify(results.slice(0, 20), null, 2));
+    return;
+  }
+
   console.log(`Found ${results.length} APIs:`);
   for (const api of results.slice(0, 20)) {
     console.log(`  ${api.name}`);
-    console.log(`    ${api.description || 'No description'}`);
+    console.log(`    ${api.description ?? 'No description'}`);
     console.log(`    ${api.link}`);
     if (api.auth) console.log(`    Auth: ${api.auth}`);
     console.log();
@@ -63,20 +72,16 @@ async function search(options: SearchOptions): Promise<void> {
   }
 }
 
-const args = process.argv.slice(2);
-const options: SearchOptions = {};
+(async () => {
+  const argv = await yargs(hideBin(process.argv))
+      .scriptName('ls-apis')
+      .usage('$0 [options]')
+      .option('query', { alias: 'q', type: 'string', describe: 'Search query (filters name, description)' })
+      .option('category', { alias: 'c', type: 'string', describe: 'Filter by category' })
+      .option('auth', { alias: 'a', type: 'string', describe: 'Filter by auth (apiKey, OAuth, no)' })
+      .option('output', { alias: 'o', type: 'string', choices: ['text', 'json'], default: 'text', describe: 'Output format' })
+      .help()
+      .parse();
 
-for (let i = 0; i < args.length; i++) {
-  if (args[i] === '-q' || args[i] === '--query') {
-    options.query = args[i + 1];
-    i++;
-  } else if (args[i] === '-c' || args[i] === '--category') {
-    options.category = args[i + 1];
-    i++;
-  } else if (args[i] === '-a' || args[i] === '--auth') {
-    options.auth = args[i + 1];
-    i++;
-  }
-}
-
-search(options).catch(console.error);
+  await search({ query: argv.query, category: argv.category, auth: argv.auth, output: argv.output });
+})();
