@@ -8,7 +8,9 @@
     "packages/cli"
   ],
   "scripts": {
-    "test": "cd packages/aggregator && npx vitest run --coverage",
+    "test": "npm run test:aggregator && npm run test:cli",
+    "test:aggregator": "cd packages/aggregator && npx vitest run --coverage",
+    "test:cli": "cd packages/cli && npx vitest run --coverage",
     "typecheck": "npx tsc --noEmit -p packages/aggregator && npx tsc --noEmit -p packages/cli",
     "lint": "eslint .",
     "format": "prettier --check .",
