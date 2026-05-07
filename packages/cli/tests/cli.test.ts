@@ -3,6 +3,19 @@ import { search } from '../src/index';
 import { initColors, setColors, color } from '../src/colors';
 import { readFile } from 'node:fs/promises';
 
+vi.mock('../src/config', () => ({
+  loadConfig: vi.fn().mockResolvedValue({
+    limit: 20,
+    descriptionMaxLength: 250,
+    colors: true,
+  }),
+  CONFIG_DEFAULTS: {
+    limit: 20,
+    descriptionMaxLength: 250,
+    colors: true,
+  },
+}));
+
 vi.mock('node:fs/promises', () => ({
   readFile: vi.fn().mockImplementation((path: string) => {
     if (path.includes('package.json')) {
@@ -134,9 +147,8 @@ describe('ls-apis CLI', () => {
         },
       ];
       vi.mocked(readFile).mockResolvedValue(JSON.stringify(longDescApi));
-      await search({ limit: 1 });
+      await search({ limit: 1, descriptionMaxLength: 250 });
       const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
-      // 250 'A's + '...' = 253 chars total (truncate to 250 then append ...)
       expect(output).toContain('A'.repeat(250) + '...');
       expect(output).not.toContain('A'.repeat(251));
     });
@@ -155,7 +167,7 @@ describe('ls-apis CLI', () => {
         },
       ];
       vi.mocked(readFile).mockResolvedValue(JSON.stringify(shortDescApi));
-      await search({ limit: 1 });
+      await search({ limit: 1, descriptionMaxLength: 250 });
       const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
       expect(output).toContain('Short description');
       expect(output).not.toContain('...');

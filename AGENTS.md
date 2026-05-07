@@ -113,8 +113,30 @@ interface ApiEntry {
 | `--query`    | `-q`  | Search query (filters name, description) |
 | `--category` | `-c`  | Filter by category                       |
 | `--auth`     | `-a`  | Filter by auth (apiKey, OAuth, no)       |
-| `--limit`    | `-l`  | Max results (default: 20)                |
+| `--limit`    | `-l`  | Max results (from config or default: 20) |
 | `--output`   | `-o`  | Output format: text or json              |
 | `--no-color` |       | Disable colored output                   |
 | `--help`     | `-h`  | Show help                                |
 | `--version`  | `-V`  | Show version                             |
+
+## Config File
+
+`~/.ls-apis` (JSON) is created automatically on first CLI run. Edit it to customize defaults. CLI flags always override.
+
+**Location**: `~/.ls-apis` (user's home directory)
+
+```json
+{
+  "limit": 10,
+  "descriptionMaxLength": 250,
+  "colors": true
+}
+```
+
+| Key                    | Default | Description                 |
+| ---------------------- | ------- | --------------------------- |
+| `limit`                | 20      | Default max results         |
+| `descriptionMaxLength` | 250     | Max chars before truncation |
+| `colors`               | true    | Enable terminal colors      |
+
+Uses only Node.js stdlib (`os.homedir()`, `fs/promises`). Missing or invalid file falls back to built-in defaults.

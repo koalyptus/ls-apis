@@ -78,6 +78,28 @@ npm run ls-apis -- -q weather -o json
 
 > **Note**: Colors are enabled by default. Use `--no-color` or set `NO_COLOR=1` environment variable to disable.
 
+### Configuration File
+
+A config file is automatically created at `~/.ls-apis` on first run. You can edit it to set personal defaults. CLI flags always override config values.
+
+**Location**: `~/.ls-apis` (your home directory)
+
+```json
+{
+  "limit": 10,
+  "descriptionMaxLength": 150,
+  "colors": true
+}
+```
+
+| Key                    | Default | Description                 |
+| ---------------------- | ------- | --------------------------- |
+| `limit`                | 20      | Default max results         |
+| `descriptionMaxLength` | 250     | Max chars before truncation |
+| `colors`               | true    | Enable terminal colors      |
+
+The config file is plain JSON. Edit it manually to customize defaults, or delete it to regenerate with built-in values. Uses only Node.js standard library (`os`, `path`, `fs/promises`).
+
 ### Example Output
 
 ```
