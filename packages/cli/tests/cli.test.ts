@@ -1,8 +1,22 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { run } from '../src/index';
 import { search } from '../src/search';
 import { formatText, formatJson, formatResults } from '../src/formatter';
 import { initColors, setColors, color } from '../src/colors';
 import type { ApiEntry } from '../src/types';
+import * as fs from 'node:fs/promises';
+
+vi.mock('../src/config', () => ({
+  loadConfig: vi.fn().mockResolvedValue({
+    limit: 20,
+    descriptionMaxLength: 250,
+    colors: true,
+  }),
+}));
+
+vi.mock('node:fs/promises', () => ({
+  readFile: vi.fn(),
+}));
 
 const mockApis: ApiEntry[] = [
   {
@@ -229,5 +243,59 @@ describe('colors', () => {
     expect(color.cyan('hello')).toBe('hello');
     expect(color.green('hello')).toBe('hello');
     expect(color.yellow('hello')).toBe('hello');
+  });
+});
+
+describe('run', () => {
+  let consoleLogSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    vi.mocked(fs.readFile).mockImplementation((path: string) => {
+      if (path.includes('package.json')) {
+        return Promise.resolve('{"version": "0.0.0"}');
+      }
+      return Promise.resolve(JSON.stringify(mockApis));
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('outputs results for query', async () => {
+    await run(['-q', 'weather']);
+    expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('Found 3 APIs:'));
+  });
+
+  it('outputs json format', async () => {
+    await run(['-q', 'weather', '-o', 'json']);
+    const jsonCall = consoleLogSpy.mock.calls.find(
+      (c) => typeof c[0] === 'string' && c[0].startsWith('[')
+    );
+    expect(jsonCall).toBeDefined();
+    expect(JSON.parse(jsonCall![0] as string)).toHaveLength(3);
+  });
+
+  it('respects limit', async () => {
+    await run(['-q', 'weather', '-l', '2']);
+    expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('Found 3 APIs:'));
+    expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('... and 1 more'));
+  });
+
+  it('filters by category', async () => {
+    await run(['-c', 'data']);
+    expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('Found 1 APIs:'));
+  });
+
+  it('filters by auth', async () => {
+    await run(['-a', 'oauth']);
+    expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('Found 1 APIs:'));
+  });
+
+  it('sorts results', async () => {
+    await run(['-q', 'weather', '-s', 'name']);
+    const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
+    expect(output.indexOf('Weather API')).toBeLessThan(output.indexOf('Weather2 API'));
   });
 });
