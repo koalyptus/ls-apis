@@ -60,7 +60,9 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
       const $row = $(row);
       const $cells = $row.find('td');
 
-      if ($cells.length === 0) return;
+      if ($cells.length === 0) {
+        return;
+      }
 
       const nameCell = $cells.eq(0);
       const name = nameCell.text().trim();

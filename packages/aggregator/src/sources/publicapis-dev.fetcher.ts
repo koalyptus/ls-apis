@@ -91,12 +91,16 @@ const fetcher: SourceFetcher = {
           const $anchors = $item.find('a');
           const apiLink = $anchors.first().attr('href')?.split('?')[0];
 
-          if (!apiLink || apiLink.includes('github.com/marcelscruz')) return;
+          if (!apiLink || apiLink.includes('github.com/marcelscruz')) {
+            return;
+          }
 
           const name =
             $item.find('h2').first().text().trim() ||
             $item.find('[class*=heading]').first().text().trim();
-          if (!name) return;
+          if (!name) {
+            return;
+          }
 
           const descriptions = $item
             .find('p')
@@ -109,11 +113,15 @@ const fetcher: SourceFetcher = {
 
           const itemText = $item.text().toLowerCase();
 
-          if (itemText.includes('api key')) auth = 'apiKey';
-          else if (itemText.includes('oauth')) auth = 'OAuth';
+          if (itemText.includes('api key')) {
+            auth = 'apiKey';
+          } else if (itemText.includes('oauth')) {
+            auth = 'OAuth';
+          }
 
-          if (itemText.includes('cors') && (itemText.includes('yes') || itemText.includes('✓')))
+          if (itemText.includes('cors') && (itemText.includes('yes') || itemText.includes('✓'))) {
             cors = 'yes';
+          }
 
           allApis.push({
             name,

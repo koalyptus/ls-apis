@@ -53,7 +53,9 @@ describe('aggregate', () => {
     it('should exit with 1 on invalid JSON', async () => {
       const original = JSON.stringify;
       vi.spyOn(JSON, 'stringify').mockImplementationOnce((v) => {
-        if (typeof v === 'object') return '{invalid';
+        if (typeof v === 'object') {
+          return '{invalid';
+        }
         return original(v);
       });
 
