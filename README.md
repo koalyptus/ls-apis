@@ -8,6 +8,7 @@ A curated collection of **2,500+ public APIs** with a powerful CLI search tool. 
 
 - **Comprehensive Database** - 2,500+ APIs aggregated from multiple sources
 - **Smart Search** - Filter by query, category, authentication type
+- **Colored Output** - Syntax-highlighted results (use `--no-color` to disable)
 - **Multiple Output Formats** - Text or JSON output
 - **Extensible Architecture** - Pluggable fetchers for adding new API sources
 - **TypeScript** - Fully typed for better developer experience
@@ -44,35 +45,57 @@ ls-apis -c data -a apiKey
 
 ```bash
 # Search by keyword
-npx tsx packages/cli/src/index.ts -q weather
+npm run ls-apis -- -q weather
 
 # Filter by category
-npx tsx packages/cli/src/index.ts -c weather
+npm run ls-apis -- -c weather
 
 # Filter by authentication type
-npx tsx packages/cli/src/index.ts -a apiKey
+npm run ls-apis -- -a apiKey
 
 # Combine filters
-npx tsx packages/cli/src/index.ts -q weather -c data -a oauth
+npm run ls-apis -- -q weather -c data -a oauth
 
 # Limit results
-npx tsx packages/cli/src/index.ts -q weather -l 10
+npm run ls-apis -- -q weather -l 10
 
 # Output as JSON
-npx tsx packages/cli/src/index.ts -q weather -o json
+npm run ls-apis -- -q weather -o json
 ```
 
 ### Options
 
-| Flag | Alias | Description |
-|------|-------|-------------|
-| `--query` | `-q` | Search query (filters name, description) |
-| `--category` | `-c` | Filter by category |
-| `--auth` | `-a` | Filter by auth type (apiKey, OAuth, no) |
-| `--limit` | `-l` | Max results to show (default: 20) |
-| `--output` | `-o` | Output format: text or json (default: text) |
-| `--help` | `-h` | Show help |
-| `--version` | `-V` | Show version |
+| Flag         | Alias | Description                                 |
+| ------------ | ----- | ------------------------------------------- |
+| `--query`    | `-q`  | Search query (filters name, description)    |
+| `--category` | `-c`  | Filter by category                          |
+| `--auth`     | `-a`  | Filter by auth type (apiKey, OAuth, no)     |
+| `--limit`    | `-l`  | Max results to show (default: 20)           |
+| `--output`   | `-o`  | Output format: text or json (default: text) |
+| `--no-color` |       | Disable colors in output                    |
+| `--help`     | `-h`  | Show help                                   |
+| `--version`  | `-V`  | Show version                                |
+
+> **Note**: Colors are enabled by default. Use `--no-color` or set `NO_COLOR=1` environment variable to disable.
+
+### Example Output
+
+```
+Found 2 APIs:
+  Weather API
+    Description: Get real-time weather data for any location...
+    Link: https://api.weather.example.com
+    Auth: apiKey
+    Categories: weather, data
+    Sources: apis-guru
+
+  Weather2 API
+    Description: Comprehensive weather forecasting service...
+    Link: https://api.weather2.example.com
+    Auth: OAuth
+    Categories: weather, forecast
+    Sources: publicapis-dev
+```
 
 ## Project Structure
 
@@ -81,17 +104,21 @@ ls-apis/
 ├── README.md              # This file
 ├── package.json           # Root workspace config
 ├── data/
-│   └── apis.json         # Aggregated API data (2520+ APIs)
+│   └── apis.json          # Aggregated API data (2520+ APIs)
 ├── packages/
 │   ├── aggregator/        # Fetches, normalizes, deduplicates APIs
 │   │   ├── src/
-│   │   │   ├── aggregate.ts      # Main orchestration
-│   │   │   ├── sources/          # Pluggable fetchers (*.fetcher.ts)
-│   │   │   └── types.ts         # ApiEntry, SourceFetcher interfaces
-│   │   └── tests/
-│   └── cli/              # CLI for searching APIs
+│   │   │   ├── aggregate.ts       # Main orchestration
+│   │   │   ├── sources/           # Pluggable fetchers (*.fetcher.ts)
+│   │   │   │   ├── index.ts       # Fetcher loader
+│   │   │   │   └── tests/         # Fetcher tests
+│   │   │   ├── tests/             # Aggregator tests
+│   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
+│   │   └── vitest.config.ts
+│   └── cli/               # CLI for searching APIs
 │       ├── src/
-│       │   └── index.ts         # CLI entry point
+│       │   ├── index.ts           # CLI entry point
+│       │   └── colors.ts          # Terminal color support
 │       └── tests/
 └── AGENTS.md              # Instructions for AI agents
 ```
@@ -126,11 +153,10 @@ interface ApiEntry {
   description?: string;
   link: string;
   auth?: string;        // apiKey, OAuth, etc.
-  https?: boolean;
   cors?: string;
   categories: string[];
-  openapiSpec?: string;  // OpenAPI spec URL if available
-  sources: string[];     // Which fetchers found this API
+  openapiSpec?: string; // OpenAPI spec URL if available
+  sources: string[];    // Which fetchers found this API
 }
 ```
 
@@ -143,16 +169,15 @@ interface ApiEntry {
 
 2. Implement the `SourceFetcher` interface:
    ```typescript
-   import { SourceFetcher, ApiEntry } from '../types';
+   import type { SourceFetcher, ApiEntry } from '../types';
 
-   export class MySourceFetcher implements SourceFetcher {
-     name = 'mysource';
-
-     async fetchApis(): Promise<ApiEntry[]> {
+   export const mysourceFetcher: SourceFetcher = {
+     name: 'mysource',
+     fetchApis: async (): Promise<ApiEntry[]> => {
        // Fetch and normalize APIs from your source
        return [/* ApiEntry items */];
-     }
-   }
+     },
+   };
    ```
 
 3. Run the aggregator to fetch and update:
@@ -161,6 +186,22 @@ interface ApiEntry {
    ```
 
 Fetchers are auto-loaded via `loadAllFetchers()` in `sources/index.ts`.
+
+## Testing
+
+Tests use Vitest with v8 coverage:
+
+```bash
+# Run all tests
+npm test
+
+# Run specific package tests
+npm run test:aggregator
+npm run test:cli
+
+# Watch mode
+cd packages/cli && npm run test:watch
+```
 
 ## Contributing
 
@@ -180,3 +221,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - API data aggregated from multiple public sources
 - Built with TypeScript, Node.js, and vitest
+- Terminal colors powered by chalk

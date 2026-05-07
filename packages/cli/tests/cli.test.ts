@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { search } from '../src/index';
+import { initColors, setColors, color } from '../src/colors';
 import { readFile } from 'node:fs/promises';
 
 vi.mock('node:fs/promises', () => ({
@@ -12,19 +13,53 @@ vi.mock('node:fs/promises', () => ({
 }));
 
 const mockApis = [
-  { name: 'Weather API', description: 'Weather data', link: 'https://example.com', categories: ['weather'], auth: 'apiKey' },
-  { name: 'Weather2 API', description: 'More weather', link: 'https://example2.com', categories: ['weather'], auth: 'apiKey' },
-  { name: 'Weather3 API', description: 'Even more weather', link: 'https://example3.com', categories: ['weather'], auth: 'oauth' },
-  { name: 'Other API', description: 'Something else', link: 'https://example4.com', categories: ['data'], auth: undefined },
+  {
+    name: 'Weather API',
+    description: 'Weather data',
+    link: 'https://example.com',
+    categories: ['weather'],
+    auth: 'apiKey',
+    cors: null,
+    openapiSpec: null,
+    sources: ['test'],
+  },
+  {
+    name: 'Weather2 API',
+    description: 'More weather',
+    link: 'https://example2.com',
+    categories: ['weather'],
+    auth: 'apiKey',
+    cors: null,
+    openapiSpec: null,
+    sources: ['test'],
+  },
+  {
+    name: 'Weather3 API',
+    description: 'Even more weather',
+    link: 'https://example3.com',
+    categories: ['weather'],
+    auth: 'oauth',
+    cors: null,
+    openapiSpec: null,
+    sources: ['test'],
+  },
+  {
+    name: 'Other API',
+    description: 'Something else',
+    link: 'https://example4.com',
+    categories: ['data'],
+    auth: undefined,
+    cors: null,
+    openapiSpec: null,
+    sources: ['test'],
+  },
 ];
 
 describe('ls-apis CLI', () => {
   let consoleLogSpy: ReturnType<typeof vi.spyOn>;
-  let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
 
   beforeEach(() => {
     consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-    consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     vi.mocked(readFile).mockResolvedValue(JSON.stringify(mockApis));
   });
 
@@ -61,7 +96,9 @@ describe('ls-apis CLI', () => {
 
     it('outputs json format', async () => {
       await search({ query: 'weather', limit: 2, output: 'json' });
-      const jsonCall = consoleLogSpy.mock.calls.find((c) => typeof c[0] === 'string' && c[0].startsWith('['));
+      const jsonCall = consoleLogSpy.mock.calls.find(
+        (c) => typeof c[0] === 'string' && c[0].startsWith('[')
+      );
       expect(jsonCall).toBeDefined();
       const parsed = JSON.parse(jsonCall![0] as string);
       expect(parsed).toHaveLength(2);
@@ -81,6 +118,79 @@ describe('ls-apis CLI', () => {
     it('combines all filters', async () => {
       await search({ query: 'weather', category: 'weather', auth: 'apiKey', limit: 3 });
       expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('Found 2 APIs:'));
+    });
+
+    it('truncates long descriptions to 250 chars', async () => {
+      const longDescApi = [
+        {
+          name: 'Long API',
+          description: 'A'.repeat(300),
+          link: 'https://example.com',
+          categories: ['test'],
+          auth: null,
+          cors: null,
+          openapiSpec: null,
+          sources: ['test'],
+        },
+      ];
+      vi.mocked(readFile).mockResolvedValue(JSON.stringify(longDescApi));
+      await search({ limit: 1 });
+      const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
+      // 250 'A's + '...' = 253 chars total (truncate to 250 then append ...)
+      expect(output).toContain('A'.repeat(250) + '...');
+      expect(output).not.toContain('A'.repeat(251));
+    });
+
+    it('does not truncate short descriptions', async () => {
+      const shortDescApi = [
+        {
+          name: 'Short API',
+          description: 'Short description',
+          link: 'https://example.com',
+          categories: ['test'],
+          auth: null,
+          cors: null,
+          openapiSpec: null,
+          sources: ['test'],
+        },
+      ];
+      vi.mocked(readFile).mockResolvedValue(JSON.stringify(shortDescApi));
+      await search({ limit: 1 });
+      const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
+      expect(output).toContain('Short description');
+      expect(output).not.toContain('...');
+    });
+
+    describe('colors', () => {
+      beforeEach(() => {
+        setColors(false);
+      });
+
+      it('initColors with no-color disables colors', () => {
+        initColors(true);
+        expect(color.bold('test')).toBe('test');
+        expect(color.cyan('test')).toBe('test');
+      });
+
+      it('initColors without no-color enables colors', () => {
+        initColors(false);
+        expect(color.bold('test')).not.toBe('test');
+      });
+
+      it('NO_COLOR environment variable disables colors', () => {
+        vi.stubEnv('NO_COLOR', '1');
+        initColors(false);
+        expect(color.dim('test')).toBe('test');
+        vi.unstubAllEnvs();
+      });
+
+      it('colors return plain text when disabled', () => {
+        setColors(false);
+        expect(color.bold('hello')).toBe('hello');
+        expect(color.cyan('hello')).toBe('hello');
+        expect(color.green('hello')).toBe('hello');
+        expect(color.yellow('hello')).toBe('hello');
+      });
     });
   });
 });

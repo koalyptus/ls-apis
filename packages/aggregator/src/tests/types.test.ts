@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { ApiEntry, SourceFetcher } from '../src/types';
+import type { ApiEntry, SourceFetcher } from '../types';
 
 describe('types', () => {
   describe('ApiEntry', () => {
@@ -9,7 +9,6 @@ describe('types', () => {
         description: null,
         link: 'https://test.com',
         auth: 'apiKey',
-        https: null,
         cors: null,
         categories: ['Test'],
         sources: ['test-source'],
@@ -21,7 +20,6 @@ describe('types', () => {
       expect(entry.categories).toEqual(['Test']);
       expect(entry.sources).toEqual(['test-source']);
       expect(entry.description).toBeNull();
-      expect(entry.https).toBeNull();
     });
 
     it('should allow all fields', () => {
@@ -30,7 +28,6 @@ describe('types', () => {
         description: 'A test API',
         link: 'https://test.com',
         auth: 'apiKey',
-        https: true,
         cors: 'yes',
         categories: ['Test', 'Data'],
         openapiSpec: 'https://test.com/openapi.json',
@@ -39,7 +36,6 @@ describe('types', () => {
 
       expect(entry.description).toBe('A test API');
       expect(entry.auth).toBe('apiKey');
-      expect(entry.https).toBe(true);
       expect(entry.cors).toBe('yes');
       expect(entry.categories).toHaveLength(2);
       expect(entry.openapiSpec).toBe('https://test.com/openapi.json');
@@ -64,7 +60,6 @@ describe('types', () => {
           description: null,
           link: 'https://test.com',
           auth: null,
-          https: null,
           cors: null,
           categories: ['Test'],
           sources: ['test-fetcher'],

@@ -12,7 +12,6 @@ vi.mock('../src/sources/index', () => ({
           description: 'Test',
           link: 'https://test.com',
           auth: null,
-          https: null,
           cors: null,
           categories: ['Test'],
           sources: ['test-fetcher'],
@@ -43,7 +42,7 @@ describe('aggregate', () => {
   beforeEach(() => {
     vi.spyOn(console, 'log').mockImplementation(() => {});
     vi.spyOn(console, 'error').mockImplementation(() => {});
-    vi.spyOn(process, 'exit').mockImplementation(() => {});
+    vi.spyOn(process, 'exit').mockImplementation(() => undefined as never);
   });
 
   afterEach(() => {
@@ -77,7 +76,6 @@ describe('aggregate', () => {
           description: null,
           link: 'https://a.com',
           auth: null,
-          https: null,
           cors: null,
           categories: ['A'],
           sources: ['s1'],
@@ -88,7 +86,6 @@ describe('aggregate', () => {
           description: null,
           link: 'https://a.com',
           auth: null,
-          https: null,
           cors: null,
           categories: ['B'],
           sources: ['s2'],
@@ -109,7 +106,6 @@ describe('aggregate', () => {
           description: null,
           link: 'https://a.com',
           auth: null,
-          https: null,
           cors: null,
           categories: [],
           sources: [],
@@ -120,7 +116,6 @@ describe('aggregate', () => {
           description: null,
           link: 'https://b.com',
           auth: null,
-          https: null,
           cors: null,
           categories: [],
           sources: [],
@@ -139,7 +134,6 @@ describe('aggregate', () => {
           description: null,
           link: 'http://a.com',
           auth: null,
-          https: null,
           cors: null,
           categories: [],
           sources: [],
@@ -150,7 +144,6 @@ describe('aggregate', () => {
           description: null,
           link: 'https://a.com',
           auth: null,
-          https: null,
           cors: null,
           categories: [],
           sources: [],
@@ -170,7 +163,6 @@ describe('aggregate', () => {
         description: 'Desc',
         link: 'https://test.com',
         auth: 'ApiKey',
-        https: true,
         cors: 'yes',
         categories: ['Test'],
         sources: ['src'],
@@ -188,7 +180,6 @@ describe('aggregate', () => {
         description: undefined as unknown as string | null,
         link: 'https://test.com',
         auth: undefined as unknown as string | null,
-        https: undefined as unknown as boolean | null,
         cors: undefined as unknown as string | null,
         categories: ['Test'],
         sources: ['src'],

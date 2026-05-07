@@ -93,11 +93,16 @@ const fetcher: SourceFetcher = {
 
           if (!apiLink || apiLink.includes('github.com/marcelscruz')) return;
 
-          const name = $item.find('h2').first().text().trim() || $item.find('[class*=heading]').first().text().trim();
+          const name =
+            $item.find('h2').first().text().trim() ||
+            $item.find('[class*=heading]').first().text().trim();
           if (!name) return;
 
-          const descriptions = $item.find('p').map((_j, pEl) => $(pEl).text().trim()).get();
-          const description = descriptions.find(d => d && d.length > 20) || null;
+          const descriptions = $item
+            .find('p')
+            .map((_j, pEl) => $(pEl).text().trim())
+            .get();
+          const description = descriptions.find((d) => d && d.length > 20) || null;
 
           let auth: string | null = null;
           let cors: string | null = null;
@@ -107,7 +112,8 @@ const fetcher: SourceFetcher = {
           if (itemText.includes('api key')) auth = 'apiKey';
           else if (itemText.includes('oauth')) auth = 'OAuth';
 
-          if (itemText.includes('cors') && (itemText.includes('yes') || itemText.includes('✓'))) cors = 'yes';
+          if (itemText.includes('cors') && (itemText.includes('yes') || itemText.includes('✓')))
+            cors = 'yes';
 
           allApis.push({
             name,

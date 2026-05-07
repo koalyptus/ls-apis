@@ -1,9 +1,10 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --import tsx
 import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import { initColors, color } from './colors';
 
 const packageJsonPath = join(dirname(fileURLToPath(import.meta.url)), '../package.json');
 const { version } = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
@@ -29,6 +30,12 @@ interface SearchOptions {
 }
 
 const DEFAULT_LIMIT = 20;
+const DESCRIPTION_MAX_LENGTH = 250;
+
+function truncate(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength) + '...';
+}
 
 export async function search(options: SearchOptions): Promise<void> {
   const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
@@ -40,7 +47,7 @@ export async function search(options: SearchOptions): Promise<void> {
   if (options.query) {
     const q = options.query.toLowerCase();
     results = results.filter(
-      (api) => api.name.toLowerCase().includes(q) || api.description?.toLowerCase().includes(q),
+      (api) => api.name.toLowerCase().includes(q) || api.description?.toLowerCase().includes(q)
     );
   }
 
@@ -66,44 +73,77 @@ export async function search(options: SearchOptions): Promise<void> {
     return;
   }
 
-  console.log(`Found ${results.length} APIs:`);
+  console.log(color.bold(`Found ${results.length} APIs:`));
   for (const api of results.slice(0, limit)) {
-    console.log(`  ${api.name}`);
-    console.log(`    ${api.description ?? 'No description'}`);
-    console.log(`    ${api.link}`);
-    if (api.auth) console.log(`    Auth: ${api.auth}`);
+    console.log(color.cyan(`  ${api.name}`));
+    console.log(
+      `  ${color.dim('Description:')} ${truncate(api.description ?? 'No description', DESCRIPTION_MAX_LENGTH)}`
+    );
+    console.log(`  ${color.dim('Link:')} ${api.link}`);
+    if (api.auth !== undefined && api.auth !== null)
+      console.log(`  ${color.dim('Auth:')} ${color.yellow(api.auth)}`);
+    if (api.cors !== undefined && api.cors !== null)
+      console.log(`  ${color.dim('CORS:')} ${api.cors}`);
+    if (api.categories.length > 0)
+      console.log(`  ${color.dim('Categories:')} ${color.green(api.categories.join(', '))}`);
+    if (api.openapiSpec !== undefined && api.openapiSpec !== null)
+      console.log(`  ${color.dim('OpenAPI Spec:')} ${api.openapiSpec}`);
+    if (api.sources.length > 0) console.log(`  ${color.dim('Sources:')} ${api.sources.join(', ')}`);
     console.log();
   }
 
   if (results.length > limit) {
-    console.log(`... and ${results.length - limit} more`);
+    console.log(`  ${color.dim('... and ' + (results.length - limit) + ' more')}`);
   }
 }
 
 (async () => {
   const argv = await yargs(hideBin(process.argv))
-      .scriptName('ls-apis')
-      .version(version)
-      .alias('version', 'V')
-      .alias('version', 'v')
-      .usage('$0 [options]')
-      .example('$0 -q weather', 'Search for weather APIs')
-      .example('$0 -c weather', 'Filter by weather category')
-      .example('$0 -q weather -c storage', 'Search weather in storage category')
-      .example('$0 -a oauth', 'Filter by OAuth auth')
-      .example('$0 -q weather -l 50', 'Limit results to 50')
-      .example('$0 -q weather -o json', 'Output as JSON')
-      .option('query', { alias: 'q', type: 'string', describe: 'Search query (filters name, description)' })
-      .option('category', { alias: 'c', type: 'string', describe: 'Filter by category' })
-      .option('auth', { alias: 'a', type: 'string', describe: 'Filter by auth (apiKey, OAuth, no)' })
-      .option('limit', { alias: 'l', type: 'number', default: DEFAULT_LIMIT, describe: 'Max results to show' })
-      .option('output', { alias: 'o', type: 'string', choices: ['text', 'json'], default: 'text', describe: 'Output format' })
-      .help()
-      .alias('help', 'h')
-      .alias('help', '?')
-      .parse();
+    .scriptName('ls-apis')
+    .version(version)
+    .alias('version', 'V')
+    .alias('version', 'v')
+    .usage('$0 [options]')
+    .example('$0 -q weather', 'Search for weather APIs')
+    .example('$0 -c weather', 'Filter by weather category')
+    .example('$0 -q weather -c storage', 'Search weather in storage category')
+    .example('$0 -a oauth', 'Filter by OAuth auth')
+    .example('$0 -q weather -l 50', 'Limit results to 50')
+    .example('$0 -q weather -o json', 'Output as JSON')
+    .option('query', {
+      alias: 'q',
+      type: 'string',
+      describe: 'Search query (filters name, description)',
+    })
+    .option('category', { alias: 'c', type: 'string', describe: 'Filter by category' })
+    .option('auth', { alias: 'a', type: 'string', describe: 'Filter by auth (apiKey, OAuth, no)' })
+    .option('limit', {
+      alias: 'l',
+      type: 'number',
+      default: DEFAULT_LIMIT,
+      describe: 'Max results to show',
+    })
+    .option('output', {
+      alias: 'o',
+      type: 'string',
+      choices: ['text', 'json'],
+      default: 'text',
+      describe: 'Output format',
+    })
+    .option('no-color', { type: 'boolean', describe: 'Disable colors in output' })
+    .help()
+    .alias('help', 'h')
+    .alias('help', '?')
+    .parse();
 
-  await search({ query: argv.query, category: argv.category, auth: argv.auth, output: argv.output as 'text' | 'json' | undefined, limit: argv.limit });
+  initColors(argv.color === false);
+  await search({
+    query: argv.query,
+    category: argv.category,
+    auth: argv.auth,
+    output: argv.output as 'text' | 'json' | undefined,
+    limit: argv.limit,
+  });
 })().catch((err) => {
   console.error('Error:', err.message);
   process.exit(1);
