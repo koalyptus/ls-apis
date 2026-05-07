@@ -61,6 +61,9 @@ npm run ls-apis -- -q weather -l 10
 
 # Output as JSON
 npm run ls-apis -- -q weather -o json
+
+# Sort by name
+npm run ls-apis -- -q weather -s name
 ```
 
 ### Options
@@ -72,6 +75,7 @@ npm run ls-apis -- -q weather -o json
 | `--auth`     | `-a`  | Filter by auth type (apiKey, OAuth, no)     |
 | `--limit`    | `-l`  | Max results to show (default: 20)           |
 | `--output`   | `-o`  | Output format: text or json (default: text) |
+| `--sort`     | `-s`  | Sort results: name, category, auth          |
 | `--no-color` |       | Disable colors in output                    |
 | `--help`     | `-h`  | Show help                                   |
 | `--version`  | `-V`  | Show version                                |

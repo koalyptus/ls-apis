@@ -173,6 +173,35 @@ describe('ls-apis CLI', () => {
       expect(output).not.toContain('...');
     });
 
+    describe('sorting', () => {
+      it('sorts by name ascending', async () => {
+        await search({ query: 'weather', limit: 10, sort: 'name' });
+        const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
+        const weatherIdx = output.indexOf('Weather API');
+        const weather2Idx = output.indexOf('Weather2 API');
+        const weather3Idx = output.indexOf('Weather3 API');
+        expect(weatherIdx).toBeGreaterThanOrEqual(0);
+        expect(weatherIdx).toBeLessThan(weather2Idx);
+        expect(weather2Idx).toBeLessThan(weather3Idx);
+      });
+
+      it('sorts by category', async () => {
+        await search({ limit: 10, sort: 'category' });
+        const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
+        const dataIdx = output.indexOf('Other API');
+        const weatherIdx = output.indexOf('Weather API');
+        expect(dataIdx).toBeLessThan(weatherIdx);
+      });
+
+      it('sorts by auth', async () => {
+        await search({ limit: 10, sort: 'auth' });
+        const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
+        const apiKeyIdx = output.indexOf('Weather API');
+        const oauthIdx = output.indexOf('Weather3 API');
+        expect(apiKeyIdx).toBeLessThan(oauthIdx);
+      });
+    });
+
     describe('colors', () => {
       beforeEach(() => {
         setColors(false);

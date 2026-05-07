@@ -115,6 +115,7 @@ interface ApiEntry {
 | `--auth`     | `-a`  | Filter by auth (apiKey, OAuth, no)       |
 | `--limit`    | `-l`  | Max results (from config or default: 20) |
 | `--output`   | `-o`  | Output format: text or json              |
+| `--sort`     | `-s`  | Sort results: name, category, auth       |
 | `--no-color` |       | Disable colored output                   |
 | `--help`     | `-h`  | Show help                                |
 | `--version`  | `-V`  | Show version                             |

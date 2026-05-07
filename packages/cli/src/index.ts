@@ -28,6 +28,7 @@ interface SearchOptions {
   output?: 'text' | 'json';
   limit?: number;
   descriptionMaxLength?: number;
+  sort?: 'name' | 'category' | 'auth';
 }
 
 function truncate(text: string, maxLength: number): string {
@@ -64,6 +65,27 @@ export async function search(options: SearchOptions): Promise<void> {
 
   const limit = options.limit ?? CONFIG_DEFAULTS.limit;
   const descriptionMaxLength = options.descriptionMaxLength ?? CONFIG_DEFAULTS.descriptionMaxLength;
+
+  if (options.sort) {
+    results = [...results].sort((a, b) => {
+      switch (options.sort) {
+        case 'name':
+          return a.name.localeCompare(b.name);
+        case 'category': {
+          const catA = a.categories[0] ?? '';
+          const catB = b.categories[0] ?? '';
+          return catA.localeCompare(catB);
+        }
+        case 'auth': {
+          const authA = a.auth ?? '';
+          const authB = b.auth ?? '';
+          return authA.localeCompare(authB);
+        }
+        default:
+          return 0;
+      }
+    });
+  }
 
   if (options.output === 'json') {
     console.log(JSON.stringify(results.slice(0, limit), null, 2));
@@ -137,6 +159,12 @@ if (process.argv[1] && !process.argv[1].includes('vitest')) {
         default: 'text',
         describe: 'Output format',
       })
+      .option('sort', {
+        alias: 's',
+        type: 'string',
+        choices: ['name', 'category', 'auth'],
+        describe: 'Sort results by field',
+      })
       .option('no-color', { type: 'boolean', describe: 'Disable colors in output' })
       .help()
       .alias('help', 'h')
@@ -151,6 +179,7 @@ if (process.argv[1] && !process.argv[1].includes('vitest')) {
       auth: argv.auth,
       output: argv.output as 'text' | 'json' | undefined,
       limit: argv.limit,
+      sort: argv.sort as 'name' | 'category' | 'auth' | undefined,
       descriptionMaxLength: config.descriptionMaxLength,
     });
   })().catch((err) => {
