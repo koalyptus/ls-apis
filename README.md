@@ -152,22 +152,24 @@ interface ApiEntry {
   name: string;
   description?: string;
   link: string;
-  auth?: string;        // apiKey, OAuth, etc.
+  auth?: string; // apiKey, OAuth, etc.
   cors?: string;
   categories: string[];
   openapiSpec?: string; // OpenAPI spec URL if available
-  sources: string[];    // Which fetchers found this API
+  sources: string[]; // Which fetchers found this API
 }
 ```
 
 ## Adding a New API Source
 
 1. Create a new fetcher in `packages/aggregator/src/sources/`:
+
    ```bash
    touch packages/aggregator/src/sources/mysource.fetcher.ts
    ```
 
 2. Implement the `SourceFetcher` interface:
+
    ```typescript
    import type { SourceFetcher, ApiEntry } from '../types';
 
@@ -175,7 +177,9 @@ interface ApiEntry {
      name: 'mysource',
      fetchApis: async (): Promise<ApiEntry[]> => {
        // Fetch and normalize APIs from your source
-       return [/* ApiEntry items */];
+       return [
+         /* ApiEntry items */
+       ];
      },
    };
    ```

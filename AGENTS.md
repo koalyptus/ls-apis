@@ -88,6 +88,7 @@ interface ApiEntry {
 
 1. Create `packages/aggregator/src/sources/<name>.fetcher.ts`
 2. Implement `SourceFetcher` interface:
+
    ```typescript
    import type { SourceFetcher, ApiEntry } from '../types';
 
@@ -95,22 +96,25 @@ interface ApiEntry {
      name: 'mysource',
      fetchApis: async (): Promise<ApiEntry[]> => {
        // Fetch and normalize APIs from your source
-       return [/* ApiEntry items */];
+       return [
+         /* ApiEntry items */
+       ];
      },
    };
    ```
+
 3. Tests go in `packages/aggregator/src/sources/tests/<name>.test.ts`
 4. Run `npm run aggregate` to fetch and update `data/apis.json`
 
 ## CLI Options
 
-| Flag         | Alias | Description                             |
-| ------------ | ----- | --------------------------------------- |
-| `--query`    | `-q`  | Search query (filters name, description)|
-| `--category` | `-c`  | Filter by category                      |
-| `--auth`     | `-a`  | Filter by auth (apiKey, OAuth, no)      |
-| `--limit`    | `-l`  | Max results (default: 20)               |
-| `--output`   | `-o`  | Output format: text or json             |
-| `--no-color` |       | Disable colored output                  |
-| `--help`     | `-h`  | Show help                               |
-| `--version`  | `-V`  | Show version                            |
+| Flag         | Alias | Description                              |
+| ------------ | ----- | ---------------------------------------- |
+| `--query`    | `-q`  | Search query (filters name, description) |
+| `--category` | `-c`  | Filter by category                       |
+| `--auth`     | `-a`  | Filter by auth (apiKey, OAuth, no)       |
+| `--limit`    | `-l`  | Max results (default: 20)                |
+| `--output`   | `-o`  | Output format: text or json              |
+| `--no-color` |       | Disable colored output                   |
+| `--help`     | `-h`  | Show help                                |
+| `--version`  | `-V`  | Show version                             |
