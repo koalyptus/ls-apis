@@ -120,6 +120,19 @@ interface ApiEntry {
 | `--help`     | `-h`  | Show help                                |
 | `--version`  | `-V`  | Show version                             |
 
+## CLI Commands
+
+| Command      | Description                          |
+| ------------ | ------------------------------------ |
+| `categories` | List all API categories with counts  |
+
+### Categories Options
+
+| Flag         | Alias | Description                        |
+| ------------ | ----- | ---------------------------------- |
+| `--sort`     | `-s`  | Sort by: name (default), count     |
+| `--output`   | `-o`  | Output format: text (default), json |
+
 ## Config File
 
 `~/.ls-apis` (JSON) is created automatically on first CLI run. Edit it to customize defaults. CLI flags always override.

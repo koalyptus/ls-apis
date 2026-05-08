@@ -6,8 +6,8 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { initColors } from './colors';
 import { loadConfig } from './config';
-import { search } from './search';
-import { formatResults } from './formatter';
+import { search, getCategories } from './search';
+import { formatResults, formatList } from './formatter';
 import type { ApiEntry } from './types';
 
 let version: string;
@@ -25,6 +25,12 @@ export async function run(argv: string[]): Promise<void> {
   const config = await loadConfig();
   const ver = await getVersion();
 
+  const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
+  const data = await readFile(dataFile, 'utf-8');
+  const apis: ApiEntry[] = JSON.parse(data);
+
+  let exitEarly = false;
+
   const args = await yargs(argv)
     .scriptName('ls-apis')
     .version(ver)
@@ -38,6 +44,38 @@ export async function run(argv: string[]): Promise<void> {
     .example('$0 -q weather -l 50', 'Limit results to 50')
     .example('$0 -q weather -o json', 'Output as JSON')
     .example('$0 -q weather -s name', 'Sort results by name')
+    .command({
+      command: 'categories',
+      describe: 'List all API categories',
+      builder: (yargs) => {
+        return yargs
+          .option('sort', {
+            alias: 's',
+            type: 'string',
+            choices: ['name', 'count'],
+            default: 'name',
+            describe: 'Sort by name or count',
+          })
+          .option('output', {
+            alias: 'o',
+            type: 'string',
+            choices: ['text', 'json'],
+            default: 'text',
+            describe: 'Output format',
+          });
+      },
+      handler: (argv) => {
+        const noColor = argv.color === false;
+        initColors(noColor ?? !config.colors);
+        const categories = getCategories(apis);
+        const output = formatList(categories, 'categories', {
+          sort: argv.sort as 'name' | 'count',
+          output: argv.output as 'text' | 'json',
+        });
+        console.log(output);
+        exitEarly = true;
+      },
+    })
     .option('query', {
       alias: 'q',
       type: 'string',
@@ -74,12 +112,12 @@ export async function run(argv: string[]): Promise<void> {
     .alias('help', '?')
     .parse();
 
+  if (exitEarly) {
+    return;
+  }
+
   const noColor = args.color === false;
   initColors(noColor ?? !config.colors);
-
-  const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
-  const data = await readFile(dataFile, 'utf-8');
-  const apis: ApiEntry[] = JSON.parse(data);
 
   const results = search(apis, {
     query: args.query,

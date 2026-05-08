@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { run } from '../src/index';
-import { search } from '../src/search';
-import { formatText, formatJson, formatResults } from '../src/formatter';
+import { search, getCategories } from '../src/search';
+import { formatText, formatJson, formatResults, formatList } from '../src/formatter';
 import { initColors, setColors, color } from '../src/colors';
 import type { ApiEntry } from '../src/types';
 import * as fs from 'node:fs/promises';
@@ -118,6 +118,33 @@ describe('search', () => {
       expect(noAuth).toBeDefined();
     });
   });
+
+  describe('getCategories', () => {
+    it('extracts unique categories with counts', () => {
+      const categories = getCategories(mockApis);
+      expect(categories.get('weather')).toBe(3);
+      expect(categories.get('data')).toBe(1);
+    });
+
+    it('handles apis with multiple categories', () => {
+      const multiCatApi: ApiEntry[] = [
+        {
+          name: 'Multi API',
+          description: 'Test',
+          link: 'https://test.com',
+          categories: ['weather', 'data', 'storage'],
+          auth: null,
+          cors: null,
+          openapiSpec: null,
+          sources: [],
+        },
+      ];
+      const categories = getCategories(multiCatApi);
+      expect(categories.get('weather')).toBe(1);
+      expect(categories.get('data')).toBe(1);
+      expect(categories.get('storage')).toBe(1);
+    });
+  });
 });
 
 describe('formatter', () => {
@@ -209,6 +236,43 @@ describe('formatter', () => {
       expect(parsed).toHaveLength(4);
     });
   });
+
+  describe('formatList', () => {
+    it('formats categories alphabetically by default', () => {
+      const categories = new Map([
+        ['weather', 3],
+        ['data', 1],
+        ['analytics', 2],
+      ]);
+      const output = formatList(categories, 'categories', {});
+      expect(output).toContain('Found 3 categories:');
+      expect(output).toContain('analytics');
+      expect(output).toContain('data');
+      expect(output).toContain('weather');
+    });
+
+    it('sorts by count when specified', () => {
+      const categories = new Map([
+        ['weather', 3],
+        ['data', 1],
+        ['analytics', 2],
+      ]);
+      const output = formatList(categories, 'categories', { sort: 'count' });
+      const weatherIdx = output.indexOf('weather');
+      const dataIdx = output.indexOf('data');
+      const analyticsIdx = output.indexOf('analytics');
+      expect(weatherIdx).toBeLessThan(analyticsIdx);
+      expect(analyticsIdx).toBeLessThan(dataIdx);
+    });
+
+    it('outputs JSON when specified', () => {
+      const categories = new Map([['weather', 3]]);
+      const output = formatList(categories, 'categories', { output: 'json' });
+      const parsed = JSON.parse(output);
+      expect(parsed).toHaveLength(1);
+      expect(parsed[0]).toEqual({ name: 'weather', count: 3 });
+    });
+  });
 });
 
 describe('colors', () => {
@@ -297,5 +361,34 @@ describe('run', () => {
     await run(['-q', 'weather', '-s', 'name']);
     const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
     expect(output.indexOf('Weather API')).toBeLessThan(output.indexOf('Weather2 API'));
+  });
+
+  describe('categories command', () => {
+    it('lists categories alphabetically by default', async () => {
+      await run(['categories']);
+      expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('Found 2 categories:'));
+      expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('data'));
+      expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('weather'));
+    });
+
+    it('sorts by count', async () => {
+      await run(['categories', '--sort', 'count']);
+      const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
+      const weatherIdx = output.indexOf('weather');
+      const dataIdx = output.indexOf('data');
+      expect(weatherIdx).toBeLessThan(dataIdx);
+    });
+
+    it('outputs JSON format', async () => {
+      await run(['categories', '--output', 'json']);
+      const jsonCall = consoleLogSpy.mock.calls.find(
+        (c) => typeof c[0] === 'string' && c[0].startsWith('[')
+      );
+      expect(jsonCall).toBeDefined();
+      const parsed = JSON.parse(jsonCall![0] as string);
+      expect(parsed).toHaveLength(2);
+      expect(parsed[0]).toHaveProperty('name');
+      expect(parsed[0]).toHaveProperty('count');
+    });
   });
 });

@@ -23,3 +23,10 @@ export interface FormatOptions {
   output?: 'text' | 'json';
   descriptionMaxLength?: number;
 }
+
+export type ListSortBy = 'name' | 'count';
+
+export interface ListOptions {
+  sort?: ListSortBy;
+  output?: 'text' | 'json';
+}

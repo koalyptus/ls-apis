@@ -64,7 +64,29 @@ npm run ls-apis -- -q weather -o json
 
 # Sort by name
 npm run ls-apis -- -q weather -s name
+
+# List all categories
+npm run ls-apis -- categories
+
+# List categories sorted by count
+npm run ls-apis -- categories --sort count
+
+# List categories as JSON
+npm run ls-apis -- categories --output json
 ```
+
+### Commands
+
+| Command      | Description                          |
+| ------------ | ------------------------------------ |
+| `categories` | List all API categories with counts  |
+
+#### Categories Options
+
+| Flag         | Alias | Description                        |
+| ------------ | ----- | ---------------------------------- |
+| `--sort`     | `-s`  | Sort by: name (default), count     |
+| `--output`   | `-o`  | Output format: text (default), json |
 
 ### Options
 

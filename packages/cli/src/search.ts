@@ -48,3 +48,13 @@ export function search(apis: ApiEntry[], options: SearchOptions): ApiEntry[] {
 
   return results;
 }
+
+export function getCategories(apis: ApiEntry[]): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const api of apis) {
+    for (const cat of api.categories) {
+      map.set(cat, (map.get(cat) ?? 0) + 1);
+    }
+  }
+  return map;
+}

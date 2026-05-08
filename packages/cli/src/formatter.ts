@@ -1,5 +1,5 @@
 import { color } from './colors';
-import type { ApiEntry, FormatOptions } from './types';
+import type { ApiEntry, FormatOptions, ListOptions } from './types';
 
 function truncate(text: string, maxLength: number): string {
   if (text.length <= maxLength) {
@@ -62,4 +62,25 @@ export function formatResults(
     return formatJson(results, limit);
   }
   return formatText(results, total, limit, options);
+}
+
+export function formatList(
+  items: Map<string, number>,
+  label: string,
+  options: ListOptions
+): string {
+  const sorted = [...items.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+  if (options.sort === 'count') {
+    sorted.sort((a, b) => b[1] - a[1]);
+  }
+
+  if (options.output === 'json') {
+    return JSON.stringify(sorted.map(([name, count]) => ({ name, count })), null, 2);
+  }
+
+  const lines: string[] = [`Found ${sorted.length} ${label}:`];
+  for (const [name, count] of sorted) {
+    lines.push(`  ${name.padEnd(20)} (${count} APIs)`);
+  }
+  return lines.join('\n');
 }
