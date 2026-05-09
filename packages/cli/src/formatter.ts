@@ -1,5 +1,5 @@
 import { color } from './colors';
-import type { ApiEntry, FormatOptions, ListOptions } from './types';
+import type { ApiEntry, FormatOptions, ListOptions, Provider } from './types';
 
 function truncate(text: string, maxLength: number): string {
   if (text.length <= maxLength) {
@@ -85,6 +85,25 @@ export function formatList(
   const lines: string[] = [`Found ${sorted.length} ${label}:`];
   for (const [name, count] of sorted) {
     lines.push(`  ${name.padEnd(20)} (${count} APIs)`);
+  }
+  return lines.join('\n');
+}
+
+export function formatProviders(providers: Provider[], options: ListOptions): string {
+  const sorted = [...providers].sort((a, b) => a.name.localeCompare(b.name));
+
+  if (options.sort === 'count') {
+    sorted.sort((a, b) => (b.count ?? 0) - (a.count ?? 0));
+  }
+
+  if (options.output === 'json') {
+    return JSON.stringify(sorted, null, 2);
+  }
+
+  const lines: string[] = [`Found ${sorted.length} providers:`];
+  for (const provider of sorted) {
+    const countStr = provider.count !== undefined ? ` (${provider.count} APIs)` : '';
+    lines.push(`  ${provider.name.padEnd(20)} ${color.dim(provider.url)}${countStr}`);
   }
   return lines.join('\n');
 }

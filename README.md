@@ -80,8 +80,16 @@ npm run ls-apis -- categories --output json
 | Command      | Description                         |
 | ------------ | ----------------------------------- |
 | `categories` | List all API categories with counts |
+| `providers`  | List all data providers             |
 
-#### Categories Options
+### Categories Options
+
+| Flag       | Alias | Description                         |
+| ---------- | ----- | ----------------------------------- |
+| `--sort`   | `-s`  | Sort by: name (default), count      |
+| `--output` | `-o`  | Output format: text (default), json |
+
+### Providers Options
 
 | Flag       | Alias | Description                         |
 | ---------- | ----- | ----------------------------------- |

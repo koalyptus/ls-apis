@@ -1,6 +1,7 @@
 export interface Provider {
   name: string;
   url: string;
+  count?: number;
 }
 
 export interface DataFile {

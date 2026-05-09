@@ -9,6 +9,7 @@ import { loadConfig } from './config';
 import { search } from './search';
 import { formatResults } from './formatter';
 import { handleCategories } from './categories';
+import { handleProviders } from './providers';
 import type { DataFile } from './types';
 
 let version: string;
@@ -28,7 +29,7 @@ export async function run(argv: string[]): Promise<void> {
 
   const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
   const data = await readFile(dataFile, 'utf-8');
-  const { apis } = JSON.parse(data) as DataFile;
+  const { apis, providers } = JSON.parse(data) as DataFile;
 
   let exitEarly = false;
 
@@ -67,6 +68,31 @@ export async function run(argv: string[]): Promise<void> {
       },
       handler: (argv) => {
         handleCategories(apis, argv, config);
+        exitEarly = true;
+      },
+    })
+    .command({
+      command: 'providers',
+      describe: 'List all data providers',
+      builder: (yargs) => {
+        return yargs
+          .option('sort', {
+            alias: 's',
+            type: 'string',
+            choices: ['name', 'count'],
+            default: 'name',
+            describe: 'Sort by name or count',
+          })
+          .option('output', {
+            alias: 'o',
+            type: 'string',
+            choices: ['text', 'json'],
+            default: 'text',
+            describe: 'Output format',
+          });
+      },
+      handler: (argv) => {
+        handleProviders(providers, apis, argv, config);
         exitEarly = true;
       },
     })
