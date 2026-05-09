@@ -29,6 +29,7 @@ function isSourceFetcher(obj: unknown): obj is SourceFetcher {
     typeof obj === 'object' &&
     obj !== null &&
     typeof (obj as SourceFetcher).name === 'string' &&
+    typeof (obj as SourceFetcher).sourceUrl === 'string' &&
     typeof (obj as SourceFetcher).fetchApis === 'function'
   );
 }

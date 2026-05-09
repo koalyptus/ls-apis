@@ -12,6 +12,7 @@ vi.mock('../src/sources/index', () => ({
   loadAllFetchers: vi.fn().mockResolvedValue([
     {
       name: 'test-fetcher',
+      sourceUrl: 'https://test.com/data',
       fetchApis: vi.fn().mockResolvedValue([
         {
           name: 'API 1',
@@ -27,6 +28,7 @@ vi.mock('../src/sources/index', () => ({
     },
     {
       name: 'failing-fetcher',
+      sourceUrl: 'https://fail.com/data',
       fetchApis: vi.fn().mockRejectedValue(new Error('Network error')),
     },
   ]),

@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { loadAllFetchers } from './sources/index';
-import type { ApiEntry } from './types';
+import type { ApiEntry, DataFile } from './types';
 
 const DATA_FILE = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
 
@@ -28,13 +28,19 @@ export async function runAggregation(): Promise<void> {
   const deduped = deduplicateCategories(allEntries);
   console.log(`Total entries after dedupe: ${deduped.length}`);
 
-  const json = JSON.stringify(deduped, null, 2);
+  const dataFile: DataFile = {
+    timestamp: new Date().toISOString(),
+    providers: fetchers.map((f) => ({ name: f.name, url: f.sourceUrl })),
+    apis: deduped,
+  };
+
+  const json = JSON.stringify(dataFile, null, 2);
   await writeFile(DATA_FILE, json);
   console.log(`Written to ${DATA_FILE}`);
 
   try {
-    const parsed = JSON.parse(json);
-    console.log(`Validated: ${parsed.length} entries`);
+    const parsed = JSON.parse(json) as DataFile;
+    console.log(`Validated: ${parsed.apis.length} entries, ${parsed.providers.length} providers`);
   } catch (error) {
     console.error(`JSON validation failed: ${error}`);
     process.exit(1);

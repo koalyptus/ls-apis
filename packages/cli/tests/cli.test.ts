@@ -319,7 +319,13 @@ describe('run', () => {
       if (path.includes('package.json')) {
         return Promise.resolve('{"version": "0.0.0"}');
       }
-      return Promise.resolve(JSON.stringify(mockApis));
+      return Promise.resolve(
+        JSON.stringify({
+          timestamp: '2026-05-09T00:00:00Z',
+          providers: [{ name: 'test', url: 'https://test.com' }],
+          apis: mockApis,
+        })
+      );
     });
   });
 

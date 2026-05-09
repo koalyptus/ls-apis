@@ -4,6 +4,7 @@ import type { ApiEntry, SourceFetcher } from '../types';
 
 const fetcher: SourceFetcher = {
   name: 'github-public-apis',
+  sourceUrl: 'https://github.com/public-apis/public-apis',
 
   async fetchApis(): Promise<ApiEntry[]> {
     const res = await fetch(

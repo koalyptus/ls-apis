@@ -1,3 +1,14 @@
+export interface Provider {
+  name: string;
+  url: string;
+}
+
+export interface DataFile {
+  timestamp: string;
+  providers: Provider[];
+  apis: ApiEntry[];
+}
+
 export interface ApiEntry {
   name: string;
   description?: string;

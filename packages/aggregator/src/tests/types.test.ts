@@ -46,11 +46,13 @@ describe('types', () => {
     it('should have required fields', () => {
       const fetcher: SourceFetcher = {
         name: 'test-fetcher',
+        sourceUrl: 'https://test.com',
         fetchApis: async () => [],
       };
 
       expect(fetcher.name).toBe('test-fetcher');
       expect(typeof fetcher.fetchApis).toBe('function');
+      expect(fetcher.sourceUrl).toBe('https://test.com');
     });
 
     it('should return api entries', async () => {
@@ -69,6 +71,7 @@ describe('types', () => {
 
       const fetcher: SourceFetcher = {
         name: 'test-fetcher',
+        sourceUrl: 'https://test.com',
         fetchApis: async () => entries,
       };
 

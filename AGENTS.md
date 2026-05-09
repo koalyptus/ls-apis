@@ -65,13 +65,24 @@ ls-apis -q <query>
 
 - **Fetchers**: `*.fetcher.ts` files in `packages/aggregator/src/sources/`
 - **Naming convention**: must end with `.fetcher.ts`
-- **Interface**: implements `SourceFetcher` (name + fetchApis())
+- **Interface**: implements `SourceFetcher` (name + sourceUrl + fetchApis())
 - **Auto-loading**: via `loadAllFetchers()` in `sources/index.ts`
 - **CLI colors**: `src/colors.ts` handles terminal coloring with chalk, respects `NO_COLOR` env and `--no-color` flag
 
 ## Data Schema
 
 ```typescript
+interface DataFile {
+  timestamp: string; // ISO 8601 UTC timestamp of processing
+  providers: Provider[]; // Data source providers
+  apis: ApiEntry[]; // Aggregated API entries
+}
+
+interface Provider {
+  name: string; // Provider identifier (e.g., 'apis-guru')
+  url: string; // Data source URL
+}
+
 interface ApiEntry {
   name: string;
   description?: string;
@@ -94,6 +105,7 @@ interface ApiEntry {
 
    export const mysourceFetcher: SourceFetcher = {
      name: 'mysource',
+     sourceUrl: 'https://example.com/api',
      fetchApis: async (): Promise<ApiEntry[]> => {
        // Fetch and normalize APIs from your source
        return [

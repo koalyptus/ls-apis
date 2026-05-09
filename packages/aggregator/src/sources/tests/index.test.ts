@@ -23,7 +23,9 @@ describe('sources/index', () => {
 
   describe('isSourceFetcher', () => {
     it('should accept valid fetcher object', () => {
-      expect(isSourceFetcher({ name: 'test', fetchApis: async () => [] })).toBe(true);
+      expect(
+        isSourceFetcher({ name: 'test', sourceUrl: 'https://test.com', fetchApis: async () => [] })
+      ).toBe(true);
     });
 
     it('should reject null explicitly', () => {
@@ -39,28 +41,43 @@ describe('sources/index', () => {
     });
 
     it('should reject missing name', () => {
-      expect(isSourceFetcher({ fetchApis: async () => [] })).toBe(false);
+      expect(isSourceFetcher({ sourceUrl: 'https://test.com', fetchApis: async () => [] })).toBe(
+        false
+      );
     });
 
     it('should reject name that is not string', () => {
-      expect(isSourceFetcher({ name: 123, fetchApis: async () => [] })).toBe(false);
+      expect(
+        isSourceFetcher({ name: 123, sourceUrl: 'https://test.com', fetchApis: async () => [] })
+      ).toBe(false);
+    });
+
+    it('should reject missing sourceUrl', () => {
+      expect(isSourceFetcher({ name: 'test', fetchApis: async () => [] })).toBe(false);
+    });
+
+    it('should reject sourceUrl that is not string', () => {
+      expect(isSourceFetcher({ name: 'test', sourceUrl: 123, fetchApis: async () => [] })).toBe(
+        false
+      );
     });
 
     it('should reject missing fetchApis', () => {
-      expect(isSourceFetcher({ name: 'test' })).toBe(false);
+      expect(isSourceFetcher({ name: 'test', sourceUrl: 'https://test.com' })).toBe(false);
     });
 
     it('should reject fetchApis that is not function', () => {
       expect(
         isSourceFetcher({
           name: 'test',
+          sourceUrl: 'https://test.com',
           fetchApis: 'not a function' as unknown as () => Promise<[]>,
         })
       ).toBe(false);
     });
 
     it('should accept fetcher with all required fields', () => {
-      const fetcher = { name: 'valid', fetchApis: async () => [] };
+      const fetcher = { name: 'valid', sourceUrl: 'https://test.com', fetchApis: async () => [] };
       expect(isSourceFetcher(fetcher)).toBe(true);
     });
 

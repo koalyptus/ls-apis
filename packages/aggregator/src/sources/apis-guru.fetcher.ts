@@ -21,6 +21,7 @@ interface ApisGuruEntry {
 
 const fetcher: SourceFetcher = {
   name: 'apis-guru',
+  sourceUrl: 'https://api.apis.guru/v2/list.json',
 
   async fetchApis(): Promise<ApiEntry[]> {
     const res = await axios.get<Record<string, ApisGuruEntry>>(

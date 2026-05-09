@@ -193,9 +193,20 @@ npm run ls-apis -- -q <query>
 
 ## Data Schema
 
-Each API entry in `data/apis.json` follows this structure:
+The `data/apis.json` file contains metadata and aggregated API data with the following structure:
 
 ```typescript
+interface DataFile {
+  timestamp: string; // ISO 8601 UTC timestamp of processing
+  providers: Provider[]; // Data source providers
+  apis: ApiEntry[]; // Aggregated API entries
+}
+
+interface Provider {
+  name: string; // Provider identifier (e.g., 'apis-guru')
+  url: string; // Data source URL
+}
+
 interface ApiEntry {
   name: string;
   description?: string;
