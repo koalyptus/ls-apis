@@ -6,6 +6,27 @@
     "packages/aggregator",
     "packages/cli"
   ],
+  "keywords": [
+    "api",
+    "apis",
+    "api-aggregator",
+    "apis-aggregator",
+    "api-aggregator-cli",
+    "apis-aggregator-cli",
+    "api-dataset",
+    "apis-dataset",
+    "api-list",
+    "apis-list",
+    "cli",
+    "free",
+    "public-api",
+    "public-apis"
+  ],
+  "author": {
+    "name": "koalyptus",
+    "url": "https://github.com/koalyptus"
+  },
+  "license": "MIT",
   "scripts": {
     "test": "npm run test:aggregator && npm run test:cli",
     "test:aggregator": "cd packages/aggregator && npx vitest run --coverage",
