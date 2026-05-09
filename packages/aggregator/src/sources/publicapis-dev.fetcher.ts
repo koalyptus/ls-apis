@@ -5,65 +5,33 @@ import type { ApiEntry, SourceFetcher } from '../types';
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
-const CATEGORIES = [
-  'animals',
-  'anime',
-  'anti-malware',
-  'art-and-design',
-  'authentication-and-authorization',
-  'blockchain',
-  'books',
-  'business',
-  'calendar',
-  'cloud-storage-and-file-sharing',
-  'continuous-integration',
-  'cryptocurrency',
-  'currency-exchange',
-  'data-validation',
-  'development',
-  'dictionaries',
-  'documents-and-productivity',
-  'email',
-  'entertainment',
-  'environment',
-  'events',
-  'finance',
-  'food-and-drink',
-  'games-and-comics',
-  'geocoding',
-  'government',
-  'health',
-  'jobs',
-  'machine-learning',
-  'music',
-  'news',
-  'open-data',
-  'open-source-projects',
-  'patent',
-  'personality',
-  'phone',
-  'photography',
-  'podcasts',
-  'programming',
-  'science-and-math',
-  'security',
-  'shopping',
-  'social',
-  'sports-and-fitness',
-  'test-data',
-  'text-analysis',
-  'tracking',
-  'transportation',
-  'url-shorteners',
-  'vehicle',
-  'video',
-  'weather',
-];
-
 const BASE_URL = 'https://publicapis.dev';
 
-function normalizeCategory(category: string): string {
-  return category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+async function fetchCategories(): Promise<string[]> {
+  const res = await axios.get(BASE_URL, {
+    timeout: 10000,
+    httpsAgent,
+    headers: {
+      'User-Agent': 'ls-apis/1.0 (aggregator)',
+    },
+  });
+
+  const $ = cheerio.load(res.data);
+  const categories: string[] = [];
+
+  $('a[href*="/category/"]').each((_i, el) => {
+    const href = $(el).attr('href') || '';
+    const match = href.match(/\/category\/([^/?]+)/);
+    if (match && match[1]) {
+      categories.push(match[1]);
+    }
+  });
+
+  if (categories.length === 0) {
+    throw new Error('Could not discover categories from page');
+  }
+
+  return [...new Set(categories)];
 }
 
 const fetcher: SourceFetcher = {
@@ -72,8 +40,11 @@ const fetcher: SourceFetcher = {
 
   async fetchApis(): Promise<ApiEntry[]> {
     const allApis: ApiEntry[] = [];
+    const categories = await fetchCategories();
 
-    for (const category of CATEGORIES) {
+    console.log(`Found ${categories.length} categories from ${BASE_URL}`);
+
+    for (const category of categories) {
       try {
         const url = `${BASE_URL}/category/${category}`;
         const res = await axios.get(url, {
@@ -85,7 +56,7 @@ const fetcher: SourceFetcher = {
         });
 
         const $ = cheerio.load(res.data);
-        const categoryName = normalizeCategory(category);
+        const categoryName = category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 
         $('li[role="group"]').each((_i, el) => {
           const $item = $(el);

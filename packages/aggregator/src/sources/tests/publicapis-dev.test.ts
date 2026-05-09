@@ -1,10 +1,18 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 vi.mock('node:fetch', () => ({
   default: vi.fn(),
 }));
 
 describe('sources/publicapis-dev', () => {
+  beforeEach(() => {
+    vi.spyOn(console, 'log').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   describe('fetchApis', () => {
     it('should fetch APIs from real source', async () => {
       const { default: fetcher } = await import('../publicapis-dev.fetcher');

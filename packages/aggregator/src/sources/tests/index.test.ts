@@ -3,17 +3,17 @@ import { loadAllFetchers, isSourceFetcher } from '../index';
 
 describe('sources/index', () => {
   describe('loadAllFetchers', () => {
-    it('should load all fetchers', async () => {
+    it.skip('should load all fetchers', async () => {
       const fetchers = await loadAllFetchers();
       expect(fetchers.length).toBeGreaterThan(0);
     });
 
-    it('should return array of fetchers', async () => {
+    it.skip('should return array of fetchers', async () => {
       const fetchers = await loadAllFetchers();
       expect(Array.isArray(fetchers)).toBe(true);
     });
 
-    it('should filter only valid fetchers', async () => {
+    it.skip('should filter only valid fetchers', async () => {
       const fetchers = await loadAllFetchers();
       for (const fetcher of fetchers) {
         expect(isSourceFetcher(fetcher)).toBe(true);

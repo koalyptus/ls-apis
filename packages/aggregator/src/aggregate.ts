@@ -1,10 +1,9 @@
 import { writeFile } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
 import { loadAllFetchers } from './sources/index';
+import { resolveDataFile } from './paths';
 import type { ApiEntry, DataFile } from './types';
 
-const DATA_FILE = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
+const DATA_FILE = resolveDataFile(import.meta.url);
 
 export async function runAggregation(): Promise<void> {
   const fetchers = await loadAllFetchers();
