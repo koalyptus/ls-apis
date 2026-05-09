@@ -6,8 +6,9 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { initColors } from './colors';
 import { loadConfig } from './config';
-import { search, getCategories } from './search';
-import { formatResults, formatList } from './formatter';
+import { search } from './search';
+import { formatResults } from './formatter';
+import { handleCategories } from './categories';
 import type { ApiEntry } from './types';
 
 let version: string;
@@ -65,14 +66,7 @@ export async function run(argv: string[]): Promise<void> {
           });
       },
       handler: (argv) => {
-        const noColor = argv.color === false;
-        initColors(noColor ?? !config.colors);
-        const categories = getCategories(apis);
-        const output = formatList(categories, 'categories', {
-          sort: argv.sort as 'name' | 'count',
-          output: argv.output as 'text' | 'json',
-        });
-        console.log(output);
+        handleCategories(apis, argv, config);
         exitEarly = true;
       },
     })

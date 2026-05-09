@@ -75,7 +75,11 @@ export function formatList(
   }
 
   if (options.output === 'json') {
-    return JSON.stringify(sorted.map(([name, count]) => ({ name, count })), null, 2);
+    return JSON.stringify(
+      sorted.map(([name, count]) => ({ name, count })),
+      null,
+      2
+    );
   }
 
   const lines: string[] = [`Found ${sorted.length} ${label}:`];

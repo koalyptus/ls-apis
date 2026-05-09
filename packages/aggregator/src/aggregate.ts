@@ -25,7 +25,7 @@ export async function runAggregation(): Promise<void> {
 
   console.log(`Total entries before dedupe: ${allEntries.length}`);
 
-  const deduped = deduplicate(allEntries);
+  const deduped = deduplicateCategories(allEntries);
   console.log(`Total entries after dedupe: ${deduped.length}`);
 
   const json = JSON.stringify(deduped, null, 2);
@@ -72,7 +72,7 @@ export function normalizeEntry(entry: ApiEntry): ApiEntry {
     link: entry.link,
     auth: entry.auth ?? null,
     cors: entry.cors ?? null,
-    categories: entry.categories,
+    categories: entry.categories.filter((c) => c.length > 2).map((c) => normalizeCategory(c)),
     openapiSpec: entry.openapiSpec ?? null,
     sources: entry.sources,
   };
@@ -83,4 +83,37 @@ export function normalizeLink(link: string): string {
     .toLowerCase()
     .replace(/\/+$/, '')
     .replace(/^http:/, 'https:');
+}
+
+export function normalizeCategory(category: string): string {
+  return category
+    .toLowerCase()
+    .replace(/_/g, ' ')
+    .replace(/-/g, ' ')
+    .replace(/ and /g, ' & ')
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+    .replace(/ & /g, ' & ');
+}
+
+export function deduplicateCategories(entries: ApiEntry[]): ApiEntry[] {
+  const dedupedEntries = new Map<string, ApiEntry>();
+
+  for (const entry of entries) {
+    const normalizedEntry = normalizeEntry(entry);
+    const existing = dedupedEntries.get(normalizedEntry.link);
+
+    if (existing) {
+      dedupedEntries.set(normalizedEntry.link, {
+        ...existing,
+        sources: [...new Set([...existing.sources, ...normalizedEntry.sources])],
+        categories: [...new Set([...existing.categories, ...normalizedEntry.categories])],
+      });
+    } else {
+      dedupedEntries.set(normalizedEntry.link, normalizedEntry);
+    }
+  }
+
+  return Array.from(dedupedEntries.values());
 }

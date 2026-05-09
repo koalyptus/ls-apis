@@ -77,16 +77,16 @@ npm run ls-apis -- categories --output json
 
 ### Commands
 
-| Command      | Description                          |
-| ------------ | ------------------------------------ |
-| `categories` | List all API categories with counts  |
+| Command      | Description                         |
+| ------------ | ----------------------------------- |
+| `categories` | List all API categories with counts |
 
 #### Categories Options
 
-| Flag         | Alias | Description                        |
-| ------------ | ----- | ---------------------------------- |
-| `--sort`     | `-s`  | Sort by: name (default), count     |
-| `--output`   | `-o`  | Output format: text (default), json |
+| Flag       | Alias | Description                         |
+| ---------- | ----- | ----------------------------------- |
+| `--sort`   | `-s`  | Sort by: name (default), count      |
+| `--output` | `-o`  | Output format: text (default), json |
 
 ### Options
 

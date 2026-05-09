@@ -1,5 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { deduplicate, normalizeEntry, runAggregation } from '../aggregate';
+import {
+  deduplicate,
+  normalizeEntry,
+  normalizeCategory,
+  deduplicateCategories,
+  runAggregation,
+} from '../aggregate';
 import type { ApiEntry } from '../types';
 
 vi.mock('../src/sources/index', () => ({
@@ -191,6 +197,100 @@ describe('aggregate', () => {
       const result = normalizeEntry(entry);
       expect(result.description).toBeNull();
       expect(result.auth).toBeNull();
+    });
+
+    it('should filter out single-character categories', () => {
+      const entry: ApiEntry = {
+        name: 'Test',
+        description: 'Test',
+        link: 'https://test.com',
+        auth: null,
+        cors: null,
+        categories: ['Security', 'a', 'Test', 'x'],
+        sources: [],
+        openapiSpec: null,
+      };
+
+      const result = normalizeEntry(entry);
+      expect(result.categories).toEqual(['Security', 'Test']);
+    });
+  });
+
+  describe('normalizeCategory', () => {
+    it('should convert " And " to " & "', () => {
+      expect(normalizeCategory('Documents And Productivity')).toBe('Documents & Productivity');
+    });
+
+    it('should replace underscores with spaces', () => {
+      expect(normalizeCategory('open_data')).toBe('Open Data');
+    });
+
+    it('should title case simple categories', () => {
+      expect(normalizeCategory('analytics')).toBe('Analytics');
+    });
+
+    it('should handle mixed case input', () => {
+      expect(normalizeCategory('CRYPTO_CURRENCY')).toBe('Crypto Currency');
+    });
+  });
+
+  describe('deduplicateCategories', () => {
+    it('should merge sources for duplicate APIs', () => {
+      const entries: ApiEntry[] = [
+        {
+          name: 'API 1',
+          description: 'Test',
+          link: 'https://test.com',
+          auth: null,
+          cors: null,
+          categories: ['Authentication & Authorization'],
+          sources: ['source1'],
+          openapiSpec: null,
+        },
+        {
+          name: 'API 1',
+          description: 'Test',
+          link: 'https://test.com',
+          auth: null,
+          cors: null,
+          categories: ['Authentication & Authorization'],
+          sources: ['source2'],
+          openapiSpec: null,
+        },
+      ];
+
+      const result = deduplicateCategories(entries);
+      expect(result).toHaveLength(1);
+      expect(result[0].sources).toContain('source1');
+      expect(result[0].sources).toContain('source2');
+    });
+
+    it('should not lose entries with different categories', () => {
+      const entries: ApiEntry[] = [
+        {
+          name: 'API 1',
+          description: 'Test',
+          link: 'https://test1.com',
+          auth: null,
+          cors: null,
+          categories: ['Analytics'],
+          sources: ['source1'],
+          openapiSpec: null,
+        },
+        {
+          name: 'API 2',
+          description: 'Test',
+          link: 'https://test2.com',
+          auth: null,
+          cors: null,
+          categories: ['Development'],
+          sources: ['source2'],
+          openapiSpec: null,
+        },
+      ];
+
+      const result = deduplicateCategories(entries);
+      expect(result).toHaveLength(2);
     });
   });
 });
