@@ -1,22 +1,53 @@
 {
-  "name": "ls-apis",
+  "name": "@ls-apis/cli",
   "version": "0.0.0",
+  "description": "Public APIs Discovery for Humans & Agents",
   "type": "module",
   "bin": {
     "ls-apis": "./src/index.ts"
   },
   "scripts": {
+    "ls-apis": "tsx src/index.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },
+  "files": [
+    "src",
+    "data"
+  ],
+  "keywords": [
+    "api",
+    "apis",
+    "api-aggregator",
+    "apis-aggregator",
+    "api-aggregator-cli",
+    "apis-aggregator-cli",
+    "api-dataset",
+    "apis-dataset",
+    "api-list",
+    "apis-list",
+    "cli",
+    "free",
+    "public-api",
+    "public-apis"
+  ],
+  "author": {
+    "name": "koalyptus",
+    "url": "https://github.com/koalyptus"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koalyptus/ls-apis"
+  },
   "dependencies": {
     "chalk": "^5.6.2",
+    "tsx": "^4.0.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/yargs": "^17.0.0",
-    "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vitest": "^4.0.0"
   }

@@ -1,8 +1,8 @@
 # ls-apis
 
-### Public API Discovery for Humans & Agents
+### Public APIs Discovery for Humans & Agents
 
-A curated collection of **2,500+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type, and keywords.
+A curated collection of **2,500+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
 
 ## Features
 
@@ -16,30 +16,26 @@ A curated collection of **2,500+ public APIs** with a powerful CLI search tool. 
 ## Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/koalyptus/ls-apis.git
 cd ls-apis
-
-# Install dependencies
 npm install
 ```
 
-## Usage
+### Quick Start
 
-### Global Installation
+```bash
+npm install -g @ls-apis/cli
+ls-apis -q weather
+```
 
-To use `ls-apis` as a global command, run:
+### Via npm link (local development)
 
 ```bash
 npm link --workspace=packages/cli
-```
-
-This creates a symlink so you can run `ls-apis` from anywhere:
-
-```bash
 ls-apis -q weather
-ls-apis -c data -a apiKey
 ```
+
+## Usage
 
 ### CLI Search
 
@@ -159,12 +155,11 @@ Found 2 APIs:
 ls-apis/
 ├── README.md              # This file
 ├── package.json           # Root workspace config
-├── data/
-│   └── apis.json          # Aggregated API data (2520+ APIs)
 ├── packages/
 │   ├── aggregator/        # Fetches, normalizes, deduplicates APIs
 │   │   ├── src/
 │   │   │   ├── aggregate.ts       # Main orchestration
+│   │   │   ├── paths.ts           # Path utilities
 │   │   │   ├── sources/           # Pluggable fetchers (*.fetcher.ts)
 │   │   │   │   ├── index.ts       # Fetcher loader
 │   │   │   │   └── tests/         # Fetcher tests
@@ -172,6 +167,8 @@ ls-apis/
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
 │   └── cli/               # CLI for searching APIs
+│       ├── data/
+│       │   └── apis.json          # Bundled API data (2520+ APIs)
 │       ├── src/
 │       │   ├── index.ts           # CLI entry point
 │       │   └── colors.ts          # Terminal color support
@@ -182,8 +179,8 @@ ls-apis/
 ## Scripts
 
 ```bash
-# Fetch all sources → dedupe → update data/apis.json
-npm run aggregate
+# Install dependencies
+npm install
 
 # Run tests with coverage
 npm test
@@ -195,13 +192,16 @@ npm run typecheck
 npm run lint
 npm run format
 
+# Run aggregator (generates data/apis.json in CLI package)
+npm run aggregate
+
 # Run CLI directly
 npm run ls-apis -- -q <query>
 ```
 
 ## Data Schema
 
-The `data/apis.json` file contains metadata and aggregated API data with the following structure:
+The `packages/cli/data/apis.json` file contains metadata and aggregated API data with the following structure:
 
 ```typescript
 interface DataFile {

@@ -12,5 +12,5 @@ export function toFileUrl(filePath: string): string {
 
 export function resolveDataFile(metaUrl: string): string {
   const currentDir = getCurrentDir(metaUrl);
-  return path.join(currentDir, '../../../data/apis.json');
+  return path.join(currentDir, '../../cli/data/apis.json');
 }

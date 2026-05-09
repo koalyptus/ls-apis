@@ -5,11 +5,11 @@
 ```
 ls-apis/
 ├── package.json           # root (workspaces)
-├── data/apis.json         # aggregated API data (2520 APIs)
 ├── packages/
 │   ├── aggregator/        # fetches, normalizes, deduplicates
 │   │   ├── src/
 │   │   │   ├── aggregate.ts       # main orchestration
+│   │   │   ├── paths.ts           # path utilities
 │   │   │   ├── sources/           # pluggable fetchers (*.fetcher.ts)
 │   │   │   │   ├── index.ts       # fetcher auto-loader
 │   │   │   │   └── tests/         # fetcher-specific tests
@@ -17,6 +17,8 @@ ls-apis/
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
 │   └── cli/               # CLI for searching APIs
+│       ├── data/
+│       │   └── apis.json          # bundled API data (published with package)
 │       ├── src/
 │       │   ├── index.ts           # CLI entry point
 │       │   └── colors.ts          # terminal color support
@@ -30,7 +32,7 @@ ls-apis/
 # Install deps
 npm install
 
-# Run aggregator (fetch all sources → dedupe → data/apis.json)
+# Run aggregator (fetch all sources → dedupe → packages/cli/data/apis.json)
 npm run aggregate
 
 # Run tests with coverage (both aggregator + cli)
@@ -116,7 +118,7 @@ interface ApiEntry {
    ```
 
 3. Tests go in `packages/aggregator/src/sources/tests/<name>.test.ts`
-4. Run `npm run aggregate` to fetch and update `data/apis.json`
+4. Run `npm run aggregate` to fetch and update `packages/cli/data/apis.json`
 
 ## CLI Options
 

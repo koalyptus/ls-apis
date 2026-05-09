@@ -27,7 +27,7 @@ export async function run(argv: string[]): Promise<void> {
   const config = await loadConfig();
   const ver = await getVersion();
 
-  const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../../../data/apis.json');
+  const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../data/apis.json');
   const data = await readFile(dataFile, 'utf-8');
   const { apis, providers } = JSON.parse(data) as DataFile;
 
