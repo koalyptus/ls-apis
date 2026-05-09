@@ -68,7 +68,7 @@ function normalizeCategory(category: string): string {
 
 const fetcher: SourceFetcher = {
   name: 'publicapis-dev',
-  sourceUrl: 'https://publicapis.dev',
+  sourceUrl: BASE_URL,
 
   async fetchApis(): Promise<ApiEntry[]> {
     const allApis: ApiEntry[] = [];

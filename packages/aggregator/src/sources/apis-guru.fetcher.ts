@@ -19,14 +19,15 @@ interface ApisGuruEntry {
   >;
 }
 
+const API_URL = 'https://api.apis.guru/v2/list.json';
+const WEB_URL = 'https://apis.guru/';
+
 const fetcher: SourceFetcher = {
   name: 'apis-guru',
-  sourceUrl: 'https://api.apis.guru/v2/list.json',
+  sourceUrl: WEB_URL,
 
   async fetchApis(): Promise<ApiEntry[]> {
-    const res = await axios.get<Record<string, ApisGuruEntry>>(
-      'https://api.apis.guru/v2/list.json'
-    );
+    const res = await axios.get<Record<string, ApisGuruEntry>>(API_URL);
     const data = res.data;
 
     const entries: ApiEntry[] = Object.entries(data).map(([key, value]) => {
