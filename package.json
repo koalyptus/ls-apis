@@ -29,9 +29,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "npm run test:aggregator && npm run test:cli",
-    "test:aggregator": "cd packages/aggregator && npx vitest run --coverage",
-    "test:cli": "cd packages/cli && npx vitest run --coverage",
+    "test": "vitest run --coverage",
+    "test:aggregator": "vitest run --project aggregator --coverage",
+    "test:cli": "vitest run --project cli --coverage",
     "typecheck": "npx tsc --noEmit -p packages/aggregator && npx tsc --noEmit -p packages/cli",
     "lint": "eslint .",
     "format": "prettier --check .",
