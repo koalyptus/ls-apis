@@ -70,6 +70,10 @@ export function deduplicate(entries: ApiEntry[]): ApiEntry[] {
   return Array.from(byLink.values());
 }
 
+function normalizeCategories(categories: string[]): string[] {
+  return categories.filter((c) => c.length > 1).map((c) => normalizeCategory(c));
+}
+
 export function normalizeEntry(entry: ApiEntry): ApiEntry {
   return {
     name: entry.name,
@@ -77,13 +81,13 @@ export function normalizeEntry(entry: ApiEntry): ApiEntry {
     link: entry.link,
     auth: entry.auth ?? null,
     cors: entry.cors ?? null,
-    categories: entry.categories.filter((c) => c.length > 2).map((c) => normalizeCategory(c)),
+    categories: normalizeCategories(entry.categories),
     openapiSpec: entry.openapiSpec ?? null,
     sources: entry.sources,
   };
 }
 
-export function normalizeLink(link: string): string {
+function normalizeLink(link: string): string {
   return link
     .toLowerCase()
     .replace(/\/+$/, '')
