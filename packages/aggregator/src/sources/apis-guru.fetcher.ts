@@ -4,7 +4,7 @@ import type { ApiEntry, SourceFetcher } from '../types';
 interface ApisGuruEntry {
   added: string;
   updated: string;
-  preferred?: string;
+  preferred: string;
   versions: Record<
     string,
     {
@@ -12,7 +12,6 @@ interface ApisGuruEntry {
         title: string;
         description?: string;
         'x-origin'?: Array<{ url: string }>;
-        tags?: string[];
         'x-apisguru-categories'?: string[];
       };
     }
@@ -31,10 +30,9 @@ const fetcher: SourceFetcher = {
     const data = res.data;
 
     const entries: ApiEntry[] = Object.entries(data).map(([key, value]) => {
-      const preferredVersion = value.preferred;
-      const info = value.versions[preferredVersion]?.info || {};
+      const info = value.versions[value.preferred]?.info || {};
 
-      const categories = info['x-apisguru-categories'] || info.tags || ['Uncategorized'];
+      const categories = info['x-apisguru-categories'] || ['Uncategorized'];
 
       return {
         name: info.title || key,

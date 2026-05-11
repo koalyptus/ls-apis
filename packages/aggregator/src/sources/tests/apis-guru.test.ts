@@ -89,12 +89,13 @@ describe('sources/apis-guru', () => {
       expect(entries[0].categories).toContain('custom');
     });
 
-    it('should use tags when x-apisguru-categories not available', async () => {
+    it('should use Uncategorized when x-apisguru-categories not available', async () => {
       const axios = await import('axios');
       vi.mocked(axios.default.get).mockResolvedValue({
         data: {
           'test-api': {
-            added: '2020-01-01',
+            added: '2023-01-01T00:00:00Z',
+            updated: '2023-01-01T00:00:00Z',
             preferred: '1.0.0',
             versions: {
               '1.0.0': {
@@ -111,7 +112,7 @@ describe('sources/apis-guru', () => {
       const { default: fetcher } = await import('../apis-guru.fetcher');
       const entries = await fetcher.fetchApis();
 
-      expect(entries[0].categories).toContain('from-tags');
+      expect(entries[0].categories).toEqual(['Uncategorized']);
     });
 
     it('should use Uncategorized when no categories', async () => {
