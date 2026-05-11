@@ -31,7 +31,7 @@ const fetcher: SourceFetcher = {
     const data = res.data;
 
     const entries: ApiEntry[] = Object.entries(data).map(([key, value]) => {
-      const preferredVersion = value.preferred || Object.keys(value.versions)[0];
+      const preferredVersion = value.preferred;
       const info = value.versions[preferredVersion]?.info || {};
 
       const categories = info['x-apisguru-categories'] || info.tags || ['Uncategorized'];

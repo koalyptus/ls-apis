@@ -1,6 +1,3 @@
 import { defineWorkspace } from 'vitest/config';
 
-export default defineWorkspace([
-  'packages/aggregator',
-  'packages/cli',
-]);
+export default defineWorkspace(['packages/aggregator', 'packages/cli']);
