@@ -14,6 +14,8 @@ interface ApisGuruEntry {
         'x-origin'?: Array<{ url: string }>;
         'x-apisguru-categories'?: string[];
       };
+      swaggerUrl?: string;
+      openapiVer?: string;
     }
   >;
 }
@@ -30,7 +32,8 @@ const fetcher: SourceFetcher = {
     const data = res.data;
 
     const entries: ApiEntry[] = Object.entries(data).map(([key, value]) => {
-      const info = value.versions[value.preferred]?.info || {};
+      const versionObj = value.versions[value.preferred] ?? {};
+      const info = versionObj.info ?? {};
 
       const categories = info['x-apisguru-categories'] || ['Uncategorized'];
 
@@ -41,7 +44,7 @@ const fetcher: SourceFetcher = {
         auth: null,
         cors: null,
         categories,
-        openapiSpec: null,
+        openapiSpec: versionObj.swaggerUrl ?? null,
         sources: [fetcher.name],
       };
     });
