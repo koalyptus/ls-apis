@@ -17,10 +17,11 @@ ls-apis/
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
 │   └── cli/               # CLI for searching APIs
+│       ├── dist/                # compiled ESM output (runtime entrypoint)
 │       ├── data/
 │       │   └── apis.json          # bundled API data (published with package)
 │       ├── src/
-│       │   ├── index.ts           # CLI entry point
+│       │   ├── index.ts           # CLI TypeScript source entry point
 │       │   └── colors.ts          # terminal color support
 │       └── tests/
 └── AGENTS.md              # instructions for AI agents
@@ -55,13 +56,22 @@ npm run ls-apis -- -q <query>
 npm run ls-apis -- -c <category>
 npm run ls-apis -- -a <auth>
 
-# CLI search (via npx, from workspace root)
-npx tsx packages/cli/src/index.ts -q <query>
+# Build CLI (TypeScript -> dist, with ESM import fix)
+npm run build --workspace=@ls-apis/cli
+
+# CLI search (from compiled output, workspace root)
+node packages/cli/dist/index.js -q <query>
 
 # CLI search (globally, after npm link)
-npm link --workspace=packages/cli
+npm link --workspace=@ls-apis/cli
 ls-apis -q <query>
 ```
+
+## CLI Build Notes
+
+- `@ls-apis/cli` publishes `dist/`.
+- CLI package build uses `tsc` then `tsc-esm-fix --target dist`.
+- `tsc-esm-fix` is required because Node ESM runtime requires explicit `.js` extensions in relative imports.
 
 ## Architecture
 

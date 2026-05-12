@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-12T05:50:14.260Z",
+  "timestamp": "2026-05-12T11:20:14.208Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -25893,7 +25893,7 @@
       "cors": "unknown",
       "categories": ["Art & Design"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "EmojiHub",
@@ -39693,7 +39693,7 @@
       "cors": "unknown",
       "categories": ["Video"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Weatherstack",
@@ -40308,6 +40308,16 @@
       "auth": "apiKey",
       "cors": null,
       "categories": ["Anti Malware"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Picsart",
+      "description": "Image & video editing, generative AI, 100+ AI models via unified API.",
+      "link": "https://picsart.io",
+      "auth": "apiKey",
+      "cors": null,
+      "categories": ["Art & Design"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },
@@ -43668,6 +43678,16 @@
       "auth": "apiKey",
       "cors": null,
       "categories": ["Vehicle"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Shoof Aflam",
+      "description": "Arabic streaming guide — search 14,000+ movies/series, platform availability across 18 services.",
+      "link": "https://shoofaflam.tv/api-docs/",
+      "auth": null,
+      "cors": null,
+      "categories": ["Video"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },

@@ -4,18 +4,19 @@
   "description": "Public APIs Discovery for Humans & Agents",
   "type": "module",
   "bin": {
-    "ls-apis": "./src/index.ts"
+    "ls-apis": "./dist/index.js"
   },
   "scripts": {
-    "start": "tsx src/index.ts",
-    "ls-apis": "tsx src/index.ts",
-    "prepack": "node ../../scripts/package-readme.mjs write",
+    "build": "tsc && tsc-esm-fix --target dist",
+    "start": "node dist/index.js",
+    "ls-apis": "node dist/index.js",
+    "prepack": "npm run build && node ../../scripts/package-readme.mjs write",
     "postpack": "node ../../scripts/package-readme.mjs clean",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "files": [
-    "src",
+    "dist",
     "data"
   ],
   "keywords": [
@@ -48,12 +49,13 @@
   },
   "dependencies": {
     "chalk": "^5.6.2",
-    "tsx": "^4.0.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/yargs": "^17.0.0",
+    "tsc-esm-fix": "^3.1.2",
+    "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vitest": "^4.0.0"
   }

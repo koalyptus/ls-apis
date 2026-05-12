@@ -6,7 +6,7 @@ A curated collection of **2,500+ public APIs** with a powerful CLI search tool. 
 
 ## Features
 
-- **Comprehensive Database** - 2,500+ APIs aggregated from multiple sources
+- **Comprehensive Dataset** - 4,500+ APIs aggregated from multiple sources
 - **Smart Search** - Filter by query, category, authentication type
 - **Colored Output** - Syntax-highlighted results (use `--no-color` to disable)
 - **Multiple Output Formats** - Text or JSON output
@@ -31,7 +31,7 @@ ls-apis -q weather
 ### Via npm link (local development)
 
 ```bash
-npm link --workspace=packages/cli
+npm link --workspace=@ls-apis/cli
 ls-apis -q weather
 ```
 
@@ -167,10 +167,11 @@ ls-apis/
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
 │   └── cli/               # CLI for searching APIs
+│       ├── dist/                # Compiled ESM output used by npm bin
 │       ├── data/
 │       │   └── apis.json          # Bundled API data (2520+ APIs)
 │       ├── src/
-│       │   ├── index.ts           # CLI entry point
+│       │   ├── index.ts           # CLI TypeScript source entry point
 │       │   └── colors.ts          # Terminal color support
 │       └── tests/
 └── AGENTS.md              # Instructions for AI agents
@@ -197,7 +198,19 @@ npm run aggregate
 
 # Run CLI directly
 npm run ls-apis -- -q <query>
+
+# Build CLI to dist/ (tsc + ESM import fix)
+npm run build --workspace=@ls-apis/cli
 ```
+
+## CLI Build and Publish Notes
+
+- The published CLI entrypoint is `packages/cli/dist/index.js`.
+- `packages/cli/src/` contains TypeScript sources.
+- `packages/cli` build script runs:
+  - `tsc` to compile TS into `dist/`
+  - `tsc-esm-fix --target dist` to add `.js` extensions required by Node ESM runtime
+- `prepack` in the CLI package runs the build before packaging, so npm publish includes ready-to-run JavaScript.
 
 ## Data Schema
 
