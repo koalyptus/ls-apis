@@ -38,5 +38,3 @@ async function ensureConfigExists(): Promise<void> {
     await writeFile(CONFIG_PATH, JSON.stringify(DEFAULTS, null, 2) + '\n');
   }
 }
-
-export const CONFIG_DEFAULTS = { ...DEFAULTS };

@@ -2,14 +2,6 @@ import chalk from 'chalk';
 
 let useColor = false;
 
-export function setColors(enabled: boolean): void {
-  useColor = enabled;
-}
-
-export function shouldUseColor(): boolean {
-  return useColor;
-}
-
 export function initColors(noColor?: boolean): void {
   if (noColor === true || process.env.NO_COLOR) {
     useColor = false;

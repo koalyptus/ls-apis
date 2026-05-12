@@ -1,6 +1,12 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { loadConfig, CONFIG_DEFAULTS } from '../src/config';
+import { loadConfig } from '../src/config';
 import { readFile, writeFile, access } from 'node:fs/promises';
+
+const EXPECTED_DEFAULTS = {
+  limit: 20,
+  descriptionMaxLength: 250,
+  colors: true,
+};
 
 vi.mock('node:fs/promises', () => ({
   readFile: vi.fn(),
@@ -25,7 +31,7 @@ describe('config', () => {
     vi.mocked(readFile).mockRejectedValue(new Error('ENOENT'));
     vi.mocked(access).mockRejectedValue(new Error('ENOENT'));
     const config = await loadConfig();
-    expect(config).toEqual(CONFIG_DEFAULTS);
+    expect(config).toEqual(EXPECTED_DEFAULTS);
   });
 
   it('creates config file when missing', async () => {
@@ -39,7 +45,7 @@ describe('config', () => {
     vi.mocked(readFile).mockResolvedValue('{invalid json}');
     vi.mocked(access).mockResolvedValue(undefined);
     const config = await loadConfig();
-    expect(config).toEqual(CONFIG_DEFAULTS);
+    expect(config).toEqual(EXPECTED_DEFAULTS);
   });
 
   it('parses valid config file', async () => {

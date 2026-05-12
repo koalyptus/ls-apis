@@ -8,7 +8,7 @@ function truncate(text: string, maxLength: number): string {
   return text.slice(0, maxLength) + '...';
 }
 
-export function formatText(
+function formatText(
   results: ApiEntry[],
   total: number,
   limit: number,
@@ -48,7 +48,7 @@ export function formatText(
   return lines.join('\n');
 }
 
-export function formatJson(results: ApiEntry[], limit: number): string {
+function formatJson(results: ApiEntry[], limit: number): string {
   return JSON.stringify(results.slice(0, limit), null, 2);
 }
 

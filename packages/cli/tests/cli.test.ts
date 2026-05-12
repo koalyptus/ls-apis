@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { run } from '../src/index';
 import { search, getCategories } from '../src/search';
-import { formatText, formatJson, formatResults, formatList } from '../src/formatter';
-import { initColors, setColors, color } from '../src/colors';
+import { formatResults, formatList } from '../src/formatter';
+import { initColors, color } from '../src/colors';
 import type { ApiEntry } from '../src/types';
 import * as fs from 'node:fs/promises';
 
@@ -148,14 +148,14 @@ describe('search', () => {
 });
 
 describe('formatter', () => {
-  describe('formatText', () => {
+  describe('formatResults text output', () => {
     it('formats results with header', () => {
-      const output = formatText(mockApis, mockApis.length, 10, {});
+      const output = formatResults(mockApis, mockApis.length, 10, {});
       expect(output).toContain('Found 4 APIs:');
     });
 
     it('includes API details', () => {
-      const output = formatText(mockApis, mockApis.length, 10, {});
+      const output = formatResults(mockApis, mockApis.length, 10, {});
       expect(output).toContain('Weather API');
       expect(output).toContain('Weather data');
       expect(output).toContain('apiKey');
@@ -175,7 +175,7 @@ describe('formatter', () => {
           sources: ['test'],
         },
       ];
-      const output = formatText(longApi, 1, 10, { descriptionMaxLength: 250 });
+      const output = formatResults(longApi, 1, 10, { descriptionMaxLength: 250 });
       expect(output).toContain('A'.repeat(250) + '...');
       expect(output).not.toContain('A'.repeat(251));
     });
@@ -193,32 +193,32 @@ describe('formatter', () => {
           sources: ['test'],
         },
       ];
-      const output = formatText(shortApi, 1, 10, { descriptionMaxLength: 250 });
+      const output = formatResults(shortApi, 1, 10, { descriptionMaxLength: 250 });
       expect(output).toContain('Short description');
       expect(output).not.toContain('...');
     });
 
     it('shows "and X more" when results exceed limit', () => {
-      const output = formatText(mockApis, mockApis.length, 2, {});
+      const output = formatResults(mockApis, mockApis.length, 2, {});
       expect(output).toContain('... and 2 more');
     });
 
     it('respects limit', () => {
-      const output = formatText(mockApis, mockApis.length, 1, {});
+      const output = formatResults(mockApis, mockApis.length, 1, {});
       expect(output).toContain('Weather API');
       expect(output).not.toContain('Weather2 API');
     });
   });
 
-  describe('formatJson', () => {
+  describe('formatResults json output', () => {
     it('returns valid JSON array', () => {
-      const output = formatJson(mockApis, 10);
+      const output = formatResults(mockApis, mockApis.length, 10, { output: 'json' });
       const parsed = JSON.parse(output);
       expect(parsed).toHaveLength(4);
     });
 
     it('respects limit', () => {
-      const output = formatJson(mockApis, 2);
+      const output = formatResults(mockApis, mockApis.length, 2, { output: 'json' });
       const parsed = JSON.parse(output);
       expect(parsed).toHaveLength(2);
     });
@@ -277,7 +277,7 @@ describe('formatter', () => {
 
 describe('colors', () => {
   beforeEach(() => {
-    setColors(false);
+    initColors(true);
   });
 
   afterEach(() => {
@@ -302,7 +302,7 @@ describe('colors', () => {
   });
 
   it('colors return plain text when disabled', () => {
-    setColors(false);
+    initColors(true);
     expect(color.bold('hello')).toBe('hello');
     expect(color.cyan('hello')).toBe('hello');
     expect(color.green('hello')).toBe('hello');

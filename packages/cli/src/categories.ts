@@ -11,10 +11,12 @@ export function handleCategories(
 ): void {
   const noColor = argv.color === false;
   initColors(noColor ?? !config.colors);
+
   const categories = getCategories(apis);
   const output = formatList(categories, 'categories', {
     sort: argv.sort as 'name' | 'count',
     output: argv.output as 'text' | 'json',
   });
+
   console.log(output);
 }

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { handleCategories } from '../src/categories';
-import { setColors } from '../src/colors';
+import { initColors } from '../src/colors';
 import type { ApiEntry } from '../src/types';
 import type { LsApisConfig } from '../src/config';
 
@@ -47,7 +47,7 @@ describe('handleCategories', () => {
   let consoleLogSpy: ReturnType<typeof vi.spyOn>;
 
   beforeEach(() => {
-    setColors(true);
+    initColors(false);
     consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
   });
 

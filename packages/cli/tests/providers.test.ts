@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { handleProviders } from '../src/providers';
-import { setColors } from '../src/colors';
+import { initColors } from '../src/colors';
 import type { Provider } from '../src/types';
 import type { LsApisConfig } from '../src/config';
 import * as fs from 'node:fs/promises';
@@ -59,7 +59,7 @@ describe('providers', () => {
 
   beforeEach(() => {
     consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-    setColors(false);
+    initColors(true);
   });
 
   afterEach(() => {
