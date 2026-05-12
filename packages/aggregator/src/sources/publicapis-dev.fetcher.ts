@@ -1,16 +1,18 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import * as https from 'https';
-import type { ApiEntry, SourceFetcher } from '../types';
-
-const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+import type { ApiEntry, AuthType, SourceFetcher } from '../types';
 
 const BASE_URL = 'https://publicapis.dev';
+const HTTPS_AGENT = new https.Agent({ rejectUnauthorized: false });
+const REQUEST_TIMEOUT = 10000;
+const MIN_DESCRIPTION_LENGTH = 16;
+const MAX_AUTH_LENGTH = 20;
 
 async function fetchCategories(): Promise<string[]> {
   const res = await axios.get(BASE_URL, {
-    timeout: 10000,
-    httpsAgent,
+    timeout: REQUEST_TIMEOUT,
+    httpsAgent: HTTPS_AGENT,
     headers: {
       'User-Agent': 'ls-apis/1.0 (aggregator)',
     },
@@ -48,8 +50,8 @@ const fetcher: SourceFetcher = {
       try {
         const url = `${BASE_URL}/category/${category}`;
         const res = await axios.get(url, {
-          timeout: 10000,
-          httpsAgent,
+          timeout: REQUEST_TIMEOUT,
+          httpsAgent: HTTPS_AGENT,
           headers: {
             'User-Agent': 'ls-apis/1.0 (aggregator)',
           },
@@ -78,17 +80,27 @@ const fetcher: SourceFetcher = {
             .find('p')
             .map((_j, pEl) => $(pEl).text().trim())
             .get();
-          const description = descriptions.find((d) => d && d.length > 20) || null;
+          const description = descriptions.find((d) => d.length > MIN_DESCRIPTION_LENGTH) || null;
 
-          let auth: string | null = null;
+          let auth: AuthType = null;
           let cors: string | null = null;
 
           const itemText = $item.text().toLowerCase();
+          const hasApiKey = itemText.includes('api key');
+          const hasOAuth = itemText.includes('oauth');
 
-          if (itemText.includes('api key')) {
+          if (hasApiKey && hasOAuth) {
+            auth = 'apiKey|OAuth';
+          } else if (hasApiKey) {
             auth = 'apiKey';
-          } else if (itemText.includes('oauth')) {
+          } else if (hasOAuth) {
             auth = 'OAuth';
+          } else if (
+            itemText.length > 0 &&
+            itemText.length <= MAX_AUTH_LENGTH &&
+            itemText !== 'no'
+          ) {
+            auth = itemText;
           }
 
           if (itemText.includes('cors') && (itemText.includes('yes') || itemText.includes('✓'))) {

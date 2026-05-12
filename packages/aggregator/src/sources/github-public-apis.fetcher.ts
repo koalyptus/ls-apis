@@ -1,6 +1,6 @@
 import { marked } from 'marked';
 import * as cheerio from 'cheerio';
-import type { ApiEntry, SourceFetcher } from '../types';
+import type { ApiEntry, AuthType, SourceFetcher } from '../types';
 
 const fetcher: SourceFetcher = {
   name: 'github-public-apis',
@@ -70,11 +70,25 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
       const link = nameCell.find('a').attr('href') || nameCell.text().trim();
 
       const description = $cells.eq(1).text().trim();
-      const auth = $cells.eq(2).text().trim();
+      const authRaw = $cells.eq(2).text().trim();
       const cors = $cells.eq(4).text().trim();
 
       if (!link.startsWith('http')) {
         return;
+      }
+
+      const authLower = authRaw.toLowerCase();
+      const hasApiKey = authLower === 'yes' || authLower.includes('apikey');
+      const hasOAuth = authLower.includes('oauth');
+      let auth: AuthType = null;
+      if (hasApiKey && hasOAuth) {
+        auth = 'apiKey|OAuth';
+      } else if (hasApiKey) {
+        auth = 'apiKey';
+      } else if (hasOAuth) {
+        auth = 'OAuth';
+      } else if (authLower.length > 0 && authLower !== 'no') {
+        auth = authLower;
       }
 
       const entry: ApiEntry = {
@@ -84,15 +98,9 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
         cors: cors.toLowerCase() || null,
         categories: [category],
         sources: [fetcher.name],
-        auth: null,
+        auth,
         openapiSpec: null,
       };
-
-      if (auth.toLowerCase() === 'yes') {
-        entry.auth = 'apiKey';
-      } else if (auth.toLowerCase() !== 'no') {
-        entry.auth = auth;
-      }
 
       entries.push(entry);
     });
@@ -101,5 +109,4 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
   return entries;
 }
 
-export { parseMarkdownTable };
 export default fetcher;

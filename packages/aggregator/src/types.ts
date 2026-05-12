@@ -9,11 +9,13 @@ export interface DataFile {
   apis: ApiEntry[];
 }
 
+export type AuthType = 'apiKey' | 'OAuth' | 'apiKey|OAuth' | string | null;
+
 export interface ApiEntry {
   name: string;
   description: string | null;
   link: string;
-  auth: string | null;
+  auth: AuthType;
   cors: string | null;
   categories: string[];
   openapiSpec: string | null;

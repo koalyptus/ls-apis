@@ -1,12 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-import { realpathSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import type { SourceFetcher } from '../types';
+import { getCurrentDir } from '../paths';
+
+const FETCHER_SUFFIX = '.fetcher.ts';
 
 export async function loadAllFetchers(): Promise<SourceFetcher[]> {
-  const sourcesDir = path.dirname(realpathSync(fileURLToPath(import.meta.url)));
-  const files = (await fs.readdir(sourcesDir)).filter((f: string) => f.endsWith('.fetcher.ts'));
+  const sourcesDir = getCurrentDir(import.meta.url);
+  const files = (await fs.readdir(sourcesDir)).filter((f: string) => f.endsWith(FETCHER_SUFFIX));
 
   const fetchers: SourceFetcher[] = [];
 
@@ -23,7 +25,7 @@ export async function loadAllFetchers(): Promise<SourceFetcher[]> {
   return fetchers;
 }
 
-function isSourceFetcher(obj: unknown): obj is SourceFetcher {
+export function isSourceFetcher(obj: unknown): obj is SourceFetcher {
   return (
     typeof obj === 'object' &&
     obj !== null &&
@@ -32,5 +34,3 @@ function isSourceFetcher(obj: unknown): obj is SourceFetcher {
     typeof (obj as SourceFetcher).fetchApis === 'function'
   );
 }
-
-export { isSourceFetcher };

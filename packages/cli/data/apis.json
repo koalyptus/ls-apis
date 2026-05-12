@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-11T12:22:50.755Z",
+  "timestamp": "2026-05-12T04:20:46.608Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -25818,12 +25818,12 @@
     {
       "name": "VirusTotal",
       "description": "VirusTotal File/URL Analysis",
-      "link": "https://www.virustotal.com/en/documentation/public-api/",
+      "link": "https://docs.virustotal.com/reference/overview",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Anti Malware"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Web of Trust",
@@ -28869,7 +28869,7 @@
       "name": "OpenAPIHub",
       "description": "The All-in-one API Platform",
       "link": "https://hub.openapihub.com/",
-      "auth": "X-Mashape-Key",
+      "auth": "x-mashape-key",
       "cors": "unknown",
       "categories": ["Development"],
       "openapiSpec": null,
@@ -31359,7 +31359,7 @@
       "name": "Hearthstone",
       "description": "Hearthstone Cards Information",
       "link": "http://hearthstoneapi.com/",
-      "auth": "X-Mashape-Key",
+      "auth": "x-mashape-key",
       "cors": "unknown",
       "categories": ["Games & Comics"],
       "openapiSpec": null,
@@ -31789,7 +31789,7 @@
       "name": "Tebex",
       "description": "Tebex API for information about game purchases",
       "link": "https://docs.tebex.io/plugin/",
-      "auth": "X-Mashape-Key",
+      "auth": "x-mashape-key",
       "cors": "no",
       "categories": ["Games & Comics"],
       "openapiSpec": null,
@@ -34070,6 +34070,16 @@
       "description": "Jobs with GraphQL",
       "link": "https://graphql.jobs/docs/api/",
       "auth": null,
+      "cors": "yes",
+      "categories": ["Jobs"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "HeroHunt People Search",
+      "description": "Search 1 billion people profiles across LinkedIn and GitHub for talent sourcing",
+      "link": "https://www.herohunt.ai/people-search-api",
+      "auth": "apiKey",
       "cors": "yes",
       "categories": ["Jobs"],
       "openapiSpec": null,
@@ -36566,6 +36576,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "dead-drop",
+      "description": "Ephemeral zero-knowledge encrypted data sharing",
+      "link": "https://api.dead-drop.xyz/api/v1/docs",
+      "auth": null,
+      "cors": "yes",
+      "categories": ["Security"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Dehash.lt",
       "description": "Hash decryption MD5, SHA1, SHA3, SHA256, SHA384, SHA512",
       "link": "https://github.com/Dehash-lt/api",
@@ -37519,7 +37539,7 @@
       "name": "Football",
       "description": "A simple Open Source Football API to get squads’ stats, best scorers and more",
       "link": "https://rapidapi.com/GiulianoCrescimbeni/api/football98/",
-      "auth": "X-Mashape-Key",
+      "auth": "x-mashape-key",
       "cors": "unknown",
       "categories": ["Sports & Fitness"],
       "openapiSpec": null,
@@ -37549,7 +37569,7 @@
       "name": "Football-Data",
       "description": "Football data with matches info, players, teams, and competitions",
       "link": "https://www.football-data.org",
-      "auth": "X-Mashape-Key",
+      "auth": "x-mashape-key",
       "cors": "unknown",
       "categories": ["Sports & Fitness"],
       "openapiSpec": null,
@@ -38199,7 +38219,7 @@
       "name": "Pixela",
       "description": "API for recording and tracking habits or effort, routines",
       "link": "https://pixe.la",
-      "auth": "X-Mashape-Key",
+      "auth": "x-mashape-key",
       "cors": "yes",
       "categories": ["Tracking"],
       "openapiSpec": null,
@@ -39799,7 +39819,7 @@
       "name": "Meteorologisk Institutt",
       "description": "Weather and climate data",
       "link": "https://api.met.no/weatherapi/documentation",
-      "auth": "User-Agent",
+      "auth": "user-agent",
       "cors": "unknown",
       "categories": ["Weather"],
       "openapiSpec": null,
@@ -40256,6 +40276,16 @@
       "description": "A volunteer cybersecurity project focused on providing resources and services that improve safety across Discord.",
       "link": "https://fishfish.gg/",
       "auth": null,
+      "cors": null,
+      "categories": ["Anti Malware"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "VirusTotal",
+      "description": "VirusTotal File/URL Analysis.",
+      "link": "https://www.virustotal.com/en/documentation/public-api/",
+      "auth": "apiKey",
       "cors": null,
       "categories": ["Anti Malware"],
       "openapiSpec": null,
@@ -42143,7 +42173,7 @@
     },
     {
       "name": "jobdata API",
-      "description": null,
+      "description": "Simple Job Data API.",
       "link": "https://jobdataapi.com/",
       "auth": "apiKey",
       "cors": null,
@@ -42353,7 +42383,7 @@
     },
     {
       "name": "LRCLIB",
-      "description": null,
+      "description": "Crowdsourced lyrics.",
       "link": "https://lrclib.net/docs",
       "auth": null,
       "cors": null,
@@ -42493,7 +42523,7 @@
     },
     {
       "name": "Yelp",
-      "description": null,
+      "description": "Find Local Business.",
       "link": "https://www.yelp.com/developers",
       "auth": "OAuth",
       "cors": null,
@@ -42823,7 +42853,7 @@
     },
     {
       "name": "PHPhub",
-      "description": null,
+      "description": "PHP syntax checker.",
       "link": "https://phphub.net/linter/",
       "auth": null,
       "cors": null,
@@ -43133,7 +43163,7 @@
     },
     {
       "name": "SocialData API",
-      "description": null,
+      "description": "Read Twitter data.",
       "link": "https://socialdata.tools",
       "auth": "apiKey",
       "cors": null,

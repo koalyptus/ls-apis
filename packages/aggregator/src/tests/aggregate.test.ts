@@ -172,7 +172,7 @@ describe('aggregate', () => {
         name: 'Test',
         description: 'Desc',
         link: 'https://test.com',
-        auth: 'ApiKey',
+        auth: 'apiKey',
         cors: 'yes',
         categories: ['Test'],
         sources: ['src'],
@@ -181,7 +181,7 @@ describe('aggregate', () => {
 
       const result = normalizeEntry(entry);
       expect(result.description).toBe('Desc');
-      expect(result.auth).toBe('ApiKey');
+      expect(result.auth).toBe('apiKey');
     });
 
     it('should set null for undefined', () => {
@@ -189,7 +189,7 @@ describe('aggregate', () => {
         name: 'Test',
         description: undefined as unknown as string | null,
         link: 'https://test.com',
-        auth: undefined as unknown as string | null,
+        auth: undefined as unknown as ApiEntry['auth'],
         cors: undefined as unknown as string | null,
         categories: ['Test'],
         sources: ['src'],
