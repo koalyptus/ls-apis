@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-12T04:20:46.608Z",
+  "timestamp": "2026-05-12T05:10:11.216Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -27716,6 +27716,16 @@
       "sources": ["github-public-apis", "publicapis-dev"]
     },
     {
+      "name": "PumpFunData",
+      "description": "Historical Pump.fun and PumpSwap AMM swap data as hourly Parquet files",
+      "link": "https://pumpfundata.com/docs",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Solana JSON RPC",
       "description": "Provides various endpoints to interact with the Solana Blockchain",
       "link": "https://docs.solana.com/developing/clients/jsonrpc-api",
@@ -29944,6 +29954,16 @@
       "categories": ["Entertainment"],
       "openapiSpec": null,
       "sources": ["github-public-apis", "publicapis-dev"]
+    },
+    {
+      "name": "justmeme.wtf",
+      "description": "Free meme API with 2400+ templates, search, trending, and AI generation",
+      "link": "https://justmeme.wtf/api-docs",
+      "auth": null,
+      "cors": "yes",
+      "categories": ["Entertainment"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Meme Maker",

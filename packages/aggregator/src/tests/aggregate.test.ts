@@ -1,37 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import {
-  deduplicate,
-  normalizeEntry,
-  normalizeCategory,
-  deduplicateCategories,
-  runAggregation,
-} from '../aggregate';
+import { writeFile } from 'node:fs/promises';
+import { loadAllFetchers } from '../sources/index';
+import { runAggregation } from '../aggregate';
 import type { ApiEntry } from '../types';
 
-vi.mock('../src/sources/index', () => ({
-  loadAllFetchers: vi.fn().mockResolvedValue([
-    {
-      name: 'test-fetcher',
-      sourceUrl: 'https://test.com/data',
-      fetchApis: vi.fn().mockResolvedValue([
-        {
-          name: 'API 1',
-          description: 'Test',
-          link: 'https://test.com',
-          auth: null,
-          cors: null,
-          categories: ['Test'],
-          sources: ['test-fetcher'],
-          openapiSpec: null,
-        },
-      ]),
-    },
-    {
-      name: 'failing-fetcher',
-      sourceUrl: 'https://fail.com/data',
-      fetchApis: vi.fn().mockRejectedValue(new Error('Network error')),
-    },
-  ]),
+vi.mock('../sources/index', () => ({
+  loadAllFetchers: vi.fn(),
 }));
 
 vi.mock('node:fs/promises', () => ({
@@ -48,6 +22,30 @@ vi.mock('node:fs/promises', () => ({
 
 describe('aggregate', () => {
   beforeEach(() => {
+    vi.mocked(loadAllFetchers).mockResolvedValue([
+      {
+        name: 'test-fetcher',
+        sourceUrl: 'https://test.com/data',
+        fetchApis: vi.fn().mockResolvedValue([
+          {
+            name: 'API 1',
+            description: 'Test',
+            link: 'https://test.com',
+            auth: null,
+            cors: null,
+            categories: ['Test'],
+            sources: ['test-fetcher'],
+            openapiSpec: null,
+          },
+        ]),
+      },
+      {
+        name: 'failing-fetcher',
+        sourceUrl: 'https://fail.com/data',
+        fetchApis: vi.fn().mockRejectedValue(new Error('Network error')),
+      },
+    ]);
+
     vi.spyOn(console, 'log').mockImplementation(() => {});
     vi.spyOn(console, 'error').mockImplementation(() => {});
     vi.spyOn(process, 'exit').mockImplementation(() => undefined as never);
@@ -58,6 +56,57 @@ describe('aggregate', () => {
   });
 
   describe('runAggregation', () => {
+    it('should write merged and normalized entries', async () => {
+      const duplicateEntries: ApiEntry[] = [
+        {
+          name: 'API 1',
+          description: 'Test',
+          link: 'https://test.com',
+          auth: null,
+          cors: null,
+          categories: ['Documents And Productivity', 'x'],
+          sources: ['source-a'],
+          openapiSpec: null,
+        },
+        {
+          name: 'API 1',
+          description: 'Test',
+          link: 'https://test.com',
+          auth: null,
+          cors: null,
+          categories: ['open_data'],
+          sources: ['source-b'],
+          openapiSpec: null,
+        },
+      ];
+
+      vi.mocked(loadAllFetchers).mockResolvedValueOnce([
+        {
+          name: 'fetcher-a',
+          sourceUrl: 'https://a.com/data',
+          fetchApis: vi.fn().mockResolvedValue(duplicateEntries),
+        },
+      ]);
+
+      await runAggregation();
+
+      expect(writeFile).toHaveBeenCalled();
+      const [, payload] = vi.mocked(writeFile).mock.calls[0];
+      const parsed = JSON.parse(payload as string) as {
+        apis: ApiEntry[];
+        providers: Array<{ name: string; url: string }>;
+      };
+
+      expect(parsed.apis).toHaveLength(1);
+      expect(parsed.apis[0].link).toBe('https://test.com');
+      expect(parsed.apis[0].sources).toEqual(expect.arrayContaining(['source-a', 'source-b']));
+      expect(parsed.apis[0].categories).toEqual(
+        expect.arrayContaining(['Documents & Productivity', 'Open Data'])
+      );
+      expect(parsed.apis[0].categories).not.toContain('x');
+      expect(parsed.providers).toEqual([{ name: 'fetcher-a', url: 'https://a.com/data' }]);
+    });
+
     it('should exit with 1 on invalid JSON', async () => {
       const original = JSON.stringify;
       vi.spyOn(JSON, 'stringify').mockImplementationOnce((v) => {
@@ -71,228 +120,9 @@ describe('aggregate', () => {
 
       expect(process.exit).toHaveBeenCalledWith(1);
     });
-
-    it.skip('should handle fetcher errors gracefully', async () => {
+    it('should handle fetcher errors gracefully', async () => {
       await runAggregation();
       expect(console.error).toHaveBeenCalled();
-    });
-  });
-
-  describe('deduplicate', () => {
-    it('should merge sources for duplicate links', () => {
-      const entries: ApiEntry[] = [
-        {
-          name: 'API',
-          description: null,
-          link: 'https://a.com',
-          auth: null,
-          cors: null,
-          categories: ['A'],
-          sources: ['s1'],
-          openapiSpec: null,
-        },
-        {
-          name: 'API',
-          description: null,
-          link: 'https://a.com',
-          auth: null,
-          cors: null,
-          categories: ['B'],
-          sources: ['s2'],
-          openapiSpec: null,
-        },
-      ];
-
-      const result = deduplicate(entries);
-      expect(result).toHaveLength(1);
-      expect(result[0].sources).toContain('s1');
-      expect(result[0].sources).toContain('s2');
-    });
-
-    it('should keep unique entries', () => {
-      const entries: ApiEntry[] = [
-        {
-          name: 'A',
-          description: null,
-          link: 'https://a.com',
-          auth: null,
-          cors: null,
-          categories: [],
-          sources: [],
-          openapiSpec: null,
-        },
-        {
-          name: 'B',
-          description: null,
-          link: 'https://b.com',
-          auth: null,
-          cors: null,
-          categories: [],
-          sources: [],
-          openapiSpec: null,
-        },
-      ];
-
-      const result = deduplicate(entries);
-      expect(result).toHaveLength(2);
-    });
-
-    it('should normalize http to https', () => {
-      const entries: ApiEntry[] = [
-        {
-          name: 'A',
-          description: null,
-          link: 'http://a.com',
-          auth: null,
-          cors: null,
-          categories: [],
-          sources: [],
-          openapiSpec: null,
-        },
-        {
-          name: 'A',
-          description: null,
-          link: 'https://a.com',
-          auth: null,
-          cors: null,
-          categories: [],
-          sources: [],
-          openapiSpec: null,
-        },
-      ];
-
-      const result = deduplicate(entries);
-      expect(result).toHaveLength(1);
-    });
-  });
-
-  describe('normalizeEntry', () => {
-    it('should use existing values', () => {
-      const entry: ApiEntry = {
-        name: 'Test',
-        description: 'Desc',
-        link: 'https://test.com',
-        auth: 'apiKey',
-        cors: 'yes',
-        categories: ['Test'],
-        sources: ['src'],
-        openapiSpec: 'url',
-      };
-
-      const result = normalizeEntry(entry);
-      expect(result.description).toBe('Desc');
-      expect(result.auth).toBe('apiKey');
-    });
-
-    it('should set null for undefined', () => {
-      const entry: ApiEntry = {
-        name: 'Test',
-        description: undefined as unknown as string | null,
-        link: 'https://test.com',
-        auth: undefined as unknown as ApiEntry['auth'],
-        cors: undefined as unknown as string | null,
-        categories: ['Test'],
-        sources: ['src'],
-        openapiSpec: undefined as unknown as string | null,
-      };
-
-      const result = normalizeEntry(entry);
-      expect(result.description).toBeNull();
-      expect(result.auth).toBeNull();
-    });
-
-    it('should filter out single-character categories', () => {
-      const entry: ApiEntry = {
-        name: 'Test',
-        description: 'Test',
-        link: 'https://test.com',
-        auth: null,
-        cors: null,
-        categories: ['Security', 'a', 'Test', 'x'],
-        sources: [],
-        openapiSpec: null,
-      };
-
-      const result = normalizeEntry(entry);
-      expect(result.categories).toEqual(['Security', 'Test']);
-    });
-  });
-
-  describe('normalizeCategory', () => {
-    it('should convert " And " to " & "', () => {
-      expect(normalizeCategory('Documents And Productivity')).toBe('Documents & Productivity');
-    });
-
-    it('should replace underscores with spaces', () => {
-      expect(normalizeCategory('open_data')).toBe('Open Data');
-    });
-
-    it('should title case simple categories', () => {
-      expect(normalizeCategory('analytics')).toBe('Analytics');
-    });
-
-    it('should handle mixed case input', () => {
-      expect(normalizeCategory('CRYPTO_CURRENCY')).toBe('Crypto Currency');
-    });
-  });
-
-  describe('deduplicateCategories', () => {
-    it('should merge sources for duplicate APIs', () => {
-      const entries: ApiEntry[] = [
-        {
-          name: 'API 1',
-          description: 'Test',
-          link: 'https://test.com',
-          auth: null,
-          cors: null,
-          categories: ['Authentication & Authorization'],
-          sources: ['source1'],
-          openapiSpec: null,
-        },
-        {
-          name: 'API 1',
-          description: 'Test',
-          link: 'https://test.com',
-          auth: null,
-          cors: null,
-          categories: ['Authentication & Authorization'],
-          sources: ['source2'],
-          openapiSpec: null,
-        },
-      ];
-
-      const result = deduplicateCategories(entries);
-      expect(result).toHaveLength(1);
-      expect(result[0].sources).toContain('source1');
-      expect(result[0].sources).toContain('source2');
-    });
-
-    it('should not lose entries with different categories', () => {
-      const entries: ApiEntry[] = [
-        {
-          name: 'API 1',
-          description: 'Test',
-          link: 'https://test1.com',
-          auth: null,
-          cors: null,
-          categories: ['Analytics'],
-          sources: ['source1'],
-          openapiSpec: null,
-        },
-        {
-          name: 'API 2',
-          description: 'Test',
-          link: 'https://test2.com',
-          auth: null,
-          cors: null,
-          categories: ['Development'],
-          sources: ['source2'],
-          openapiSpec: null,
-        },
-      ];
-
-      const result = deduplicateCategories(entries);
-      expect(result).toHaveLength(2);
     });
   });
 });

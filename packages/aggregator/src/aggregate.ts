@@ -46,35 +46,11 @@ export async function runAggregation(): Promise<void> {
   }
 }
 
-export function deduplicate(entries: ApiEntry[]): ApiEntry[] {
-  const byLink = new Map<string, ApiEntry>();
-
-  for (const entry of entries) {
-    const normalizedLink = normalizeLink(entry.link);
-    const existing = byLink.get(normalizedLink);
-
-    if (existing) {
-      const combinedSources = [...new Set([...existing.sources, ...entry.sources])];
-      const combinedCategories = [...new Set([...existing.categories, ...entry.categories])];
-
-      byLink.set(normalizedLink, {
-        ...existing,
-        sources: combinedSources,
-        categories: combinedCategories,
-      });
-    } else {
-      byLink.set(normalizedLink, normalizeEntry(entry));
-    }
-  }
-
-  return Array.from(byLink.values());
-}
-
 function normalizeCategories(categories: string[]): string[] {
   return categories.filter((c) => c.length > 1).map((c) => normalizeCategory(c));
 }
 
-export function normalizeEntry(entry: ApiEntry): ApiEntry {
+function normalizeEntry(entry: ApiEntry): ApiEntry {
   return {
     name: entry.name,
     description: entry.description ?? null,
@@ -87,14 +63,7 @@ export function normalizeEntry(entry: ApiEntry): ApiEntry {
   };
 }
 
-function normalizeLink(link: string): string {
-  return link
-    .toLowerCase()
-    .replace(/\/+$/, '')
-    .replace(/^http:/, 'https:');
-}
-
-export function normalizeCategory(category: string): string {
+function normalizeCategory(category: string): string {
   return category
     .toLowerCase()
     .replace(/_/g, ' ')
@@ -106,7 +75,7 @@ export function normalizeCategory(category: string): string {
     .replace(/ & /g, ' & ');
 }
 
-export function deduplicateCategories(entries: ApiEntry[]): ApiEntry[] {
+function deduplicateCategories(entries: ApiEntry[]): ApiEntry[] {
   const dedupedEntries = new Map<string, ApiEntry>();
 
   for (const entry of entries) {
