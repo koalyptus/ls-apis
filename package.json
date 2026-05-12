@@ -30,8 +30,8 @@
   "license": "MIT",
   "scripts": {
     "test": "vitest run --coverage",
-    "test:aggregator": "vitest run --project aggregator --coverage",
-    "test:cli": "vitest run --project cli --coverage",
+    "test:aggregator": "npm run test --workspace=@ls-apis/aggregator",
+    "test:cli": "npm run test --workspace=@ls-apis/cli",
     "typecheck": "npx tsc --noEmit -p packages/aggregator && npx tsc --noEmit -p packages/cli",
     "lint": "eslint .",
     "format": "prettier --check .",
