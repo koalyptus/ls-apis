@@ -1,0 +1,54 @@
+{
+  "name": "ls-apis",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/aggregator",
+    "packages/cli"
+  ],
+  "keywords": [
+    "api",
+    "apis",
+    "api-aggregator",
+    "apis-aggregator",
+    "api-aggregator-cli",
+    "apis-aggregator-cli",
+    "api-dataset",
+    "apis-dataset",
+    "api-list",
+    "apis-list",
+    "cli",
+    "free",
+    "public-api",
+    "public-apis"
+  ],
+  "author": {
+    "name": "koalyptus",
+    "url": "https://github.com/koalyptus"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run --coverage",
+    "test:aggregator": "npm run test --workspace=@ls-apis/aggregator",
+    "test:cli": "npm run test --workspace=@ls-apis/cli",
+    "typecheck": "npx tsc --noEmit -p packages/aggregator && npx tsc --noEmit -p packages/cli",
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "aggregate": "cd packages/aggregator && npm run aggregate",
+    "ls-apis": "cd packages/cli && npx tsx src/index.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
+    "@vitest/coverage-v8": "^4.1.5",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.3",
+    "typescript-eslint": "^8.59.1",
+    "vitest": "^4.1.5"
+  }
+}

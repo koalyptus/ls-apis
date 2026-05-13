@@ -1,0 +1,62 @@
+{
+  "name": "@ls-apis/cli",
+  "version": "0.0.0",
+  "description": "Public APIs Discovery for Humans & Agents",
+  "type": "module",
+  "bin": {
+    "ls-apis": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && tsc-esm-fix --target dist",
+    "start": "node dist/index.js",
+    "ls-apis": "node dist/index.js",
+    "prepack": "npm run build && node ../../scripts/package-readme.mjs write",
+    "postpack": "node ../../scripts/package-readme.mjs clean",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "keywords": [
+    "api",
+    "apis",
+    "api-aggregator",
+    "apis-aggregator",
+    "api-aggregator-cli",
+    "apis-aggregator-cli",
+    "api-dataset",
+    "apis-dataset",
+    "api-list",
+    "apis-list",
+    "cli",
+    "free",
+    "public-api",
+    "public-apis"
+  ],
+  "author": {
+    "name": "koalyptus",
+    "url": "https://github.com/koalyptus"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koalyptus/ls-apis"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/yargs": "^17.0.0",
+    "tsc-esm-fix": "^3.1.2",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
+  }
+}

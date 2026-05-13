@@ -1,0 +1,32 @@
+import type { ApiEntry, Provider } from './types';
+import type { LsApisConfig } from './config';
+import { formatProviders } from './formatter';
+import { initColors } from './colors';
+
+export function handleProviders(
+  providers: Provider[],
+  apis: ApiEntry[],
+  argv: { sort?: string; output?: string; color?: boolean },
+  config: LsApisConfig
+): void {
+  const noColor = argv.color === false;
+  initColors(noColor ?? !config.colors);
+
+  const counts = new Map<string, number>();
+  for (const api of apis) {
+    for (const source of api.sources) {
+      counts.set(source, (counts.get(source) ?? 0) + 1);
+    }
+  }
+
+  const providersWithCounts = providers.map((p) => ({
+    ...p,
+    count: counts.get(p.name) ?? 0,
+  }));
+
+  const output = formatProviders(providersWithCounts, {
+    sort: argv.sort as 'name' | 'count',
+    output: argv.output as 'text' | 'json',
+  });
+  console.log(output);
+}
