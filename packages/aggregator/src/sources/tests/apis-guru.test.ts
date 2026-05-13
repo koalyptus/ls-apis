@@ -1,4 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
+import axios from 'axios';
+import fetcher from '../apis-guru.fetcher';
 
 vi.mock('axios', () => ({
   default: {
@@ -13,8 +15,7 @@ vi.mock('node:fetch', () => ({
 describe('sources/apis-guru', () => {
   describe('fetchApis', () => {
     it('should fetch APIs from API', async () => {
-      const axios = await import('axios');
-      vi.mocked(axios.default.get).mockResolvedValue({
+      vi.mocked(axios.get).mockResolvedValue({
         data: {
           'test-api': {
             added: '2020-01-01',
@@ -33,7 +34,6 @@ describe('sources/apis-guru', () => {
         },
       });
 
-      const { default: fetcher } = await import('../apis-guru.fetcher');
       const entries = await fetcher.fetchApis();
 
       expect(entries).toHaveLength(1);
@@ -42,8 +42,7 @@ describe('sources/apis-guru', () => {
     });
 
     it('should use title or fallback to key', async () => {
-      const axios = await import('axios');
-      vi.mocked(axios.default.get).mockResolvedValue({
+      vi.mocked(axios.get).mockResolvedValue({
         data: {
           'some-api': {
             added: '2020-01-01',
@@ -57,15 +56,13 @@ describe('sources/apis-guru', () => {
         },
       });
 
-      const { default: fetcher } = await import('../apis-guru.fetcher');
       const entries = await fetcher.fetchApis();
 
       expect(entries[0].name).toBe('some-api');
     });
 
     it('should use x-apisguru-categories over tags', async () => {
-      const axios = await import('axios');
-      vi.mocked(axios.default.get).mockResolvedValue({
+      vi.mocked(axios.get).mockResolvedValue({
         data: {
           'test-api': {
             added: '2020-01-01',
@@ -83,15 +80,13 @@ describe('sources/apis-guru', () => {
         },
       });
 
-      const { default: fetcher } = await import('../apis-guru.fetcher');
       const entries = await fetcher.fetchApis();
 
       expect(entries[0].categories).toContain('custom');
     });
 
     it('should use Uncategorized when x-apisguru-categories not available', async () => {
-      const axios = await import('axios');
-      vi.mocked(axios.default.get).mockResolvedValue({
+      vi.mocked(axios.get).mockResolvedValue({
         data: {
           'test-api': {
             added: '2023-01-01T00:00:00Z',
@@ -109,15 +104,13 @@ describe('sources/apis-guru', () => {
         },
       });
 
-      const { default: fetcher } = await import('../apis-guru.fetcher');
       const entries = await fetcher.fetchApis();
 
       expect(entries[0].categories).toEqual(['Uncategorized']);
     });
 
     it('should use Uncategorized when no categories', async () => {
-      const axios = await import('axios');
-      vi.mocked(axios.default.get).mockResolvedValue({
+      vi.mocked(axios.get).mockResolvedValue({
         data: {
           'test-api': {
             added: '2020-01-01',
@@ -133,10 +126,32 @@ describe('sources/apis-guru', () => {
         },
       });
 
-      const { default: fetcher } = await import('../apis-guru.fetcher');
       const entries = await fetcher.fetchApis();
 
       expect(entries[0].categories).toContain('Uncategorized');
+    });
+
+    it('should populate openapiSpec from swaggerUrl', async () => {
+      vi.mocked(axios.get).mockResolvedValue({
+        data: {
+          'test-api': {
+            added: '2020-01-01',
+            preferred: '1.0.0',
+            versions: {
+              '1.0.0': {
+                info: {
+                  title: 'Test API',
+                },
+                swaggerUrl: 'https://spec.example.com/openapi.json',
+              },
+            },
+          },
+        },
+      });
+
+      const entries = await fetcher.fetchApis();
+
+      expect(entries[0].openapiSpec).toBe('https://spec.example.com/openapi.json');
     });
   });
 });

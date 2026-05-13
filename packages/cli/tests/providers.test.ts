@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { handleProviders } from '../src/providers';
+import { run } from '../src/index';
 import { initColors } from '../src/colors';
 import type { Provider } from '../src/types';
 import type { LsApisConfig } from '../src/config';
@@ -140,13 +141,11 @@ describe('run with providers command', () => {
   });
 
   it('lists providers with counts', async () => {
-    const { run } = await import('../src/index');
     await run(['providers']);
     expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining('Found 3 providers:'));
   });
 
   it('sorts by count when specified', async () => {
-    const { run } = await import('../src/index');
     await run(['providers', '--sort', 'count']);
     const output = consoleLogSpy.mock.calls.map((c) => c[0]).join('');
     const apisGuruIdx = output.indexOf('apis-guru');
@@ -157,7 +156,6 @@ describe('run with providers command', () => {
   });
 
   it('outputs JSON format with counts', async () => {
-    const { run } = await import('../src/index');
     await run(['providers', '--output', 'json']);
     const jsonCall = consoleLogSpy.mock.calls.find(
       (c) => typeof c[0] === 'string' && c[0].startsWith('[')
