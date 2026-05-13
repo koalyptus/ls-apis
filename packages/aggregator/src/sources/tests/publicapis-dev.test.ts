@@ -18,7 +18,7 @@ describe('sources/publicapis-dev', () => {
 
   describe('fetchApis', () => {
     it(
-      'should fetch APIs from real source',
+      'should fetch APIs',
       async () => {
         const entries = await fetcher.fetchApis();
         expect(entries.length).toBeGreaterThan(500);

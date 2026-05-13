@@ -14,7 +14,7 @@ vi.mock('node:fetch', () => ({
 
 describe('sources/apis-guru', () => {
   describe('fetchApis', () => {
-    it('should fetch APIs from API', async () => {
+    it('should fetch APIs', async () => {
       vi.mocked(axios.get).mockResolvedValue({
         data: {
           'test-api': {
