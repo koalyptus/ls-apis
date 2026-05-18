@@ -2,6 +2,7 @@ import { writeFile } from 'node:fs/promises';
 import { loadAllFetchers } from './sources/index';
 import { resolveDataFile } from './paths';
 import { loadConfig } from '../../cli/src/config';
+import { isValidUrl } from './qa/validations';
 import type { ApiEntry, DataFile } from './types';
 
 const DATA_FILE = resolveDataFile(import.meta.url);
@@ -53,7 +54,11 @@ function normalizeCategories(categories: string[]): string[] {
   return categories.filter((c) => c.length > 1).map((c) => normalizeCategory(c));
 }
 
-function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): ApiEntry {
+function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): ApiEntry | null {
+  if (!entry.link || !isValidUrl(entry.link)) {
+    return null;
+  }
+
   return {
     name: entry.name,
     description: entry.description
@@ -87,6 +92,10 @@ function deduplicateCategories(entries: ApiEntry[], descriptionMaxLength: number
 
   for (const entry of entries) {
     const normalizedEntry = normalizeEntry(entry, descriptionMaxLength);
+    if (!normalizedEntry) {
+      continue;
+    }
+
     const existing = dedupedEntries.get(normalizedEntry.link);
 
     if (existing) {

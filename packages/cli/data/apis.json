@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-18T07:44:07.020Z",
+  "timestamp": "2026-05-18T11:24:36.293Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -5683,26 +5683,6 @@
       "cors": null,
       "categories": ["Developer Tools"],
       "openapiSpec": "https://api.apis.guru/v2/specs/appcenter.ms/v0.1/openapi.json",
-      "sources": ["apis-guru"]
-    },
-    {
-      "name": "App Store Connect API",
-      "description": null,
-      "link": "app-store-connect-openapi-specification.json",
-      "auth": null,
-      "cors": null,
-      "categories": ["Developer Tools"],
-      "openapiSpec": "https://api.apis.guru/v2/specs/apple.com/app-store-connect/1.4.1/openapi.json",
-      "sources": ["apis-guru"]
-    },
-    {
-      "name": "SiriKit Cloud Media",
-      "description": null,
-      "link": "sirikit-cloud-media.json",
-      "auth": null,
-      "cors": null,
-      "categories": ["Media"],
-      "openapiSpec": "https://api.apis.guru/v2/specs/apple.com/sirikit-cloud-media/1.0.2/openapi.json",
       "sources": ["apis-guru"]
     },
     {
@@ -18496,16 +18476,6 @@
       "sources": ["apis-guru"]
     },
     {
-      "name": "Influx OSS API Service",
-      "description": "# Authentication\n\n&lt;!-- ReDoc-Inject: &lt;security-definitions&gt; --&gt;",
-      "link": "blob:https://docs.influxdata.com/blobId",
-      "auth": null,
-      "cors": null,
-      "categories": ["Iot"],
-      "openapiSpec": "https://api.apis.guru/v2/specs/influxdata.com/2.0.0/openapi.json",
-      "sources": ["apis-guru"]
-    },
-    {
       "name": "Dados Abertos - API",
       "description": "API de Dados Abertos com dados processados pelo grupo de monitoramento de Queimadas do INPE.",
       "link": "http://queimadas.dgi.inpe.br/queimadas/dados-abertos/api/swagger.json",
@@ -18993,16 +18963,6 @@
       "cors": null,
       "categories": ["Ecommerce"],
       "openapiSpec": "https://api.apis.guru/v2/specs/klarna.com/openai/v0/openapi.json",
-      "sources": ["apis-guru"]
-    },
-    {
-      "name": "Klarna Payments API V1",
-      "description": "The payments API is used to create a session to offer Klarna's payment methods as part of your checkout. As soon as the purchase is completed the order should be read and handled using the [`Order Management API`](https://docs.klarna.com/api/orderman",
-      "link": "file:///home/mike/Downloads/swagger.json",
-      "auth": null,
-      "cors": null,
-      "categories": ["Financial"],
-      "openapiSpec": "https://api.apis.guru/v2/specs/klarna.com/payments/1.0.0/openapi.json",
       "sources": ["apis-guru"]
     },
     {
@@ -19573,16 +19533,6 @@
       "cors": null,
       "categories": ["Open Data"],
       "openapiSpec": "https://api.apis.guru/v2/specs/medcorder.com/1.0.0/swagger.json",
-      "sources": ["apis-guru"]
-    },
-    {
-      "name": "Medium API",
-      "description": "Medium API helps you to quickly extract data from Medium's Website (https://medium.com). \n\nYou can gather data related to users, publications, articles (including its textual content), latest posts &amp; top writers within a topic/niche, etc…\n",
-      "link": "blob:https://docs.mediumapi.com/blobId",
-      "auth": null,
-      "cors": null,
-      "categories": ["Media", "Social"],
-      "openapiSpec": "https://api.apis.guru/v2/specs/medium.com/1.0/openapi.json",
       "sources": ["apis-guru"]
     },
     {
@@ -21233,16 +21183,6 @@
       "cors": null,
       "categories": ["Transport"],
       "openapiSpec": "https://api.apis.guru/v2/specs/paccurate.io/0.1.1/swagger.json",
-      "sources": ["apis-guru"]
-    },
-    {
-      "name": "PandaScore REST API for All Videogames",
-      "description": "\n# Introduction\n\nWhether you're looking to build an official Pandascore integration for your service, or you just want to build something awesome, [we can help you get started](/home).\n\nThe API works over the HTTPS protocol, and is accessed from the ",
-      "link": "blob:https://developers.pandascore.co/blobId",
-      "auth": null,
-      "cors": null,
-      "categories": ["Entertainment"],
-      "openapiSpec": "https://api.apis.guru/v2/specs/pandascore.co/2.23.1/openapi.json",
       "sources": ["apis-guru"]
     },
     {
@@ -24146,16 +24086,6 @@
       "sources": ["apis-guru"]
     },
     {
-      "name": "Viator API Documentation &amp; Specification – Merchant Partners",
-      "description": "&lt;style type='text/css'&gt;\ncode { white-space: nowrap; }\na { font-weight: bold; }\n\nfigure {\n  width: 100%;\n  text-align: center;\n  font-style: italic;\n  font-size: smaller;\n  text-indent: 0;\n  border: thin silver solid;\n  margin: 0.5em;\n  padding:",
-      "link": "blob:https://docs.viator.com/blobId",
-      "auth": null,
-      "cors": null,
-      "categories": ["Location", "Ecommerce"],
-      "openapiSpec": "https://api.apis.guru/v2/specs/viator.com/1.0.0/openapi.json",
-      "sources": ["apis-guru"]
-    },
-    {
       "name": "VictorOps",
       "description": "This API allows you to interact with the VictorOps platform in various ways. Your account may be limited\nto a total number of API calls per month. Also, some of these API calls have rate limits.\n\nNOTE: In this documentation when creating a sample cur",
       "link": "https://portal.victorops.com/public/api-docs/victorops-api-v1.yaml",
@@ -24683,16 +24613,6 @@
       "cors": null,
       "categories": ["Open Data"],
       "openapiSpec": "https://api.apis.guru/v2/specs/warwick.ac.uk/enterobase/v2.0/openapi.json",
-      "sources": ["apis-guru"]
-    },
-    {
-      "name": "watchful.li",
-      "description": null,
-      "link": "hhttps://app.watchful.net/api/v1/api-docs/",
-      "auth": null,
-      "cors": null,
-      "categories": ["Hosting"],
-      "openapiSpec": "https://api.apis.guru/v2/specs/watchful.li/1.0.0/swagger.json",
       "sources": ["apis-guru"]
     },
     {
