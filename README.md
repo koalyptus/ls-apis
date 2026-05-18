@@ -2,7 +2,7 @@
 
 ### Public APIs Discovery for Humans & Agents
 
-A curated collection of **2,500+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
+A curated collection of **4,500+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
 
 ## Features
 
@@ -77,6 +77,7 @@ npm run ls-apis -- categories --output json
 | ------------ | ----------------------------------- |
 | `categories` | List all API categories with counts |
 | `providers`  | List all data providers             |
+| `config`     | Show config settings and file path  |
 
 ### Categories Options
 
@@ -300,9 +301,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- API data aggregated from multiple public sources
-- Built with TypeScript, Node.js, and vitest
-- Terminal colors powered by chalk

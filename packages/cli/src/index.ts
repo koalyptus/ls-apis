@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { initColors } from './colors';
-import { loadConfig } from './config';
+import { loadConfig, getConfig } from './config';
 import { search } from './search';
 import { formatResults } from './formatter';
 import { handleCategories } from './categories';
@@ -93,6 +93,16 @@ export async function run(argv: string[]): Promise<void> {
       },
       handler: (argv) => {
         handleProviders(providers, apis, argv, config);
+        exitEarly = true;
+      },
+    })
+    .command({
+      command: 'config',
+      describe: 'Show config settings',
+      handler: async () => {
+        const { config, filePath } = await getConfig();
+        console.log(`Config file: ${filePath}`);
+        console.log(JSON.stringify(config, null, 2));
         exitEarly = true;
       },
     })

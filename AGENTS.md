@@ -150,6 +150,7 @@ interface ApiEntry {
 | ------------ | ----------------------------------- |
 | `categories` | List all API categories with counts |
 | `providers`  | List all data providers             |
+| `config`     | Show config settings and file path  |
 
 ### Categories Options
 

@@ -2,7 +2,7 @@ import { readFile, writeFile, access } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 
-const CONFIG_PATH = join(homedir(), '.ls-apis');
+export const CONFIG_PATH = join(homedir(), '.ls-apis');
 
 export interface LsApisConfig {
   limit?: number;
@@ -37,4 +37,9 @@ async function ensureConfigExists(): Promise<void> {
   } catch {
     await writeFile(CONFIG_PATH, JSON.stringify(DEFAULTS, null, 2) + '\n');
   }
+}
+
+export async function getConfig(): Promise<{ config: Required<LsApisConfig>; filePath: string }> {
+  const config = await loadConfig();
+  return { config, filePath: CONFIG_PATH };
 }
