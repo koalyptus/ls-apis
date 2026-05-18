@@ -34,9 +34,11 @@
     "test:cli": "npm run test --workspace=@ls-apis/cli",
     "typecheck": "npx tsc --noEmit -p packages/aggregator && npx tsc --noEmit -p packages/cli",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "aggregate": "cd packages/aggregator && npm run aggregate",
+    "qa": "cd packages/aggregator && npx tsx src/qa/index.ts",
     "ls-apis": "cd packages/cli && npx tsx src/index.ts"
   },
   "devDependencies": {

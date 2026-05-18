@@ -1,11 +1,14 @@
 import { writeFile } from 'node:fs/promises';
 import { loadAllFetchers } from './sources/index';
 import { resolveDataFile } from './paths';
+import { loadConfig } from '../../cli/src/config';
 import type { ApiEntry, DataFile } from './types';
 
 const DATA_FILE = resolveDataFile(import.meta.url);
 
 export async function runAggregation(): Promise<void> {
+  const { descriptionMaxLength } = await loadConfig();
+
   const fetchers = await loadAllFetchers();
   console.log(`Loaded ${fetchers.length} fetchers`);
 
@@ -24,7 +27,7 @@ export async function runAggregation(): Promise<void> {
 
   console.log(`Total entries before dedupe: ${allEntries.length}`);
 
-  const deduped = deduplicateCategories(allEntries);
+  const deduped = deduplicateCategories(allEntries, descriptionMaxLength);
   console.log(`Total entries after dedupe: ${deduped.length}`);
 
   const dataFile: DataFile = {
@@ -50,10 +53,14 @@ function normalizeCategories(categories: string[]): string[] {
   return categories.filter((c) => c.length > 1).map((c) => normalizeCategory(c));
 }
 
-function normalizeEntry(entry: ApiEntry): ApiEntry {
+function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): ApiEntry {
   return {
     name: entry.name,
-    description: entry.description ?? null,
+    description: entry.description
+      ? entry.description.length > descriptionMaxLength
+        ? entry.description.slice(0, descriptionMaxLength)
+        : entry.description
+      : null,
     link: entry.link,
     auth: entry.auth ?? null,
     cors: entry.cors ?? null,
@@ -75,11 +82,11 @@ function normalizeCategory(category: string): string {
     .replace(/ & /g, ' & ');
 }
 
-function deduplicateCategories(entries: ApiEntry[]): ApiEntry[] {
+function deduplicateCategories(entries: ApiEntry[], descriptionMaxLength: number): ApiEntry[] {
   const dedupedEntries = new Map<string, ApiEntry>();
 
   for (const entry of entries) {
-    const normalizedEntry = normalizeEntry(entry);
+    const normalizedEntry = normalizeEntry(entry, descriptionMaxLength);
     const existing = dedupedEntries.get(normalizedEntry.link);
 
     if (existing) {

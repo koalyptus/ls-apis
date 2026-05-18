@@ -5,22 +5,34 @@ describe('sources/index', () => {
   const LOAD_TIMEOUT = 30000;
 
   describe('loadAllFetchers', () => {
-    it('should load all fetchers', async () => {
-      const fetchers = await loadAllFetchers();
-      expect(fetchers.length).toBeGreaterThan(0);
-    }, LOAD_TIMEOUT);
+    it(
+      'should load all fetchers',
+      async () => {
+        const fetchers = await loadAllFetchers();
+        expect(fetchers.length).toBeGreaterThan(0);
+      },
+      LOAD_TIMEOUT
+    );
 
-    it('should return array of fetchers', async () => {
-      const fetchers = await loadAllFetchers();
-      expect(Array.isArray(fetchers)).toBe(true);
-    }, LOAD_TIMEOUT);
+    it(
+      'should return array of fetchers',
+      async () => {
+        const fetchers = await loadAllFetchers();
+        expect(Array.isArray(fetchers)).toBe(true);
+      },
+      LOAD_TIMEOUT
+    );
 
-    it('should filter only valid fetchers', async () => {
-      const fetchers = await loadAllFetchers();
-      for (const fetcher of fetchers) {
-        expect(isSourceFetcher(fetcher)).toBe(true);
-      }
-    }, LOAD_TIMEOUT);
+    it(
+      'should filter only valid fetchers',
+      async () => {
+        const fetchers = await loadAllFetchers();
+        for (const fetcher of fetchers) {
+          expect(isSourceFetcher(fetcher)).toBe(true);
+        }
+      },
+      LOAD_TIMEOUT
+    );
   });
 
   describe('isSourceFetcher', () => {

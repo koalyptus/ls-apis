@@ -78,8 +78,11 @@ npm run ls-apis -- categories --output json
 | `categories` | List all API categories with counts |
 | `providers`  | List all data providers             |
 | `config`     | Show config settings and file path  |
+| `qa`         | Run QA checks (terminal summary)    |
 
-### Categories Options
+You can also run `npm run qa` for a detailed JSON report in `qa-output/`.
+
+### QA Options
 
 | Flag       | Alias | Description                         |
 | ---------- | ----- | ----------------------------------- |
@@ -160,8 +163,12 @@ ls-apis/
 │   ├── aggregator/        # Fetches, normalizes, deduplicates APIs
 │   │   ├── src/
 │   │   │   ├── aggregate.ts       # Main orchestration
+│   │   │   ├── config.ts           # Config reader (~/.ls-apis)
 │   │   │   ├── paths.ts           # Path utilities
-│   │   │   ├── sources/           # Pluggable fetchers (*.fetcher.ts)
+│   │   │   ├── qa/                # QA validation
+│   │   │   │   ├── index.ts       # QA orchestrator
+│   │   │   │   ├── validations.ts # Validation functions
+│   │   │   │   └── tests/         # QA tests
 │   │   │   │   ├── index.ts       # Fetcher loader
 │   │   │   │   └── tests/         # Fetcher tests
 │   │   │   ├── tests/             # Aggregator tests
@@ -196,6 +203,9 @@ npm run format
 
 # Run aggregator (generates data/apis.json in CLI package)
 npm run aggregate
+
+# Run QA checks on aggregated data
+npm run qa
 
 # Run CLI directly
 npm run ls-apis -- -q <query>

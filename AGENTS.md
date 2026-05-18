@@ -5,11 +5,17 @@
 ```
 ls-apis/
 ├── package.json           # root (workspaces)
+├── qa-output/             # QA reports (gitignored)
 ├── packages/
 │   ├── aggregator/        # fetches, normalizes, deduplicates
 │   │   ├── src/
 │   │   │   ├── aggregate.ts       # main orchestration
 │   │   │   ├── paths.ts           # path utilities
+│   │   │   ├── config.ts           # config reader (~/.ls-apis)
+│   │   │   ├── qa/                # QA validation
+│   │   │   │   ├── index.ts       # QA orchestrator
+│   │   │   │   ├── validations.ts # pure validation functions
+│   │   │   │   └── tests/         # QA-specific tests
 │   │   │   ├── sources/           # pluggable fetchers (*.fetcher.ts)
 │   │   │   │   ├── index.ts       # fetcher auto-loader
 │   │   │   │   └── tests/         # fetcher-specific tests
@@ -17,11 +23,10 @@ ls-apis/
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
 │   └── cli/               # CLI for searching APIs
-│       ├── dist/                # compiled ESM output (runtime entrypoint)
 │       ├── data/
 │       │   └── apis.json          # bundled API data (published with package)
 │       ├── src/
-│       │   ├── index.ts           # CLI TypeScript source entry point
+│       │   ├── index.ts           # CLI entry point
 │       │   └── colors.ts          # terminal color support
 │       └── tests/
 └── AGENTS.md              # instructions for AI agents
@@ -36,6 +41,9 @@ npm install
 # Run aggregator (fetch all sources → dedupe → packages/cli/data/apis.json)
 npm run aggregate
 
+# Run QA checks on aggregated data (output to qa-output/issues.json)
+npm run qa
+
 # Run tests with coverage (both aggregator + cli)
 npm test
 
@@ -48,6 +56,7 @@ npm run typecheck
 
 # Lint & format
 npm run lint
+npm run lint:fix
 npm run format
 npm run format:fix
 
