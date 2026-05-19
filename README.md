@@ -2,11 +2,11 @@
 
 ### Public APIs Discovery for Humans & Agents
 
-A curated collection of **4,500+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
+A curated collection of **4,300+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
 
 ## Features
 
-- **Comprehensive Dataset** - 4,500+ APIs aggregated from multiple sources
+- **Comprehensive Dataset** - 4,000+ APIs aggregated from multiple sources
 - **Smart Search** - Filter by query, category, authentication type
 - **Colored Output** - Syntax-highlighted results (use `--no-color` to disable)
 - **Multiple Output Formats** - Text or JSON output
@@ -80,7 +80,13 @@ npm run ls-apis -- categories --output json
 | `config`     | Show config settings and file path  |
 | `qa`         | Run QA checks (terminal summary)    |
 
-You can also run `npm run qa` for a detailed JSON report in `qa-output/`.
+```bash
+# Run QA via CLI
+npm run ls-apis -- qa
+
+# Save QA report to custom path
+npm run ls-apis -- qa -f ./my-report.json
+```
 
 ### QA Options
 
@@ -159,28 +165,37 @@ Found 2 APIs:
 ls-apis/
 ├── README.md              # This file
 ├── package.json           # Root workspace config
+├── qa-output/             # QA reports (gitignored)
 ├── packages/
 │   ├── aggregator/        # Fetches, normalizes, deduplicates APIs
 │   │   ├── src/
 │   │   │   ├── aggregate.ts       # Main orchestration
-│   │   │   ├── config.ts           # Config reader (~/.ls-apis)
+│   │   │   ├── config.ts          # Config reader (~/.ls-apis)
+│   │   │   ├── normalize.ts       # Entry & category normalization
 │   │   │   ├── paths.ts           # Path utilities
 │   │   │   ├── qa/                # QA validation
 │   │   │   │   ├── index.ts       # QA orchestrator
 │   │   │   │   ├── validations.ts # Validation functions
 │   │   │   │   └── tests/         # QA tests
-│   │   │   │   ├── index.ts       # Fetcher loader
+│   │   │   ├── sources/           # Pluggable fetchers (*.fetcher.ts)
+│   │   │   │   ├── index.ts       # Fetcher auto-loader
 │   │   │   │   └── tests/         # Fetcher tests
-│   │   │   ├── tests/             # Aggregator tests
+│   │   │   ├── tests/             # Aggregator & normalize tests
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
 │   └── cli/               # CLI for searching APIs
 │       ├── dist/                # Compiled ESM output used by npm bin
 │       ├── data/
-│       │   └── apis.json          # Bundled API data (2520+ APIs)
+│       │   └── apis.json          # Bundled API data (4,300+ APIs)
 │       ├── src/
 │       │   ├── index.ts           # CLI TypeScript source entry point
-│       │   └── colors.ts          # Terminal color support
+│       │   ├── categories.ts       # Categories command
+│       │   ├── providers.ts        # Providers command
+│       │   ├── config.ts           # Config loading & display
+│       │   ├── qa.ts               # QA command handler
+│       │   ├── colors.ts          # Terminal color support
+│       │   ├── formatter.ts        # Output formatter
+│       │   └── search.ts           # Search logic
 │       └── tests/
 └── AGENTS.md              # Instructions for AI agents
 ```

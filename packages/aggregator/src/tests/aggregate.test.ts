@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { writeFile } from 'node:fs/promises';
 import { loadAllFetchers } from '../sources/index';
-import { runAggregation } from '../aggregate';
+import { runAggregation, deduplicateCategories } from '../aggregate';
 import type { ApiEntry } from '../types';
 
 vi.mock('../sources/index', () => ({
@@ -53,6 +53,41 @@ describe('aggregate', () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
+  });
+
+  describe('deduplicateCategories', () => {
+    it('should drop entries that merge into more than 10 categories', () => {
+      const entries: ApiEntry[] = Array.from({ length: 11 }, (_, i) => ({
+        name: 'Merged API',
+        description: null,
+        link: 'https://merged.example.com',
+        auth: null,
+        cors: null,
+        categories: [`Category ${i}`],
+        openapiSpec: null,
+        sources: ['test-fetcher'],
+      }));
+
+      const result = deduplicateCategories(entries, 250);
+      expect(result).toHaveLength(0);
+    });
+
+    it('should keep entries with 10 or fewer merged categories', () => {
+      const entries: ApiEntry[] = Array.from({ length: 10 }, (_, i) => ({
+        name: 'OK API',
+        description: null,
+        link: 'https://ok.example.com',
+        auth: null,
+        cors: null,
+        categories: [`Category ${i}`],
+        openapiSpec: null,
+        sources: ['test-fetcher'],
+      }));
+
+      const result = deduplicateCategories(entries, 250);
+      expect(result).toHaveLength(1);
+      expect(result[0].categories).toHaveLength(10);
+    });
   });
 
   describe('runAggregation', () => {

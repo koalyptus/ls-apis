@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises';
 import { loadAllFetchers } from './sources/index';
 import { resolveDataFile } from './paths';
 import { loadConfig } from '../../cli/src/config';
-import { isValidUrl } from './qa/validations';
+import { normalizeEntry } from './normalize';
 import type { ApiEntry, DataFile } from './types';
 
 const DATA_FILE = resolveDataFile(import.meta.url);
@@ -50,44 +50,10 @@ export async function runAggregation(): Promise<void> {
   }
 }
 
-function normalizeCategories(categories: string[]): string[] {
-  return categories.filter((c) => c.length > 1).map((c) => normalizeCategory(c));
-}
-
-function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): ApiEntry | null {
-  if (!entry.link || !isValidUrl(entry.link)) {
-    return null;
-  }
-
-  return {
-    name: entry.name,
-    description: entry.description
-      ? entry.description.length > descriptionMaxLength
-        ? entry.description.slice(0, descriptionMaxLength)
-        : entry.description
-      : null,
-    link: entry.link,
-    auth: entry.auth ?? null,
-    cors: entry.cors ?? null,
-    categories: normalizeCategories(entry.categories),
-    openapiSpec: entry.openapiSpec ?? null,
-    sources: entry.sources,
-  };
-}
-
-function normalizeCategory(category: string): string {
-  return category
-    .toLowerCase()
-    .replace(/_/g, ' ')
-    .replace(/-/g, ' ')
-    .replace(/ and /g, ' & ')
-    .split(' ')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-    .replace(/ & /g, ' & ');
-}
-
-function deduplicateCategories(entries: ApiEntry[], descriptionMaxLength: number): ApiEntry[] {
+export function deduplicateCategories(
+  entries: ApiEntry[],
+  descriptionMaxLength: number
+): ApiEntry[] {
   const dedupedEntries = new Map<string, ApiEntry>();
 
   for (const entry of entries) {
@@ -109,5 +75,5 @@ function deduplicateCategories(entries: ApiEntry[], descriptionMaxLength: number
     }
   }
 
-  return Array.from(dedupedEntries.values());
+  return Array.from(dedupedEntries.values()).filter((entry) => entry.categories.length <= 10);
 }

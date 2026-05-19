@@ -10,6 +10,7 @@ ls-apis/
 │   ├── aggregator/        # fetches, normalizes, deduplicates
 │   │   ├── src/
 │   │   │   ├── aggregate.ts       # main orchestration
+│   │   │   ├── normalize.ts       # entry & category normalization
 │   │   │   ├── paths.ts           # path utilities
 │   │   │   ├── config.ts           # config reader (~/.ls-apis)
 │   │   │   ├── qa/                # QA validation
@@ -160,6 +161,13 @@ interface ApiEntry {
 | `categories` | List all API categories with counts |
 | `providers`  | List all data providers             |
 | `config`     | Show config settings and file path  |
+| `qa`         | Run QA checks (terminal summary)    |
+
+### QA Options
+
+| Flag     | Alias | Description                      |
+| -------- | ----- | -------------------------------- |
+| `--file` | `-f`  | Output file path for JSON report |
 
 ### Categories Options
 
@@ -196,3 +204,19 @@ interface ApiEntry {
 | `colors`               | true    | Enable terminal colors      |
 
 Uses only Node.js stdlib (`os.homedir()`, `fs/promises`). Missing or invalid file falls back to built-in defaults.
+
+## Relevant Files
+
+- `packages/cli/src/index.ts`: CLI entry point with `categories`, `providers`, `config`, `qa` commands
+- `packages/cli/src/qa.ts`: `ls-apis qa` handler — shells out to aggregator QA via `execSync`
+- `packages/cli/src/categories.ts`: Categories command handler
+- `packages/cli/src/providers.ts`: Providers command handler
+- `packages/cli/src/config.ts`: Config loading/display
+- `packages/cli/tests/qa.test.ts`: Tests for CLI qa wrapper
+- `packages/aggregator/src/aggregate.ts`: Aggregation orchestration, deduplication
+- `packages/aggregator/src/normalize.ts`: Entry & category normalization
+- `packages/aggregator/src/qa/index.ts`: QA orchestrator (reads apis.json, runs validations, outputs grouped JSON)
+- `packages/aggregator/src/qa/validations.ts`: Pure validation functions
+- `packages/aggregator/src/paths.ts`: Path utilities for Windows ESM compatibility
+- `packages/aggregator/src/sources/apis-guru.fetcher.ts`, `.fetcher.ts`: Fetcher implementations
+- `packages/aggregator/src/sources/index.ts`: Fetcher auto-loader

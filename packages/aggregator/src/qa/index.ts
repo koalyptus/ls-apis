@@ -1,9 +1,8 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { realpathSync } from 'node:fs';
 
 import { loadConfig } from '../../../cli/src/config';
+import { resolveDataFile, resolveProjectRoot } from '../paths';
 
 import {
   validateJsonSyntax,
@@ -14,25 +13,15 @@ import {
   type ApiWarning,
 } from './validations';
 
-function getDataFilePath(metaUrl: string): string {
-  const currentDir = dirname(realpathSync(fileURLToPath(metaUrl)));
-  return join(currentDir, '../../../cli/data/apis.json');
-}
-
-function getProjectRoot(metaUrl: string): string {
-  const currentDir = dirname(realpathSync(fileURLToPath(metaUrl)));
-  return join(currentDir, '../../../../');
-}
-
 export interface QaOptions {
   outputFile?: string;
   descriptionMaxLength?: number;
 }
 
 export async function runQa(options: QaOptions): Promise<void> {
-  const dataFilePath = getDataFilePath(import.meta.url);
+  const dataFilePath = resolveDataFile(import.meta.url);
   const outputFilePath =
-    options.outputFile ?? join(getProjectRoot(import.meta.url), 'qa-output/issues.json');
+    options.outputFile ?? join(resolveProjectRoot(import.meta.url), 'qa-output/issues.json');
   const descriptionMaxLength = options.descriptionMaxLength ?? (await loadDescriptionMaxLength());
 
   try {
