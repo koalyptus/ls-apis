@@ -17,17 +17,19 @@ function normalizeCategories(categories: string[]): string[] {
   return categories.filter((c) => c.length > 1).map((c) => normalizeCategory(c));
 }
 
-export function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): ApiEntry | null {
+export type NormalizeResult = ApiEntry | { valid: false; reason: string; entry: ApiEntry };
+
+export function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): NormalizeResult {
   if (!entry.link || !isValidUrl(entry.link)) {
-    return null;
+    return { valid: false, reason: 'Invalid or missing link', entry };
   }
 
   if (!entry.name) {
-    return null;
+    return { valid: false, reason: 'Missing name', entry };
   }
 
   if (!entry.sources || entry.sources.length === 0) {
-    return null;
+    return { valid: false, reason: 'Missing sources', entry };
   }
 
   let normalizedCategories = normalizeCategories(entry.categories);
@@ -36,7 +38,7 @@ export function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): A
   }
 
   if (normalizedCategories.length > 10) {
-    return null;
+    return { valid: false, reason: `Too many categories (${normalizedCategories.length})`, entry };
   }
 
   return {

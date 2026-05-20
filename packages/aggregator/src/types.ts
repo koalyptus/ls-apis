@@ -27,3 +27,17 @@ export interface SourceFetcher {
   sourceUrl: string;
   fetchApis(): Promise<ApiEntry[]>;
 }
+
+export interface RejectedEntry {
+  name: string | undefined;
+  link: string | undefined;
+  reason: string;
+  sources: string[];
+  categories: string[];
+}
+
+export interface RejectedFile {
+  timestamp: string;
+  total: number;
+  entries: RejectedEntry[];
+}

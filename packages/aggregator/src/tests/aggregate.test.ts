@@ -14,10 +14,12 @@ vi.mock('node:fs/promises', () => ({
     writeFile: vi.fn().mockResolvedValue(undefined),
     readFile: vi.fn().mockResolvedValue('{}'),
     readdir: vi.fn().mockResolvedValue([]),
+    mkdir: vi.fn().mockResolvedValue(undefined),
   },
   writeFile: vi.fn().mockResolvedValue(undefined),
   readFile: vi.fn().mockResolvedValue('{}'),
   readdir: vi.fn().mockResolvedValue([]),
+  mkdir: vi.fn().mockResolvedValue(undefined),
 }));
 
 describe('aggregate', () => {
@@ -69,7 +71,9 @@ describe('aggregate', () => {
       }));
 
       const result = deduplicateCategories(entries, 250);
-      expect(result).toHaveLength(0);
+      expect(result.entries).toHaveLength(0);
+      expect(result.rejected).toHaveLength(1);
+      expect(result.rejected[0].reason).toContain('Too many categories after merge');
     });
 
     it('should keep entries with 10 or fewer merged categories', () => {
@@ -85,8 +89,8 @@ describe('aggregate', () => {
       }));
 
       const result = deduplicateCategories(entries, 250);
-      expect(result).toHaveLength(1);
-      expect(result[0].categories).toHaveLength(10);
+      expect(result.entries).toHaveLength(1);
+      expect(result.entries[0].categories).toHaveLength(10);
     });
   });
 
