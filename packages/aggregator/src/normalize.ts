@@ -1,5 +1,7 @@
 import { isValidUrl } from './qa/validations';
-import type { ApiEntry } from './types';
+import type { ApiEntry, NormalizeResult } from './types';
+
+export const MAX_CATEGORIES = 10;
 
 function normalizeCategory(category: string): string {
   return category
@@ -17,7 +19,15 @@ function normalizeCategories(categories: string[]): string[] {
   return categories.filter((c) => c.length > 1).map((c) => normalizeCategory(c));
 }
 
-export type NormalizeResult = ApiEntry | { valid: false; reason: string; entry: ApiEntry };
+function truncate(value: string | null | undefined, maxLength: number): string | null {
+  if (!value) {
+    return null;
+  }
+  if (value.length <= maxLength) {
+    return value;
+  }
+  return value.slice(0, maxLength);
+}
 
 export function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): NormalizeResult {
   if (!entry.link || !isValidUrl(entry.link)) {
@@ -37,17 +47,13 @@ export function normalizeEntry(entry: ApiEntry, descriptionMaxLength: number): N
     normalizedCategories = ['Uncategorized'];
   }
 
-  if (normalizedCategories.length > 10) {
+  if (normalizedCategories.length > MAX_CATEGORIES) {
     return { valid: false, reason: `Too many categories (${normalizedCategories.length})`, entry };
   }
 
   return {
     name: entry.name,
-    description: entry.description
-      ? entry.description.length > descriptionMaxLength
-        ? entry.description.slice(0, descriptionMaxLength)
-        : entry.description
-      : null,
+    description: truncate(entry.description, descriptionMaxLength),
     link: entry.link,
     auth: entry.auth ?? null,
     cors: entry.cors ?? null,

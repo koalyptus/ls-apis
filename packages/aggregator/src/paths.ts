@@ -27,3 +27,7 @@ export function resolveDataFile(metaUrl: string): string {
 export function resolveProjectRoot(metaUrl: string): string {
   return projectRoot(metaUrl);
 }
+
+export function resolveRejectedFile(metaUrl: string): string {
+  return path.join(projectRoot(metaUrl), 'qa-output', 'rejected.json');
+}

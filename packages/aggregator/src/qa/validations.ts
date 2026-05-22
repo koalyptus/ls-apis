@@ -19,10 +19,11 @@ export function isValidIso8601Utc(dateString: string): boolean {
   return date.toISOString() === dateString;
 }
 
-export function validateJsonSyntax(content: string): { valid: boolean; error?: string } {
+export function validateJsonSyntax(content: string):
+  | { valid: true; data: unknown }
+  | { valid: false; error: string } {
   try {
-    JSON.parse(content);
-    return { valid: true };
+    return { valid: true, data: JSON.parse(content) };
   } catch (err) {
     return { valid: false, error: err instanceof Error ? err.message : String(err) };
   }
@@ -36,23 +37,21 @@ export function validateDataFileSchema(data: unknown): string[] {
     return errors;
   }
 
-  if (!('timestamp' in (data as Record<string, unknown>))) {
+  const obj = data as Record<string, unknown>;
+  if (!('timestamp' in obj)) {
     errors.push('Missing required field: timestamp');
   }
-  if (!('providers' in (data as Record<string, unknown>))) {
+  if (!('providers' in obj)) {
     errors.push('Missing required field: providers');
   }
-  if (!('apis' in (data as Record<string, unknown>))) {
+  if (!('apis' in obj)) {
     errors.push('Missing required field: apis');
   }
 
   return errors;
 }
 
-export function validateProvider(
-  provider: unknown,
-  index: number
-): ProviderValidationResult {
+export function validateProvider(provider: unknown, index: number): ProviderValidationResult {
   if (provider === null || typeof provider !== 'object') {
     return { valid: false, issue: `Provider at index ${index} is not an object` };
   }
@@ -145,36 +144,8 @@ export function validateApi(
     }
   }
 
-  const knownFields = new Set([
-    'name',
-    'description',
-    'link',
-    'auth',
-    'cors',
-    'categories',
-    'openapiSpec',
-    'sources',
-  ]);
-  const unknownFields = Object.keys(a).filter((key) => !knownFields.has(key));
-  if (unknownFields.length > 0) {
-    issues.push(`Unknown fields: ${unknownFields.join(', ')}`);
-  }
-
   if (issues.length === 0) {
-    return {
-      valid: true,
-      api: {
-        name: a.name as string,
-        description: a.description as string | null,
-        link: a.link as string,
-        auth: a.auth as string | null,
-        cors: a.cors as string | null,
-        categories: a.categories as string[],
-        openapiSpec: a.openapiSpec as string | null,
-        sources: a.sources as string[],
-      },
-      original: a as Partial<ApiEntry>,
-    };
+    return { valid: true };
   }
 
   return {

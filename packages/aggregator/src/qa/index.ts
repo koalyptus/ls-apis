@@ -30,7 +30,7 @@ export async function runQa(options: QaOptions): Promise<void> {
       process.exit(1);
     }
 
-    const data = JSON.parse(content) as DataFile;
+    const data = jsonResult.data as DataFile;
 
     const schemaErrors = validateDataFileSchema(data);
     if (schemaErrors.length > 0) {
@@ -75,7 +75,7 @@ export async function runQa(options: QaOptions): Promise<void> {
         warnings.push({
           apiName: result.api?.name,
           issue: result.issue!,
-          data: result.original,
+          data: result.original!,
         });
       }
     }

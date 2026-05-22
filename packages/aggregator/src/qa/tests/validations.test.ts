@@ -58,13 +58,19 @@ describe('isValidIso8601Utc', () => {
 
 describe('validateJsonSyntax', () => {
   it('accepts valid JSON', () => {
-    expect(validateJsonSyntax('{"a": 1}')).toEqual({ valid: true });
+    const result = validateJsonSyntax('{"a": 1}');
+    expect(result.valid).toBe(true);
+    if (result.valid) {
+      expect(result.data).toEqual({ a: 1 });
+    }
   });
 
   it('rejects invalid JSON', () => {
     const result = validateJsonSyntax('{invalid}');
     expect(result.valid).toBe(false);
-    expect(result.error).toBeTruthy();
+    if (!result.valid) {
+      expect(result.error).toBeTruthy();
+    }
   });
 });
 
@@ -151,7 +157,6 @@ describe('validateApi', () => {
     };
     const result = validateApi(api, 0);
     expect(result.valid).toBe(true);
-    expect(result.api?.name).toBe('Test API');
   });
 
   it('rejects null', () => {
@@ -303,7 +308,7 @@ describe('validateApi', () => {
     expect(validateApi(api, 0).valid).toBe(false);
   });
 
-  it('flags unknown fields', () => {
+  it('ignores unknown fields', () => {
     const api = {
       name: 'Test',
       link: 'https://example.com',
@@ -311,9 +316,7 @@ describe('validateApi', () => {
       sources: ['src'],
       extraField: true,
     };
-    const result = validateApi(api, 0);
-    expect(result.valid).toBe(false);
-    expect(result.issue).toContain('Unknown fields');
+    expect(validateApi(api, 0).valid).toBe(true);
   });
 
   it('allows null openapiSpec', () => {

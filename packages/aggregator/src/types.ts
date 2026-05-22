@@ -28,6 +28,8 @@ export interface SourceFetcher {
   fetchApis(): Promise<ApiEntry[]>;
 }
 
+export type NormalizeResult = ApiEntry | { valid: false; reason: string; entry: ApiEntry };
+
 export interface RejectedEntry {
   name: string | undefined;
   link: string | undefined;

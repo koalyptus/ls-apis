@@ -21,11 +21,7 @@ interface ApiWarning {
   data: Partial<ApiEntry>;
 }
 
-export type Warning =
-  | TimestampWarning
-  | EmptyProvidersWarning
-  | ProviderWarning
-  | ApiWarning;
+export type Warning = TimestampWarning | EmptyProvidersWarning | ProviderWarning | ApiWarning;
 
 export interface ProviderValidationResult {
   valid: boolean;
@@ -36,7 +32,7 @@ export interface ApiValidationResult {
   valid: boolean;
   issue?: string;
   api?: Partial<ApiEntry>;
-  original: Partial<ApiEntry>;
+  original?: Partial<ApiEntry>;
 }
 
 export interface QaOptions {

@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { writeFile } from 'node:fs/promises';
 import { loadAllFetchers } from '../sources/index';
-import { runAggregation, deduplicateCategories } from '../aggregate';
+import { deduplicateCategories } from '../dedupe';
+import { runAggregation } from '../aggregate';
 import type { ApiEntry } from '../types';
 
 vi.mock('../sources/index', () => ({
