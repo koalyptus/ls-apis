@@ -1,11 +1,18 @@
-import { writeFile } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
+import { dirname } from 'node:path';
 import { loadAllFetchers } from './sources/index';
-import { resolveDataFile } from './paths';
-import type { ApiEntry, DataFile } from './types';
+import { resolveDataFile, resolveRejectedFile } from './paths';
+import { loadConfig } from '../../cli/src/config';
+import { deduplicateCategories } from './dedupe';
+import { validateJsonSyntax } from './qa/validations';
+import type { ApiEntry, DataFile, RejectedFile } from './types';
 
 const DATA_FILE = resolveDataFile(import.meta.url);
+const REJECTED_FILE = resolveRejectedFile(import.meta.url);
 
 export async function runAggregation(): Promise<void> {
+  const { descriptionMaxLength } = await loadConfig();
+
   const fetchers = await loadAllFetchers();
   console.log(`Loaded ${fetchers.length} fetchers`);
 
@@ -24,7 +31,7 @@ export async function runAggregation(): Promise<void> {
 
   console.log(`Total entries before dedupe: ${allEntries.length}`);
 
-  const deduped = deduplicateCategories(allEntries);
+  const { entries: deduped, rejected } = deduplicateCategories(allEntries, descriptionMaxLength);
   console.log(`Total entries after dedupe: ${deduped.length}`);
 
   const dataFile: DataFile = {
@@ -37,61 +44,23 @@ export async function runAggregation(): Promise<void> {
   await writeFile(DATA_FILE, json);
   console.log(`Written to ${DATA_FILE}`);
 
-  try {
-    const parsed = JSON.parse(json) as DataFile;
-    console.log(`Validated: ${parsed.apis.length} entries, ${parsed.providers.length} providers`);
-  } catch (error) {
-    console.error(`JSON validation failed: ${error}`);
+  if (rejected.length > 0) {
+    const rejectedFile: RejectedFile = {
+      timestamp: new Date().toISOString(),
+      total: rejected.length,
+      entries: rejected,
+    };
+    await mkdir(dirname(REJECTED_FILE), { recursive: true });
+    await writeFile(REJECTED_FILE, JSON.stringify(rejectedFile, null, 2));
+    console.log(`Rejected ${rejected.length} entries → ${REJECTED_FILE}`);
+  }
+
+  const result = validateJsonSyntax(json);
+  if (!result.valid) {
+    console.error(`JSON validation failed: ${result.error}`);
     process.exit(1);
+    return;
   }
-}
-
-function normalizeCategories(categories: string[]): string[] {
-  return categories.filter((c) => c.length > 1).map((c) => normalizeCategory(c));
-}
-
-function normalizeEntry(entry: ApiEntry): ApiEntry {
-  return {
-    name: entry.name,
-    description: entry.description ?? null,
-    link: entry.link,
-    auth: entry.auth ?? null,
-    cors: entry.cors ?? null,
-    categories: normalizeCategories(entry.categories),
-    openapiSpec: entry.openapiSpec ?? null,
-    sources: entry.sources,
-  };
-}
-
-function normalizeCategory(category: string): string {
-  return category
-    .toLowerCase()
-    .replace(/_/g, ' ')
-    .replace(/-/g, ' ')
-    .replace(/ and /g, ' & ')
-    .split(' ')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-    .replace(/ & /g, ' & ');
-}
-
-function deduplicateCategories(entries: ApiEntry[]): ApiEntry[] {
-  const dedupedEntries = new Map<string, ApiEntry>();
-
-  for (const entry of entries) {
-    const normalizedEntry = normalizeEntry(entry);
-    const existing = dedupedEntries.get(normalizedEntry.link);
-
-    if (existing) {
-      dedupedEntries.set(normalizedEntry.link, {
-        ...existing,
-        sources: [...new Set([...existing.sources, ...normalizedEntry.sources])],
-        categories: [...new Set([...existing.categories, ...normalizedEntry.categories])],
-      });
-    } else {
-      dedupedEntries.set(normalizedEntry.link, normalizedEntry);
-    }
-  }
-
-  return Array.from(dedupedEntries.values());
+  const parsed = result.data as DataFile;
+  console.log(`Validated: ${parsed.apis.length} entries, ${parsed.providers.length} providers`);
 }

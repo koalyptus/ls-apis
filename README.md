@@ -2,11 +2,11 @@
 
 ### Public APIs Discovery for Humans & Agents
 
-A curated collection of **2,500+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
+A curated collection of **4,300+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
 
 ## Features
 
-- **Comprehensive Dataset** - 4,500+ APIs aggregated from multiple sources
+- **Comprehensive Dataset** - 4,000+ APIs aggregated from multiple sources
 - **Smart Search** - Filter by query, category, authentication type
 - **Colored Output** - Syntax-highlighted results (use `--no-color` to disable)
 - **Multiple Output Formats** - Text or JSON output
@@ -77,8 +77,18 @@ npm run ls-apis -- categories --output json
 | ------------ | ----------------------------------- |
 | `categories` | List all API categories with counts |
 | `providers`  | List all data providers             |
+| `config`     | Show config settings and file path  |
+| `qa`         | Run QA checks (terminal summary)    |
 
-### Categories Options
+```bash
+# Run QA via CLI
+npm run ls-apis -- qa
+
+# Save QA report to custom path
+npm run ls-apis -- qa -f ./my-report.json
+```
+
+### QA Options
 
 | Flag       | Alias | Description                         |
 | ---------- | ----- | ----------------------------------- |
@@ -155,25 +165,45 @@ Found 2 APIs:
 ls-apis/
 ├── README.md              # This file
 ├── package.json           # Root workspace config
+├── qa-output/             # QA reports (gitignored)
 ├── packages/
 │   ├── aggregator/        # Fetches, normalizes, deduplicates APIs
 │   │   ├── src/
 │   │   │   ├── aggregate.ts       # Main orchestration
+│   │   │   ├── config.ts          # Config reader (~/.ls-apis)
+│   │   │   ├── normalize.ts       # Entry & category normalization
 │   │   │   ├── paths.ts           # Path utilities
+│   │   │   ├── qa/                # QA validation
+│   │   │   │   ├── index.ts       # QA orchestrator
+│   │   │   │   ├── validations.ts # Validation functions
+│   │   │   │   └── tests/         # QA tests
 │   │   │   ├── sources/           # Pluggable fetchers (*.fetcher.ts)
-│   │   │   │   ├── index.ts       # Fetcher loader
+│   │   │   │   ├── index.ts       # Fetcher auto-loader
 │   │   │   │   └── tests/         # Fetcher tests
-│   │   │   ├── tests/             # Aggregator tests
+│   │   │   ├── tests/             # Aggregator & normalize tests
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
 │   └── cli/               # CLI for searching APIs
 │       ├── dist/                # Compiled ESM output used by npm bin
 │       ├── data/
-│       │   └── apis.json          # Bundled API data (2520+ APIs)
+│       │   └── apis.json          # Bundled API data (4,300+ APIs)
 │       ├── src/
 │       │   ├── index.ts           # CLI TypeScript source entry point
-│       │   └── colors.ts          # Terminal color support
+│       │   ├── categories.ts       # Categories command
+│       │   ├── providers.ts        # Providers command
+│       │   ├── config.ts           # Config loading & display
+│       │   ├── qa.ts               # QA command handler
+│       │   ├── paths.ts           # Workspace root resolution
+│       │   ├── colors.ts          # Terminal color support
+│       │   ├── formatter.ts        # Output formatter
+│       │   └── search.ts           # Search logic
 │       └── tests/
+│           ├── paths.test.ts       # Path resolution tests
+│           ├── qa.test.ts          # QA wrapper tests
+│           ├── cli.test.ts         # CLI integration tests
+│           ├── categories.test.ts  # Categories command tests
+│           ├── providers.test.ts   # Providers command tests
+│           └── config.test.ts      # Config tests
 └── AGENTS.md              # Instructions for AI agents
 ```
 
@@ -195,6 +225,9 @@ npm run format
 
 # Run aggregator (generates data/apis.json in CLI package)
 npm run aggregate
+
+# Run QA checks on aggregated data
+npm run qa
 
 # Run CLI directly
 npm run ls-apis -- -q <query>
@@ -300,9 +333,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- API data aggregated from multiple public sources
-- Built with TypeScript, Node.js, and vitest
-- Terminal colors powered by chalk

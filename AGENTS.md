@@ -5,11 +5,18 @@
 ```
 ls-apis/
 ├── package.json           # root (workspaces)
+├── qa-output/             # QA reports (gitignored)
 ├── packages/
 │   ├── aggregator/        # fetches, normalizes, deduplicates
 │   │   ├── src/
 │   │   │   ├── aggregate.ts       # main orchestration
+│   │   │   ├── normalize.ts       # entry & category normalization
 │   │   │   ├── paths.ts           # path utilities
+│   │   │   ├── config.ts           # config reader (~/.ls-apis)
+│   │   │   ├── qa/                # QA validation
+│   │   │   │   ├── index.ts       # QA orchestrator
+│   │   │   │   ├── validations.ts # pure validation functions
+│   │   │   │   └── tests/         # QA-specific tests
 │   │   │   ├── sources/           # pluggable fetchers (*.fetcher.ts)
 │   │   │   │   ├── index.ts       # fetcher auto-loader
 │   │   │   │   └── tests/         # fetcher-specific tests
@@ -17,13 +24,25 @@ ls-apis/
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
 │   └── cli/               # CLI for searching APIs
-│       ├── dist/                # compiled ESM output (runtime entrypoint)
 │       ├── data/
 │       │   └── apis.json          # bundled API data (published with package)
 │       ├── src/
-│       │   ├── index.ts           # CLI TypeScript source entry point
-│       │   └── colors.ts          # terminal color support
+│       │   ├── index.ts           # CLI entry point
+│       │   ├── paths.ts           # workspace root resolution
+│       │   ├── colors.ts          # terminal color support
+│       │   ├── qa.ts              # QA command handler
+│       │   ├── categories.ts      # categories command
+│       │   ├── providers.ts       # providers command
+│       │   ├── config.ts          # config loading/display
+│       │   ├── search.ts          # search logic
+│       │   └── formatter.ts       # output formatter
 │       └── tests/
+│           ├── paths.test.ts      # path resolution tests
+│           ├── qa.test.ts         # QA wrapper tests
+│           ├── cli.test.ts        # CLI integration tests
+│           ├── categories.test.ts # categories command tests
+│           ├── providers.test.ts  # providers command tests
+│           └── config.test.ts     # config tests
 └── AGENTS.md              # instructions for AI agents
 ```
 
@@ -35,6 +54,9 @@ npm install
 
 # Run aggregator (fetch all sources → dedupe → packages/cli/data/apis.json)
 npm run aggregate
+
+# Run QA checks on aggregated data (output to qa-output/issues.json)
+npm run qa
 
 # Run tests with coverage (both aggregator + cli)
 npm test
@@ -48,6 +70,7 @@ npm run typecheck
 
 # Lint & format
 npm run lint
+npm run lint:fix
 npm run format
 npm run format:fix
 
@@ -150,6 +173,14 @@ interface ApiEntry {
 | ------------ | ----------------------------------- |
 | `categories` | List all API categories with counts |
 | `providers`  | List all data providers             |
+| `config`     | Show config settings and file path  |
+| `qa`         | Run QA checks (terminal summary)    |
+
+### QA Options
+
+| Flag     | Alias | Description                      |
+| -------- | ----- | -------------------------------- |
+| `--file` | `-f`  | Output file path for JSON report |
 
 ### Categories Options
 
@@ -186,3 +217,21 @@ interface ApiEntry {
 | `colors`               | true    | Enable terminal colors      |
 
 Uses only Node.js stdlib (`os.homedir()`, `fs/promises`). Missing or invalid file falls back to built-in defaults.
+
+## Relevant Files
+
+- `packages/cli/src/index.ts`: CLI entry point with `categories`, `providers`, `config`, `qa` commands
+- `packages/cli/src/qa.ts`: `ls-apis qa` handler — shells out to aggregator QA via `execSync`
+- `packages/cli/src/categories.ts`: Categories command handler
+- `packages/cli/src/providers.ts`: Providers command handler
+- `packages/cli/src/config.ts`: Config loading/display
+- `packages/cli/src/paths.ts`: Workspace root resolution (`projectRoot`)
+- `packages/cli/tests/paths.test.ts`: Tests for path resolution
+- `packages/cli/tests/qa.test.ts`: Tests for CLI qa wrapper
+- `packages/aggregator/src/aggregate.ts`: Aggregation orchestration, deduplication
+- `packages/aggregator/src/normalize.ts`: Entry & category normalization
+- `packages/aggregator/src/qa/index.ts`: QA orchestrator (reads apis.json, runs validations, outputs grouped JSON)
+- `packages/aggregator/src/qa/validations.ts`: Pure validation functions
+- `packages/aggregator/src/paths.ts`: Path utilities for Windows ESM compatibility
+- `packages/aggregator/src/sources/apis-guru.fetcher.ts`, `.fetcher.ts`: Fetcher implementations
+- `packages/aggregator/src/sources/index.ts`: Fetcher auto-loader
