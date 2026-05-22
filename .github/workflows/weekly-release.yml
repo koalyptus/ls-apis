@@ -61,7 +61,7 @@ jobs:
               --title "Release v$VERSION" \
               --body "Automated weekly release."
           fi
-          gh pr merge --auto --squash "$BRANCH"
+          GH_TOKEN=${{ secrets.PAT }} gh pr merge --auto --squash "$BRANCH"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
