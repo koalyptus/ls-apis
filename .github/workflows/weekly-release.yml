@@ -58,13 +58,13 @@ jobs:
             --base main \
             --head "$BRANCH" \
             --title "Release v$VERSION" \
-            --body "Automated weekly release." \
-            --auto-merge
+            --body "Automated weekly release."
+          gh pr merge --auto --squash "$BRANCH"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Release v') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -78,7 +78,7 @@ jobs:
         id: check
         run: |
           MSG=$(git log -1 --format=%s)
-          if [[ "$MSG" == "chore: release v"* ]]; then
+          if [[ "$MSG" == "Release v"* ]]; then
             echo "is_release=true" >> "$GITHUB_OUTPUT"
           else
             echo "is_release=false" >> "$GITHUB_OUTPUT"
