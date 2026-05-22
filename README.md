@@ -193,10 +193,17 @@ ls-apis/
 │       │   ├── providers.ts        # Providers command
 │       │   ├── config.ts           # Config loading & display
 │       │   ├── qa.ts               # QA command handler
+│       │   ├── paths.ts           # Workspace root resolution
 │       │   ├── colors.ts          # Terminal color support
 │       │   ├── formatter.ts        # Output formatter
 │       │   └── search.ts           # Search logic
 │       └── tests/
+│           ├── paths.test.ts       # Path resolution tests
+│           ├── qa.test.ts          # QA wrapper tests
+│           ├── cli.test.ts         # CLI integration tests
+│           ├── categories.test.ts  # Categories command tests
+│           ├── providers.test.ts   # Providers command tests
+│           └── config.test.ts      # Config tests
 └── AGENTS.md              # Instructions for AI agents
 ```
 

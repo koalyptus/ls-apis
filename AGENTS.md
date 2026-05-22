@@ -28,8 +28,21 @@ ls-apis/
 │       │   └── apis.json          # bundled API data (published with package)
 │       ├── src/
 │       │   ├── index.ts           # CLI entry point
-│       │   └── colors.ts          # terminal color support
+│       │   ├── paths.ts           # workspace root resolution
+│       │   ├── colors.ts          # terminal color support
+│       │   ├── qa.ts              # QA command handler
+│       │   ├── categories.ts      # categories command
+│       │   ├── providers.ts       # providers command
+│       │   ├── config.ts          # config loading/display
+│       │   ├── search.ts          # search logic
+│       │   └── formatter.ts       # output formatter
 │       └── tests/
+│           ├── paths.test.ts      # path resolution tests
+│           ├── qa.test.ts         # QA wrapper tests
+│           ├── cli.test.ts        # CLI integration tests
+│           ├── categories.test.ts # categories command tests
+│           ├── providers.test.ts  # providers command tests
+│           └── config.test.ts     # config tests
 └── AGENTS.md              # instructions for AI agents
 ```
 
@@ -212,6 +225,8 @@ Uses only Node.js stdlib (`os.homedir()`, `fs/promises`). Missing or invalid fil
 - `packages/cli/src/categories.ts`: Categories command handler
 - `packages/cli/src/providers.ts`: Providers command handler
 - `packages/cli/src/config.ts`: Config loading/display
+- `packages/cli/src/paths.ts`: Workspace root resolution (`projectRoot`)
+- `packages/cli/tests/paths.test.ts`: Tests for path resolution
 - `packages/cli/tests/qa.test.ts`: Tests for CLI qa wrapper
 - `packages/aggregator/src/aggregate.ts`: Aggregation orchestration, deduplication
 - `packages/aggregator/src/normalize.ts`: Entry & category normalization
