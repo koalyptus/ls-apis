@@ -19,9 +19,9 @@ export function isValidIso8601Utc(dateString: string): boolean {
   return date.toISOString() === dateString;
 }
 
-export function validateJsonSyntax(content: string):
-  | { valid: true; data: unknown }
-  | { valid: false; error: string } {
+export function validateJsonSyntax(
+  content: string
+): { valid: true; data: unknown } | { valid: false; error: string } {
   try {
     return { valid: true, data: JSON.parse(content) };
   } catch (err) {

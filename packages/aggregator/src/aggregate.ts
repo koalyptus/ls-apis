@@ -64,5 +64,3 @@ export async function runAggregation(): Promise<void> {
   const parsed = result.data as DataFile;
   console.log(`Validated: ${parsed.apis.length} entries, ${parsed.providers.length} providers`);
 }
-
-

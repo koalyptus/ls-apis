@@ -18,7 +18,10 @@ function entry(overrides: Partial<ApiEntry> = {}): ApiEntry {
 
 describe('deduplicateCategories', () => {
   it('should pass through valid entries', () => {
-    const entries = [entry({ name: 'API 1' }), entry({ name: 'API 2', link: 'https://example2.com' })];
+    const entries = [
+      entry({ name: 'API 1' }),
+      entry({ name: 'API 2', link: 'https://example2.com' }),
+    ];
     const result = deduplicateCategories(entries, 250);
     expect(result.entries).toHaveLength(2);
     expect(result.rejected).toHaveLength(0);
@@ -54,9 +57,7 @@ describe('deduplicateCategories', () => {
     ];
     const result = deduplicateCategories(entries, 250);
     expect(result.entries[0].sources).toHaveLength(3);
-    expect(result.entries[0].sources).toEqual(
-      expect.arrayContaining(['src-a', 'src-b', 'src-c'])
-    );
+    expect(result.entries[0].sources).toEqual(expect.arrayContaining(['src-a', 'src-b', 'src-c']));
   });
 
   it('should keep entries with different links separate', () => {
