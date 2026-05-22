@@ -60,11 +60,7 @@ jobs:
               --head "$BRANCH" \
               --title "Release v$VERSION" \
               --body "Automated weekly release." | sed 's|.*/pull/||')
-          gh api \
-            --method PUT \
-            "/repos/${{ github.repository }}/pulls/$PR/auto-merge" \
-            -f merge_method='squash' || \
-            echo "auto-merge not available, PR created at https://github.com/${{ github.repository }}/pull/$PR"
+          gh pr merge --squash "$PR"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
