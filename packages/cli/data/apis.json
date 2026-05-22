@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-22T05:08:28.299Z",
+  "timestamp": "2026-05-22T08:28:16.509Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -33973,7 +33973,7 @@
       "cors": "unknown",
       "categories": ["Jobs"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Careerjet",
@@ -40746,6 +40746,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "PageBolt",
+      "description": "Screenshot, PDF, video recording, OG image, and page inspection via REST API.",
+      "link": "https://pagebolt.dev/",
+      "auth": "apiKey",
+      "cors": null,
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "SEO Score",
       "description": "Comprehensive SEO audit with 28 checks, scoring, and prioritized recommendations.",
       "link": "https://seoscoreapi.com",
@@ -40899,16 +40909,6 @@
       "name": "Piloterr",
       "description": "Piloterr web scraping API handles headless browsers, rotates proxies for you, and offers json-parsed data extraction.",
       "link": "https://www.piloterr.com/",
-      "auth": "apiKey",
-      "cors": null,
-      "categories": ["Development"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Web Scraping API",
-      "description": "Extract structured data from any public URL.",
-      "link": "https://apyhub.com/utility/sharpapi-web-scraping-api",
       "auth": "apiKey",
       "cors": null,
       "categories": ["Development"],
@@ -41962,6 +41962,16 @@
       "auth": null,
       "cors": null,
       "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Himalayas",
+      "description": "Remote job listings with salary, timezone, and location data.",
+      "link": "https://himalayas.app/api",
+      "auth": null,
+      "cors": null,
+      "categories": ["Jobs"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },
