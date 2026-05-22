@@ -4,16 +4,13 @@ on:
   schedule:
     - cron: '0 0 * * 5' # Friday 00:00 UTC = 10:00 AEST
   workflow_dispatch:
-  push:
-    branches: [main]
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  prepare:
-    if: github.event_name != 'push'
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -64,35 +61,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  publish:
-    if: github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Release v')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
-
-      - name: Check if release commit
-        id: check
-        run: |
-          MSG=$(git log -1 --format=%s)
-          if [[ "$MSG" == "Release v"* ]]; then
-            echo "is_release=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "is_release=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Publish to npm
-        if: steps.check.outputs.is_release == 'true'
         run: npm publish --workspace=@ls-apis/cli
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub release
-        if: steps.check.outputs.is_release == 'true'
         run: |
           VERSION=$(node -p "require('./packages/cli/package.json').version")
           gh release create "v$VERSION" --generate-notes
