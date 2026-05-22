@@ -1,10 +1,5 @@
 import type { ApiEntry } from '../types';
-
-export interface ApiWarning {
-  apiName?: string;
-  issue: string;
-  data?: Record<string, unknown>;
-}
+import type { ProviderValidationResult, ApiValidationResult } from './types';
 
 export function isValidUrl(url: string): boolean {
   try {
@@ -57,7 +52,7 @@ export function validateDataFileSchema(data: unknown): string[] {
 export function validateProvider(
   provider: unknown,
   index: number
-): { valid: boolean; issue?: string } {
+): ProviderValidationResult {
   if (provider === null || typeof provider !== 'object') {
     return { valid: false, issue: `Provider at index ${index} is not an object` };
   }
@@ -79,7 +74,7 @@ export function validateApi(
   api: unknown,
   index: number,
   descriptionMaxLength?: number
-): { valid: boolean; issue?: string; api?: Partial<ApiEntry>; original: Record<string, unknown> } {
+): ApiValidationResult {
   if (api === null || typeof api !== 'object') {
     return { valid: false, issue: `API at index ${index} is not an object`, original: {} };
   }
@@ -178,13 +173,13 @@ export function validateApi(
         openapiSpec: a.openapiSpec as string | null,
         sources: a.sources as string[],
       },
-      original: a as Record<string, unknown>,
+      original: a as Partial<ApiEntry>,
     };
   }
 
   return {
     valid: false,
     issue: issues.join('; '),
-    original: a as Record<string, unknown>,
+    original: a as Partial<ApiEntry>,
   };
 }

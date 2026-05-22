@@ -2,7 +2,10 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 
 import { loadConfig } from '../../../cli/src/config';
+import type { DataFile } from '../types';
 import { resolveDataFile, resolveProjectRoot } from '../paths';
+
+import type { QaOptions, QaOutput, WarningGroup, Warning } from './types';
 
 import {
   validateJsonSyntax,
@@ -10,13 +13,7 @@ import {
   validateProvider,
   validateApi,
   isValidIso8601Utc,
-  type ApiWarning,
 } from './validations';
-
-export interface QaOptions {
-  outputFile?: string;
-  descriptionMaxLength?: number;
-}
 
 export async function runQa(options: QaOptions): Promise<void> {
   const dataFilePath = resolveDataFile(import.meta.url);
@@ -33,7 +30,7 @@ export async function runQa(options: QaOptions): Promise<void> {
       process.exit(1);
     }
 
-    const data = JSON.parse(content) as Record<string, unknown>;
+    const data = JSON.parse(content) as DataFile;
 
     const schemaErrors = validateDataFileSchema(data);
     if (schemaErrors.length > 0) {
@@ -44,10 +41,8 @@ export async function runQa(options: QaOptions): Promise<void> {
       process.exit(1);
     }
 
-    const warnings: ApiWarning[] = [];
-    const providers = data.providers as unknown[];
-    const apis = data.apis as unknown[];
-    const timestamp = data.timestamp as string;
+    const warnings: Warning[] = [];
+    const { providers, apis, timestamp } = data;
 
     if (!isValidIso8601Utc(timestamp)) {
       warnings.push({
@@ -63,18 +58,18 @@ export async function runQa(options: QaOptions): Promise<void> {
       });
     }
 
-    for (let i = 0; i < providers.length; i++) {
-      const result = validateProvider(providers[i], i);
+    for (const [i, provider] of providers.entries()) {
+      const result = validateProvider(provider, i);
       if (!result.valid) {
         warnings.push({
           issue: result.issue!,
-          data: providers[i] as Record<string, unknown>,
+          data: { ...provider },
         });
       }
     }
 
-    for (let i = 0; i < apis.length; i++) {
-      const result = validateApi(apis[i], i, descriptionMaxLength);
+    for (const [i, api] of apis.entries()) {
+      const result = validateApi(api, i, descriptionMaxLength);
 
       if (!result.valid) {
         warnings.push({
@@ -87,7 +82,7 @@ export async function runQa(options: QaOptions): Promise<void> {
 
     await mkdir(dirname(outputFilePath), { recursive: true });
 
-    const grouped: Record<string, { count: number; items: ApiWarning[] }> = {};
+    const grouped: Record<string, WarningGroup> = {};
     for (const w of warnings) {
       const key = w.issue;
       if (!grouped[key]) {
@@ -97,7 +92,7 @@ export async function runQa(options: QaOptions): Promise<void> {
       grouped[key].items.push(w);
     }
 
-    const output = {
+    const output: QaOutput = {
       total: warnings.length,
       groups: grouped,
     };
