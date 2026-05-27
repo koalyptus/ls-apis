@@ -36,8 +36,6 @@ jobs:
           fi
           echo "QA clean — 0 issues"
 
-      - run: npm run format:fix
-
       - name: Bump version
         run: npm version patch --no-git-tag-version --workspace=@ls-apis/cli
 
