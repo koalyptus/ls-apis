@@ -1,7 +1,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 
-import { loadConfig } from '../../../cli/src/config';
+import { loadConfig } from '@ls-apis/shared/config';
 import type { DataFile } from '../types';
 import { resolveDataFile, resolveProjectRoot } from '../paths';
 

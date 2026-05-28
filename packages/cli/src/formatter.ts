@@ -1,5 +1,5 @@
 import { color } from './colors';
-import type { ApiEntry, FormatOptions, ListOptions, Provider } from './types';
+import type { ApiEntry, FormatOptions, ListOptions, Provider } from '@ls-apis/shared/types';
 
 function truncate(text: string, maxLength: number): string {
   if (text.length <= maxLength) {
@@ -25,7 +25,6 @@ function formatText(
       `  ${color.dim('Description:')} ${truncate(api.description ?? 'No description', maxLen)}`
     );
     lines.push(`  ${color.dim('Link:')} ${api.link}`);
-    // Test missing braces - should trigger ESLint error
     if (api.auth !== undefined && api.auth !== null) {
       lines.push(`  ${color.dim('Auth:')} ${color.yellow(api.auth)}`);
     }

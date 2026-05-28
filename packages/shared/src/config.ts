@@ -1,14 +1,9 @@
 import { readFile, writeFile, access } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
+import type { LsApisConfig } from './types';
 
 export const CONFIG_PATH = join(homedir(), '.ls-apis');
-
-export interface LsApisConfig {
-  limit?: number;
-  descriptionMaxLength?: number;
-  colors?: boolean;
-}
 
 const DEFAULTS: Required<LsApisConfig> = {
   limit: 20,

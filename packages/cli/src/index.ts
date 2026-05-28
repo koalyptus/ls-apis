@@ -5,13 +5,13 @@ import { fileURLToPath } from 'node:url';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { initColors } from './colors';
-import { loadConfig, getConfig } from './config';
-import { search } from './search';
+import { loadConfig, getConfig } from '@ls-apis/shared/config';
+import { search } from '@ls-apis/shared/search';
 import { formatResults } from './formatter';
 import { handleCategories } from './categories';
 import { handleProviders } from './providers';
 import { runQa } from './qa';
-import type { DataFile } from './types';
+import type { DataFile } from '@ls-apis/shared/types';
 
 let version: string;
 

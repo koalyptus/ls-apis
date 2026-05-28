@@ -10,6 +10,7 @@
     "aggregate": "tsx src/run.ts"
   },
   "dependencies": {
+    "@ls-apis/shared": "*",
     "axios": "^1.7.0",
     "cheerio": "^1.0.0",
     "marked": "^12.0.0"

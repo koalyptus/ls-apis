@@ -12,12 +12,12 @@ export interface DataFile {
 
 export interface ApiEntry {
   name: string;
-  description?: string;
+  description: string | null;
   link: string;
-  auth?: string;
-  cors?: string;
+  auth: string | null;
+  cors: string | null;
   categories: string[];
-  openapiSpec?: string;
+  openapiSpec: string | null;
   sources: string[];
 }
 
@@ -31,14 +31,20 @@ export interface SearchOptions {
   limit?: number;
 }
 
-export interface FormatOptions {
-  output?: 'text' | 'json';
-  descriptionMaxLength?: number;
-}
-
 export type ListSortBy = 'name' | 'count';
 
 export interface ListOptions {
   sort?: ListSortBy;
   output?: 'text' | 'json';
+}
+
+export interface FormatOptions {
+  output?: 'text' | 'json';
+  descriptionMaxLength?: number;
+}
+
+export interface LsApisConfig {
+  limit?: number;
+  descriptionMaxLength?: number;
+  colors?: boolean;
 }

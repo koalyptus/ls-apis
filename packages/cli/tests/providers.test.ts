@@ -2,8 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { handleProviders } from '../src/providers';
 import { run } from '../src/index';
 import { initColors } from '../src/colors';
-import type { Provider } from '../src/types';
-import type { LsApisConfig } from '../src/config';
+import type { Provider, LsApisConfig, ApiEntry } from '@ls-apis/shared/types';
 import * as fs from 'node:fs/promises';
 
 vi.mock('node:fs/promises', () => ({
@@ -22,7 +21,7 @@ const mockConfig: LsApisConfig = {
   colors: false,
 };
 
-const mockApis = [
+const mockApis: ApiEntry[] = [
   {
     name: 'A',
     description: null,

@@ -1,5 +1,4 @@
-import type { ApiEntry, Provider } from './types';
-import type { LsApisConfig } from './config';
+import type { ApiEntry, Provider, LsApisConfig } from '@ls-apis/shared/types';
 import { formatProviders } from './formatter';
 import { initColors } from './colors';
 

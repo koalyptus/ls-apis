@@ -58,3 +58,13 @@ export function getCategories(apis: ApiEntry[]): Map<string, number> {
   }
   return map;
 }
+
+export function getProviders(apis: ApiEntry[]): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const api of apis) {
+    for (const source of api.sources) {
+      counts.set(source, (counts.get(source) ?? 0) + 1);
+    }
+  }
+  return counts;
+}

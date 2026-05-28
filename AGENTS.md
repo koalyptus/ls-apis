@@ -12,7 +12,6 @@ ls-apis/
 │   │   │   ├── aggregate.ts       # main orchestration
 │   │   │   ├── normalize.ts       # entry & category normalization
 │   │   │   ├── paths.ts           # path utilities
-│   │   │   ├── config.ts           # config reader (~/.ls-apis)
 │   │   │   ├── qa/                # QA validation
 │   │   │   │   ├── index.ts       # QA orchestrator
 │   │   │   │   ├── validations.ts # pure validation functions
@@ -23,26 +22,36 @@ ls-apis/
 │   │   │   ├── tests/             # aggregator tests
 │   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
 │   │   └── vitest.config.ts
-│   └── cli/               # CLI for searching APIs
-│       ├── data/
-│       │   └── apis.json          # bundled API data (published with package)
-│       ├── src/
-│       │   ├── index.ts           # CLI entry point
-│       │   ├── paths.ts           # workspace root resolution
-│       │   ├── colors.ts          # terminal color support
-│       │   ├── qa.ts              # QA command handler
-│       │   ├── categories.ts      # categories command
-│       │   ├── providers.ts       # providers command
-│       │   ├── config.ts          # config loading/display
-│       │   ├── search.ts          # search logic
-│       │   └── formatter.ts       # output formatter
-│       └── tests/
-│           ├── paths.test.ts      # path resolution tests
-│           ├── qa.test.ts         # QA wrapper tests
-│           ├── cli.test.ts        # CLI integration tests
-│           ├── categories.test.ts # categories command tests
-│           ├── providers.test.ts  # providers command tests
-│           └── config.test.ts     # config tests
+│   ├── cli/               # CLI for searching APIs
+│   │   ├── data/
+│   │   │   └── apis.json          # bundled API data (published with package)
+│   │   ├── src/
+│   │   │   ├── index.ts           # CLI entry point
+│   │   │   ├── paths.ts           # workspace root resolution
+│   │   │   ├── colors.ts          # terminal color support
+│   │   │   ├── qa.ts              # QA command handler
+│   │   │   ├── categories.ts      # categories command
+│   │   │   ├── providers.ts       # providers command
+│   │   │   └── formatter.ts       # output formatter
+│   │   └── tests/
+│   │       ├── paths.test.ts      # path resolution tests
+│   │       ├── qa.test.ts         # QA wrapper tests
+│   │       ├── cli.test.ts        # CLI integration tests
+│   │       ├── categories.test.ts # categories command tests
+│   │       ├── providers.test.ts  # providers command tests
+│   │       └── config.test.ts     # config tests
+│   ├── shared/             # Shared types, config, search, paths (consumed by all packages)
+│   │   └── src/
+│   │       ├── index.ts
+│   │       ├── types.ts           # ApiEntry, DataFile, Provider, SearchOptions
+│   │       ├── config.ts          # Config loading/display (moved from CLI)
+│   │       ├── search.ts          # Search logic (moved from CLI)
+│   │       └── paths.ts           # Workspace root resolution
+│   └── mcp-server/         # MCP server for AI-friendly API queries (stdio transport)
+│       └── src/
+│           ├── index.ts           # Entry point
+│           ├── server.ts          # MCP server with tools & resources
+│           └── data.ts            # Data loading (apis.json)
 └── AGENTS.md              # instructions for AI agents
 ```
 
@@ -67,6 +76,9 @@ npm run test:cli
 
 # Typecheck all workspaces
 npm run typecheck
+
+# MCP server (stdio transport for AI clients)
+npm run mcp
 
 # Lint & format
 npm run lint
@@ -224,7 +236,6 @@ Uses only Node.js stdlib (`os.homedir()`, `fs/promises`). Missing or invalid fil
 - `packages/cli/src/qa.ts`: `ls-apis qa` handler — shells out to aggregator QA via `execSync`
 - `packages/cli/src/categories.ts`: Categories command handler
 - `packages/cli/src/providers.ts`: Providers command handler
-- `packages/cli/src/config.ts`: Config loading/display
 - `packages/cli/src/paths.ts`: Workspace root resolution (`projectRoot`)
 - `packages/cli/tests/paths.test.ts`: Tests for path resolution
 - `packages/cli/tests/qa.test.ts`: Tests for CLI qa wrapper
@@ -235,3 +246,10 @@ Uses only Node.js stdlib (`os.homedir()`, `fs/promises`). Missing or invalid fil
 - `packages/aggregator/src/paths.ts`: Path utilities for Windows ESM compatibility
 - `packages/aggregator/src/sources/apis-guru.fetcher.ts`, `.fetcher.ts`: Fetcher implementations
 - `packages/aggregator/src/sources/index.ts`: Fetcher auto-loader
+- `packages/shared/src/types.ts`: Unified shared types (ApiEntry, DataFile, Provider, SearchOptions)
+- `packages/shared/src/config.ts`: Config loading from `~/.ls-apis`
+- `packages/shared/src/search.ts`: Search/filter/sort logic
+- `packages/shared/src/paths.ts`: Workspace root resolution
+- `packages/mcp-server/src/index.ts`: MCP server entry point
+- `packages/mcp-server/src/server.ts`: MCP server with tools & resources
+- `packages/mcp-server/src/data.ts`: Data loading for MCP server

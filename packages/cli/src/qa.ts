@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
-import { projectRoot } from './paths.js';
+import { projectRoot } from '@ls-apis/shared/paths';
 
 export async function runQa(descriptionMaxLength: number, outputFile?: string): Promise<void> {
   const root = projectRoot(import.meta.url);

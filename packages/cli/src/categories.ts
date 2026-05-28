@@ -1,8 +1,7 @@
-import type { LsApisConfig } from './config';
-import { getCategories } from './search';
+import type { LsApisConfig, ApiEntry } from '@ls-apis/shared/types';
+import { getCategories } from '@ls-apis/shared/search';
 import { formatList } from './formatter';
 import { initColors } from './colors';
-import type { ApiEntry } from './types';
 
 export function handleCategories(
   apis: ApiEntry[],

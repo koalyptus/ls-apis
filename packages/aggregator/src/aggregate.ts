@@ -2,7 +2,7 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { loadAllFetchers } from './sources/index';
 import { resolveDataFile, resolveRejectedFile } from './paths';
-import { loadConfig } from '../../cli/src/config';
+import { loadConfig } from '@ls-apis/shared/config';
 import { deduplicateCategories } from './dedupe';
 import { validateJsonSyntax } from './qa/validations';
 import type { ApiEntry, DataFile, RejectedFile } from './types';
