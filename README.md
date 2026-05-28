@@ -2,7 +2,7 @@
 
 ### Public APIs Discovery for Humans & Agents
 
-A curated collection of **4,300+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
+A curated collection of **4,000+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
 
 ## Features
 
