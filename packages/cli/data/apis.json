@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-22T08:36:32.009Z",
+  "timestamp": "2026-05-29T02:09:29.894Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -26146,6 +26146,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Amanah Sunnah",
+      "description": "Semantic search across Quran, Hadith, Tafsir & 18K+ Rijal narrators",
+      "link": "https://sunnah.amanahagent.cloud/developers",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Books"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Bhagavad Gita",
       "description": "Open Source Shrimad Bhagavad Gita API including 21+ authors translation in Sanskrit/English/Hindi",
       "link": "https://docs.bhagavadgitaapi.in",
@@ -28876,6 +28886,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "QR & Barcode",
+      "description": "QR codes and barcodes (Code 128, EAN-13, Data Matrix, PDF417 + more). SVG or PNG output",
+      "link": "https://solsigs.com/qrapi/",
+      "auth": null,
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "QR code",
       "description": "Create an easy to read QR code and URL shortener",
       "link": "https://www.qrtag.net/api/",
@@ -29763,7 +29783,7 @@
       "cors": "unknown",
       "categories": ["Email"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Mailtrap",
@@ -30260,6 +30280,16 @@
       "description": "Global macroeconomic data",
       "link": "https://www.econdb.com/api/",
       "auth": null,
+      "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "EconPulse",
+      "description": "Live economic data — CPI, PPI, energy, treasury rates, BTC premium",
+      "link": "https://econpulse.io",
+      "auth": "apiKey",
       "cors": "yes",
       "categories": ["Finance"],
       "openapiSpec": null,
@@ -32176,6 +32206,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "HackMyIP",
+      "description": "IP geolocation, ISP and privacy/VPN scoring, email breach checks, DNS and WHOIS lookups",
+      "link": "https://hackmyip.com/api",
+      "auth": null,
+      "cors": "yes",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "HelloSalut",
       "description": "Get hello translation following user language",
       "link": "https://fourtonfish.com/project/hellosalut-api/",
@@ -33473,7 +33513,7 @@
       "cors": "unknown",
       "categories": ["Government"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Open Government, Switzerland",
@@ -35141,6 +35181,16 @@
       "link": "https://opendata.minneapolismn.gov/",
       "auth": null,
       "cors": "no",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Open Scholarships",
+      "description": "Free, openly-licensed directory of US scholarships and student aid from official sources",
+      "link": "https://scholarships.grudged.io",
+      "auth": null,
+      "cors": "yes",
       "categories": ["Open Data"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -38016,6 +38066,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Audexum",
+      "description": "Text-to-speech REST API with 43 voices and 33 languages",
+      "link": "https://audexum.com/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Text Analysis"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Cloudmersive Natural Language Processing",
       "description": "Natural language processing and text analysis",
       "link": "https://www.cloudmersive.com/nlp-api",
@@ -38489,6 +38549,16 @@
       "name": "Open Charge Map",
       "description": "Global public registry of electric vehicle charging locations",
       "link": "https://openchargemap.org/site/develop/api",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Transportation"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Orizn Visa",
+      "description": "Visa requirements for 199 countries, 39K+ passport-destination pairs in 15 languages",
+      "link": "https://visa.orizn.app",
       "auth": "apiKey",
       "cors": "yes",
       "categories": ["Transportation"],
@@ -39084,6 +39154,16 @@
       "categories": ["Url Shorteners"],
       "openapiSpec": null,
       "sources": ["github-public-apis", "publicapis-dev"]
+    },
+    {
+      "name": "RedirHub",
+      "description": "URL redirect management with custom domains, HTTPS, analytics, and REST API",
+      "link": "https://redirhub.com",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Url Shorteners"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Short Link",
@@ -41106,6 +41186,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "FreeCustom.Email",
+      "description": "Disposable email inboxes with OTP extraction and real-time WebSocket events.",
+      "link": "https://freecustom.email",
+      "auth": "apiKey",
+      "cors": null,
+      "categories": ["Email"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "NoParam",
       "description": "Email validation API for real-time & bulk checking.",
       "link": "https://noparam.com",
@@ -41902,6 +41992,16 @@
       "auth": "apiKey",
       "cors": null,
       "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "BuildData",
+      "description": "Canadian construction and development data from 17 cities.",
+      "link": "https://builddata.ca",
+      "auth": "apiKey",
+      "cors": null,
+      "categories": ["Government"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },
