@@ -44,7 +44,8 @@
     "aggregate": "cd packages/aggregator && npm run aggregate",
     "qa": "cd packages/aggregator && npx tsx src/qa/index.ts",
     "ls-apis": "cd packages/cli && npx tsx src/index.ts",
-    "mcp": "cd packages/mcp-server && npx tsx src/index.ts"
+    "mcp": "cd packages/mcp-server && npx tsx src/index.ts",
+    "build:mcp": "npm run build --workspace=@ls-apis/mcp-server"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

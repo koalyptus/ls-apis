@@ -10,22 +10,34 @@ ls-apis includes an [MCP](https://modelcontextprotocol.io) server for AI assista
 
 ### Tools
 
-| Tool          | Description                                                 |
-| ------------- | ----------------------------------------------------------- |
-| `search-apis` | Search public APIs by query, category, auth type, and limit |
+| Tool               | Description                                                 |
+| ------------------ | ----------------------------------------------------------- |
+| `search-apis`      | Search public APIs by query, category, auth type, and limit |
+| `list-categories`  | List all API categories with API counts                     |
+| `list-providers`   | List all data providers with API counts                     |
 
 ### Resources
 
-| URI            | Description                        |
-| -------------- | ---------------------------------- |
-| `apis://data`  | Full aggregated API dataset (JSON) |
-| `apis://stats` | Dataset summary statistics (JSON)  |
+| URI                | Description                              |
+| ------------------ | ---------------------------------------- |
+| `apis://data`      | Full aggregated API dataset (JSON)       |
+| `apis://categories`| All API categories with counts (JSON)    |
+| `apis://providers` | All data providers with counts (JSON)    |
+| `apis://stats`     | Dataset summary statistics (JSON)        |
+
+### Setup
+
+```bash
+npm install
+```
 
 ### Configuration
 
 #### VS Code / GitHub Copilot
 
-Use `npx tsx` to run the server directly, with `cwd` pointing to the project root:
+Create `.vscode/mcp.json` in your project root:
+
+> VS Code will ask for permission on first run — this is standard for project-local MCP servers. Approve once and it won't prompt again.
 
 ```json
 {
@@ -75,7 +87,7 @@ Create `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
 
 ### Verification
 
-After configuring, the client should discover the `search-apis` tool and `apis://data` / `apis://stats` resources. You can also test via CLI:
+After configuring, the client should discover the tools and resources listed above. You can also test via CLI:
 
 ```bash
 echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | npm run mcp
