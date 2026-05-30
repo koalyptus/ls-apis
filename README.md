@@ -216,7 +216,7 @@ A config file is automatically created at `~/.ls-apis` on first run. You can edi
 | `descriptionMaxLength` | 250     | Max chars before truncation |
 | `colors`               | true    | Enable terminal colors      |
 
-The config file is plain JSON. Edit it manually to customize defaults, or delete it to regenerate with built-in values. Uses only Node.js standard library (`os`, `path`, `fs/promises`).
+The config file is plain JSON. Edit it manually to customize defaults, or delete it to regenerate with built-in values.
 
 ### Example Output
 
