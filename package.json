@@ -36,7 +36,7 @@
     "test:cli": "npm run test --workspace=@ls-apis/cli",
     "test:shared": "npm run test --workspace=@ls-apis/shared",
     "test:mcp": "npm run test --workspace=@ls-apis/mcp-server",
-    "typecheck": "npx tsc --noEmit -p packages/aggregator && npx tsc --noEmit -p packages/cli && npx tsc --noEmit -p packages/mcp-server",
+    "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --check .",

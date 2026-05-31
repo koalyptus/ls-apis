@@ -10,20 +10,20 @@ ls-apis includes an [MCP](https://modelcontextprotocol.io) server for AI assista
 
 ### Tools
 
-| Tool               | Description                                                 |
-| ------------------ | ----------------------------------------------------------- |
-| `search-apis`      | Search public APIs by query, category, auth type, and limit |
-| `list-categories`  | List all API categories with API counts                     |
-| `list-providers`   | List all data providers with API counts                     |
+| Tool              | Description                                                 |
+| ----------------- | ----------------------------------------------------------- |
+| `search-apis`     | Search public APIs by query, category, auth type, and limit |
+| `list-categories` | List all API categories with API counts                     |
+| `list-providers`  | List all data providers with API counts                     |
 
 ### Resources
 
-| URI                | Description                              |
-| ------------------ | ---------------------------------------- |
-| `apis://data`      | Full aggregated API dataset (JSON)       |
-| `apis://categories`| All API categories with counts (JSON)    |
-| `apis://providers` | All data providers with counts (JSON)    |
-| `apis://stats`     | Dataset summary statistics (JSON)        |
+| URI                 | Description                           |
+| ------------------- | ------------------------------------- |
+| `apis://data`       | Full aggregated API dataset (JSON)    |
+| `apis://categories` | All API categories with counts (JSON) |
+| `apis://providers`  | All data providers with counts (JSON) |
+| `apis://stats`      | Dataset summary statistics (JSON)     |
 
 ### Setup
 

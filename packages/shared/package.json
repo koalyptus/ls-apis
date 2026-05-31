@@ -13,6 +13,7 @@
     "./paths": "./src/paths.ts"
   },
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
   "devDependencies": {

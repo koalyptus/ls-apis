@@ -5,6 +5,7 @@
   "type": "module",
   "main": "./src/index.ts",
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "start": "tsx src/index.ts",
     "build": "tsc && tsc-esm-fix --target dist",
     "test": "vitest run"

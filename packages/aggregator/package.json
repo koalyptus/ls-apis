@@ -5,6 +5,7 @@
   "type": "module",
   "main": "./src/run.ts",
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "aggregate": "tsx src/run.ts"
