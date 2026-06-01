@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
-  formatApiEntry,
   getListToolsResult,
   handleCallTool,
   getListResourcesResult,
@@ -47,30 +46,6 @@ vi.mock('../src/data', () => {
       { name: 'source-b', count: 1 },
     ]),
   };
-});
-
-describe('formatApiEntry', () => {
-  it('extracts relevant fields from an API entry', () => {
-    const api = {
-      name: 'Test API',
-      description: 'A test',
-      link: 'https://test.com',
-      auth: 'apiKey',
-      cors: 'yes',
-      categories: ['test'],
-      openapiSpec: null,
-      sources: ['source'],
-    };
-    expect(formatApiEntry(api)).toEqual({
-      name: 'Test API',
-      description: 'A test',
-      link: 'https://test.com',
-      auth: 'apiKey',
-      cors: 'yes',
-      categories: ['test'],
-      sources: ['source'],
-    });
-  });
 });
 
 describe('getListToolsResult', () => {

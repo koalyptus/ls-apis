@@ -8,19 +8,7 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { search } from '@ls-apis/shared/search';
 import { getApis, getProviders, getStats, getCategories, getProviderCounts } from './data';
-import type { ApiEntry } from '@ls-apis/shared/types';
-
-export function formatApiEntry(api: ApiEntry) {
-  return {
-    name: api.name,
-    description: api.description,
-    link: api.link,
-    auth: api.auth,
-    cors: api.cors,
-    categories: api.categories,
-    sources: api.sources,
-  };
-}
+import { getVersion } from '@ls-apis/shared/data';
 
 export function getListToolsResult() {
   return {
@@ -123,7 +111,7 @@ export async function handleCallTool(params: CallToolParams) {
         text: JSON.stringify(
           {
             total: results.length,
-            results: results.map(formatApiEntry),
+            results,
           },
           null,
           2
@@ -221,27 +209,30 @@ export async function handleReadResource(uri: string) {
   throw new Error(`Unknown resource: ${uri}`);
 }
 
-const server = new Server(
-  {
-    name: 'ls-apis-mcp',
-    version: '0.1.0',
-  },
-  {
-    capabilities: {
-      tools: {},
-      resources: {},
-    },
-  }
-);
-
-server.setRequestHandler(ListToolsRequestSchema, getListToolsResult);
-server.setRequestHandler(CallToolRequestSchema, async (request) => handleCallTool(request.params));
-server.setRequestHandler(ListResourcesRequestSchema, getListResourcesResult);
-server.setRequestHandler(ReadResourceRequestSchema, async (request) =>
-  handleReadResource(request.params.uri)
-);
-
 export async function startServer(): Promise<void> {
+  const version = await getVersion(import.meta.url);
+  const server = new Server(
+    {
+      name: 'ls-apis-mcp',
+      version,
+    },
+    {
+      capabilities: {
+        tools: {},
+        resources: {},
+      },
+    }
+  );
+
+  server.setRequestHandler(ListToolsRequestSchema, getListToolsResult);
+  server.setRequestHandler(CallToolRequestSchema, async (request) =>
+    handleCallTool(request.params)
+  );
+  server.setRequestHandler(ListResourcesRequestSchema, getListResourcesResult);
+  server.setRequestHandler(ReadResourceRequestSchema, async (request) =>
+    handleReadResource(request.params.uri)
+  );
+
   const transport = new StdioServerTransport();
   await server.connect(transport);
 }

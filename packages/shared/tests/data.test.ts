@@ -5,7 +5,9 @@ import { readFile } from 'node:fs/promises';
 const mockData = {
   timestamp: '2026-05-28T00:00:00.000Z',
   providers: [{ name: 'source-a', url: 'https://a.com' }],
-  apis: [{ name: 'API One', link: 'https://api1.com', categories: ['weather'], sources: ['source-a'] }],
+  apis: [
+    { name: 'API One', link: 'https://api1.com', categories: ['weather'], sources: ['source-a'] },
+  ],
 };
 
 const mockPkg = { version: '1.2.3' };
@@ -65,7 +67,7 @@ describe('getVersion', () => {
     clearDataFileCache();
   });
 
-  it('reads version from the caller\'s package.json', async () => {
+  it("reads version from the caller's package.json", async () => {
     const version = await getVersion(import.meta.url);
     expect(version).toBe('1.2.3');
   });
