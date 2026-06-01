@@ -5,7 +5,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { initColors } from './colors';
 import { loadConfig, getConfig } from '@ls-apis/shared/config';
-import { loadDataFile, readPackageVersion } from '@ls-apis/shared/data';
+import { loadDataFile, getVersion } from '@ls-apis/shared/data';
 import { search } from '@ls-apis/shared/search';
 import { formatResults } from './formatter';
 import { handleCategories } from './categories';
@@ -14,7 +14,7 @@ import { runQa } from './qa';
 
 export async function run(argv: string[]): Promise<void> {
   const config = await loadConfig();
-  const ver = await readPackageVersion(import.meta.url);
+  const ver = await getVersion(import.meta.url);
 
   const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../data/apis.json');
   const data = await loadDataFile(import.meta.url, dataFile);
