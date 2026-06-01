@@ -1,36 +1,24 @@
 #!/usr/bin/env node
-import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { initColors } from './colors';
 import { loadConfig, getConfig } from '@ls-apis/shared/config';
+import { loadDataFile, readPackageVersion } from '@ls-apis/shared/data';
 import { search } from '@ls-apis/shared/search';
 import { formatResults } from './formatter';
 import { handleCategories } from './categories';
 import { handleProviders } from './providers';
 import { runQa } from './qa';
-import type { DataFile } from '@ls-apis/shared/types';
-
-let version: string;
-
-async function getVersion(): Promise<string> {
-  if (!version) {
-    const packageJsonPath = join(dirname(fileURLToPath(import.meta.url)), '../package.json');
-    const pkg = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
-    version = pkg.version;
-  }
-  return version;
-}
 
 export async function run(argv: string[]): Promise<void> {
   const config = await loadConfig();
-  const ver = await getVersion();
+  const ver = await readPackageVersion(import.meta.url);
 
   const dataFile = join(dirname(fileURLToPath(import.meta.url)), '../data/apis.json');
-  const data = await readFile(dataFile, 'utf-8');
-  const { apis, providers } = JSON.parse(data) as DataFile;
+  const data = await loadDataFile(import.meta.url, dataFile);
+  const { apis, providers } = data;
 
   let exitEarly = false;
 

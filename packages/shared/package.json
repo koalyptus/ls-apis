@@ -10,7 +10,8 @@
     "./types": "./src/types.ts",
     "./config": "./src/config.ts",
     "./search": "./src/search.ts",
-    "./paths": "./src/paths.ts"
+    "./paths": "./src/paths.ts",
+    "./data": "./src/data.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
