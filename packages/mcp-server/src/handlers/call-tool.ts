@@ -1,11 +1,8 @@
 import { search } from '@ls-apis/shared/search';
+import { loadConfig } from '@ls-apis/shared/config';
 import { getApis, getCategories, getProviderCounts } from '../data';
 import { ToolName } from '../types';
-
-export interface CallToolParams {
-  name: ToolName;
-  arguments?: Record<string, unknown>;
-}
+import type { CallToolParams } from './types';
 
 export async function handleCallTool(params: CallToolParams) {
   if (params.name === ToolName.ListCategories) {
@@ -40,7 +37,7 @@ export async function handleCallTool(params: CallToolParams) {
   const query = typeof args.query === 'string' ? args.query : undefined;
   const category = typeof args.category === 'string' ? args.category : undefined;
   const auth = typeof args.auth === 'string' ? args.auth : undefined;
-  const limit = typeof args.limit === 'number' ? args.limit : 20;
+  const limit = typeof args.limit === 'number' ? args.limit : (await loadConfig()).limit;
 
   const apis = await getApis();
   const results = search(apis, { query, category, auth, limit });

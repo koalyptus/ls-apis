@@ -1,22 +1,25 @@
-import { describe, it, expect, vi, beforeAll } from 'vitest';
-import axios from 'axios';
+import { describe, it, expect, vi, beforeAll, afterAll, beforeEach } from 'vitest';
 import fetcher from '../github-public-apis.fetcher';
 
-vi.mock('axios', () => ({
-  default: {
-    get: vi.fn(),
-  },
-}));
+const mockFetch = vi.hoisted(() => vi.fn());
+
+vi.stubGlobal('fetch', mockFetch);
 
 const mockReadme = `
 # Public APIs
 
+| Project | Description |
+| --- | --- |
+| public-apis | A collective list of free APIs |
+
+## APIs
+
 | API | Description | Auth | HTTPS | CORS |
 | --- | --- | --- | --- | --- |
-| Test Weather | Weather data | apiKey | Yes | Yes |
-| Test Finance | Finance data | OAuth | Yes | No |
-| Test Animals | Animal facts | apiKey | Yes | Yes |
-| Test Map | Map service | apiKey | Yes | Unknown |
+| [Test Weather](https://api.weather.com) | Weather data | apiKey | Yes | Yes |
+| [Test Finance](https://api.finance.com) | Finance data | OAuth | Yes | No |
+| [Test Animals](https://api.animals.com) | Animal facts | apiKey | Yes | Yes |
+| [Test Map](https://api.maps.com) | Map service | apiKey | Yes | Unknown |
 `;
 
 describe('sources/github-public-apis', () => {
@@ -24,31 +27,36 @@ describe('sources/github-public-apis', () => {
     vi.spyOn(console, 'log').mockImplementation(() => {});
   });
 
-  describe('fetchApis', () => {
-    it('should fetch APIs', async () => {
-      vi.mocked(axios.get).mockResolvedValue({ data: mockReadme });
+  afterAll(() => {
+    vi.unstubAllGlobals();
+  });
 
+  describe('fetchApis', () => {
+    beforeEach(() => {
+      mockFetch.mockResolvedValue({
+        ok: true,
+        text: () => Promise.resolve(mockReadme),
+      } as Response);
+    });
+
+    it('should fetch APIs', async () => {
       const entries = await fetcher.fetchApis();
 
       expect(entries.length).toBeGreaterThan(0);
     });
 
     it('should have entries with apiKey auth', async () => {
-      vi.mocked(axios.get).mockResolvedValue({ data: mockReadme });
-
       const entries = await fetcher.fetchApis();
 
       const authEntries = entries.filter((e) => e.auth === 'apiKey');
       expect(authEntries.length).toBeGreaterThan(0);
     });
 
-    it('should have entries with various categories', async () => {
-      vi.mocked(axios.get).mockResolvedValue({ data: mockReadme });
-
+    it('should assign default category', async () => {
       const entries = await fetcher.fetchApis();
 
       const categories = new Set(entries.flatMap((e) => e.categories));
-      expect(categories.size).toBeGreaterThan(1);
+      expect(categories.has('Public')).toBe(true);
     });
   });
 });

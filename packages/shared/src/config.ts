@@ -11,19 +11,31 @@ const DEFAULTS: Required<LsApisConfig> = {
   colors: true,
 };
 
+let cachedConfig: Required<LsApisConfig> | null = null;
+
+export function clearConfigCache(): void {
+  cachedConfig = null;
+}
+
 export async function loadConfig(): Promise<Required<LsApisConfig>> {
+  if (cachedConfig) {
+    return cachedConfig;
+  }
+
   try {
     const raw = await readFile(CONFIG_PATH, 'utf-8');
     const parsed = JSON.parse(raw) as LsApisConfig;
-    return {
+    cachedConfig = {
       limit: parsed.limit ?? DEFAULTS.limit,
       descriptionMaxLength: parsed.descriptionMaxLength ?? DEFAULTS.descriptionMaxLength,
       colors: parsed.colors ?? DEFAULTS.colors,
     };
   } catch {
     await ensureConfigExists();
-    return DEFAULTS;
+    cachedConfig = DEFAULTS;
   }
+
+  return cachedConfig;
 }
 
 async function ensureConfigExists(): Promise<void> {
