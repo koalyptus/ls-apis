@@ -120,6 +120,7 @@ ls-apis -q <query>
 
 - **MCP client config**: use `npx tsx packages/mcp-server/src/index.ts` for all platforms. VS Code will ask for permission once on first run — this is normal for project-local MCP servers (as opposed to published npm packages which are pre-trusted). Approving once persists the decision.
 - **Auto-build**: `packages/mcp-server/index.js` is a small JS shim that builds the server (`tsc && tsc-esm-fix`) if `dist/` doesn't exist, then delegates to `dist/index.js`. This ensures MCP client configs work on fresh clones without a manual build step.
+- **SDK imports use `.js`**: `@modelcontextprotocol/sdk@0.5.0` has a wildcard exports map (`"./*": "./dist/*"`) that TypeScript's `bundler` resolution can't resolve without the extension ([#218](https://github.com/modelcontextprotocol/typescript-sdk/issues/218), [#258](https://github.com/modelcontextprotocol/typescript-sdk/issues/258)). These are the only `.js` extensions in source — everything else uses extensionless imports thanks to `moduleResolution: "bundler"`.
 
 ## Data Schema
 

@@ -51,21 +51,21 @@ describe('handleReadResource', () => {
 
   it('returns full dataset for apis://data', async () => {
     const result = await handleReadResource(ResourceUri.Data);
-    const parsed = JSON.parse(result.contents[0].text);
+    const parsed = JSON.parse(result.contents[0].text as string);
     expect(parsed.providers).toHaveLength(2);
     expect(parsed.apis).toHaveLength(2);
   });
 
   it('returns categories for apis://categories', async () => {
     const result = await handleReadResource(ResourceUri.Categories);
-    const parsed = JSON.parse(result.contents[0].text);
+    const parsed = JSON.parse(result.contents[0].text as string);
     expect(parsed.total).toBe(2);
     expect(parsed.categories[0].name).toBe('weather');
   });
 
   it('returns providers for apis://providers', async () => {
     const result = await handleReadResource(ResourceUri.Providers);
-    const parsed = JSON.parse(result.contents[0].text);
+    const parsed = JSON.parse(result.contents[0].text as string);
     expect(parsed.total).toBe(2);
     expect(parsed.providers[0].name).toBe('source-a');
     expect(parsed.providers[0].count).toBe(2);
@@ -73,7 +73,7 @@ describe('handleReadResource', () => {
 
   it('returns stats for apis://stats', async () => {
     const result = await handleReadResource(ResourceUri.Stats);
-    const parsed = JSON.parse(result.contents[0].text);
+    const parsed = JSON.parse(result.contents[0].text as string);
     expect(parsed.totalApis).toBe(2);
     expect(parsed.totalCategories).toBe(2);
   });

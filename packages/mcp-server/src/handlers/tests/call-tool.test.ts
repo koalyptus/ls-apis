@@ -49,20 +49,20 @@ describe('handleCallTool', () => {
       name: ToolName.SearchApis,
       arguments: { query: 'weather' },
     });
-    const parsed = JSON.parse(result.content[0].text);
+    const parsed = JSON.parse(result.content[0].text as string);
     expect(parsed.total).toBe(1);
     expect(parsed.results[0].name).toBe('Weather API');
   });
 
   it('returns all results with default limit', async () => {
     const result = await handleCallTool({ name: ToolName.SearchApis });
-    const parsed = JSON.parse(result.content[0].text);
+    const parsed = JSON.parse(result.content[0].text as string);
     expect(parsed.total).toBe(2);
   });
 
   it('returns categories via list-categories tool', async () => {
     const result = await handleCallTool({ name: ToolName.ListCategories });
-    const parsed = JSON.parse(result.content[0].text);
+    const parsed = JSON.parse(result.content[0].text as string);
     expect(parsed.total).toBe(2);
     expect(parsed.categories[0].name).toBe('weather');
     expect(parsed.categories[0].count).toBe(1);
@@ -70,7 +70,7 @@ describe('handleCallTool', () => {
 
   it('returns providers via list-providers tool', async () => {
     const result = await handleCallTool({ name: ToolName.ListProviders });
-    const parsed = JSON.parse(result.content[0].text);
+    const parsed = JSON.parse(result.content[0].text as string);
     expect(parsed.total).toBe(2);
     expect(parsed.providers[0].name).toBe('source-a');
     expect(parsed.providers[0].count).toBe(2);

@@ -1,6 +1,7 @@
+import type { ListResourcesResult } from '@modelcontextprotocol/sdk/types.js';
 import { ResourceUri } from '../types';
 
-export function getListResourcesResult() {
+export function getListResourcesResult(): ListResourcesResult {
   return {
     resources: [
       {

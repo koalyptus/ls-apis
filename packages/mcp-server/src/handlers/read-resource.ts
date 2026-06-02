@@ -1,7 +1,8 @@
+import type { ReadResourceResult } from '@modelcontextprotocol/sdk/types.js';
 import { getApis, getProviders, getStats, getCategories, getProviderCounts } from '../data';
 import { ResourceUri } from '../types';
 
-export async function handleReadResource(uri: ResourceUri) {
+export async function handleReadResource(uri: ResourceUri): Promise<ReadResourceResult> {
   if (uri === ResourceUri.Data) {
     const apis = await getApis();
     const providers = await getProviders();
@@ -10,7 +11,7 @@ export async function handleReadResource(uri: ResourceUri) {
         {
           uri,
           mimeType: 'application/json',
-          text: JSON.stringify({ providers, apis }, null, 2),
+          text: JSON.stringify({ providers, apis }, null, 2) as string,
         },
       ],
     };
@@ -23,7 +24,7 @@ export async function handleReadResource(uri: ResourceUri) {
         {
           uri,
           mimeType: 'application/json',
-          text: JSON.stringify({ total: categories.length, categories }, null, 2),
+          text: JSON.stringify({ total: categories.length, categories }, null, 2) as string,
         },
       ],
     };
@@ -36,7 +37,7 @@ export async function handleReadResource(uri: ResourceUri) {
         {
           uri,
           mimeType: 'application/json',
-          text: JSON.stringify({ total: providers.length, providers }, null, 2),
+          text: JSON.stringify({ total: providers.length, providers }, null, 2) as string,
         },
       ],
     };
@@ -49,7 +50,7 @@ export async function handleReadResource(uri: ResourceUri) {
         {
           uri,
           mimeType: 'application/json',
-          text: JSON.stringify(stats, null, 2),
+          text: JSON.stringify(stats, null, 2) as string,
         },
       ],
     };

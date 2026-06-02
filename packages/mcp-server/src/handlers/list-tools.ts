@@ -1,6 +1,7 @@
+import type { ListToolsResult } from '@modelcontextprotocol/sdk/types.js';
 import { ToolName } from '../types';
 
-export function getListToolsResult() {
+export function getListToolsResult(): ListToolsResult {
   return {
     tools: [
       {

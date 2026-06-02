@@ -1,17 +1,18 @@
+import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { search } from '@ls-apis/shared/search';
 import { loadConfig } from '@ls-apis/shared/config';
 import { getApis, getCategories, getProviderCounts } from '../data';
 import { ToolName } from '../types';
 import type { CallToolParams } from './types';
 
-export async function handleCallTool(params: CallToolParams) {
+export async function handleCallTool(params: CallToolParams): Promise<CallToolResult> {
   if (params.name === ToolName.ListCategories) {
     const categories = await getCategories();
     return {
       content: [
         {
-          type: 'text' as const,
-          text: JSON.stringify({ total: categories.length, categories }, null, 2),
+          type: 'text',
+          text: JSON.stringify({ total: categories.length, categories }, null, 2) as string,
         },
       ],
     };
@@ -22,8 +23,8 @@ export async function handleCallTool(params: CallToolParams) {
     return {
       content: [
         {
-          type: 'text' as const,
-          text: JSON.stringify({ total: providers.length, providers }, null, 2),
+          type: 'text',
+          text: JSON.stringify({ total: providers.length, providers }, null, 2) as string,
         },
       ],
     };
@@ -45,7 +46,7 @@ export async function handleCallTool(params: CallToolParams) {
   return {
     content: [
       {
-        type: 'text' as const,
+        type: 'text',
         text: JSON.stringify(
           {
             total: results.length,
@@ -53,7 +54,7 @@ export async function handleCallTool(params: CallToolParams) {
           },
           null,
           2
-        ),
+        ) as string,
       },
     ],
   };
