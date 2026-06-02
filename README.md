@@ -251,75 +251,12 @@ Found 2 APIs:
 
 ## Project Structure
 
-```
-ls-apis/
-├── README.md              # This file
-├── package.json           # Root workspace config
-├── qa-output/             # QA reports (gitignored)
-├── packages/
-│   ├── aggregator/        # Fetches, normalizes, deduplicates APIs
-│   │   ├── src/
-│   │   │   ├── aggregate.ts       # Main orchestration
-│   │   │   ├── config.ts          # Config reader (~/.ls-apis)
-│   │   │   ├── normalize.ts       # Entry & category normalization
-│   │   │   ├── paths.ts           # Path utilities
-│   │   │   ├── qa/                # QA validation
-│   │   │   │   ├── index.ts       # QA orchestrator
-│   │   │   │   ├── validations.ts # Validation functions
-│   │   │   │   └── tests/         # QA tests
-│   │   │   ├── sources/           # Pluggable fetchers (*.fetcher.ts)
-│   │   │   │   ├── index.ts       # Fetcher auto-loader
-│   │   │   │   └── tests/         # Fetcher tests
-│   │   │   ├── tests/             # Aggregator & normalize tests
-│   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
-│   │   └── vitest.config.ts
-│   ├── cli/               # CLI for searching APIs
-│   │   ├── dist/                # Compiled ESM output used by npm bin
-│   │   ├── data/
-│   │   │   └── apis.json          # Bundled API data (4,300+ APIs)
-│   │   ├── src/
-│   │   │   ├── index.ts           # CLI entry point
-│   │   │   ├── categories.ts      # Categories command
-│   │   │   ├── providers.ts       # Providers command
-│   │   │   ├── qa.ts              # QA command handler
-│   │   │   ├── paths.ts           # Workspace root resolution
-│   │   │   ├── colors.ts          # Terminal color support
-│   │   │   └── formatter.ts       # Output formatter
-│   │   └── tests/
-│   │       ├── paths.test.ts       # Path resolution tests
-│   │       ├── qa.test.ts          # QA wrapper tests
-│   │       ├── cli.test.ts         # CLI integration tests
-│   │       ├── categories.test.ts  # Categories command tests
-│   │       ├── providers.test.ts   # Providers command tests
-│   │       └── config.test.ts      # Config tests
-│   ├── shared/             # Shared types, config, search, paths
-│   │   └── src/
-│   │       ├── types.ts            # ApiEntry, DataFile, Provider, SearchOptions
-│   │       ├── config.ts           # Config loading from ~/.ls-apis
-│   │       ├── search.ts           # Search/filter/sort logic
-│   │       └── paths.ts            # Workspace root resolution
-│   ├── mcp-server/         # MCP server for AI-friendly API queries
-│   │   └── src/
-│   │       ├── index.ts            # Entry point
-│   │       ├── server.ts           # MCP server with tools & resources
-│   │       └── data.ts             # Data loading (apis.json)
-│   └── aggregator/        # Fetches, normalizes, deduplicates APIs
-│       ├── src/
-│       │   ├── aggregate.ts       # Main orchestration
-│       │   ├── normalize.ts       # Entry & category normalization
-│       │   ├── paths.ts           # Path utilities
-│       │   ├── qa/                # QA validation
-│       │   │   ├── index.ts       # QA orchestrator
-│       │   │   ├── validations.ts # Validation functions
-│       │   │   └── tests/         # QA tests
-│       │   ├── sources/           # Pluggable fetchers (*.fetcher.ts)
-│       │   │   ├── index.ts       # Fetcher auto-loader
-│       │   │   └── tests/         # Fetcher tests
-│       │   ├── tests/             # Aggregator & normalize tests
-│       │   └── types.ts           # ApiEntry, SourceFetcher interfaces
-│       └── vitest.config.ts
-└── AGENTS.md              # Instructions for AI agents
-```
+See [`AGENTS.md`](./AGENTS.md#project-structure) for the full project layout. The repo is a monorepo with four packages under `packages/`:
+
+- `aggregator` — fetches, normalizes, deduplicates API data from upstream sources
+- `cli` — command-line search tool published as `ls-apis`
+- `shared` — types, config, search logic, paths consumed by all packages
+- `mcp-server` — MCP server for AI-friendly API queries (stdio transport)
 
 ## Scripts
 

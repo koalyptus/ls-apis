@@ -1,4 +1,5 @@
 import type { ApiEntry, Provider, LsApisConfig } from '@ls-apis/shared/types';
+import { getProviders } from '@ls-apis/shared/search';
 import { formatProviders } from './formatter';
 import { initColors } from './colors';
 
@@ -11,12 +12,7 @@ export function handleProviders(
   const noColor = argv.color === false;
   initColors(noColor ?? !config.colors);
 
-  const counts = new Map<string, number>();
-  for (const api of apis) {
-    for (const source of api.sources) {
-      counts.set(source, (counts.get(source) ?? 0) + 1);
-    }
-  }
+  const counts = getProviders(apis);
 
   const providersWithCounts = providers.map((p) => ({
     ...p,
