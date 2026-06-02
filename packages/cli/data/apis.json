@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-29T02:09:29.894Z",
+  "timestamp": "2026-06-02T03:17:32.326Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -26636,8 +26636,8 @@
       "sources": ["github-public-apis", "publicapis-dev"]
     },
     {
-      "name": "Checkiday - National Holiday API",
-      "description": "Industry-leading Holiday API. Over 5,000 holidays and thousands of descriptions. Trusted by the World’s leading companies",
+      "name": "Checkiday - National Holiday",
+      "description": "Industry-leading holiday data with over 5,000 holidays and thousands of descriptions",
       "link": "https://apilayer.com/marketplace/checkiday-api",
       "auth": "apiKey",
       "cors": "unknown",
@@ -29166,6 +29166,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Talordata",
+      "description": "SERP data from major search engines with a free trial",
+      "link": "https://docs.talordata.com/",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Thunderbit",
       "description": "Extract web pages as Markdown or structured data for AI apps",
       "link": "https://thunderbit.com/docs/introduction",
@@ -29576,6 +29586,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Renderly",
+      "description": "HTML to PDF conversion API built on Chromium",
+      "link": "https://renderlyapi.com",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Documents & Productivity"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Restpack",
       "description": "Provides screenshot, HTML to PDF and content extraction APIs",
       "link": "https://restpack.io/",
@@ -29596,7 +29616,7 @@
       "sources": ["github-public-apis"]
     },
     {
-      "name": "Smart Image Enhancement API",
+      "name": "Smart Image Enhancement",
       "description": "Performs image upscaling by adding detail to images through multiple super-resolution algorithms",
       "link": "https://apilayer.com/marketplace/image_enhancement-api",
       "auth": "apiKey",
@@ -30226,7 +30246,7 @@
       "sources": ["github-public-apis"]
     },
     {
-      "name": "Bank Data API",
+      "name": "Bank Data",
       "description": "Instant IBAN and SWIFT number validation across the globe",
       "link": "https://apilayer.com/marketplace/bank_data-api",
       "auth": "apiKey",
@@ -30490,7 +30510,7 @@
       "description": "Connect with user's bank accounts and access transaction data",
       "link": "https://www.plaid.com/docs",
       "auth": "apiKey",
-      "cors": null,
+      "cors": "unknown",
       "categories": ["Finance"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -30576,7 +30596,7 @@
       "sources": ["github-public-apis"]
     },
     {
-      "name": "Tax Data API",
+      "name": "Tax Data",
       "description": "Instant VAT number and tax validation across the globe",
       "link": "https://apilayer.com/marketplace/tax_data-api",
       "auth": "apiKey",
@@ -33896,6 +33916,16 @@
       "sources": ["github-public-apis", "publicapis-dev"]
     },
     {
+      "name": "MedlinePlus Genetics",
+      "description": "Genetic conditions, genes, chromosomes and mtDNA data",
+      "link": "https://medlineplus.gov/about/developers/geneticsdatafilesapi/",
+      "auth": null,
+      "cors": "unknown",
+      "categories": ["Health"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "MyVaccination",
       "description": "Vaccination data for Malaysia",
       "link": "https://documenter.getpostman.com/view/16605343/Tzm8GG7u",
@@ -34757,7 +34787,7 @@
     },
     {
       "name": "Verome",
-      "description": "Music API for searching, streaming, and exploring music data from YouTube Music, YouTube, and Last.fm",
+      "description": "Music API for searching, streaming and exploring music data from YouTube Music, YouTube, and Last.fm",
       "link": "https://github.com/Kirazul/Verome-API",
       "auth": null,
       "cors": "unknown",
@@ -36707,7 +36737,7 @@
     },
     {
       "name": "IPLogs",
-      "description": "Free VPN, proxy, Tor and datacenter IP detection. 13 sources, active probing.",
+      "description": "Free VPN, proxy, Tor and datacenter IP detection. 13 sources, active probing",
       "link": "https://iplogs.com/docs",
       "auth": null,
       "cors": "yes",
@@ -37150,6 +37180,16 @@
       "description": "Get Social Media profiles and contact Information",
       "link": "https://docs.fullcontact.com/",
       "auth": "OAuth",
+      "cors": "unknown",
+      "categories": ["Social"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "GetXAPI",
+      "description": "Read Twitter / X data and post tweets, likes, retweets, follows, DMs via REST",
+      "link": "https://www.getxapi.com/",
+      "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Social"],
       "openapiSpec": null,
@@ -37713,7 +37753,7 @@
       "cors": "unknown",
       "categories": ["Sports & Fitness"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Squiggle",
@@ -37744,6 +37784,16 @@
       "categories": ["Sports & Fitness"],
       "openapiSpec": null,
       "sources": ["github-public-apis", "publicapis-dev"]
+    },
+    {
+      "name": "TheRundown",
+      "description": "Real-time sports data: odds, scores, stats & prediction markets, 30+ leagues, 18+ sportsbooks",
+      "link": "https://therundown.io/",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
     },
     {
       "name": "TheSportsDB",
@@ -38036,7 +38086,7 @@
       "sources": ["github-public-apis", "publicapis-dev"]
     },
     {
-      "name": "Code Detection API",
+      "name": "Code Detection",
       "description": "Detect, label, format and enrich the code in your app or in your data pipeline",
       "link": "https://codedetectionapi.runtime.dev",
       "auth": "OAuth",
@@ -38117,7 +38167,7 @@
     },
     {
       "name": "GeoScore",
-      "description": "Score content for AI search citation readiness. Returns a 0-100 GEO score, 8 structural metrics, and improvement fixes",
+      "description": "Score content for AI search citation readiness with a 0-100 GEO score and 8 structural metrics",
       "link": "https://geoscoreapi.com",
       "auth": "apiKey",
       "cors": "yes",
@@ -39266,6 +39316,16 @@
       "sources": ["github-public-apis", "publicapis-dev"]
     },
     {
+      "name": "RevCarData",
+      "description": "86,000+ global vehicle specifications and EV metrics",
+      "link": "https://revcardata.com",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Vehicle"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Smartcar",
       "description": "Lock and unlock vehicles and get data like odometer reading and location. Works on most new cars",
       "link": "https://smartcar.com/docs/",
@@ -39391,6 +39451,16 @@
       "link": "https://hp-api.herokuapp.com/",
       "auth": null,
       "cors": "unknown",
+      "categories": ["Video"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Hyperserve",
+      "description": "Video backend API: upload any format, transcode to MP4, deliver via CDN",
+      "link": "https://hyperserve.io/",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Video"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -43146,6 +43216,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Video Exercise, Nutrition & Recipe API - ymove.app",
+      "description": "One Workout API for: Exercise Videos, Program Generation, Nutritional info & Posture Analysis.",
+      "link": "https://ymove.app/exercise-api",
+      "auth": "apiKey",
+      "cors": null,
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "iSports API",
       "description": "Provide live and historical sports data of global competitions, like live score, fixtures, player & match stats, database etc.",
       "link": "https://isportsapi.com/",
@@ -43572,6 +43652,16 @@
       "auth": null,
       "cors": null,
       "categories": ["Url Shorteners"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "CarVector",
+      "description": "Vehicle specs, images, federal recalls, and DTC codes for 12,000+ vehicles (1925–2029).",
+      "link": "https://carvector.io/docs",
+      "auth": "apiKey",
+      "cors": null,
+      "categories": ["Vehicle"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },
