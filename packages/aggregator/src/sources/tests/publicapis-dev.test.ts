@@ -1,89 +1,155 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeAll } from 'vitest';
+import axios from 'axios';
 import fetcher from '../publicapis-dev.fetcher';
 
-const FETCH_TIMEOUT = 120000;
-
-vi.mock('node:fetch', () => ({
-  default: vi.fn(),
+vi.mock('axios', () => ({
+  default: {
+    get: vi.fn(),
+  },
 }));
 
-describe('sources/publicapis-dev', () => {
-  beforeEach(() => {
-    vi.spyOn(console, 'log').mockImplementation(() => {});
-  });
+const mainPageHtml = `
+<html>
+<body>
+  <a href="/category/animals">Animals</a>
+  <a href="/category/finance">Finance</a>
+  <a href="/category/weather">Weather</a>
+</body>
+</html>
+`;
 
-  afterEach(() => {
-    vi.restoreAllMocks();
+const categoryPageHtml = `
+<html>
+<body>
+  <li role="group">
+    <a href="https://api.animals.com">Animals API</a>
+    <h2>Animal Facts</h2>
+    <p>Get interesting facts about various animal species from around the world</p>
+    <p>API Key</p>
+    <p>CORS: Yes</p>
+  </li>
+  <li role="group">
+    <a href="https://api.finance.com">Finance API</a>
+    <h2>Stock Market Data</h2>
+    <p>Real-time stock market data and historical prices for major exchanges</p>
+    <p>OAuth</p>
+    <p>CORS: No</p>
+  </li>
+  <li role="group">
+    <a href="https://api.weather.com">Weather API</a>
+    <h2>Weather Forecast</h2>
+    <p>Current weather conditions and 7-day forecast for cities worldwide</p>
+    <p>API Key, OAuth</p>
+    <p>CORS: Yes</p>
+  </li>
+</body>
+</html>
+`;
+
+describe('sources/publicapis-dev', () => {
+  beforeAll(() => {
+    vi.spyOn(console, 'log').mockImplementation(() => {});
+    vi.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   describe('fetchApis', () => {
-    it(
-      'should fetch APIs',
-      async () => {
-        const entries = await fetcher.fetchApis();
-        expect(entries.length).toBeGreaterThan(500);
-      },
-      FETCH_TIMEOUT
-    );
+    it('should fetch APIs', async () => {
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: categoryPageHtml });
 
-    it(
-      'should have name and link for entries',
-      async () => {
-        const entries = await fetcher.fetchApis();
-        const withLink = entries.filter((e) => e.link.startsWith('https://'));
-        expect(withLink.length).toBeGreaterThan(0);
-      },
-      FETCH_TIMEOUT
-    );
+      const entries = await fetcher.fetchApis();
 
-    it(
-      'should have entries with apiKey auth',
-      async () => {
-        const entries = await fetcher.fetchApis();
-        const authEntries = entries.filter((e) => e.auth === 'apiKey');
-        expect(authEntries.length).toBeGreaterThan(0);
-      },
-      FETCH_TIMEOUT
-    );
+      expect(entries.length).toBeGreaterThan(0);
+    });
 
-    it(
-      'should have entries with OAuth auth',
-      async () => {
-        const entries = await fetcher.fetchApis();
-        const oauthEntries = entries.filter((e) => e.auth === 'OAuth');
-        expect(oauthEntries.length).toBeGreaterThan(0);
-      },
-      FETCH_TIMEOUT
-    );
+    it('should have name and link for each entry', async () => {
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: categoryPageHtml });
 
-    it(
-      'should have entries with cors yes',
-      async () => {
-        const entries = await fetcher.fetchApis();
-        const corsEntries = entries.filter((e) => e.cors === 'yes');
-        expect(corsEntries.length).toBeGreaterThan(0);
-      },
-      FETCH_TIMEOUT
-    );
+      const entries = await fetcher.fetchApis();
 
-    it(
-      'should have descriptions for most entries',
-      async () => {
-        const entries = await fetcher.fetchApis();
-        const withDesc = entries.filter((e) => e.description);
-        expect(withDesc.length).toBeGreaterThan(100);
-      },
-      FETCH_TIMEOUT
-    );
+      entries.forEach((entry) => {
+        expect(entry.name).toBeTruthy();
+        expect(entry.link).toMatch(/^https?:\/\//);
+      });
+    });
 
-    it(
-      'should have various categories',
-      async () => {
-        const entries = await fetcher.fetchApis();
-        const categories = new Set(entries.flatMap((e) => e.categories));
-        expect(categories.size).toBeGreaterThan(20);
-      },
-      FETCH_TIMEOUT
-    );
+    it('should detect apiKey auth', async () => {
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: categoryPageHtml });
+
+      const entries = await fetcher.fetchApis();
+
+      const apiKeyEntries = entries.filter((e) => e.auth === 'apiKey');
+      expect(apiKeyEntries.length).toBeGreaterThan(0);
+    });
+
+    it('should detect OAuth auth', async () => {
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: categoryPageHtml });
+
+      const entries = await fetcher.fetchApis();
+
+      const oauthEntries = entries.filter((e) => e.auth === 'OAuth');
+      expect(oauthEntries.length).toBeGreaterThan(0);
+    });
+
+    it('should detect apiKey|OAuth auth', async () => {
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: categoryPageHtml });
+
+      const entries = await fetcher.fetchApis();
+
+      const combinedEntries = entries.filter((e) => e.auth === 'apiKey|OAuth');
+      expect(combinedEntries.length).toBeGreaterThan(0);
+    });
+
+    it('should detect cors yes', async () => {
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: categoryPageHtml });
+
+      const entries = await fetcher.fetchApis();
+
+      const corsEntries = entries.filter((e) => e.cors === 'yes');
+      expect(corsEntries.length).toBeGreaterThan(0);
+    });
+
+    it('should assign correct categories', async () => {
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: categoryPageHtml });
+
+      const entries = await fetcher.fetchApis();
+
+      const categories = new Set(entries.flatMap((e) => e.categories));
+      expect(categories.has('Animals')).toBe(true);
+      expect(categories.has('Finance')).toBe(true);
+      expect(categories.has('Weather')).toBe(true);
+    });
+
+    it('should skip entries with github.com/marcelscruz links', async () => {
+      const htmlWithSkip = `
+<html>
+<body>
+  <li role="group">
+    <a href="https://github.com/marcelscruz/public-apis">Repo</a>
+    <h2>Skip This</h2>
+    <p>Short desc</p>
+  </li>
+  <li role="group">
+    <a href="https://api.real.com">Real API</a>
+    <h2>Real Service</h2>
+    <p>A longer description that passes the filter</p>
+  </li>
+</body>
+</html>
+`;
+
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: htmlWithSkip });
+
+      const entries = await fetcher.fetchApis();
+
+      expect(entries.every((e) => !e.link.includes('github.com/marcelscruz'))).toBe(true);
+    });
   });
 });
