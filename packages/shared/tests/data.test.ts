@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { loadDataFile, clearDataFileCache, getVersion } from '../src/data';
+import { loadDataFile, clearDataFileCache, getVersion, clearVersionCache } from '../src';
 import { readFile } from 'node:fs/promises';
 
 const mockData = {
@@ -61,10 +61,11 @@ describe('getVersion', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.mocked(readFile).mockResolvedValue(JSON.stringify(mockPkg));
+    clearVersionCache();
   });
 
   afterEach(() => {
-    clearDataFileCache();
+    clearVersionCache();
   });
 
   it("reads version from the caller's package.json", async () => {

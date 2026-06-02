@@ -29,5 +29,8 @@ export async function getVersion(metaUrl: string): Promise<string> {
 
 export function clearDataFileCache(): void {
   cached = null;
+}
+
+export function clearVersionCache(): void {
   cachedVersion = null;
 }
