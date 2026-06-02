@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { loadConfig } from '../src/config';
+import { loadConfig, clearConfigCache } from '@ls-apis/shared/config';
 import { readFile, writeFile, access } from 'node:fs/promises';
 
 const EXPECTED_DEFAULTS = {
@@ -21,6 +21,7 @@ vi.mock('node:os', () => ({
 describe('config', () => {
   beforeEach(() => {
     vi.resetAllMocks();
+    clearConfigCache();
   });
 
   afterEach(() => {

@@ -1,15 +1,17 @@
 {
   "name": "@ls-apis/aggregator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "type": "module",
   "main": "./src/run.ts",
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "aggregate": "tsx src/run.ts"
   },
   "dependencies": {
+    "@ls-apis/shared": "*",
     "axios": "^1.7.0",
     "cheerio": "^1.0.0",
     "marked": "^12.0.0"

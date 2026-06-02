@@ -1,8 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { handleCategories } from '../src/categories';
 import { initColors } from '../src/colors';
-import type { ApiEntry } from '../src/types';
-import type { LsApisConfig } from '../src/config';
+import type { ApiEntry, LsApisConfig } from '@ls-apis/shared/types';
 
 const mockApis: ApiEntry[] = [
   {
@@ -11,8 +10,8 @@ const mockApis: ApiEntry[] = [
     link: 'https://example.com',
     categories: ['weather'],
     auth: 'apiKey',
-    cors: undefined,
-    openapiSpec: undefined,
+    cors: null,
+    openapiSpec: null,
     sources: ['test'],
   },
   {
@@ -21,8 +20,8 @@ const mockApis: ApiEntry[] = [
     link: 'https://example2.com',
     categories: ['weather', 'data'],
     auth: 'apiKey',
-    cors: undefined,
-    openapiSpec: undefined,
+    cors: null,
+    openapiSpec: null,
     sources: ['test'],
   },
   {
@@ -30,9 +29,9 @@ const mockApis: ApiEntry[] = [
     description: 'Something else',
     link: 'https://example4.com',
     categories: ['data'],
-    auth: undefined,
-    cors: undefined,
-    openapiSpec: undefined,
+    auth: null,
+    cors: null,
+    openapiSpec: null,
     sources: ['test'],
   },
 ];
@@ -71,9 +70,9 @@ describe('handleCategories', () => {
         description: 'Test',
         link: 'https://test.com',
         categories: ['weather'],
-        auth: undefined,
-        cors: undefined,
-        openapiSpec: undefined,
+        auth: null,
+        cors: null,
+        openapiSpec: null,
         sources: [],
       },
     ];

@@ -1,0 +1,48 @@
+import axios from 'axios';
+import type { ApiEntry, SourceFetcher } from '../types';
+
+const API_URL = 'https://example.com/api'; // TODO: Replace with actual API URL
+const WEB_URL = 'https://example.com/';    // TODO: Replace with source website
+
+// Define source-specific response interfaces here if needed
+// interface <Name>ApiResponse { ... }
+
+const <name>Fetcher: SourceFetcher = {
+  name: '<name>', // This should exactly match the fetcher name provided
+  sourceUrl: WEB_URL,
+
+  async fetchApis(): Promise<ApiEntry[]> {
+    // TODO: Implement fetching logic with proper error handling
+    // 1. Fetch data from API_URL with retry logic (3 attempts with exponential backoff)
+    // 2. Transform response data to match ApiEntry shape
+    // 3. Validate each entry against the ApiEntry schema
+    // 4. Log warnings and skip invalid records (don't crash on bad data)
+    // 5. Return array of valid ApiEntry objects
+
+    // Each ApiEntry should have:
+    //   name: string (API title/name)
+    //   description: string | null (API description)
+    //   link: string (API homepage/link)
+    //   auth: string | null (authentication type: 'apiKey', 'OAuth', 'no', etc.)
+    //   cors: string | null ('yes', 'no', 'unknown')
+    //   categories: string[] (array of category strings)
+    //   openapiSpec: string | null (URL to OpenAPI/Spec document)
+    //   sources: string[] (should include '<name>')
+
+    // Example structure:
+    /*
+    try {
+      const response = await axios.get(API_URL);
+      // Process response.data and transform to ApiEntry[]
+      return processedEntries;
+    } catch (error) {
+      // Implement exponential backoff retry here
+      throw new Error(`Failed to fetch from ${API_URL}: ${error.message}`);
+    }
+    */
+    
+    return []; // Remove this when implementing actual logic
+  },
+};
+
+export default <name>Fetcher;

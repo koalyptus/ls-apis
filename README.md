@@ -2,7 +2,96 @@
 
 ### Public APIs Discovery for Humans & Agents
 
-A curated collection of **4,300+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
+A curated collection of **4,000+ public APIs** with a powerful CLI search tool. Discover, filter, and explore APIs by category, authentication type.
+
+## MCP Server
+
+ls-apis includes an [MCP](https://modelcontextprotocol.io) server for AI assistants to search and discover public APIs via natural language.
+
+### Tools
+
+| Tool              | Description                                                 |
+| ----------------- | ----------------------------------------------------------- |
+| `search-apis`     | Search public APIs by query, category, auth type, and limit |
+| `list-categories` | List all API categories with API counts                     |
+| `list-providers`  | List all data providers with API counts                     |
+
+### Resources
+
+| URI                 | Description                           |
+| ------------------- | ------------------------------------- |
+| `apis://data`       | Full aggregated API dataset (JSON)    |
+| `apis://categories` | All API categories with counts (JSON) |
+| `apis://providers`  | All data providers with counts (JSON) |
+| `apis://stats`      | Dataset summary statistics (JSON)     |
+
+### Setup
+
+```bash
+npm install
+```
+
+### Configuration
+
+#### VS Code / GitHub Copilot
+
+Create `.vscode/mcp.json` in your project root:
+
+> VS Code will ask for permission on first run — this is standard for project-local MCP servers. Approve once and it won't prompt again.
+
+```json
+{
+  "servers": {
+    "ls-apis": {
+      "command": "npx",
+      "args": ["tsx", "packages/mcp-server/src/index.ts"],
+      "cwd": "/path/to/ls-apis"
+    }
+  }
+}
+```
+
+> Switch Copilot Chat to **Agent mode** to use MCP tools.
+
+#### Claude Desktop
+
+Edit `claude_desktop_config.json` (`%APPDATA%\Claude\` on Windows, `~/Library/Application Support/Claude/` on macOS):
+
+```json
+{
+  "mcpServers": {
+    "ls-apis": {
+      "command": "npx",
+      "args": ["tsx", "packages/mcp-server/src/index.ts"],
+      "cwd": "/path/to/ls-apis"
+    }
+  }
+}
+```
+
+#### Cursor
+
+Create `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
+
+```json
+{
+  "mcpServers": {
+    "ls-apis": {
+      "command": "npx",
+      "args": ["tsx", "packages/mcp-server/src/index.ts"],
+      "cwd": "/path/to/ls-apis"
+    }
+  }
+}
+```
+
+### Verification
+
+After configuring, the client should discover the tools and resources listed above. You can also test via CLI:
+
+```bash
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | npm run mcp
+```
 
 ## Features
 
@@ -10,6 +99,7 @@ A curated collection of **4,300+ public APIs** with a powerful CLI search tool. 
 - **Smart Search** - Filter by query, category, authentication type
 - **Colored Output** - Syntax-highlighted results (use `--no-color` to disable)
 - **Multiple Output Formats** - Text or JSON output
+- **MCP Server** - AI-friendly API search via Model Context Protocol
 - **Extensible Architecture** - Pluggable fetchers for adding new API sources
 - **TypeScript** - Fully typed for better developer experience
 
@@ -138,7 +228,7 @@ A config file is automatically created at `~/.ls-apis` on first run. You can edi
 | `descriptionMaxLength` | 250     | Max chars before truncation |
 | `colors`               | true    | Enable terminal colors      |
 
-The config file is plain JSON. Edit it manually to customize defaults, or delete it to regenerate with built-in values. Uses only Node.js standard library (`os`, `path`, `fs/promises`).
+The config file is plain JSON. Edit it manually to customize defaults, or delete it to regenerate with built-in values.
 
 ### Example Output
 
@@ -161,51 +251,12 @@ Found 2 APIs:
 
 ## Project Structure
 
-```
-ls-apis/
-├── README.md              # This file
-├── package.json           # Root workspace config
-├── qa-output/             # QA reports (gitignored)
-├── packages/
-│   ├── aggregator/        # Fetches, normalizes, deduplicates APIs
-│   │   ├── src/
-│   │   │   ├── aggregate.ts       # Main orchestration
-│   │   │   ├── config.ts          # Config reader (~/.ls-apis)
-│   │   │   ├── normalize.ts       # Entry & category normalization
-│   │   │   ├── paths.ts           # Path utilities
-│   │   │   ├── qa/                # QA validation
-│   │   │   │   ├── index.ts       # QA orchestrator
-│   │   │   │   ├── validations.ts # Validation functions
-│   │   │   │   └── tests/         # QA tests
-│   │   │   ├── sources/           # Pluggable fetchers (*.fetcher.ts)
-│   │   │   │   ├── index.ts       # Fetcher auto-loader
-│   │   │   │   └── tests/         # Fetcher tests
-│   │   │   ├── tests/             # Aggregator & normalize tests
-│   │   │   └── types.ts           # ApiEntry, SourceFetcher interfaces
-│   │   └── vitest.config.ts
-│   └── cli/               # CLI for searching APIs
-│       ├── dist/                # Compiled ESM output used by npm bin
-│       ├── data/
-│       │   └── apis.json          # Bundled API data (4,300+ APIs)
-│       ├── src/
-│       │   ├── index.ts           # CLI TypeScript source entry point
-│       │   ├── categories.ts       # Categories command
-│       │   ├── providers.ts        # Providers command
-│       │   ├── config.ts           # Config loading & display
-│       │   ├── qa.ts               # QA command handler
-│       │   ├── paths.ts           # Workspace root resolution
-│       │   ├── colors.ts          # Terminal color support
-│       │   ├── formatter.ts        # Output formatter
-│       │   └── search.ts           # Search logic
-│       └── tests/
-│           ├── paths.test.ts       # Path resolution tests
-│           ├── qa.test.ts          # QA wrapper tests
-│           ├── cli.test.ts         # CLI integration tests
-│           ├── categories.test.ts  # Categories command tests
-│           ├── providers.test.ts   # Providers command tests
-│           └── config.test.ts      # Config tests
-└── AGENTS.md              # Instructions for AI agents
-```
+See [`AGENTS.md`](./AGENTS.md#project-structure) for the full project layout. The repo is a monorepo with four packages under `packages/`:
+
+- `aggregator` — fetches, normalizes, deduplicates API data from upstream sources
+- `cli` — command-line search tool published as `ls-apis`
+- `shared` — types, config, search logic, paths consumed by all packages
+- `mcp-server` — MCP server for AI-friendly API queries (stdio transport)
 
 ## Scripts
 
@@ -213,8 +264,14 @@ ls-apis/
 # Install dependencies
 npm install
 
-# Run tests with coverage
+# Run all tests with coverage
 npm test
+
+# Run specific package tests
+npm run test:aggregator
+npm run test:cli
+npm run test:shared
+npm run test:mcp
 
 # Typecheck all workspaces
 npm run typecheck
@@ -231,6 +288,9 @@ npm run qa
 
 # Run CLI directly
 npm run ls-apis -- -q <query>
+
+# Run MCP server (stdio transport for AI clients)
+npm run mcp
 
 # Build CLI to dist/ (tsc + ESM import fix)
 npm run build --workspace=@ls-apis/cli
@@ -315,6 +375,8 @@ npm test
 # Run specific package tests
 npm run test:aggregator
 npm run test:cli
+npm run test:shared
+npm run test:mcp
 
 # Watch mode
 cd packages/cli && npm run test:watch

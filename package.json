@@ -1,11 +1,13 @@
 {
   "name": "ls-apis",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "workspaces": [
     "packages/aggregator",
-    "packages/cli"
+    "packages/cli",
+    "packages/shared",
+    "packages/mcp-server"
   ],
   "keywords": [
     "api",
@@ -32,14 +34,18 @@
     "test": "vitest run --coverage",
     "test:aggregator": "npm run test --workspace=@ls-apis/aggregator",
     "test:cli": "npm run test --workspace=@ls-apis/cli",
-    "typecheck": "npx tsc --noEmit -p packages/aggregator && npx tsc --noEmit -p packages/cli",
+    "test:shared": "npm run test --workspace=@ls-apis/shared",
+    "test:mcp": "npm run test --workspace=@ls-apis/mcp-server",
+    "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "aggregate": "cd packages/aggregator && npm run aggregate",
     "qa": "cd packages/aggregator && npx tsx src/qa/index.ts",
-    "ls-apis": "cd packages/cli && npx tsx src/index.ts"
+    "ls-apis": "cd packages/cli && npx tsx src/index.ts",
+    "mcp": "cd packages/mcp-server && npx tsx src/index.ts",
+    "build:mcp": "npm run build --workspace=@ls-apis/mcp-server"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

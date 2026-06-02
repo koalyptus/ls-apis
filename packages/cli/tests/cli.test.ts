@@ -1,18 +1,10 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { run } from '../src/index';
-import { search, getCategories } from '../src/search';
+import { search, getCategories } from '@ls-apis/shared/search';
 import { formatResults, formatList } from '../src/formatter';
 import { initColors, color } from '../src/colors';
-import type { ApiEntry } from '../src/types';
+import type { ApiEntry } from '@ls-apis/shared/types';
 import * as fs from 'node:fs/promises';
-
-vi.mock('../src/config', () => ({
-  loadConfig: vi.fn().mockResolvedValue({
-    limit: 20,
-    descriptionMaxLength: 250,
-    colors: true,
-  }),
-}));
 
 vi.mock('node:fs/promises', () => ({
   readFile: vi.fn(),
@@ -54,7 +46,7 @@ const mockApis: ApiEntry[] = [
     description: 'Something else',
     link: 'https://example4.com',
     categories: ['data'],
-    auth: undefined,
+    auth: null,
     cors: null,
     openapiSpec: null,
     sources: ['test'],
