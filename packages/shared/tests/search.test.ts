@@ -38,7 +38,7 @@ const mockApis: ApiEntry[] = [
     description: 'Public data access',
     link: 'https://noauth.com',
     categories: ['data'],
-    auth: null,
+    auth: 'no',
     cors: null,
     openapiSpec: null,
     sources: ['test-source'],
@@ -93,8 +93,13 @@ describe('search', () => {
 
   it('filters for no auth', () => {
     const results = search(mockApis, { auth: 'no' });
-    expect(results).toHaveLength(2);
-    expect(results.every((r) => !r.auth)).toBe(true);
+    expect(results).toHaveLength(1);
+    expect(results[0].auth).toBe('no');
+  });
+
+  it('does not match null auth when filtering for no', () => {
+    const results = search(mockApis, { auth: 'no' });
+    expect(results.every((r) => r.auth === 'no')).toBe(true);
   });
 
   it('combines query and category', () => {
@@ -103,8 +108,9 @@ describe('search', () => {
   });
 
   it('combines query, category, and auth', () => {
-    const results = search(mockApis, { query: 'pet', category: 'animals', auth: 'no' });
+    const results = search(mockApis, { query: 'no', category: 'data', auth: 'no' });
     expect(results).toHaveLength(1);
+    expect(results[0].name).toBe('No Auth API');
   });
 
   describe('sorting', () => {
@@ -125,8 +131,8 @@ describe('search', () => {
       const results = search(mockApis, { sort: 'auth' });
       const values = results.map((r) => r.auth ?? '');
       expect(values[0]).toBe('');
-      expect(values[1]).toBe('');
-      expect(values[2]).toBe('apiKey');
+      expect(values[1]).toBe('apiKey');
+      expect(values[2]).toBe('no');
       expect(values[3]).toBe('OAuth');
     });
   });

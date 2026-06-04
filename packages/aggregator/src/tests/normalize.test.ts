@@ -98,6 +98,13 @@ describe('normalizeEntry', () => {
     expect(entry.description).toBe('a'.repeat(100));
   });
 
+  it('should preserve auth value of "no"', () => {
+    const result = normalizeEntry({ ...baseEntry, auth: 'no' }, 250);
+    expect('valid' in result).toBe(false);
+    const entry = result as ApiEntry;
+    expect(entry.auth).toBe('no');
+  });
+
   it('should keep description as null when not provided', () => {
     const result = normalizeEntry({ ...baseEntry, description: null }, 250);
     expect('valid' in result).toBe(false);

@@ -19,7 +19,7 @@ export function search(apis: ApiEntry[], options: SearchOptions): ApiEntry[] {
     const auth = options.auth.toLowerCase();
     results = results.filter((api) => {
       if (auth === 'no') {
-        return !api.auth;
+        return api.auth === 'no';
       }
       return api.auth?.toLowerCase().includes(auth);
     });

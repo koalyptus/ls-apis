@@ -20,6 +20,7 @@ const mockReadme = `
 | [Test Finance](https://api.finance.com) | Finance data | OAuth | Yes | No |
 | [Test Animals](https://api.animals.com) | Animal facts | apiKey | Yes | Yes |
 | [Test Map](https://api.maps.com) | Map service | apiKey | Yes | Unknown |
+| [Test No Auth](https://api.noauth.com) | Free data | No | Yes | Yes |
 `;
 
 describe('sources/github-public-apis', () => {
@@ -50,6 +51,13 @@ describe('sources/github-public-apis', () => {
 
       const authEntries = entries.filter((e) => e.auth === 'apiKey');
       expect(authEntries.length).toBeGreaterThan(0);
+    });
+
+    it('should have entries with no auth', async () => {
+      const entries = await fetcher.fetchApis();
+
+      const noAuthEntries = entries.filter((e) => e.auth === 'no');
+      expect(noAuthEntries.length).toBeGreaterThan(0);
     });
 
     it('should assign default category', async () => {
