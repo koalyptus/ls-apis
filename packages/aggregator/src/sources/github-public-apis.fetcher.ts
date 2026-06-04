@@ -87,7 +87,7 @@ function parseMarkdownTable(markdown: string): ApiEntry[] {
         auth = 'apiKey';
       } else if (hasOAuth) {
         auth = 'OAuth';
-      } else if (authLower.length > 0 && authLower !== 'no') {
+      } else if (authLower.length > 0) {
         auth = authLower;
       }
 

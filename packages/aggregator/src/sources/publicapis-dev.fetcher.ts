@@ -95,11 +95,7 @@ const fetcher: SourceFetcher = {
             auth = 'apiKey';
           } else if (hasOAuth) {
             auth = 'OAuth';
-          } else if (
-            itemText.length > 0 &&
-            itemText.length <= MAX_AUTH_LENGTH &&
-            itemText !== 'no'
-          ) {
+          } else if (itemText.length > 0 && itemText.length <= MAX_AUTH_LENGTH) {
             auth = itemText;
           }
 

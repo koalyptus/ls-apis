@@ -46,7 +46,7 @@ const mockApis: ApiEntry[] = [
     description: 'Something else',
     link: 'https://example4.com',
     categories: ['data'],
-    auth: null,
+    auth: 'no',
     cors: null,
     openapiSpec: null,
     sources: ['test'],
@@ -73,6 +73,7 @@ describe('search', () => {
     const results = search(mockApis, { auth: 'no' });
     expect(results).toHaveLength(1);
     expect(results[0].name).toBe('Other API');
+    expect(results[0].auth).toBe('no');
   });
 
   it('combines query and category', () => {
@@ -106,8 +107,9 @@ describe('search', () => {
 
     it('sorts by auth', () => {
       const results = search(mockApis, { sort: 'auth' });
-      const noAuth = results.find((r) => !r.auth);
-      expect(noAuth).toBeDefined();
+      expect(results[0].auth).toBe('apiKey');
+      expect(results[2].auth).toBe('no');
+      expect(results[3].auth).toBe('oauth');
     });
   });
 
