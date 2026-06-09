@@ -41,7 +41,7 @@ ls-apis/
 │   │       ├── providers.test.ts  # providers command tests
 │   │       └── config.test.ts     # config tests
 │   ├── shared/             # Shared types, config, search, paths (consumed by all packages)
-│   │   └── src/
+│   │   ├── src/
 │   │       ├── index.ts
 │   │       ├── types.ts           # ApiEntry, DataFile, Provider, SearchOptions
 │   │       ├── config.ts          # Config loading/display (moved from CLI)
@@ -91,7 +91,10 @@ npm run ls-apis -- -q <query>
 npm run ls-apis -- -c <category>
 npm run ls-apis -- -a <auth>
 
-# Build CLI (TypeScript -> dist, with ESM import fix)
+# Build all packages (shared → CLI)
+npm run build
+
+# Build CLI only (requires shared to be built first)
 npm run build --workspace=@ls-apis/cli
 
 # CLI search (from compiled output, workspace root)
@@ -107,6 +110,13 @@ ls-apis -q <query>
 - `@ls-apis/cli` publishes `dist/`.
 - CLI package build uses `tsc` then `tsc-esm-fix --target dist`.
 - `tsc-esm-fix` is required because Node ESM runtime requires explicit `.js` extensions in relative imports.
+- CLI depends on `@ls-apis/shared` — shared must be built first (`npm run build` at root handles this).
+
+## Shared Package Notes
+
+- `@ls-apis/shared` uses `.js` extensions on all relative imports (required for Node.js ESM).
+- Source `.ts` files import with `.js` extensions (e.g., `from './paths.js'`), which TypeScript resolves to `.ts` during compilation.
+- `npm run build` at root builds shared first, then CLI.
 
 ## Architecture
 
@@ -120,7 +130,7 @@ ls-apis -q <query>
 
 - **MCP client config**: use `npx tsx packages/mcp-server/src/index.ts` for all platforms. VS Code will ask for permission once on first run — this is normal for project-local MCP servers (as opposed to published npm packages which are pre-trusted). Approving once persists the decision.
 - **Auto-build**: `packages/mcp-server/index.js` is a small JS shim that builds the server (`tsc && tsc-esm-fix`) if `dist/` doesn't exist, then delegates to `dist/index.js`. This ensures MCP client configs work on fresh clones without a manual build step.
-- **SDK imports use `.js`**: `@modelcontextprotocol/sdk@0.5.0` has a wildcard exports map (`"./*": "./dist/*"`) that TypeScript's `bundler` resolution can't resolve without the extension ([#218](https://github.com/modelcontextprotocol/typescript-sdk/issues/218), [#258](https://github.com/modelcontextprotocol/typescript-sdk/issues/258)). These are the only `.js` extensions in source — everything else uses extensionless imports thanks to `moduleResolution: "bundler"`.
+- **SDK imports use `.js`**: `@modelcontextprotocol/sdk@0.5.0` has a wildcard exports map (`"./*": "./dist/*"`) that TypeScript's `bundler` resolution can't resolve without the extension ([#218](https://github.com/modelcontextprotocol/typescript-sdk/issues/218), [#258](https://github.com/modelcontextprotocol/typescript-sdk/issues/258)). The MCP server source uses `.js` extensions on these SDK imports.
 
 ## Data Schema
 

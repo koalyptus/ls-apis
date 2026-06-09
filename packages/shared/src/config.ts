@@ -1,7 +1,7 @@
 import { readFile, writeFile, access } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
-import type { LsApisConfig } from './types';
+import type { LsApisConfig } from './types.js';
 
 export const CONFIG_PATH = join(homedir(), '.ls-apis');
 

@@ -1,6 +1,6 @@
 {
   "name": "ls-apis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -45,6 +45,7 @@
     "qa": "cd packages/aggregator && npx tsx src/qa/index.ts",
     "ls-apis": "cd packages/cli && npx tsx src/index.ts",
     "mcp": "cd packages/mcp-server && npx tsx src/index.ts",
+    "build": "npm run build --workspace=@ls-apis/shared && npm run build --workspace=@ls-apis/cli",
     "build:mcp": "npm run build --workspace=@ls-apis/mcp-server"
   },
   "devDependencies": {

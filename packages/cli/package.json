@@ -1,6 +1,6 @@
 {
   "name": "@ls-apis/cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Public APIs Discovery for Humans & Agents",
   "type": "module",
   "bin": {

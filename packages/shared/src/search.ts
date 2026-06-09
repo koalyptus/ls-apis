@@ -1,4 +1,4 @@
-import type { ApiEntry, SearchOptions } from './types';
+import type { ApiEntry, SearchOptions } from './types.js';
 
 export function search(apis: ApiEntry[], options: SearchOptions): ApiEntry[] {
   let results = apis;
