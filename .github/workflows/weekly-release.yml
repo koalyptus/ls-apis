@@ -59,6 +59,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - run: npm run build
+
       - name: Publish to npm
         run: npm publish --workspace=@ls-apis/cli
         env:

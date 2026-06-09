@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { loadConfig, clearConfigCache } from '../src/config';
+import { loadConfig, clearConfigCache } from '../src/config.js';
 import { readFile, writeFile, access } from 'node:fs/promises';
 
 const EXPECTED_DEFAULTS = {

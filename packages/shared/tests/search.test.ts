@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { search, getCategories, getProviders } from '../src/search';
-import type { ApiEntry } from '../src/types';
+import { search, getCategories, getProviders } from '../src/search.js';
+import type { ApiEntry } from '../src/types.js';
 
 const mockApis: ApiEntry[] = [
   {

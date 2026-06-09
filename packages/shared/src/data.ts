@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { resolveDataFile } from './paths';
-import type { DataFile } from './types';
+import { resolveDataFile } from './paths.js';
+import type { DataFile } from './types.js';
 
 let cached: DataFile | null = null;
 let cachedVersion: string | null = null;

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
-import { projectRoot, resolveDataFile, resolveRejectedFile } from '../src/paths';
+import { projectRoot, resolveDataFile, resolveRejectedFile } from '../src/paths.js';
 
 describe('paths', () => {
   const srcFile = path.resolve('packages/shared/src/paths.ts');

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { loadDataFile, clearDataFileCache, getVersion, clearVersionCache } from '../src';
+import { loadDataFile, clearDataFileCache, getVersion, clearVersionCache } from '../src/index.js';
 import { readFile } from 'node:fs/promises';
 
 const mockData = {
