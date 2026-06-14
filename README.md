@@ -32,6 +32,7 @@ ls-apis -q weather
 ### Via npm link (local development)
 
 ```bash
+npm run build
 npm link --workspace=@ls-apis/cli
 ls-apis -q weather
 ```
@@ -292,8 +293,8 @@ npm run ls-apis -- -q <query>
 # Run MCP server (stdio transport for AI clients)
 npm run mcp
 
-# Build CLI to dist/ (tsc + ESM import fix)
-npm run build --workspace=@ls-apis/cli
+# Build all packages (shared → CLI)
+npm run build
 ```
 
 ## CLI Build and Publish Notes

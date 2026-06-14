@@ -20,6 +20,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
 
+      - run: npm run build
+
       - run: npm run aggregate
 
       - run: npm run format:fix
@@ -58,8 +60,6 @@ jobs:
           gh pr merge --squash "$PR"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - run: npm run build
 
       - name: Publish to npm
         run: npm publish --workspace=@ls-apis/cli
