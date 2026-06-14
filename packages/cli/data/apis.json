@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-09T05:56:03.813Z",
+  "timestamp": "2026-06-14T07:35:14.690Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -26566,6 +26566,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Pick an Agency",
+      "description": "Search 47,000+ marketing agencies by service, location and rating",
+      "link": "https://www.pickanagency.com/developers",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Business"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Redash",
       "description": "Access your queries and dashboards on Redash",
       "link": "https://redash.io/help/user-guide/integrations-and-api/api",
@@ -27551,6 +27561,16 @@
       "link": "https://huobiapi.github.io/docs/spot/v1/en/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Hyperliquid Market Data",
+      "description": "Hyperliquid open interest, funding and cross-venue predicted rates per coin",
+      "link": "https://rapidapi.com/theliminalguy/api/hyperliquid-market-data-oi-funding-open-interest",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Cryptocurrency"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -30913,7 +30933,7 @@
       "cors": "unknown",
       "categories": ["Food & Drink"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Foodish",
@@ -32536,6 +32556,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "IP-API.io",
+      "description": "IP geolocation with VPN/proxy/Tor detection, reputation and risk score",
+      "link": "https://ip-api.io",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "IP Geolocation",
       "description": "Geolocate website visitors from their IPs",
       "link": "https://www.abstractapi.com/ip-geolocation-api",
@@ -32650,6 +32680,16 @@
       "description": "UK postcode lookup with lat/lon, district, ward, constituency",
       "link": "https://kiprio.com/v1/postcode",
       "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "LatLng",
+      "description": "Geocoding, reverse geocoding, places, and static maps",
+      "link": "https://www.latlng.work/docs",
+      "auth": "no",
       "cors": "yes",
       "categories": ["Geocoding"],
       "openapiSpec": null,
@@ -34116,6 +34156,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Cure Cancer With AI",
+      "description": "Oncology research, clinical trials, FDA approvals, news, and MAMMAL predictions",
+      "link": "https://www.curecancerwithai.com/developers",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Health"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Dataflow Kit COVID-19",
       "description": "COVID-19 live statistics into sites per hour",
       "link": "https://covid-19.dataflowkit.com",
@@ -35266,6 +35316,16 @@
       "sources": ["github-public-apis", "publicapis-dev"]
     },
     {
+      "name": "Noozra",
+      "description": "Free news headlines from 200+ curated RSS sources",
+      "link": "https://noozra.com/api",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["News"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "NPR One",
       "description": "Personalized news listening experience from NPR",
       "link": "http://dev.npr.org/api/",
@@ -35446,9 +35506,29 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "InfraNode",
+      "description": "Unified German city open data: weather, air quality, EV chargers, transit, demographics",
+      "link": "https://infranode.dev",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Joshua Project",
       "description": "People groups of the world with the fewest followers of Christ",
       "link": "https://api.joshuaproject.net/",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "K-Data Gate",
+      "description": "Korean market data: K-beauty/K-food products, Naver trends, stocks, real estate, weather",
+      "link": "https://kdata-gate.vercel.app/docs",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Open Data"],
@@ -36184,6 +36264,16 @@
       "categories": ["Phone"],
       "openapiSpec": null,
       "sources": ["github-public-apis", "publicapis-dev"]
+    },
+    {
+      "name": "VeriRoute Intel",
+      "description": "CNAM caller ID, carrier/LRN lookup and spam scoring for North American phone numbers",
+      "link": "https://verirouteintel.com",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Phone"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Screenshotlayer",
@@ -39673,7 +39763,7 @@
       "cors": "yes",
       "categories": ["Url Shorteners"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Mgnet.me",
@@ -39683,7 +39773,7 @@
       "cors": "no",
       "categories": ["Url Shorteners"],
       "openapiSpec": null,
-      "sources": ["github-public-apis", "publicapis-dev"]
+      "sources": ["github-public-apis"]
     },
     {
       "name": "owo",
@@ -41456,6 +41546,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "DATPAQ",
+      "description": "Developer-first APIs. Enterprise-ready infrastructure. Sampla data, avatars, image processing and a lot more.",
+      "link": "https://datpaq.com",
+      "auth": "apiKey",
+      "cors": null,
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "PageBolt",
       "description": "Screenshot, PDF, video recording, OG image, and page inspection via REST API.",
       "link": "https://pagebolt.dev/",
@@ -41609,16 +41709,6 @@
       "name": "Autom",
       "description": "Our SERP API delivers lightning-fast Google search results at unbeatable prices. Built for developers who need reliable, scalable access to search data without the complexity of web scraping or CAPTCHA challenges.",
       "link": "https://www.autom.dev",
-      "auth": "apiKey",
-      "cors": null,
-      "categories": ["Development"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Piloterr",
-      "description": "Piloterr web scraping API handles headless browsers, rotates proxies for you, and offers json-parsed data extraction.",
-      "link": "https://www.piloterr.com/",
       "auth": "apiKey",
       "cors": null,
       "categories": ["Development"],
@@ -42262,6 +42352,16 @@
       "auth": null,
       "cors": null,
       "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Your Move - Nutrition API",
+      "description": "A complete nutrition API. Search foods, get nutrition facts and values. Generate meal plans and look up packaged products from 180+ countries worldwide.",
+      "link": "https://ymove.app/nutrition-api",
+      "auth": "apiKey",
+      "cors": null,
+      "categories": ["Food & Drink"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },
@@ -43806,8 +43906,8 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Video Exercise, Nutrition & Recipe API - ymove.app",
-      "description": "One Workout API for: Exercise Videos, Program Generation, Nutritional info & Posture Analysis.",
+      "name": "Your Move - Exercise API",
+      "description": "The complete exercise library and fitness API for your app. 698+ professional HD exercise videos with workout generation and program builder.",
       "link": "https://ymove.app/exercise-api",
       "auth": "apiKey",
       "cors": null,
@@ -44176,9 +44276,9 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Ogli",
-      "description": "Generate short links like any other shortener but with custom OG/meta tags for perfect previews. Ideal for SPAs, apps, and anyone who wants control over what gets shared.",
-      "link": "https://app.ogli.sh",
+      "name": "Linkly",
+      "description": "URL shortener API with branded domains, click tracking, smart redirects, and webhooks.",
+      "link": "https://linklyhq.com/url-shortener-api",
       "auth": "apiKey",
       "cors": null,
       "categories": ["Url Shorteners"],
