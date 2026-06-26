@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-19T02:55:56.235Z",
+  "timestamp": "2026-06-26T02:15:30.095Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -27276,6 +27276,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "btcnode.uk",
+      "description": "Bitcoin blockchain data, fees, mempool, SEC insider trades, Reddit sentiment. x402 micropayments for paid endpoints.",
+      "link": "https://btcnode.uk",
+      "auth": "no",
+      "cors": "unknown",
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "BtcTurk",
       "description": "Real-time cryptocurrency data, graphs and API that allows buy&sell",
       "link": "https://docs.btcturk.com/",
@@ -29200,6 +29210,16 @@
       "description": "ALL-CAPS AS A SERVICE",
       "link": "http://shoutcloud.io/",
       "auth": "no",
+      "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "SiteIntel",
+      "description": "Extract metadata, tech stack, emails, and screenshots from any URL",
+      "link": "https://siteintel.duckdns.org",
+      "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Development"],
       "openapiSpec": null,
@@ -33296,6 +33316,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "eCourtsIndia",
+      "description": "Indian court case status, judgments, and hearing schedule API",
+      "link": "https://ecourtsindia.com/api",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "EPA",
       "description": "Web services and data sets from the US Environmental Protection Agency",
       "link": "https://www.epa.gov/developers/data-data-products#apis",
@@ -33911,6 +33941,16 @@
       "link": "https://data.wa.gov.au/",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "OpenMercantil",
+      "description": "Spanish company public data and BORME event timelines",
+      "link": "https://openmercantil.es/api/documentacion",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Government"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -34621,6 +34661,16 @@
       "link": "http://uttesh.com/exude-api/",
       "auth": "no",
       "cors": "yes",
+      "categories": ["Machine Learning"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "GoldBean",
+      "description": "OCR, Translation, NLP & ERNIE LLM via Baidu AI (free tier available)",
+      "link": "https://goldbean-api.xyz/docs",
+      "auth": "apiKey",
+      "cors": "unknown",
       "categories": ["Machine Learning"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -37076,6 +37126,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Domain Intelligence",
+      "description": "DNS, WHOIS/RDAP, SSL, subdomain enumeration, and email security in one parallel call",
+      "link": "https://oti-labs.com/domain-intelligence-api",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Security"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "EmailRep",
       "description": "Email address threat and risk prediction",
       "link": "https://docs.emailrep.io/",
@@ -37379,6 +37439,16 @@
       "name": "Best Buy",
       "description": "Products, Buying Options, Categories, Recommendations, Stores and Commerce",
       "link": "https://bestbuyapis.github.io/api-documentation/#overview",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Shopping"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "BuyWhere",
+      "description": "Real-time product catalog API for AI agents across merchants in 7 countries (SG, MY, TH, VN, PH, ID, US)",
+      "link": "https://buywhere.ai",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Shopping"],
