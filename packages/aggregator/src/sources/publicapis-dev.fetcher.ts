@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import * as https from 'https';
 import type { Element } from 'domhandler';
-import { normalizeCategory, normalizeHref } from '../normalize';
+import { normalizeCategory, normalizePath } from '../normalize';
 import type { ApiEntry, AuthType, SourceFetcher } from '../types';
 
 const BASE_URL = 'https://publicapis.dev';
@@ -79,7 +79,7 @@ const fetcher: SourceFetcher = {
         items.each((_i, el) => {
           const $item = $(el);
           const $anchor = $item.find('a').first();
-          const apiLink = normalizeHref($anchor.attr('href'), BASE_URL);
+          const apiLink = normalizePath($anchor.attr('href'), BASE_URL);
 
           if (!apiLink || apiLink.includes('github.com/marcelscruz')) {
             return;

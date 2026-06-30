@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { normalizeCategory, normalizeEntry, normalizeHref } from '../normalize';
+import { normalizeCategory, normalizeEntry, normalizePath } from '../normalize';
 import type { ApiEntry } from '../types';
 
 describe('normalize helpers', () => {
@@ -9,12 +9,12 @@ describe('normalize helpers', () => {
   });
 
   it('normalizes hrefs against a base URL and strips query/hash fragments', () => {
-    expect(normalizeHref(undefined, 'https://publicapis.dev')).toBeNull();
-    expect(normalizeHref('#section', 'https://publicapis.dev')).toBeNull();
-    expect(normalizeHref('/resource/foo?x=1#top', 'https://publicapis.dev')).toBe(
+    expect(normalizePath(undefined, 'https://publicapis.dev')).toBeNull();
+    expect(normalizePath('#section', 'https://publicapis.dev')).toBeNull();
+    expect(normalizePath('/resource/foo?x=1#top', 'https://publicapis.dev')).toBe(
       'https://publicapis.dev/resource/foo'
     );
-    expect(normalizeHref('https://example.com/api?x=1', 'https://publicapis.dev')).toBe(
+    expect(normalizePath('https://example.com/api?x=1', 'https://publicapis.dev')).toBe(
       'https://example.com/api'
     );
   });

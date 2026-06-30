@@ -15,7 +15,7 @@ export function normalizeCategory(category: string): string {
     .replace(/ & /g, ' & ');
 }
 
-export function normalizeHref(href: string | undefined, baseUrl: string): string | null {
+export function normalizePath(href: string | undefined, baseUrl: string): string | null {
   if (!href) {
     return null;
   }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { normalizeCategory } from '../normalize';
 import type { ApiEntry, SourceFetcher } from '../types';
 
 const PAGE_URL = 'https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/';
@@ -23,7 +24,7 @@ const fetcher: SourceFetcher = {
         return;
       }
 
-      const category = cells.eq(1).text().trim();
+      const category = normalizeCategory(cells.eq(1).text().trim());
 
       const nameCell = cells.eq(2);
       const nameLinks = nameCell.find('a');
