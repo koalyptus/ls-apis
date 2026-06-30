@@ -1,6 +1,8 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import * as https from 'https';
+import type { Element } from 'domhandler';
+import { normalizeCategory, normalizePath } from '../normalize';
 import type { ApiEntry, AuthType, SourceFetcher } from '../types';
 
 const BASE_URL = 'https://publicapis.dev';
@@ -8,6 +10,18 @@ const HTTPS_AGENT = new https.Agent({ rejectUnauthorized: false });
 const REQUEST_TIMEOUT = 10000;
 const MIN_DESCRIPTION_LENGTH = 16;
 const MAX_AUTH_LENGTH = 20;
+
+function getApiItems($: cheerio.CheerioAPI): cheerio.Cheerio<Element> {
+  const legacyItems = $('li[role="group"]');
+  if (legacyItems.length > 0) {
+    return legacyItems;
+  }
+
+  return $('li').filter((_i, el) => {
+    const $el = $(el);
+    return $el.find('a[href^="/resource/"]').length > 0 && $el.find('h2').length > 0;
+  });
+}
 
 async function fetchCategories(): Promise<string[]> {
   const res = await axios.get(BASE_URL, {
@@ -58,20 +72,20 @@ const fetcher: SourceFetcher = {
         });
 
         const $ = cheerio.load(res.data);
-        const categoryName = category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+        const categoryName = normalizeCategory(category);
 
-        $('li[role="group"]').each((_i, el) => {
+        const items = getApiItems($);
+
+        items.each((_i, el) => {
           const $item = $(el);
-          const $anchors = $item.find('a');
-          const apiLink = $anchors.first().attr('href')?.split('?')[0];
+          const $anchor = $item.find('a').first();
+          const apiLink = normalizePath($anchor.attr('href'), BASE_URL);
 
           if (!apiLink || apiLink.includes('github.com/marcelscruz')) {
             return;
           }
 
-          const name =
-            $item.find('h2').first().text().trim() ||
-            $item.find('[class*=heading]').first().text().trim();
+          const name = $item.find('h2').first().text().trim();
           if (!name) {
             return;
           }
@@ -105,7 +119,7 @@ const fetcher: SourceFetcher = {
 
           allApis.push({
             name,
-            description: description || null,
+            description,
             link: apiLink,
             auth,
             cors,

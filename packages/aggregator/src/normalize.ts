@@ -3,7 +3,7 @@ import type { ApiEntry, NormalizeResult } from './types';
 
 export const MAX_CATEGORIES = 10;
 
-function normalizeCategory(category: string): string {
+export function normalizeCategory(category: string): string {
   return category
     .toLowerCase()
     .replace(/_/g, ' ')
@@ -13,6 +13,27 @@ function normalizeCategory(category: string): string {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
     .replace(/ & /g, ' & ');
+}
+
+export function normalizePath(href: string | undefined, baseUrl: string): string | null {
+  if (!href) {
+    return null;
+  }
+
+  const normalized = href.split('?')[0].split('#')[0].trim();
+  if (!normalized || normalized.startsWith('#')) {
+    return null;
+  }
+
+  if (/^https?:\/\//i.test(normalized)) {
+    return normalized;
+  }
+
+  if (normalized.startsWith('/')) {
+    return new URL(normalized, baseUrl).toString();
+  }
+
+  return normalized;
 }
 
 function normalizeCategories(categories: string[]): string[] {

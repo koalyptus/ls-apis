@@ -62,6 +62,41 @@ describe('sources/publicapis-dev', () => {
       expect(entries.length).toBeGreaterThan(0);
     });
 
+    it('should scrape APIs from the current /resource card markup', async () => {
+      const updatedCategoryPageHtml = `
+<html>
+<body>
+  <li>
+    <a href="/resource/animal-facts/abc123" style="display:block;height:100%">
+      <div>
+        <h2>Animal Facts</h2>
+        <p>Interesting facts about animals from around the world.</p>
+      </div>
+    </a>
+  </li>
+</body>
+</html>`;
+
+      const singleCategoryPageHtml = `
+<html>
+<body>
+  <a href="/category/animals">Animals</a>
+</body>
+</html>`;
+
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: singleCategoryPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: updatedCategoryPageHtml });
+
+      const entries = await fetcher.fetchApis();
+
+      expect(entries).toHaveLength(1);
+      expect(entries[0]?.name).toBe('Animal Facts');
+      expect(entries[0]?.description).toBe(
+        'Interesting facts about animals from around the world.'
+      );
+      expect(entries[0]?.link).toBe('https://publicapis.dev/resource/animal-facts/abc123');
+    });
+
     it('should have name and link for each entry', async () => {
       vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
       vi.mocked(axios.get).mockResolvedValue({ data: categoryPageHtml });
