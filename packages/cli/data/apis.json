@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-26T02:15:30.095Z",
+  "timestamp": "2026-06-30T01:54:13.641Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -8,6 +8,10 @@
     {
       "name": "github-public-apis",
       "url": "https://github.com/public-apis/public-apis"
+    },
+    {
+      "name": "mixedanalytics",
+      "url": "https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/"
     },
     {
       "name": "publicapis-dev",
@@ -25221,9 +25225,9 @@
       "link": "https://dog.ceo/dog-api/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Animals"],
+      "categories": ["Animals", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "eBird",
@@ -25251,9 +25255,9 @@
       "link": "https://http.cat/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Animals"],
+      "categories": ["Animals", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "HTTP Dog",
@@ -25311,24 +25315,14 @@
       "link": "https://placebear.com/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Animals"],
+      "categories": ["Animals", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "PlaceDog",
       "description": "Placeholder Dog pictures",
       "link": "https://place.dog",
-      "auth": "no",
-      "cors": "yes",
-      "categories": ["Animals"],
-      "openapiSpec": null,
-      "sources": ["github-public-apis"]
-    },
-    {
-      "name": "PlaceKitten",
-      "description": "Placeholder Kitten pictures",
-      "link": "https://placekitten.com/",
       "auth": "no",
       "cors": "yes",
       "categories": ["Animals"],
@@ -25461,9 +25455,9 @@
       "link": "https://www.animenewsnetwork.com/encyclopedia/api.php",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Anime"],
+      "categories": ["Anime", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Catboy",
@@ -25711,9 +25705,9 @@
       "link": "https://urlhaus-api.abuse.ch/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Anti Malware"],
+      "categories": ["Anti Malware", "Developer Tools"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "URLScan.io",
@@ -25891,9 +25885,9 @@
       "link": "https://metmuseum.github.io/",
       "auth": "no",
       "cors": "no",
-      "categories": ["Art & Design"],
+      "categories": ["Art & Design", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Noun Project",
@@ -25911,9 +25905,9 @@
       "link": "https://php-noise.com/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Art & Design"],
+      "categories": ["Art & Design", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Pixel Encounter",
@@ -26301,9 +26295,9 @@
       "link": "https://openlibrary.org/developers/api",
       "auth": "no",
       "cors": "no",
-      "categories": ["Books"],
+      "categories": ["Books", "Content", "Open Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Penguin Publishing",
@@ -26431,9 +26425,9 @@
       "link": "https://wolnelektury.pl/api/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Books"],
+      "categories": ["Books", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Apache Superset",
@@ -26551,6 +26545,16 @@
       "link": "https://markerapi.com",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Business"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Meirra",
+      "description": "SEO monitoring, email verification, lead generation, and marketing analytics",
+      "link": "https://meirra.com/api",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Business"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -27216,6 +27220,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "BitPanda",
+      "description": "Cryptocurrency Information",
+      "link": "https://developers.bitpanda.com",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Bitmex",
       "description": "Real-Time Cryptocurrency derivatives trading platform based in Hong Kong",
       "link": "https://www.bitmex.com/app/apiOverview",
@@ -27241,6 +27255,16 @@
       "link": "https://block.io/docs/basic",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Block Lottos",
+      "description": "On-chain lottery, draw history, jackpot and advertising endpoints",
+      "link": "https://blocklottos.com/openapi.json",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Cryptocurrency"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -27341,9 +27365,9 @@
       "link": "https://docs.coincap.io/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Cryptocurrency"],
+      "categories": ["Cryptocurrency", "Crypto & Finance"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "CoinDCX",
@@ -27401,9 +27425,9 @@
       "link": "https://www.coinlore.com/cryptocurrency-data-api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Cryptocurrency"],
+      "categories": ["Cryptocurrency", "Crypto & Finance"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "CoinMarketCap",
@@ -27551,9 +27575,9 @@
       "link": "https://docs.gemini.com/rest-api/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Cryptocurrency"],
+      "categories": ["Cryptocurrency", "Crypto & Finance"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Hirak Exchange Rates",
@@ -27676,14 +27700,24 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Mexc",
+      "description": "Cryptocurrency info, place order",
+      "link": "https://www.mexc.com/api-docs",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Nexchange",
       "description": "Automated cryptocurrency exchange service",
       "link": "https://nexchange2.docs.apiary.io/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Cryptocurrency"],
+      "categories": ["Cryptocurrency", "Crypto & Finance"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Nomics",
@@ -27956,6 +27990,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "TaxID",
+      "description": "EU VAT number validation with company name and address lookup across all 27 member states",
+      "link": "https://www.taxid.dev/docs",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Currency Exchange"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "VATComply.com",
       "description": "Exchange rates, geolocation and VAT number validation",
       "link": "https://www.vatcomply.com/documentation",
@@ -28111,9 +28155,9 @@
       "link": "https://apis.guru/api-doc/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Development"],
+      "categories": ["Development", "Api Directories"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Azure DevOps",
@@ -28261,9 +28305,9 @@
       "link": "https://github.com/fawazahmed0/cloudflare-trace-api",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Development"],
+      "categories": ["Development", "Developer Tools"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Codex",
@@ -28321,9 +28365,9 @@
       "link": "https://status.digitalocean.com/api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Development"],
+      "categories": ["Development", "Developer Tools"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Docker Hub",
@@ -28571,9 +28615,9 @@
       "link": "https://httpbin.org/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Development"],
+      "categories": ["Development", "Developer Tools"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Httpbin Cloudflare",
@@ -28651,9 +28695,9 @@
       "link": "https://documentation.image-charts.com/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Development"],
+      "categories": ["Development", "Developer Tools"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "import.io",
@@ -28701,9 +28745,9 @@
       "link": "https://www.ipify.org/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Development"],
+      "categories": ["Development", "Developer Tools"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "IPinfo",
@@ -29071,9 +29115,9 @@
       "link": "https://reqres.in/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Development"],
+      "categories": ["Development", "Test Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "RSS feed to JSON",
@@ -29181,9 +29225,9 @@
       "link": "https://color.serialif.com/",
       "auth": "no",
       "cors": "no",
-      "categories": ["Development"],
+      "categories": ["Development", "Developer Tools"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "serpstack",
@@ -29336,6 +29380,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Webclaw",
+      "description": "Web content extraction for LLMs with scrape, crawl, search, and summarize",
+      "link": "https://webclaw.io/docs/api",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "WebScraping.AI",
       "description": "Web Scraping API with built-in proxies and JS rendering",
       "link": "https://webscraping.ai/",
@@ -29361,9 +29415,9 @@
       "link": "http://ccdb.hemiola.com/",
       "auth": "no",
       "cors": "no",
-      "categories": ["Dictionaries"],
+      "categories": ["Dictionaries", "Language"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Chinese Text Project",
@@ -29371,9 +29425,9 @@
       "link": "https://ctext.org/tools/api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Dictionaries"],
+      "categories": ["Dictionaries", "Language"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Collins",
@@ -29391,9 +29445,9 @@
       "link": "https://dictionaryapi.dev/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Dictionaries"],
+      "categories": ["Dictionaries", "Language"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Indonesia Dictionary",
@@ -29696,6 +29750,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "PDFFleet",
+      "description": "HTML and URL to PDF API with templates and a free tier",
+      "link": "https://pdffleet.com",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Documents & Productivity"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Pocket",
       "description": "Bookmarking service",
       "link": "https://getpocket.com/developer/",
@@ -29710,6 +29774,16 @@
       "description": "File sharing and productivity",
       "link": "https://developers.podio.com",
       "auth": "OAuth",
+      "cors": "unknown",
+      "categories": ["Documents & Productivity"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "PolyDoc",
+      "description": "HTML/URL to PDF and screenshots, plus Factur-X/ZUGFeRD e-invoices; free tier",
+      "link": "https://polydoc.tech",
+      "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Documents & Productivity"],
       "openapiSpec": null,
@@ -30081,9 +30155,9 @@
       "link": "https://imgflip.com/api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Entertainment"],
+      "categories": ["Entertainment", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "JokeAPI",
@@ -30301,9 +30375,9 @@
       "link": "https://pm25.lass-net.org/#apis",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Environment"],
+      "categories": ["Environment", "Open Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "PM25.in",
@@ -30531,6 +30605,16 @@
       "link": "https://econpulse.io",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Edgrapi",
+      "description": "Clean SEC EDGAR company financials, ratios, filings and 10-K/10-Q sections as normalized JSON",
+      "link": "https://edgrapi.com",
+      "auth": "apiKey",
+      "cors": "unknown",
       "categories": ["Finance"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -30806,6 +30890,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "StockFit",
+      "description": "SEC filings, financial statements, earnings, ETF holdings and ownership data",
+      "link": "https://api.stockfit.io/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Styvio",
       "description": "Realtime and historical stock data and current stock sentiment",
       "link": "https://www.Styvio.com",
@@ -31013,7 +31107,7 @@
       "cors": "unknown",
       "categories": ["Food & Drink"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "PunkAPI",
@@ -31053,7 +31147,7 @@
       "cors": "unknown",
       "categories": ["Food & Drink"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Systembolaget",
@@ -31103,7 +31197,7 @@
       "cors": "yes",
       "categories": ["Food & Drink"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "TheMealDB",
@@ -31143,7 +31237,7 @@
       "cors": "unknown",
       "categories": ["Food & Drink"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Zestful",
@@ -31201,9 +31295,9 @@
       "link": "https://github.com/bartervg/barter.vg/wiki",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Battle.net",
@@ -31221,9 +31315,9 @@
       "link": "https://boardgamegeek.com/wiki/page/BGG_XML_API2",
       "auth": "no",
       "cors": "no",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Brawl Stars",
@@ -31481,9 +31575,9 @@
       "link": "https://www.freetogame.com/api-doc",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Fun Facts",
@@ -31511,9 +31605,9 @@
       "link": "https://www.gamerpower.com/api-read",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "GDBrowser",
@@ -31641,9 +31735,9 @@
       "link": "https://github.com/gadhagod/Hyrule-Compendium-API",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Hytale",
@@ -31671,9 +31765,9 @@
       "link": "https://sv443.net/jokeapi/v2/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Jokes One",
@@ -31791,9 +31885,9 @@
       "link": "https://opentdb.com/api_config.php",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "PandaScore",
@@ -31951,9 +32045,9 @@
       "link": "https://runescape.wiki/w/Application_programming_interface",
       "auth": "no",
       "cors": "no",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Sakura CardCaptor",
@@ -31971,9 +32065,9 @@
       "link": "https://scryfall.com/docs/api",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "SpaceTradersAPI",
@@ -32101,9 +32195,9 @@
       "link": "https://github.com/DiljotSG/MCU-Countdown/blob/develop/docs/API.md",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "xkcd",
@@ -32111,9 +32205,9 @@
       "link": "https://xkcd.com/json.html",
       "auth": "no",
       "cors": "no",
-      "categories": ["Games & Comics"],
+      "categories": ["Games & Comics", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Yu-Gi-Oh!",
@@ -32251,9 +32345,9 @@
       "link": "https://www.getthedata.com/bng2latlong",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Geocoding"],
+      "categories": ["Geocoding", "Geo"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Cartes.io",
@@ -32291,9 +32385,9 @@
       "link": "http://country.is/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Geocoding"],
+      "categories": ["Geocoding", "Geo"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "CountryStateCity",
@@ -32351,9 +32445,9 @@
       "link": "https://geocode.xyz/api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Geocoding"],
+      "categories": ["Geocoding", "Geo"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Geocodify.com",
@@ -32521,9 +32615,9 @@
       "link": "https://geodata.gov.hk/gs/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Geocoding"],
+      "categories": ["Geocoding", "Geo"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "IBGE",
@@ -32631,9 +32725,9 @@
       "link": "https://ipapi.co/api/#introduction",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Geocoding"],
+      "categories": ["Geocoding", "Geo"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "IPGEO",
@@ -32771,9 +32865,9 @@
       "link": "https://nominatim.org/release-docs/latest/api/Overview/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Geocoding"],
+      "categories": ["Geocoding", "Geo"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "One Map, Singapore",
@@ -33061,9 +33155,9 @@
       "link": "https://ziptasticapi.com/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Geocoding"],
+      "categories": ["Geocoding", "Geo"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Bank Negara Malaysia Open Data",
@@ -33083,7 +33177,7 @@
       "cors": "unknown",
       "categories": ["Government"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Brazil",
@@ -33103,7 +33197,7 @@
       "cors": "unknown",
       "categories": ["Government"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Brazil Receita WS",
@@ -33273,7 +33367,7 @@
       "cors": "unknown",
       "categories": ["Government"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Data.gov",
@@ -33353,7 +33447,7 @@
       "cors": "unknown",
       "categories": ["Government"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "FEC",
@@ -33373,7 +33467,7 @@
       "cors": "unknown",
       "categories": ["Government"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Food Standards Agency",
@@ -34033,7 +34127,7 @@
       "cors": "unknown",
       "categories": ["Government"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Clinical Trials Directory",
@@ -34243,7 +34337,7 @@
       "cors": "unknown",
       "categories": ["Health"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Humanitarian Data Exchange",
@@ -34303,7 +34397,7 @@
       "cors": "unknown",
       "categories": ["Health"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "MedlinePlus Genetics",
@@ -34806,6 +34900,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Not Human Search",
+      "description": "AI tool discovery with agentic scoring for 8,600+ tools and MCP servers",
+      "link": "https://nothumansearch.ai/openapi.yaml",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Machine Learning"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "OpenVisionAPI",
       "description": "Open source computer vision API based on open source models",
       "link": "https://openvisionapi.com",
@@ -34993,7 +35097,7 @@
       "cors": "unknown",
       "categories": ["Music"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "iTunes Search",
@@ -35003,7 +35107,7 @@
       "cors": "unknown",
       "categories": ["Music"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Jamendo",
@@ -35083,7 +35187,7 @@
       "cors": "unknown",
       "categories": ["Music"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Musixmatch",
@@ -35113,7 +35217,7 @@
       "cors": "no",
       "categories": ["Music"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Phishin",
@@ -35473,7 +35577,7 @@
       "cors": "no",
       "categories": ["Open Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Black History Facts",
@@ -35793,7 +35897,7 @@
       "cors": "unknown",
       "categories": ["Open Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "University of Oslo",
@@ -35901,9 +36005,9 @@
       "link": "https://www.datamuse.com/api/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Open Source Projects"],
+      "categories": ["Open Source Projects", "Language"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Drupal.org",
@@ -36051,9 +36155,9 @@
       "link": "https://github.com/fisenkodv/dictum",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Personality"],
+      "categories": ["Personality", "Inspiration"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "FavQs.com",
@@ -36091,9 +36195,9 @@
       "link": "https://icanhazdadjoke.com/api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Personality"],
+      "categories": ["Personality", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Inspiration",
@@ -36161,9 +36265,9 @@
       "link": "https://github.com/lukePeavey/quotable",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Personality"],
+      "categories": ["Personality", "Inspiration"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Quote Garden",
@@ -36171,9 +36275,9 @@
       "link": "https://pprathameshmore.github.io/QuoteGarden/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Personality"],
+      "categories": ["Personality", "Inspiration"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "quoteclear",
@@ -36191,9 +36295,9 @@
       "link": "https://quotesondesign.com/api/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Personality"],
+      "categories": ["Personality", "Inspiration"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Stoicism Quote",
@@ -36241,9 +36345,9 @@
       "link": "https://vadivelu.anoram.com/",
       "auth": "no",
       "cors": "no",
-      "categories": ["Personality"],
+      "categories": ["Personality", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Zen Quotes",
@@ -36481,9 +36585,9 @@
       "link": "https://picsum.photos/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Photography"],
+      "categories": ["Photography", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "ObjectCut",
@@ -36561,9 +36665,9 @@
       "link": "https://resmush.it/api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Photography"],
+      "categories": ["Photography", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "shutterstock",
@@ -36671,9 +36775,9 @@
       "link": "https://api.arcsecond.io/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Science"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "arXiv",
@@ -36711,9 +36815,9 @@
       "link": "https://www.gbif.org/developer/summary",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Science"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "iDigBio",
@@ -36721,9 +36825,9 @@
       "link": "https://github.com/idigbio/idigbio-search-api/wiki",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Science"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "inspirehep.net",
@@ -36741,9 +36845,9 @@
       "link": "https://isevenapi.xyz/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Fun & Games"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "ISRO",
@@ -36761,9 +36865,9 @@
       "link": "https://www.itis.gov/ws_description.html",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Science"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Launch Library 2",
@@ -36771,9 +36875,9 @@
       "link": "https://thespacedevs.com/llapi",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Science"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Materials Platform for Data Science",
@@ -36871,9 +36975,9 @@
       "link": "http://open-notify.org/Open-Notify-API/",
       "auth": "no",
       "cors": "no",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Science"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Open Science Framework",
@@ -36931,9 +37035,9 @@
       "link": "https://github.com/r-spacex/SpaceX-API",
       "auth": "no",
       "cors": "no",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Science"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "SpaceX",
@@ -36981,9 +37085,9 @@
       "link": "https://earthquake.usgs.gov/fdsnws/event/1/",
       "auth": "no",
       "cors": "no",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Science"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "USGS Water Services",
@@ -37001,9 +37105,9 @@
       "link": "https://datahelpdesk.worldbank.org/knowledgebase/topics/125589",
       "auth": "no",
       "cors": "no",
-      "categories": ["Science & Math"],
+      "categories": ["Science & Math", "Government"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "xMath",
@@ -37401,9 +37505,9 @@
       "link": "https://data.police.uk/docs/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Security"],
+      "categories": ["Security", "Open Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "URLhaus",
@@ -37601,9 +37705,9 @@
       "link": "https://github.com/4chan/4chan-API",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Social"],
+      "categories": ["Social", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Ayrshare",
@@ -37751,9 +37855,9 @@
       "link": "https://github.com/HackerNews/API",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Social"],
+      "categories": ["Social", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Hashnode",
@@ -38111,9 +38215,9 @@
       "link": "http://ergast.com/mrd/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Sports & Fitness"],
+      "categories": ["Sports & Fitness", "Sports"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Fitbit",
@@ -38211,9 +38315,9 @@
       "link": "https://gitlab.com/dword4/nhlapi",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Sports & Fitness"],
+      "categories": ["Sports & Fitness", "Sports"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Oddsmagnet",
@@ -38443,7 +38547,7 @@
       "cors": "unknown",
       "categories": ["Test Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Dicebear Avatars",
@@ -38493,7 +38597,7 @@
       "cors": "yes",
       "categories": ["Test Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "FakeStoreAPI",
@@ -38621,9 +38725,9 @@
       "link": "https://robohash.org/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Test Data"],
+      "categories": ["Test Data", "Art & Images"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Spanish random names",
@@ -38683,7 +38787,7 @@
       "cors": "no",
       "categories": ["Test Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "What The Commit",
@@ -38906,6 +39010,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Mapbox",
+      "description": "Maps, directions, geocoding",
+      "link": "https://docs.mapbox.com/api/",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Tracking"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Pixela",
       "description": "API for recording and tracking habits or effort, routines",
       "link": "https://pixe.la",
@@ -39113,7 +39227,7 @@
       "cors": "unknown",
       "categories": ["Transportation"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Community Transit",
@@ -39373,7 +39487,7 @@
       "cors": "yes",
       "categories": ["Transportation"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Transport for Berlin, Germany",
@@ -39941,9 +40055,9 @@
       "link": "https://deividfortuna.github.io/fipe/",
       "auth": "no",
       "cors": "no",
-      "categories": ["Vehicle"],
+      "categories": ["Vehicle", "Open Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "CarVector",
@@ -39991,9 +40105,9 @@
       "link": "https://vpic.nhtsa.dot.gov/api/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Vehicle"],
+      "categories": ["Vehicle", "Open Data"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "ProblemsByVin",
@@ -40031,9 +40145,9 @@
       "link": "https://anapioficeandfire.com/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Video"],
+      "categories": ["Video", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Bob's Burgers",
@@ -40061,9 +40175,9 @@
       "link": "https://github.com/shevabam/breaking-bad-quotes",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Video"],
+      "categories": ["Video", "Inspiration"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Catalogopolis",
@@ -40121,9 +40235,9 @@
       "link": "https://finalspaceapi.com/docs/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Video"],
+      "categories": ["Video", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Game of Thrones Quotes",
@@ -40131,9 +40245,9 @@
       "link": "https://gameofthronesquotes.xyz/",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Video"],
+      "categories": ["Video", "Inspiration"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Harry Potter Charactes",
@@ -40261,9 +40375,9 @@
       "link": "https://github.com/jamesseanwright/ron-swanson-quotes#ron-swanson-quotes-api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Video"],
+      "categories": ["Video", "Inspiration"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "Simkl",
@@ -40321,9 +40435,9 @@
       "link": "https://swapi.dev/",
       "auth": "no",
       "cors": "yes",
-      "categories": ["Video"],
+      "categories": ["Video", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "SWAPI",
@@ -40421,9 +40535,9 @@
       "link": "http://www.tvmaze.com/api",
       "auth": "no",
       "cors": "unknown",
-      "categories": ["Video"],
+      "categories": ["Video", "Content"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "uNoGS",
@@ -40493,7 +40607,7 @@
       "cors": "unknown",
       "categories": ["Weather"],
       "openapiSpec": null,
-      "sources": ["github-public-apis"]
+      "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
       "name": "AccuWeather",
@@ -40814,6 +40928,1216 @@
       "categories": ["Weather"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Art Institute of Chicago",
+      "description": "Artwork from the museum",
+      "link": "https://api.artic.edu/docs/#quick-start",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Art & Images"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "COLOURlovers",
+      "description": "Color trends",
+      "link": "https://www.colourlovers.com/api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Art & Images"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "DiceBear",
+      "description": "Generate random SVG avatars",
+      "link": "https://www.dicebear.com/how-to-use/http-api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Art & Images"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Random Dog",
+      "description": "Random dog images",
+      "link": "https://random.dog/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Art & Images"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "RandomFox",
+      "description": "Random pictures of foxes",
+      "link": "https://randomfox.ca/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Art & Images"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Nager.Date",
+      "description": "Public holidays",
+      "link": "https://date.nager.at/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Calendar"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "UK Bank Holidays",
+      "description": "UK bank holidays",
+      "link": "https://www.api.gov.uk/gds/bank-holidays/#bank-holidays",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Calendar"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Ceska Televize",
+      "description": "Czech television program data",
+      "link": "https://www.ceskatelevize.cz/xml/tv-program/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Chronicling America",
+      "description": "Historic US newspapers",
+      "link": "https://chroniclingamerica.loc.gov/about/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Crossref",
+      "description": "Scholarly metadata",
+      "link": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Jikan",
+      "description": "Unofficial MyAnimeList API",
+      "link": "https://jikan.moe/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Listly",
+      "description": "Top 10 lists",
+      "link": "https://list.ly/api/docs",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Mediawiki",
+      "description": "Wikipedia page content and revisions",
+      "link": "https://www.mediawiki.org/wiki/API:Main_page#",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Reddit",
+      "description": "Public content from Reddit",
+      "link": "https://www.reddit.com/dev/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Reddit Stocks",
+      "description": "Top stocks from Wallstreetbets",
+      "link": "https://tradestie.com/apps/reddit/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Rick and Morty",
+      "description": "Rick and Morty characters",
+      "link": "https://rickandmortyapi.com/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "STAPI",
+      "description": "Star Trek information",
+      "link": "https://stapi.co/api-documentation",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "The Rosary",
+      "description": "Rosary prayers",
+      "link": "https://therosaryapi.cf/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "WordPress",
+      "description": "Posts from any public WordPress site",
+      "link": "https://developer.wordpress.org/rest-api/reference/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Content"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Binance",
+      "description": "24 hr crypto data",
+      "link": "https://binance-docs.github.io/apidocs/spot/en/#introduction",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "CoinBase",
+      "description": "Currency codes and names",
+      "link": "https://developers.coinbase.com/api/v2#data-endpoints",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "CoinDesk",
+      "description": "Bitcoin price index",
+      "link": "http://www.coindesk.com/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "CoinGecko",
+      "description": "Cryptocurrency market data",
+      "link": "https://www.coingecko.com/en/api/documentation",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "CoinMap",
+      "description": "Crypto ATMs",
+      "link": "https://coinmap.org/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Coinpaprika",
+      "description": "Cryptocurrency data",
+      "link": "https://api.coinpaprika.com/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Currency Rates",
+      "description": "Currency exchange rates",
+      "link": "https://github.com/fawazahmed0/currency-api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "DEX Screener",
+      "description": "Blockchain screener",
+      "link": "https://docs.dexscreener.com/api/reference",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "ExchangeRate-API",
+      "description": "Exchange rates",
+      "link": "https://www.exchangerate-api.com/docs/overview",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "GeckoTerminal",
+      "description": "Crypto data",
+      "link": "https://api.geckoterminal.com/docs/index.html",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Kraken",
+      "description": "Crypto data",
+      "link": "https://docs.kraken.com/rest/#tag/Market-Data",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "KuCoin",
+      "description": "Crypto data",
+      "link": "https://docs.kucoin.com/#market-data",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "NBP Web",
+      "description": "Currency exchange rates and gold prices",
+      "link": "http://api.nbp.pl/en.html#info",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "OKX",
+      "description": "Cryptocurrency market data",
+      "link": "https://www.okx.com/docs-v5/en/#overview",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Razorpay IFSC",
+      "description": "Indian Financial Systems Codes",
+      "link": "https://github.com/razorpay/ifsc/wiki/API",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "WazirX",
+      "description": "Crypto data",
+      "link": "https://docs.wazirx.com/#public-rest-api-for-wazirx",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Crypto & Finance"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Agify",
+      "description": "Predict age based on a name",
+      "link": "https://agify.io/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "APIC Agent",
+      "description": "Detect browser, OS, and device from user agent",
+      "link": "https://www.apicagent.com/docs",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Arul's Public APIs",
+      "description": "Get IP address",
+      "link": "https://aruljohn.com/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "FilterLists",
+      "description": "Lists of filters used by ad blockers",
+      "link": "https://filterlists.com/api/#/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Genderize.io",
+      "description": "Predict gender based on a name",
+      "link": "https://genderize.io/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Google Favicons",
+      "description": "Google's unofficial favicon fetcher",
+      "link": "https://dev.to/derlin/get-favicons-from-any-website-using-a-hidden-google-api-3p1e",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "goQR",
+      "description": "Create and read QR codes",
+      "link": "https://goqr.me/api/doc/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "IP2Location",
+      "description": "Get public IP address",
+      "link": "https://www.ip2location.io/documentation",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "is.gd",
+      "description": "URL shortener",
+      "link": "https://is.gd/apishorteningreference.php",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Microlink",
+      "description": "Retrieve metadata and screenshots from any URL",
+      "link": "https://microlink.io/docs/api/getting-started/overview",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Nationalize.io",
+      "description": "Predict nationality based on a name",
+      "link": "https://nationalize.io/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "QuickChart",
+      "description": "Generate charts on-the-fly",
+      "link": "https://quickchart.io/documentation/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Sixdots",
+      "description": "Google playstore analysis",
+      "link": "https://apidoc.six-dots.app/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Un-Shorten",
+      "description": "Unshorten shortened URLs",
+      "link": "https://unshorten.me/api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Developer Tools"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Open Brewery DB",
+      "description": "Breweries",
+      "link": "https://www.openbrewerydb.org/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Food & Drink"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "AmiiboAPI",
+      "description": "Nintendo Amiibo database",
+      "link": "https://amiiboapi.com/docs/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "CheapShark",
+      "description": "Price comparison for digital games",
+      "link": "https://apidocs.cheapshark.com/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Chuck Norris Jokes",
+      "description": "Chuck Norris facts",
+      "link": "https://api.chucknorris.io/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "D&D 5th Edition",
+      "description": "Official 5th Edition of Dungeons & Dragons",
+      "link": "http://www.dnd5eapi.co/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Data Dragon",
+      "description": "League of Legends champions API",
+      "link": "https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Deck of Cards",
+      "description": "Simulate a deck of cards",
+      "link": "https://deckofcardsapi.com/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Evil Insult Generator",
+      "description": "Generate insults",
+      "link": "https://evilinsult.com/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Magic: The Gathering",
+      "description": "Cards and sets from MTG",
+      "link": "https://docs.magicthegathering.io/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Official Joke",
+      "description": "Jokes",
+      "link": "https://github.com/15Dkatz/official_joke_api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "PokéAPI",
+      "description": "Pokémon data",
+      "link": "https://pokeapi.co/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Pokémon TCG",
+      "description": "Pokémon card data",
+      "link": "https://docs.pokemontcg.io/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "TCGdex",
+      "description": "Pokémon card data",
+      "link": "https://tcgdex.dev/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "XIVAPI",
+      "description": "Final Fantasy XIV",
+      "link": "https://xivapi.com/docs",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Yes or No?",
+      "description": "Randomly generate a yes or no image",
+      "link": "https://yesno.wtf/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Fun & Games"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Adresse",
+      "description": "French addresses and geocoding",
+      "link": "https://adresse.data.gouv.fr/api-doc",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "GeoJS",
+      "description": "Geolocation by IP address",
+      "link": "https://www.geojs.io/docs/v1/endpoints/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "geoPlugin",
+      "description": "Currency conversion and geolocation data",
+      "link": "https://www.geoplugin.com/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "HelloSalut",
+      "description": "Translate \"hello\" by IP address",
+      "link": "https://hellosalut.stefanbohacek.dev/hello/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "IPGeo",
+      "description": "Geolocation by IP address",
+      "link": "https://api.techniknews.net/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Open Topo Data",
+      "description": "Determine elevation for lat/long",
+      "link": "https://www.opentopodata.org/#public-api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Postcodes",
+      "description": "UK geo data by postcode",
+      "link": "https://postcodes.io/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "ViaCEP",
+      "description": "Brazil's postal address codes (CEPs)",
+      "link": "https://viacep.com.br/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Zippopotamus",
+      "description": "Zip code information for 60 countries",
+      "link": "http://www.zippopotam.us/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Geo"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Belgian Open Data Initiative",
+      "description": "Belgian government open data",
+      "link": "https://data.gov.be/en/search/datasets",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Brasil",
+      "description": "Brazil public data",
+      "link": "https://brasilapi.com.br/docs",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Colorado Information Marketplace",
+      "description": "Colorado state open data",
+      "link": "https://data.colorado.gov/browse",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Data.gov",
+      "description": "U.S. government open data",
+      "link": "https://data.gov/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Data.gov.au",
+      "description": "Australian government open data",
+      "link": "http://data.gov.au/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Dawum",
+      "description": "German election polls",
+      "link": "https://dawum.de/API/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "European Commission Taxation and Customs",
+      "description": "Europan Comission taxes",
+      "link": "https://commission.europa.eu/index_en",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Food Standards Agency",
+      "description": "UK restaurant hygiene ratings",
+      "link": "https://ratings.food.gov.uk/open-data/en-GB",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "NYC Open Data",
+      "description": "New York City open data",
+      "link": "https://opendata.cityofnewyork.us/how-to/#apidocumentation",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Open Data DC",
+      "description": "Washington DC open data",
+      "link": "https://opendata.dc.gov/pages/using-apis",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Open Government, Canada",
+      "description": "Canadian government open data",
+      "link": "https://search.open.canada.ca/opendata/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Represent Civic Information",
+      "description": "Canada's elected officials and electoral districts",
+      "link": "https://represent.opennorth.ca/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "USPTO",
+      "description": "US Patent and Trademark Office",
+      "link": "https://developer.uspto.gov/api-catalog",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "NPPES",
+      "description": "US health care providers",
+      "link": "https://npiregistry.cms.hhs.gov/api-page",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Health"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "openFDA",
+      "description": "Food & Drug Administration data (US)",
+      "link": "https://open.fda.gov/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Health"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Advice Slip",
+      "description": "Generate random advice",
+      "link": "https://api.adviceslip.com/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Inspiration"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Affirmations",
+      "description": "Generate affirmations",
+      "link": "https://www.affirmations.dev/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Inspiration"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Kanye",
+      "description": "Kanye quotes",
+      "link": "https://kanye.rest/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Inspiration"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Jobicy",
+      "description": "List of remote jobs",
+      "link": "https://jobicy.com/jobs-rss-feed",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Jobs"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "PurgoMalum",
+      "description": "Check content for profanity",
+      "link": "http://www.purgomalum.com/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Language"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Carbon Intensity",
+      "description": "Carbon intensity of the electricity system in Great Britain",
+      "link": "https://carbon-intensity.github.io/api-definitions/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "House Stock Watcher",
+      "description": "US Congress members' stock transactions",
+      "link": "https://housestockwatcher.com/api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Leadsbox",
+      "description": "71 Million business records in 202 countries",
+      "link": "https://leadsbox.biz/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Wayback Machine",
+      "description": "Internet archive availability",
+      "link": "https://archive.org/help/wayback_api.php",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Wikipedia",
+      "description": "Pageview stats",
+      "link": "https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "arXiv",
+      "description": "Research-sharing platform",
+      "link": "https://info.arxiv.org/help/api/index.html",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Asterank",
+      "description": "Asteroids, minor planets, and other objects",
+      "link": "https://www.asterank.com/api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Cat-Facts",
+      "description": "Daily cat facts",
+      "link": "https://alexwohlbruck.github.io/cat-facts/docs/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "CelesTrak",
+      "description": "General perturbations orbital data",
+      "link": "https://celestrak.org/NORAD/documentation/gp-data-formats.php",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "NASA",
+      "description": "National Aeronautics and Space Administration",
+      "link": "https://api.nasa.gov/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Newton",
+      "description": "Advanced math",
+      "link": "https://github.com/aunyks/newton-api",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Numbers",
+      "description": "Facts about numbers",
+      "link": "http://numbersapi.com/#random/math",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Spaceflight News",
+      "description": "Spaceflight related news",
+      "link": "https://api.spaceflightnewsapi.net/documentation",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "SunriseSunset",
+      "description": "Sunrise and sunset times",
+      "link": "https://sunrisesunset.io/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Science"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "CityBikes",
+      "description": "Bike sharing networks",
+      "link": "http://api.citybik.es/v2/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Sports"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Football-Data",
+      "description": "Football (soccer) competitions and data",
+      "link": "https://www.football-data.org/documentation/quickstart",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Sports"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "JSONPlaceholder",
+      "description": "Fake REST API for testing",
+      "link": "http://jsonplaceholder.typicode.com/guide/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Test Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Loripsum",
+      "description": "Generate fake placeholder text",
+      "link": "https://loripsum.net/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Test Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "RandomUser",
+      "description": "Fake user data generator",
+      "link": "https://randomuser.me/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Test Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "REST",
+      "description": "Rest API for testing",
+      "link": "https://restful-api.dev/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Test Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Softwium",
+      "description": "Dummy JSON data for a variety of categories",
+      "link": "https://softwium.com/fake-api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Test Data"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Derhuerst",
+      "description": "Public transport for Berlin & Brandenburg",
+      "link": "https://github.com/derhuerst/vbb-rest/blob/6/docs/readme.md",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Transportation"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Metro Lisboa",
+      "description": "Subway line status",
+      "link": "https://metrolisboa.pt/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Transportation"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Aviation Weather Center",
+      "description": "Aviation Digital Data Service (ADDS) data",
+      "link": "https://aviationweather.gov/data/api/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Weather"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "Open-Meteo",
+      "description": "Open source weather API",
+      "link": "https://open-meteo.com/en/docs",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Weather"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "openSenseMap",
+      "description": "Personal senseBox (weather station) data",
+      "link": "https://docs.opensensemap.org/",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Weather"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "SG Weather",
+      "description": "Realtime weather readings for Singapore",
+      "link": "https://data.gov.sg/dataset/realtime-weather-readings",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Weather"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
+    },
+    {
+      "name": "wttr",
+      "description": "Console-oriented weather forecast service",
+      "link": "https://github.com/chubin/wttr.in",
+      "auth": "no",
+      "cors": null,
+      "categories": ["Weather"],
+      "openapiSpec": null,
+      "sources": ["mixedanalytics"]
     }
   ]
 }

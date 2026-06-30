@@ -6,6 +6,7 @@ import {
   validateDataFileSchema,
   validateProvider,
   validateApi,
+  validateProviderApiCoverage,
 } from '../validations';
 
 describe('isValidUrl', () => {
@@ -144,6 +145,39 @@ describe('validateProvider', () => {
   it('includes index in error message', () => {
     const result = validateProvider(null, 5);
     expect(result.issue).toContain('index 5');
+  });
+});
+
+describe('validateProviderApiCoverage', () => {
+  it('flags a provider with no matching APIs', () => {
+    const provider = { name: 'publicapis-dev', url: 'https://publicapis.dev' };
+    const apis = [
+      {
+        name: 'Example API',
+        link: 'https://example.com',
+        categories: ['Test'],
+        sources: ['apis-guru'],
+      },
+    ];
+
+    const result = validateProviderApiCoverage(provider, 0, apis);
+    expect(result.valid).toBe(false);
+    expect(result.issue).toContain('no APIs');
+  });
+
+  it('accepts a provider that has matching APIs', () => {
+    const provider = { name: 'publicapis-dev', url: 'https://publicapis.dev' };
+    const apis = [
+      {
+        name: 'Example API',
+        link: 'https://example.com',
+        categories: ['Test'],
+        sources: ['publicapis-dev'],
+      },
+    ];
+
+    const result = validateProviderApiCoverage(provider, 0, apis);
+    expect(result.valid).toBe(true);
   });
 });
 

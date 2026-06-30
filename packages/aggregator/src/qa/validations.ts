@@ -1,4 +1,4 @@
-import type { ApiEntry } from '../types';
+import type { ApiEntry, Provider } from '../types';
 import type { ProviderValidationResult, ApiValidationResult } from './types';
 
 export function isValidUrl(url: string): boolean {
@@ -51,19 +51,42 @@ export function validateDataFileSchema(data: unknown): string[] {
   return errors;
 }
 
-export function validateProvider(provider: unknown, index: number): ProviderValidationResult {
+export function validateProvider(provider: Provider, index: number): ProviderValidationResult {
   if (provider === null || typeof provider !== 'object') {
     return { valid: false, issue: `Provider at index ${index} is not an object` };
   }
 
-  const p = provider as Record<string, unknown>;
-
-  if (typeof p.name !== 'string' || p.name.trim() === '') {
+  if (typeof provider.name !== 'string' || provider.name.trim() === '') {
     return { valid: false, issue: `Provider at index ${index} has invalid or missing name` };
   }
 
-  if (typeof p.url !== 'string' || !isValidUrl(p.url)) {
+  if (typeof provider.url !== 'string' || !isValidUrl(provider.url)) {
     return { valid: false, issue: `Provider at index ${index} has invalid or missing URL` };
+  }
+
+  return { valid: true };
+}
+
+export function validateProviderApiCoverage(
+  provider: Provider,
+  index: number,
+  apis: ApiEntry[]
+): ProviderValidationResult {
+  if (provider === null || typeof provider !== 'object') {
+    return { valid: false, issue: `Provider at index ${index} is not an object` };
+  }
+
+  const providerName = provider.name?.trim();
+  if (!providerName) {
+    return { valid: true };
+  }
+
+  const hasMatchingApis = apis.some((api) => api.sources?.includes(providerName));
+  if (!hasMatchingApis) {
+    return {
+      valid: false,
+      issue: `Provider "${providerName}" returned no APIs`,
+    };
   }
 
   return { valid: true };

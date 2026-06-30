@@ -11,6 +11,7 @@ import {
   validateJsonSyntax,
   validateDataFileSchema,
   validateProvider,
+  validateProviderApiCoverage,
   validateApi,
   isValidIso8601Utc,
 } from './validations';
@@ -59,10 +60,18 @@ export async function runQa(options: QaOptions): Promise<void> {
     }
 
     for (const [i, provider] of providers.entries()) {
-      const result = validateProvider(provider, i);
-      if (!result.valid) {
+      const providerResult = validateProvider(provider, i);
+      if (!providerResult.valid) {
         warnings.push({
-          issue: result.issue!,
+          issue: providerResult.issue!,
+          data: { ...provider },
+        });
+      }
+
+      const coverageResult = validateProviderApiCoverage(provider, i, apis);
+      if (!coverageResult.valid) {
+        warnings.push({
+          issue: coverageResult.issue!,
           data: { ...provider },
         });
       }

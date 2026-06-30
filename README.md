@@ -20,12 +20,14 @@ A curated collection of **4,000+ public APIs** with a powerful CLI search tool. 
 git clone https://github.com/koalyptus/ls-apis.git
 cd ls-apis
 npm install
+npm build
 ```
 
 ### Quick Start
 
 ```bash
 npm install -g @ls-apis/cli
+npm build
 ls-apis -q weather
 ```
 

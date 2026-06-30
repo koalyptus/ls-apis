@@ -1,77 +1,55 @@
 # ROADMAP.md
 
-## 1. Migrate to `moduleResolution: "nodenext"`
+## 1. Add `mixedanalytics` Fetcher — Free No-Auth API List
 
 ### Context
 
-Node.js ESM requires explicit `.js` extensions on all relative imports (`from './foo.js'`). This is a runtime requirement — no way around it.
+[Mixed Analytics](https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/) publishes a curated list of 224 free, open public APIs that require no authentication. This is a high-value data source: each entry includes a name, description, category, documentation link, and sample URL — all explicitly no-auth. Adding it as a new fetcher increases dataset coverage with minimal normalization overhead.
 
-The project originally used `moduleResolution: "bundler"`, which lets TypeScript accept extensionless imports (`from './foo'`). This looks cleaner but hides the Node.js requirement. TypeScript won't complain, but Node.js will at runtime when it loads the compiled `.js` output.
+### Source Analysis
 
-This mismatch caused the shared package bug: it exported raw `.ts` source via the `exports` map, Node.js loaded those `.ts` files directly, and the extensionless imports inside them failed with `ERR_MODULE_NOT_FOUND`.
+- **URL**: `https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/`
+- **Structure**: Single HTML `<table id="myTable">` with 224 data rows, 5 columns: `#`, `CATEGORY`, `API NAME`, `DESCRIPTION`, `SAMPLE URL`
+- **API NAME column**: Contains `<a href="DOCLINK">API Name</a>` (some rows have a double-link WordPress artifact — empty first `<a>` then a second `<a>` with text)
+- **CATEGORY column**: Plain text (e.g., "Art & Images", "Crypto & Finance")
+- **Key characteristic**: All APIs are explicitly no-auth — set `auth: 'no'` on every entry
 
-The immediate fix was to build shared to `dist/` so Node.js loads compiled `.js` files. The migration below makes the codebase honest about the `.js` requirement — TypeScript enforces extensions at compile time, so regressions are caught during `tsc`, not in production.
+### Phase 1: Fetcher Implementation
 
-### tsconfig changes (4 files)
+**File**: `packages/aggregator/src/sources/mixedanalytics.fetcher.ts`
 
-In each package's `tsconfig.json`:
+- Uses `axios` to fetch the page HTML (consistent with `apis-guru` and `publicapis-dev` fetchers)
+- Uses `cheerio` to parse the HTML table (already a dependency)
+- Maps each `<tr>` to `ApiEntry`:
+  - `name`: text from API NAME column (last `<a>` with non-empty text)
+  - `link`: `href` from that same `<a>` (documentation URL)
+  - `description`: text from DESCRIPTION column
+  - `auth`: `'no'` (all entries are explicitly no-auth)
+  - `cors`: `null` (not provided by source)
+  - `categories`: single-element array from CATEGORY column (normalizer handles Title-Case & `&` → `&`)
+  - `openapiSpec`: `null`
+  - `sources`: `[fetcher.name]`
+- Skips rows where the link is missing or not a valid HTTP(S) URL
+- Follows `github-public-apis.fetcher.ts` pattern (axios + cheerio)
 
-```diff
--  "module": "ESNext",
--  "moduleResolution": "bundler",
-+  "module": "NodeNext",
-+  "moduleResolution": "nodenext",
-```
+### Phase 2: Tests
 
-Files: `packages/{aggregator,cli,shared,mcp-server}/tsconfig.json`
+**File**: `packages/aggregator/src/sources/tests/mixedanalytics.test.ts`
 
-### Add `.js` extensions to imports (47 files, 84 imports)
+- Mocks `axios` with a representative HTML table string (8–10 rows covering all categories, the double-link quirk, edge cases)
+- Tests: basic fetch & parse, correct field mapping, `auth` set to `'no'`, category extraction, skip rows with invalid links, empty table handling
 
-Even though the source files are `.ts`, imports must use `.js` extensions. TypeScript resolves `./foo.js` to `./foo.ts` during compilation; at runtime Node.js finds `./foo.js` (the compiled output).
+### Phase 3: Verification
 
-```diff
-- import { search } from './search';
-+ import { search } from './search.js';
-```
+1. `npm run test:aggregator` — all tests pass
+2. `npm run typecheck` — no type errors
+3. `npm run aggregate` (optional, manual) — fetcher works end-to-end
 
-```diff
-- export * from './types';
-+ export * from './types.js';
-```
+### Files
 
-**Scope by package**:
+| File                                                           | Action     |
+| -------------------------------------------------------------- | ---------- |
+| `packages/aggregator/src/sources/mixedanalytics.fetcher.ts`    | **Create** |
+| `packages/aggregator/src/sources/tests/mixedanalytics.test.ts` | **Create** |
 
-| Package                               | Files | Imports |
-| ------------------------------------- | ----- | ------- |
-| aggregator                            | 21    | 37      |
-| cli                                   | 8     | 19      |
-| shared (tests only, src already done) | 4     | 5       |
-| mcp-server                            | 14    | 23      |
-
-### Remove `tsc-esm-fix` (2 packages)
-
-With `nodenext`, `tsc` outputs correct `.js` extensions natively. `tsc-esm-fix` is no longer needed.
-
-**cli** (`packages/cli/package.json`):
-
-- Build script: `"tsc && tsc-esm-fix --target dist"` → `"tsc"`
-- Remove `tsc-esm-fix` from `devDependencies`
-
-**mcp-server** (`packages/mcp-server/package.json`):
-
-- Build script: `"tsc && tsc-esm-fix --target dist"` → `"tsc"`
-- Remove `tsc-esm-fix` from `devDependencies`
-
-### Update AGENTS.md
-
-- Note that `moduleResolution: "nodenext"` is used
-- Remove references to `tsc-esm-fix` being required
-- Document the `.js` extension convention
-
-### Verification
-
-1. `npm run typecheck` — all 4 packages pass
-2. `npm test` — all tests pass (vitest handles `.js` extensions)
-3. `npm run build` — shared builds, cli builds, both produce runnable output
-4. `npm link --workspace=@ls-apis/cli && ls-apis -q test` — global command works
-5. `npm run mcp` — MCP server starts correctly
+No modifications to existing files — the auto-loader (`sources/index.ts`) picks up `*.fetcher.ts` files automatically.
