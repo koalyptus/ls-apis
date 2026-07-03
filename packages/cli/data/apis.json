@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-30T10:19:09.249Z",
+  "timestamp": "2026-07-03T01:56:36.973Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -27950,6 +27950,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Exchangerate.dev",
+      "description": "Live & historical FX, 168 pairs back to 1999, Frankfurter-compatible, free 10k/mo",
+      "link": "https://exchangerate.dev/docs",
+      "auth": "no",
+      "cors": "unknown",
+      "categories": ["Currency Exchange"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Frankfurter",
       "description": "Exchange rates, currency conversion and time series",
       "link": "https://www.frankfurter.app/docs",
@@ -28975,6 +28985,16 @@
       "link": "https://opengraphr.com/docs/1.0/overview",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "OpenQR",
+      "description": "Generate QR codes and manage dynamic (editable) QR codes with scan analytics",
+      "link": "https://openqr.uk/api",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -30400,6 +30420,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Solematica",
+      "description": "Compare Italian solar (photovoltaic) installer offers, energy prices (PUN/ARERA) and satellite roof data",
+      "link": "https://www.solematica.it/sviluppatori",
+      "auth": "no",
+      "cors": "no",
+      "categories": ["Environment"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Srp Energy",
       "description": "Hourly usage energy report for Srp customers",
       "link": "https://srpenergy-api-client-python.readthedocs.io/en/latest/api.html",
@@ -30675,6 +30705,16 @@
       "link": "https://frontaccounting.com/fawiki/index.php?n=Devel.SimpleAPIModule",
       "auth": "OAuth",
       "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Goldprice.dev",
+      "description": "Cross-validated gold, silver & copper spot, futures & 30-year history in 13 currencies",
+      "link": "https://goldprice.dev/docs",
+      "auth": "no",
+      "cors": "unknown",
       "categories": ["Finance"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -35820,6 +35860,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Pan Africa Data",
+      "description": "Macroeconomic and subnational income distribution data for all 54 African countries",
+      "link": "https://panafricadata.com",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "PeakMetrics",
       "description": "News articles and public datasets",
       "link": "https://rapidapi.com/peakmetrics-peakmetrics-default/api/peakmetrics-news",
@@ -39414,7 +39464,7 @@
       "description": "Unified traffic data from 65 US/CA jurisdictions: events, cameras, signs, bridges, truck routes",
       "link": "https://road511.com/docs.html",
       "auth": "apiKey",
-      "cors": "yes",
+      "cors": "no",
       "categories": ["Transportation"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -49503,6 +49553,16 @@
       "name": "Cloudmersive Validate",
       "description": "Validate international phone numbers.",
       "link": "https://publicapis.dev/resource/cloudmersive-validate/6f2sui4g",
+      "auth": null,
+      "cors": null,
+      "categories": ["Phone"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "MobileAPI",
+      "description": "Smartphone, tablet, and wearable device specifications.",
+      "link": "https://publicapis.dev/resource/mobileapi/5nm2pn6c",
       "auth": null,
       "cors": null,
       "categories": ["Phone"],
