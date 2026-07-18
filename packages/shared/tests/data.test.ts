@@ -55,6 +55,27 @@ describe('loadDataFile', () => {
     await loadDataFile(import.meta.url);
     expect(readFile).toHaveBeenCalledTimes(1);
   });
+
+  it('handles empty apis array', async () => {
+    vi.mocked(readFile).mockResolvedValue(
+      JSON.stringify({ timestamp: '', providers: [], apis: [] })
+    );
+    const data = await loadDataFile(import.meta.url);
+    expect(data.apis).toHaveLength(0);
+    expect(data.providers).toHaveLength(0);
+  });
+
+  it('propagates file read errors', async () => {
+    vi.mocked(readFile).mockRejectedValue(new Error('ENOENT'));
+    clearDataFileCache();
+    await expect(loadDataFile(import.meta.url)).rejects.toThrow('ENOENT');
+  });
+
+  it('propagates JSON parse errors', async () => {
+    vi.mocked(readFile).mockResolvedValue('not valid json');
+    clearDataFileCache();
+    await expect(loadDataFile(import.meta.url)).rejects.toThrow();
+  });
 });
 
 describe('getVersion', () => {
@@ -77,6 +98,15 @@ describe('getVersion', () => {
     const a = await getVersion(import.meta.url);
     const b = await getVersion(import.meta.url);
     expect(a).toBe(b);
+    expect(readFile).toHaveBeenCalledTimes(1);
+  });
+
+  it('re-reads after cache is cleared', async () => {
+    await getVersion(import.meta.url);
+    clearVersionCache();
+    vi.mocked(readFile).mockClear();
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify(mockPkg));
+    await getVersion(import.meta.url);
     expect(readFile).toHaveBeenCalledTimes(1);
   });
 });

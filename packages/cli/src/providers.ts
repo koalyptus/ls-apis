@@ -1,7 +1,7 @@
 import type { ApiEntry, Provider, LsApisConfig } from '@ls-apis/shared/types';
 import { getProviders } from '@ls-apis/shared/search';
 import { formatProviders } from './formatter';
-import { initColors } from './colors';
+import { initColorsFromConfig } from './colors';
 
 export function handleProviders(
   providers: Provider[],
@@ -9,8 +9,7 @@ export function handleProviders(
   argv: { sort?: string; output?: string; color?: boolean },
   config: LsApisConfig
 ): void {
-  const noColor = argv.color === false;
-  initColors(noColor ?? !config.colors);
+  initColorsFromConfig(argv.color === false, config.colors ?? true);
 
   const counts = getProviders(apis);
 

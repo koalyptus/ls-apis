@@ -11,6 +11,14 @@ export function initColors(noColor?: boolean): void {
   chalk.level = useColor ? 3 : 0;
 }
 
+export function initColorsFromConfig(argvNoColor: boolean | undefined, configColor: boolean): void {
+  if (argvNoColor === true) {
+    initColors(true);
+  } else {
+    initColors(!configColor);
+  }
+}
+
 export const color = {
   bold: (text: string) => (useColor ? chalk.bold(text) : text),
   dim: (text: string) => (useColor ? chalk.dim(text) : text),

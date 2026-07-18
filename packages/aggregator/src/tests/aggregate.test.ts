@@ -10,13 +10,6 @@ vi.mock('../sources/index', () => ({
 }));
 
 vi.mock('node:fs/promises', () => ({
-  __esModule: true,
-  default: {
-    writeFile: vi.fn().mockResolvedValue(undefined),
-    readFile: vi.fn().mockResolvedValue('{}'),
-    readdir: vi.fn().mockResolvedValue([]),
-    mkdir: vi.fn().mockResolvedValue(undefined),
-  },
   writeFile: vi.fn().mockResolvedValue(undefined),
   readFile: vi.fn().mockResolvedValue('{}'),
   readdir: vi.fn().mockResolvedValue([]),
@@ -163,6 +156,38 @@ describe('aggregate', () => {
     it('should handle fetcher errors gracefully', async () => {
       await runAggregation();
       expect(console.error).toHaveBeenCalled();
+    });
+
+    it('should write rejected file when entries are rejected', async () => {
+      vi.mocked(writeFile).mockClear();
+
+      const entriesWithTooManyCategories: ApiEntry[] = Array.from({ length: 11 }, (_, i) => ({
+        name: 'Merged API',
+        description: null,
+        link: 'https://merged.example.com',
+        auth: null,
+        cors: null,
+        categories: [`Category ${i}`],
+        openapiSpec: null,
+        sources: ['test-fetcher'],
+      }));
+
+      vi.mocked(loadAllFetchers).mockResolvedValueOnce([
+        {
+          name: 'fetcher-a',
+          sourceUrl: 'https://a.com/data',
+          fetchApis: vi.fn().mockResolvedValue(entriesWithTooManyCategories),
+        },
+      ]);
+
+      await runAggregation();
+
+      const writeFileCalls = vi.mocked(writeFile).mock.calls;
+      expect(writeFileCalls.length).toBe(2);
+
+      const rejectedPayload = JSON.parse(writeFileCalls[1][1] as string);
+      expect(rejectedPayload.total).toBe(1);
+      expect(rejectedPayload.entries[0].reason).toContain('Too many categories after merge');
     });
   });
 });

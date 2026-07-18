@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { loadConfig, clearConfigCache } from '../src/config.js';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { loadConfig, getConfig, clearConfigCache, CONFIG_PATH } from '../src/config.js';
 import { readFile, writeFile, access } from 'node:fs/promises';
 
 const EXPECTED_DEFAULTS = {
@@ -18,61 +18,86 @@ vi.mock('node:os', () => ({
   homedir: vi.fn().mockReturnValue('/fake/home'),
 }));
 
-describe('config', () => {
+describe('config - extended', () => {
   beforeEach(() => {
     vi.resetAllMocks();
     clearConfigCache();
   });
 
-  afterEach(() => {
-    vi.restoreAllMocks();
+  it('CONFIG_PATH is under home directory', () => {
+    expect(CONFIG_PATH).toContain('.ls-apis');
   });
 
-  it('returns defaults when config file is missing', async () => {
-    vi.mocked(readFile).mockRejectedValue(new Error('ENOENT'));
-    vi.mocked(access).mockRejectedValue(new Error('ENOENT'));
-    const config = await loadConfig();
-    expect(config).toEqual(EXPECTED_DEFAULTS);
+  it('getConfig returns config and file path', async () => {
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify(EXPECTED_DEFAULTS));
+    vi.mocked(access).mockResolvedValue(undefined);
+    const result = await getConfig();
+    expect(result.config).toEqual(EXPECTED_DEFAULTS);
+    expect(result.filePath).toBe(CONFIG_PATH);
   });
 
-  it('creates config file when missing', async () => {
-    vi.mocked(readFile).mockRejectedValue(new Error('ENOENT'));
-    vi.mocked(access).mockRejectedValue(new Error('ENOENT'));
+  it('caches config between calls', async () => {
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify(EXPECTED_DEFAULTS));
+    vi.mocked(access).mockResolvedValue(undefined);
+    const a = await loadConfig();
+    const b = await loadConfig();
+    expect(a).toBe(b);
+    expect(readFile).toHaveBeenCalledTimes(1);
+  });
+
+  it('re-reads after clearConfigCache', async () => {
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify(EXPECTED_DEFAULTS));
+    vi.mocked(access).mockResolvedValue(undefined);
     await loadConfig();
-    expect(writeFile).toHaveBeenCalled();
+    clearConfigCache();
+    vi.mocked(readFile).mockClear();
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify(EXPECTED_DEFAULTS));
+    vi.mocked(access).mockResolvedValue(undefined);
+    await loadConfig();
+    expect(readFile).toHaveBeenCalledTimes(1);
   });
 
-  it('returns defaults when config file is invalid JSON', async () => {
-    vi.mocked(readFile).mockResolvedValue('{invalid json}');
+  it('handles empty config file (empty object)', async () => {
+    vi.mocked(readFile).mockResolvedValue('{}');
     vi.mocked(access).mockResolvedValue(undefined);
     const config = await loadConfig();
     expect(config).toEqual(EXPECTED_DEFAULTS);
   });
 
-  it('parses valid config file', async () => {
-    vi.mocked(readFile).mockResolvedValue(
-      JSON.stringify({ limit: 5, descriptionMaxLength: 100, colors: false })
-    );
+  it('handles config with extra fields (ignores them)', async () => {
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify({ limit: 5, unknownField: 'ignored' }));
     vi.mocked(access).mockResolvedValue(undefined);
     const config = await loadConfig();
     expect(config.limit).toBe(5);
-    expect(config.descriptionMaxLength).toBe(100);
-    expect(config.colors).toBe(false);
-  });
-
-  it('merges partial config with defaults', async () => {
-    vi.mocked(readFile).mockResolvedValue(JSON.stringify({ limit: 10 }));
-    vi.mocked(access).mockResolvedValue(undefined);
-    const config = await loadConfig();
-    expect(config.limit).toBe(10);
     expect(config.descriptionMaxLength).toBe(250);
     expect(config.colors).toBe(true);
   });
 
-  it('does not create config file when it already exists', async () => {
-    vi.mocked(readFile).mockRejectedValue(new Error('ENOENT'));
+  it('handles config with limit=0', async () => {
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify({ limit: 0 }));
     vi.mocked(access).mockResolvedValue(undefined);
+    const config = await loadConfig();
+    expect(config.limit).toBe(0);
+  });
+
+  it('handles config with descriptionMaxLength=0', async () => {
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify({ descriptionMaxLength: 0 }));
+    vi.mocked(access).mockResolvedValue(undefined);
+    const config = await loadConfig();
+    expect(config.descriptionMaxLength).toBe(0);
+  });
+
+  it('handles config with colors=false', async () => {
+    vi.mocked(readFile).mockResolvedValue(JSON.stringify({ colors: false }));
+    vi.mocked(access).mockResolvedValue(undefined);
+    const config = await loadConfig();
+    expect(config.colors).toBe(false);
+  });
+
+  it('creates config file with defaults when missing', async () => {
+    vi.mocked(readFile).mockRejectedValue(new Error('ENOENT'));
+    vi.mocked(access).mockRejectedValue(new Error('ENOENT'));
     await loadConfig();
-    expect(writeFile).not.toHaveBeenCalled();
+    expect(writeFile).toHaveBeenCalledWith(CONFIG_PATH, expect.stringContaining('"limit": 20'));
   });
 });

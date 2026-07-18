@@ -31,4 +31,40 @@ describe('runQa', () => {
     expect(cmd).toContain('--output');
     expect(cmd).toContain('custom-qa.json');
   });
+
+  it('uses npx tsx to run the script', async () => {
+    const { execSync } = await import('node:child_process');
+
+    await runQa(250);
+
+    const [cmd] = vi.mocked(execSync).mock.calls[0];
+    expect(cmd).toContain('npx');
+    expect(cmd).toContain('tsx');
+  });
+
+  it('accepts different descriptionMaxLength values', async () => {
+    const { execSync } = await import('node:child_process');
+
+    await runQa(100);
+
+    expect(execSync).toHaveBeenCalledOnce();
+  });
+
+  it('does not add --output for undefined file', async () => {
+    const { execSync } = await import('node:child_process');
+
+    await runQa(250, undefined);
+
+    const [cmd] = vi.mocked(execSync).mock.calls[0];
+    expect(cmd).not.toContain('--output');
+  });
+
+  it('propagates errors from execSync', async () => {
+    const { execSync } = await import('node:child_process');
+    vi.mocked(execSync).mockImplementation(() => {
+      throw new Error('QA failed');
+    });
+
+    await expect(runQa(250)).rejects.toThrow('QA failed');
+  });
 });

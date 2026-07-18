@@ -63,34 +63,23 @@ export function formatResults(
   return formatText(results, total, limit, options);
 }
 
-export function formatList(
-  items: Map<string, number>,
-  label: string,
-  options: ListOptions
-): string {
-  const sorted = [...items.entries()].sort((a, b) => a[0].localeCompare(b[0]));
-  if (options.sort === 'count') {
-    sorted.sort((a, b) => b[1] - a[1]);
-  }
-
-  if (options.output === 'json') {
-    return JSON.stringify(
-      sorted.map(([name, count]) => ({ name, count })),
-      null,
-      2
-    );
-  }
-
-  const lines: string[] = [`Found ${sorted.length} ${label}:`];
-  for (const [name, count] of sorted) {
-    lines.push(`  ${name.padEnd(20)} (${count} APIs)`);
-  }
-  return lines.join('\n');
+interface GenericListItem {
+  name: string;
+  count?: number;
+  url?: string;
 }
 
-export function formatProviders(providers: Provider[], options: ListOptions): string {
-  const sorted = [...providers].sort((a, b) => a.name.localeCompare(b.name));
+interface GenericListOptions extends ListOptions {
+  showUrl?: boolean;
+}
 
+function formatListGeneric(
+  items: GenericListItem[],
+  header: string,
+  options: GenericListOptions,
+  formatLine: (item: GenericListItem, options: GenericListOptions) => string
+): string {
+  const sorted = [...items].sort((a, b) => a.name.localeCompare(b.name));
   if (options.sort === 'count') {
     sorted.sort((a, b) => (b.count ?? 0) - (a.count ?? 0));
   }
@@ -99,10 +88,44 @@ export function formatProviders(providers: Provider[], options: ListOptions): st
     return JSON.stringify(sorted, null, 2);
   }
 
-  const lines: string[] = [`Found ${sorted.length} providers:`];
-  for (const provider of sorted) {
-    const countStr = provider.count !== undefined ? ` (${provider.count} APIs)` : '';
-    lines.push(`  ${provider.name.padEnd(20)} ${color.dim(provider.url)}${countStr}`);
+  const lines: string[] = [header];
+  for (const item of sorted) {
+    lines.push(formatLine(item, options));
   }
   return lines.join('\n');
+}
+
+export function formatList(
+  items: Map<string, number>,
+  label: string,
+  options: ListOptions
+): string {
+  const itemsArray: GenericListItem[] = [...items.entries()].map(([name, count]) => ({
+    name,
+    count,
+  }));
+  return formatListGeneric(
+    itemsArray,
+    `Found ${itemsArray.length} ${label}:`,
+    options,
+    (item) => `  ${item.name.padEnd(20)} (${item.count} APIs)`
+  );
+}
+
+export function formatProviders(providers: Provider[], options: ListOptions): string {
+  const itemsArray: GenericListItem[] = providers.map((p) => ({
+    name: p.name,
+    count: p.count,
+    url: p.url,
+  }));
+  return formatListGeneric(
+    itemsArray,
+    `Found ${itemsArray.length} providers:`,
+    { ...options, showUrl: true },
+    (item, opts) => {
+      const countStr = item.count !== undefined ? ` (${item.count} APIs)` : '';
+      const urlStr = opts.showUrl ? ` ${color.dim(item.url ?? '')}` : '';
+      return `  ${item.name.padEnd(20)}${urlStr}${countStr}`;
+    }
+  );
 }
