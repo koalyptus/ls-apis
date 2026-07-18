@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-10T01:55:04.700Z",
+  "timestamp": "2026-07-18T01:40:15.299Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -45100,6 +45100,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "TalorData",
+      "description": "Get structured results from Google, Bing, Yandex, and DuckDuckGo through one API, with fast, reliable responses.",
+      "link": "https://publicapis.dev/resource/talordata/brxwu9n1",
+      "auth": null,
+      "cors": null,
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Supadata",
       "description": "Scrape YouTube, web, and files into text. Get AI-ready, clean data for your next project.",
       "link": "https://publicapis.dev/resource/supadata/fxcra1p0",
@@ -45373,16 +45383,6 @@
       "name": "Cache Horse",
       "description": "Combine/batch & cache multiple HTTP requests to save on API quotas, speed up & simplify your app.",
       "link": "https://publicapis.dev/resource/cache-horse/ot42rug5",
-      "auth": null,
-      "cors": null,
-      "categories": ["Development"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "CDNJS",
-      "description": "Library info on CDNJS.",
-      "link": "https://publicapis.dev/resource/cdnjs/drquuaad",
       "auth": null,
       "cors": null,
       "categories": ["Development"],
@@ -46470,6 +46470,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "AlphaAI",
+      "description": "AI-enriched financial & insider-trading news, scored for relevance.",
+      "link": "https://publicapis.dev/resource/alphaai/ibf7iovr",
+      "auth": null,
+      "cors": null,
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "ArgentoFX",
       "description": "Real-time foreign exchange rates for Argentina.",
       "link": "https://publicapis.dev/resource/argentofx/sq1pglws",
@@ -46713,16 +46723,6 @@
       "name": "Indian Mutual Fund",
       "description": "Get complete history of India Mutual Funds Data.",
       "link": "https://publicapis.dev/resource/indian-mutual-fund/yv3g976d",
-      "auth": null,
-      "cors": null,
-      "categories": ["Finance"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Intrinio",
-      "description": "A wide selection of financial data feeds.",
-      "link": "https://publicapis.dev/resource/intrinio/tz6msdgn",
       "auth": null,
       "cors": null,
       "categories": ["Finance"],
@@ -48382,6 +48382,16 @@
     {
       "name": "Discogs",
       "description": null,
+      "link": "https://publicapis.dev/resource/discogs/gt7co86z",
+      "auth": "discogsmusic.",
+      "cors": null,
+      "categories": ["Music"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Discogs",
+      "description": null,
       "link": "https://publicapis.dev/resource/discogs/62dgplds",
       "auth": "discogsmusic.",
       "cors": null,
@@ -48593,16 +48603,6 @@
       "name": "SoundCloud",
       "description": "With SoundCloud API you can build applications that will give more power to control your content.",
       "link": "https://publicapis.dev/resource/soundcloud/ho3etrgu",
-      "auth": null,
-      "cors": null,
-      "categories": ["Music"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Spotify",
-      "description": "View Spotify music catalog, manage users' libraries, get recommendations and more.",
-      "link": "https://publicapis.dev/resource/spotify/eudzna0k",
       "auth": null,
       "cors": null,
       "categories": ["Music"],
@@ -49953,6 +49953,16 @@
       "name": "Codeforces",
       "description": "Get access to Codeforces data.",
       "link": "https://publicapis.dev/resource/codeforces/x98dgwfl",
+      "auth": null,
+      "cors": null,
+      "categories": ["Programming"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Hackerearth",
+      "description": "For compiling and running code in several languages.",
+      "link": "https://publicapis.dev/resource/hackerearth/hc5tb29z",
       "auth": null,
       "cors": null,
       "categories": ["Programming"],

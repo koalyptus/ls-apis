@@ -186,5 +186,142 @@ describe('sources/publicapis-dev', () => {
 
       expect(entries.every((e) => !e.link.includes('github.com/marcelscruz'))).toBe(true);
     });
+
+    it('should skip entries with empty link', async () => {
+      const htmlWithEmptyLink = `
+<html>
+<body>
+  <li role="group">
+    <a href="">No Link</a>
+    <h2>Empty Link</h2>
+    <p>This has a longer description that should be kept</p>
+  </li>
+  <li role="group">
+    <a href="https://api.valid.com">Valid API</a>
+    <h2>Valid Service</h2>
+    <p>A longer description that passes the filter</p>
+  </li>
+</body>
+</html>
+`;
+
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: htmlWithEmptyLink });
+
+      const entries = await fetcher.fetchApis();
+
+      expect(entries.every((e) => e.link !== '')).toBe(true);
+    });
+
+    it('should skip entries with empty name', async () => {
+      const htmlWithEmptyName = `
+<html>
+<body>
+  <li role="group">
+    <a href="https://api.noname.com">Noname API</a>
+    <h2></h2>
+    <p>This has a longer description that should be kept</p>
+  </li>
+  <li role="group">
+    <a href="https://api.valid.com">Valid API</a>
+    <h2>Valid Service</h2>
+    <p>A longer description that passes the filter</p>
+  </li>
+</body>
+</html>
+`;
+
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: htmlWithEmptyName });
+
+      const entries = await fetcher.fetchApis();
+
+      expect(entries.every((e) => e.name !== '')).toBe(true);
+    });
+
+    it('should use null description when all descriptions are short', async () => {
+      const htmlWithShortDesc = `
+<html>
+<body>
+  <li role="group">
+    <a href="https://api.short.com">Short API</a>
+    <h2>Short Desc</h2>
+    <p>Short</p>
+    <p>Also short</p>
+  </li>
+</body>
+</html>
+`;
+
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: htmlWithShortDesc });
+
+      const entries = await fetcher.fetchApis();
+
+      const shortDescEntry = entries.find((e) => e.name === 'Short Desc');
+      expect(shortDescEntry?.description).toBeNull();
+    });
+
+    it('should detect custom auth string (not apiKey/OAuth)', async () => {
+      const singleCategoryPage = `
+<html><body><a href="/category/custom">Custom</a></body></html>`;
+
+      const htmlWithCustomAuth = `<html><body><li role="group"><a href="https://api.custom.com"></a><h2>Custom Auth</h2><p>Bearer</p></li></body></html>`;
+
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: singleCategoryPage });
+      vi.mocked(axios.get).mockResolvedValue({ data: htmlWithCustomAuth });
+
+      const entries = await fetcher.fetchApis();
+
+      const customAuthEntry = entries.find((e) => e.name === 'Custom Auth');
+      expect(customAuthEntry?.auth).toBe('custom authbearer');
+    });
+
+    it('should detect CORS with ✓ symbol', async () => {
+      const htmlWithCorsCheckmark = `
+<html>
+<body>
+  <li role="group">
+    <a href="https://api.checkmark.com">Checkmark API</a>
+    <h2>CORS Checkmark</h2>
+    <p>A longer description that passes the filter</p>
+    <p>CORS: ✓</p>
+  </li>
+</body>
+</html>
+`;
+
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: mainPageHtml });
+      vi.mocked(axios.get).mockResolvedValue({ data: htmlWithCorsCheckmark });
+
+      const entries = await fetcher.fetchApis();
+
+      const corsEntry = entries.find((e) => e.name === 'CORS Checkmark');
+      expect(corsEntry?.cors).toBe('yes');
+    });
+
+    it('should handle error when fetching category', async () => {
+      const singleCategoryPage = `
+<html>
+<body>
+  <a href="/category/failing">Failing</a>
+</body>
+</html>`;
+
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: singleCategoryPage });
+      vi.mocked(axios.get).mockRejectedValueOnce(new Error('Network error'));
+
+      const entries = await fetcher.fetchApis();
+
+      expect(entries).toHaveLength(0);
+      expect(console.error).toHaveBeenCalled();
+    });
+
+    it('should throw when no categories found', async () => {
+      const emptyHtml = `<html><body></body></html>`;
+      vi.mocked(axios.get).mockResolvedValueOnce({ data: emptyHtml });
+
+      await expect(fetcher.fetchApis()).rejects.toThrow('Could not discover categories');
+    });
   });
 });

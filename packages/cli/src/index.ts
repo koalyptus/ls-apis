@@ -3,7 +3,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { initColors } from './colors';
+import { initColorsFromConfig } from './colors';
 import { loadConfig, getConfig } from '@ls-apis/shared/config';
 import { loadDataFile, getVersion } from '@ls-apis/shared/data';
 import { search } from '@ls-apis/shared/search';
@@ -152,8 +152,7 @@ export async function run(argv: string[]): Promise<void> {
     return;
   }
 
-  const noColor = args.color === false;
-  initColors(noColor ?? !config.colors);
+  initColorsFromConfig(args.noColor, config.colors);
 
   const results = search(apis, {
     query: args.query,

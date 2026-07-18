@@ -252,7 +252,7 @@ Uses only Node.js stdlib (`os.homedir()`, `fs/promises`). Missing or invalid fil
 - `packages/cli/src/qa.ts`: `ls-apis qa` handler — shells out to aggregator QA via `execSync`
 - `packages/cli/src/categories.ts`: Categories command handler
 - `packages/cli/src/providers.ts`: Providers command handler
-- `packages/cli/src/paths.ts`: Workspace root resolution (`projectRoot`)
+- `packages/shared/src/paths.ts`: Workspace root resolution (`projectRoot`)
 - `packages/cli/tests/paths.test.ts`: Tests for path resolution
 - `packages/cli/tests/qa.test.ts`: Tests for CLI qa wrapper
 - `packages/aggregator/src/aggregate.ts`: Aggregation orchestration, deduplication

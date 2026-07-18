@@ -391,4 +391,15 @@ describe('run', () => {
       expect(parsed[0]).toHaveProperty('count');
     });
   });
+
+  describe('config command', () => {
+    it('shows config file path and content', async () => {
+      await run(['config']);
+      const allOutput = consoleLogSpy.mock.calls.map((c) => c[0]).join('\n');
+      expect(allOutput).toContain('Config file:');
+      expect(allOutput).toContain('"limit"');
+      expect(allOutput).toContain('"descriptionMaxLength"');
+      expect(allOutput).toContain('"colors"');
+    });
+  });
 });
