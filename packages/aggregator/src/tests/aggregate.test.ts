@@ -10,13 +10,6 @@ vi.mock('../sources/index', () => ({
 }));
 
 vi.mock('node:fs/promises', () => ({
-  __esModule: true,
-  default: {
-    writeFile: vi.fn().mockResolvedValue(undefined),
-    readFile: vi.fn().mockResolvedValue('{}'),
-    readdir: vi.fn().mockResolvedValue([]),
-    mkdir: vi.fn().mockResolvedValue(undefined),
-  },
   writeFile: vi.fn().mockResolvedValue(undefined),
   readFile: vi.fn().mockResolvedValue('{}'),
   readdir: vi.fn().mockResolvedValue([]),

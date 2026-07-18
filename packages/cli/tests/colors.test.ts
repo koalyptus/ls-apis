@@ -43,7 +43,7 @@ describe('initColorsFromConfig', () => {
     expect(color.bold('test')).toBe('test');
   });
 
-  it('explicit --no-color overrides config and NO_COLOR', () => {
+  it('NO_COLOR env var overrides even when argvColor is false', () => {
     initColors(false);
     vi.stubEnv('NO_COLOR', '1');
     initColorsFromConfig(false, true);

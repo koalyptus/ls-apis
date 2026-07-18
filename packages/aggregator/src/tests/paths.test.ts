@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getCurrentDir, resolveDataFile, resolveRejectedFile, resolveProjectRoot } from '../paths';
+import { getCurrentDir, resolveDataFile, resolveRejectedFile } from '../paths';
+import { projectRoot } from '@ls-apis/shared/paths';
 
 describe('aggregator paths', () => {
   describe('getCurrentDir', () => {
@@ -45,17 +46,11 @@ describe('aggregator paths', () => {
     });
   });
 
-  describe('resolveProjectRoot', () => {
+  describe('projectRoot shared', () => {
     it('resolves project root from import.meta.url', () => {
-      const result = resolveProjectRoot(import.meta.url);
+      const result = projectRoot(import.meta.url);
       expect(path.isAbsolute(result)).toBe(true);
       expect(path.basename(result)).not.toBe('packages');
-    });
-
-    it('matches shared projectRoot', async () => {
-      const { projectRoot: sharedRoot } = await import('@ls-apis/shared/paths');
-      const result = resolveProjectRoot(import.meta.url);
-      expect(result).toBe(sharedRoot(import.meta.url));
     });
   });
 });

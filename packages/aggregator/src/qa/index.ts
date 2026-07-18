@@ -3,7 +3,8 @@ import { join, dirname } from 'node:path';
 
 import { loadConfig } from '@ls-apis/shared/config';
 import type { DataFile } from '../types';
-import { resolveDataFile, resolveProjectRoot } from '../paths';
+import { projectRoot } from '@ls-apis/shared/paths';
+import { resolveDataFile } from '../paths';
 
 import type { QaOptions, QaOutput, WarningGroup, Warning } from './types';
 
@@ -19,7 +20,7 @@ import {
 export async function runQa(options: QaOptions): Promise<void> {
   const dataFilePath = resolveDataFile(import.meta.url);
   const outputFilePath =
-    options.outputFile ?? join(resolveProjectRoot(import.meta.url), 'qa-output/issues.json');
+    options.outputFile ?? join(projectRoot(import.meta.url), 'qa-output/issues.json');
   const descriptionMaxLength = options.descriptionMaxLength ?? (await loadDescriptionMaxLength());
 
   try {
