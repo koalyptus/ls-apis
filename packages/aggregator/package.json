@@ -1,6 +1,6 @@
 {
   "name": "@ls-apis/aggregator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "type": "module",
   "main": "./src/run.ts",
@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "tsx": "^4.0.0",
+    "tsx": "^4.23.9",
     "typescript": "^5.0.0",
-    "vite": "^6.0.0"
+    "vite": "^8.2.0"
   }
 }
