@@ -48,10 +48,24 @@ ls-apis/
 │   │       ├── search.ts          # Search logic (moved from CLI)
 │   │       └── paths.ts           # Workspace root resolution
 │   └── mcp-server/         # MCP server for AI-friendly API queries (stdio transport)
-│       └── src/
-│           ├── index.ts           # Entry point
-│           ├── server.ts          # MCP server with tools & resources
-│           └── data.ts            # Data loading (apis.json)
+│       ├── src/
+│       │   ├── index.ts           # Entry point
+│       │   ├── server.ts          # McpServer: register tools/resources, then connect
+│       │   ├── data.ts            # Data loading (apis.json)
+│       │   ├── schemas.ts         # Zod tool input schemas
+│       │   ├── types.ts           # ToolName, ResourceUri enums
+│       │   ├── handlers/          # SDK v2 registration (registerTool/registerResource)
+│       │   │   ├── index.ts
+│       │   │   ├── register-tools.ts
+│       │   │   ├── register-resources.ts
+│       │   │   └── tests/         # protocol-level tests (real Client ↔ McpServer)
+│       │   │       ├── helpers.ts
+│       │   │       ├── register-tools.test.ts
+│       │   │       └── register-resources.test.ts
+│       │   └── tests/
+│       │       └── data.test.ts
+│       ├── vitest.config.ts
+│       └── package.json           # @ls-apis/mcp-server (private, stdio server)
 └── AGENTS.md              # instructions for AI agents
 ```
 
@@ -73,6 +87,8 @@ npm test
 # Run specific package tests
 npm run test:aggregator
 npm run test:cli
+npm run test:shared
+npm run test:mcp
 
 # Typecheck all workspaces
 npm run typecheck
@@ -93,6 +109,9 @@ npm run ls-apis -- -a <auth>
 
 # Build all packages (shared → CLI)
 npm run build
+
+# Build MCP server separately (not part of the root build above)
+npm run build:mcp
 
 # Build CLI only (requires shared to be built first)
 npm run build --workspace=@ls-apis/cli
@@ -128,7 +147,7 @@ ls-apis -q <query>
 
 ## MCP Server Notes
 
-- **MCP client config**: use `npx tsx packages/mcp-server/src/index.ts` for all platforms. VS Code will ask for permission once on first run — this is normal for project-local MCP servers (as opposed to published npm packages which are pre-trusted). Approving once persists the decision.
+- **MCP client config**: use `npx --no-notice --yes tsx packages/mcp-server/src/index.ts` for all platforms. (`--no-notice` silences npm's stderr "notice" chatter that some MCP clients surface as warnings; `--yes` avoids the tsx install prompt.) VS Code will ask for permission once on first run — this is normal for project-local MCP servers (as opposed to published npm packages which are pre-trusted). Approving once persists the decision.
 - **MCP SDK v2 (split packages)**: the server uses `@modelcontextprotocol/server` and tests use `@modelcontextprotocol/client` (the old single `@modelcontextprotocol/sdk` package is gone). Imports are **extensionless** — v2 ships an explicit export map (`.`, `./stdio`), so the old `.js`-extension workaround is no longer needed.
 - **Registration before connect**: `registerTools()` / `registerResources()` must run before `server.connect(transport)`; the v2 SDK rejects capability registration on a connected server.
 - **Tool schemas are Zod**: tool inputs live in `packages/mcp-server/src/schemas.ts` as `z.object({...})` (zod v4). The SDK converts them to JSON Schema for `tools/list` and validates arguments before the handler runs — do not hand-write JSON Schema and do not re-narrow argument types inside handlers. Schema violations resolve with `isError: true` ("Input validation error"); unknown tools reject with a `ProtocolError`.

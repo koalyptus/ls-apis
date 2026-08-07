@@ -203,7 +203,7 @@ Create `.vscode/mcp.json` in your project root:
   "servers": {
     "ls-apis": {
       "command": "npx",
-      "args": ["tsx", "packages/mcp-server/src/index.ts"],
+      "args": ["--no-notice", "--yes", "tsx", "packages/mcp-server/src/index.ts"],
       "cwd": "/path/to/ls-apis"
     }
   }
@@ -221,7 +221,7 @@ Edit `claude_desktop_config.json` (`%APPDATA%\Claude\` on Windows, `~/Library/Ap
   "mcpServers": {
     "ls-apis": {
       "command": "npx",
-      "args": ["tsx", "packages/mcp-server/src/index.ts"],
+      "args": ["--no-notice", "--yes", "tsx", "packages/mcp-server/src/index.ts"],
       "cwd": "/path/to/ls-apis"
     }
   }
@@ -237,7 +237,7 @@ Create `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
   "mcpServers": {
     "ls-apis": {
       "command": "npx",
-      "args": ["tsx", "packages/mcp-server/src/index.ts"],
+      "args": ["--no-notice", "--yes", "tsx", "packages/mcp-server/src/index.ts"],
       "cwd": "/path/to/ls-apis"
     }
   }
@@ -295,8 +295,11 @@ npm run ls-apis -- -q <query>
 # Run MCP server (stdio transport for AI clients)
 npm run mcp
 
-# Build all packages (shared → CLI)
+# Build all packages (shared → CLI). Note: excludes mcp-server (build separately below).
 npm run build
+
+# Build MCP server separately (not part of the root build)
+npm run build:mcp
 ```
 
 ## CLI Build and Publish Notes
