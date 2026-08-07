@@ -1,46 +1,17 @@
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-  ListResourcesRequestSchema,
-  ReadResourceRequestSchema,
-} from '@modelcontextprotocol/sdk/types.js';
+import { McpServer } from '@modelcontextprotocol/server';
+import { StdioServerTransport } from '@modelcontextprotocol/server/stdio';
 import { getVersion } from '@ls-apis/shared/data';
-import {
-  getListToolsResult,
-  handleCallTool,
-  getListResourcesResult,
-  handleReadResource,
-} from './handlers';
-import type { CallToolParams } from './handlers';
-import { ResourceUri } from './types';
+import { registerTools, registerResources } from './handlers';
 
 const SERVER_NAME = 'ls-apis-mcp';
 
 export async function startServer(): Promise<void> {
   const version = await getVersion(import.meta.url);
-  const server = new Server(
-    {
-      name: SERVER_NAME,
-      version,
-    },
-    {
-      capabilities: {
-        tools: {},
-        resources: {},
-      },
-    }
-  );
+  const server = new McpServer({ name: SERVER_NAME, version });
 
-  server.setRequestHandler(ListToolsRequestSchema, getListToolsResult);
-  server.setRequestHandler(CallToolRequestSchema, async (request) =>
-    handleCallTool(request.params as CallToolParams)
-  );
-  server.setRequestHandler(ListResourcesRequestSchema, getListResourcesResult);
-  server.setRequestHandler(ReadResourceRequestSchema, async (request) =>
-    handleReadResource(request.params.uri as ResourceUri)
-  );
+  // Registration must happen before connect() — v2 rejects late registration.
+  registerTools(server);
+  registerResources(server);
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
