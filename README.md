@@ -203,7 +203,7 @@ Create `.vscode/mcp.json` in your project root:
   "servers": {
     "ls-apis": {
       "command": "npx",
-      "args": ["--no-notice", "--yes", "tsx", "packages/mcp-server/src/index.ts"],
+      "args": ["tsx", "packages/mcp-server/src/index.ts"],
       "cwd": "/path/to/ls-apis"
     }
   }
@@ -221,7 +221,7 @@ Edit `claude_desktop_config.json` (`%APPDATA%\Claude\` on Windows, `~/Library/Ap
   "mcpServers": {
     "ls-apis": {
       "command": "npx",
-      "args": ["--no-notice", "--yes", "tsx", "packages/mcp-server/src/index.ts"],
+      "args": ["tsx", "packages/mcp-server/src/index.ts"],
       "cwd": "/path/to/ls-apis"
     }
   }
@@ -237,7 +237,7 @@ Create `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
   "mcpServers": {
     "ls-apis": {
       "command": "npx",
-      "args": ["--no-notice", "--yes", "tsx", "packages/mcp-server/src/index.ts"],
+      "args": ["tsx", "packages/mcp-server/src/index.ts"],
       "cwd": "/path/to/ls-apis"
     }
   }
