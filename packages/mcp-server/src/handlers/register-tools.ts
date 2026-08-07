@@ -26,10 +26,7 @@ export function registerTools(server: McpServer): void {
       const effectiveLimit = limit ?? (await loadConfig()).limit;
       const apis = await getApis();
       // shared `search()` only filters/sorts — apply the tool's own `limit` here.
-      const results = search(apis, { query, category, auth, limit: effectiveLimit }).slice(
-        0,
-        effectiveLimit
-      );
+      const results = search(apis, { query, category, auth }).slice(0, effectiveLimit);
       return jsonContent({ total: results.length, results });
     }
   );
