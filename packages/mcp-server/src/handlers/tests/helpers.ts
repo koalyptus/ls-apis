@@ -10,9 +10,7 @@ import type { CallToolResult, ReadResourceResult } from '@modelcontextprotocol/s
  *   Must run before `connect()` — the v2 SDK rejects capability registration
  *   once the transport is attached.
  */
-export async function createTestServer(
-  register?: (server: McpServer) => void
-): Promise<{ client: Client; server: McpServer }> {
+export async function createTestServer(register?: (server: McpServer) => void) {
   const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
   const server = new McpServer({ name: 'ls-apis-mcp-test', version: '0.0.0' });
   register?.(server);
@@ -33,8 +31,8 @@ export function getTextContent(result: CallToolResult): string {
 
 /** Extract the first text body from a resource read result. */
 export function getResourceText(result: ReadResourceResult): string {
-  const content = result.contents?.[0] as { text?: unknown } | undefined;
-  if (typeof content?.text !== 'string') {
+  const content = result.contents?.[0];
+  if (!content || !('text' in content) || typeof content.text !== 'string') {
     throw new Error('expected text resource content');
   }
   return content.text;
