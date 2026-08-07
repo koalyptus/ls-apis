@@ -97,9 +97,9 @@ describe('registerTools', () => {
 
   it('rejects an unknown tool', async () => {
     const { client } = await createTestServer(registerTools);
-    await expect(
-      client.callTool({ name: 'not-a-tool', arguments: {} })
-    ).rejects.toThrow(/not-a-tool|not found|Unknown/i);
+    await expect(client.callTool({ name: 'not-a-tool', arguments: {} })).rejects.toThrow(
+      /not-a-tool|not found|Unknown/i
+    );
   });
 
   it('rejects a wrongly-typed argument', async () => {
