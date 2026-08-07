@@ -129,8 +129,10 @@ ls-apis -q <query>
 ## MCP Server Notes
 
 - **MCP client config**: use `npx tsx packages/mcp-server/src/index.ts` for all platforms. VS Code will ask for permission once on first run — this is normal for project-local MCP servers (as opposed to published npm packages which are pre-trusted). Approving once persists the decision.
-- **Auto-build**: `packages/mcp-server/index.js` is a small JS shim that builds the server (`tsc && tsc-esm-fix`) if `dist/` doesn't exist, then delegates to `dist/index.js`. This ensures MCP client configs work on fresh clones without a manual build step.
-- **SDK imports use `.js`**: `@modelcontextprotocol/sdk@0.5.0` has a wildcard exports map (`"./*": "./dist/*"`) that TypeScript's `bundler` resolution can't resolve without the extension ([#218](https://github.com/modelcontextprotocol/typescript-sdk/issues/218), [#258](https://github.com/modelcontextprotocol/typescript-sdk/issues/258)). The MCP server source uses `.js` extensions on these SDK imports.
+- **MCP SDK v2 (split packages)**: the server uses `@modelcontextprotocol/server` and tests use `@modelcontextprotocol/client` (the old single `@modelcontextprotocol/sdk` package is gone). Imports are **extensionless** — v2 ships an explicit export map (`.`, `./stdio`), so the old `.js`-extension workaround is no longer needed.
+- **Registration before connect**: `registerTools()` / `registerResources()` must run before `server.connect(transport)`; the v2 SDK rejects capability registration on a connected server.
+- **Tool schemas are Zod**: tool inputs live in `packages/mcp-server/src/schemas.ts` as `z.object({...})` (zod v4). The SDK converts them to JSON Schema for `tools/list` and validates arguments before the handler runs — do not hand-write JSON Schema and do not re-narrow argument types inside handlers. Schema violations resolve with `isError: true` ("Input validation error"); unknown tools reject with a `ProtocolError`.
+- **MCP tests use the real protocol**: `src/handlers/tests/helpers.ts` exposes `createTestServer()`, which wires a real `Client` to a real `McpServer` over `InMemoryTransport.createLinkedPair()`. Assert via `client.callTool()` / `client.readResource()`, not by calling handlers directly.
 
 ## Data Schema
 
