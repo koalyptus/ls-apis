@@ -7,6 +7,8 @@ export const SearchApisInput = z.object({
   auth: z.string().optional().describe('Filter by authentication type: apiKey, OAuth, or no'),
   limit: z
     .number()
+    .int()
+    .min(0)
     .optional()
     .describe('Maximum number of results to return (default: configured limit, 20 if unset)'),
 });

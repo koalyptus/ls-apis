@@ -118,6 +118,16 @@ describe('registerTools', () => {
     );
   });
 
+  it('rejects a negative limit', async () => {
+    const { client } = await createTestServer(registerTools);
+    const result = await client.callTool({
+      name: ToolName.SearchApis,
+      arguments: { limit: -1 },
+    });
+    expect(result.isError).toBe(true);
+    expect(getTextContent(result)).toMatch(/valid/i);
+  });
+
   it('rejects a wrongly-typed argument', async () => {
     const { client } = await createTestServer(registerTools);
     const result = await client.callTool({
