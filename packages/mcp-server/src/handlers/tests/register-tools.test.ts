@@ -40,6 +40,11 @@ vi.mock('../../data', () => {
   };
 });
 
+// Keep the default-limit test deterministic: never depend on the on-disk config.
+vi.mock('@ls-apis/shared/config', () => ({
+  loadConfig: vi.fn().mockResolvedValue({ limit: 20 }),
+}));
+
 describe('registerTools', () => {
   it('exposes search-apis, list-categories and list-providers over the protocol', async () => {
     const { client } = await createTestServer(registerTools);
@@ -109,6 +114,8 @@ describe('registerTools', () => {
       arguments: { limit: 'not-a-number' },
     });
     expect(result.isError).toBe(true);
-    expect(getTextContent(result)).toMatch(/Input validation error/i);
+    // Assert on isError + a loose validation marker rather than the SDK's
+    // exact error string, which may change across @modelcontextprotocol/server versions.
+    expect(getTextContent(result)).toMatch(/valid/i);
   });
 });
