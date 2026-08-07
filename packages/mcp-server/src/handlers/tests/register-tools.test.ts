@@ -82,6 +82,17 @@ describe('registerTools', () => {
     expect(parsed.total).toBe(2);
   });
 
+  it('applies an explicit limit argument', async () => {
+    const { client } = await createTestServer(registerTools);
+    const result = await client.callTool({
+      name: ToolName.SearchApis,
+      arguments: { limit: 1 },
+    });
+    const parsed = JSON.parse(getTextContent(result));
+    expect(parsed.total).toBe(1);
+    expect(parsed.results).toHaveLength(1);
+  });
+
   it('returns categories via list-categories tool', async () => {
     const { client } = await createTestServer(registerTools);
     const result = await client.callTool({ name: ToolName.ListCategories, arguments: {} });
