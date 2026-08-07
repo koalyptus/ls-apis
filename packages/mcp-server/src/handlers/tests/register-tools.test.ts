@@ -94,4 +94,21 @@ describe('registerTools', () => {
     expect(parsed.providers[0].name).toBe('source-a');
     expect(parsed.providers[0].count).toBe(2);
   });
+
+  it('rejects an unknown tool', async () => {
+    const { client } = await createTestServer(registerTools);
+    await expect(
+      client.callTool({ name: 'not-a-tool', arguments: {} })
+    ).rejects.toThrow(/not-a-tool|not found|Unknown/i);
+  });
+
+  it('rejects a wrongly-typed argument', async () => {
+    const { client } = await createTestServer(registerTools);
+    const result = await client.callTool({
+      name: ToolName.SearchApis,
+      arguments: { limit: 'not-a-number' },
+    });
+    expect(result.isError).toBe(true);
+    expect(getTextContent(result)).toMatch(/Input validation error/i);
+  });
 });
