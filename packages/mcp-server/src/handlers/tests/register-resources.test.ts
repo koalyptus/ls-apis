@@ -1,5 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { handleReadResource } from '..';
+import { describe, it, expect, vi } from 'vitest';
+import { createTestServer, getResourceText } from './helpers';
+import { registerResources } from '../register-resources';
 import { ResourceUri } from '../../types';
 
 vi.mock('../../data', () => {
@@ -44,43 +45,50 @@ vi.mock('../../data', () => {
   };
 });
 
-describe('handleReadResource', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+describe('registerResources', () => {
+  it('lists all four resources', async () => {
+    const { client } = await createTestServer(registerResources);
+    const { resources } = await client.listResources();
+    expect(resources.map((r) => r.uri).sort()).toEqual(
+      [ResourceUri.Data, ResourceUri.Categories, ResourceUri.Providers, ResourceUri.Stats].sort()
+    );
   });
 
   it('returns full dataset for apis://data', async () => {
-    const result = await handleReadResource(ResourceUri.Data);
-    const parsed = JSON.parse(result.contents[0].text as string);
+    const { client } = await createTestServer(registerResources);
+    const parsed = JSON.parse(
+      getResourceText(await client.readResource({ uri: ResourceUri.Data }))
+    );
     expect(parsed.providers).toHaveLength(2);
     expect(parsed.apis).toHaveLength(2);
   });
 
   it('returns categories for apis://categories', async () => {
-    const result = await handleReadResource(ResourceUri.Categories);
-    const parsed = JSON.parse(result.contents[0].text as string);
+    const { client } = await createTestServer(registerResources);
+    const parsed = JSON.parse(
+      getResourceText(await client.readResource({ uri: ResourceUri.Categories }))
+    );
     expect(parsed.total).toBe(2);
     expect(parsed.categories[0].name).toBe('weather');
   });
 
   it('returns providers for apis://providers', async () => {
-    const result = await handleReadResource(ResourceUri.Providers);
-    const parsed = JSON.parse(result.contents[0].text as string);
+    const { client } = await createTestServer(registerResources);
+    const parsed = JSON.parse(
+      getResourceText(await client.readResource({ uri: ResourceUri.Providers }))
+    );
     expect(parsed.total).toBe(2);
     expect(parsed.providers[0].name).toBe('source-a');
     expect(parsed.providers[0].count).toBe(2);
   });
 
   it('returns stats for apis://stats', async () => {
-    const result = await handleReadResource(ResourceUri.Stats);
-    const parsed = JSON.parse(result.contents[0].text as string);
-    expect(parsed.totalApis).toBe(2);
-    expect(parsed.totalCategories).toBe(2);
-  });
-
-  it('throws for unknown resource', async () => {
-    await expect(handleReadResource('apis://unknown' as ResourceUri)).rejects.toThrow(
-      'Unknown resource'
+    const { client } = await createTestServer(registerResources);
+    const parsed = JSON.parse(
+      getResourceText(await client.readResource({ uri: ResourceUri.Stats }))
     );
+    expect(parsed.totalApis).toBe(2);
+    expect(parsed.totalProviders).toBe(2);
+    expect(parsed.totalCategories).toBe(2);
   });
 });

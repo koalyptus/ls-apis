@@ -295,8 +295,11 @@ npm run ls-apis -- -q <query>
 # Run MCP server (stdio transport for AI clients)
 npm run mcp
 
-# Build all packages (shared → CLI)
+# Build all packages (shared → CLI). Note: excludes mcp-server (build separately below).
 npm run build
+
+# Build MCP server separately (not part of the root build)
+npm run build:mcp
 ```
 
 ## CLI Build and Publish Notes
