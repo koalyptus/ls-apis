@@ -3,3 +3,4 @@ export { handleCallTool } from './call-tool';
 export { getListResourcesResult } from './list-resources';
 export { handleReadResource } from './read-resource';
 export type { CallToolParams } from './types';
+export { registerTools } from './register-tools';
