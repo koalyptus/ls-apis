@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-14T11:51:27.270Z",
+  "timestamp": "2026-08-21T00:41:22.375Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -25870,6 +25870,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Iconify",
+      "description": "Search and fetch SVG icons from 200+ open source icon sets",
+      "link": "https://iconify.design/docs/api/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Art & Design"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Icons8",
       "description": "Icons (find \"search icon\" hyperlink in page)",
       "link": "https://img.icons8.com/",
@@ -26114,6 +26124,16 @@
       "description": "Ethereum explorer API",
       "link": "https://etherscan.io/apis",
       "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Blockchain"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Get Started with Web3",
+      "description": "Bilingual Web3 lessons, glossary search and role-based learning paths",
+      "link": "https://github.com/beihaili/Get-Started-with-Web3/blob/main/docs/api.md",
+      "auth": "no",
       "cors": "yes",
       "categories": ["Blockchain"],
       "openapiSpec": null,
@@ -28140,6 +28160,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Attestwire",
+      "description": "Validate EN 16931 e-invoices: XRechnung, ZUGFeRD, Factur-X, Peppol BIS",
+      "link": "https://api.attestwire.com/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Data Validation"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Lob.com",
       "description": "US Address Verification",
       "link": "https://lob.com/",
@@ -28175,6 +28205,16 @@
       "link": "https://rapidapi.com/kaiasistentedavid/api/schema-change-risk",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Data Validation"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Temsor",
+      "description": "Validates Turkish national ID, tax number, IBAN, phone, plate and parses addresses",
+      "link": "https://api.temsor.com/docs",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Data Validation"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -28372,7 +28412,7 @@
     {
       "name": "Bored",
       "description": "Find random activities to fight boredom",
-      "link": "https://www.boredapi.com/",
+      "link": "https://bored-api.appbrewery.com/",
       "auth": "no",
       "cors": "unknown",
       "categories": ["Development"],
@@ -29050,6 +29090,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Micro-SaaS AI Suite",
+      "description": "8 serverless AI APIs for sentiment analysis, copy generation, email verification, & OCR",
+      "link": "https://microsaas-agent-api.vercel.app/openapi.json",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "MicroENV",
       "description": "Fake Rest API for developers",
       "link": "https://microenv.com/",
@@ -29174,6 +29224,16 @@
       "description": "Generate QR codes and manage dynamic (editable) QR codes with scan analytics",
       "link": "https://openqr.uk/api",
       "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Orca Scan",
+      "description": "Generate barcode images (QR, Code 128, EAN, Data Matrix and more) in SVG, PNG, JPG or PDF",
+      "link": "https://orcascan.com/guides/free-barcode-image-api-0e4a4fa6",
+      "auth": "no",
       "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
@@ -30400,6 +30460,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "uchecker",
+      "description": "Bulk email verification with full SMTP server responses",
+      "link": "https://api.uchecker.net/docs",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Email"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Verifier",
       "description": "Verifies that a given email is real",
       "link": "https://verifier.meetchopra.com/docs#/",
@@ -30655,6 +30725,16 @@
       "link": "https://www.iqair.com/air-pollution-data-api",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Environment"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "kanari",
+      "description": "Real-time worldwide wildfire detections, water bomber tracking and open fire archive",
+      "link": "https://kanari.io/en/api",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Environment"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -32370,6 +32450,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "PokéSprite",
+      "description": "Database of Pokémon sprites and icons",
+      "link": "https://msikma.github.io/pokesprite/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Games & Comics"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Psychonauts",
       "description": "Psychonauts World Characters Information and PSI Powers",
       "link": "https://psychonauts-api.netlify.app/",
@@ -32425,6 +32515,16 @@
       "link": "https://rawg.io/apidocs",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Games & Comics"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Rblxdb",
+      "description": "Verified Roblox music codes and decal IDs with live working status",
+      "link": "https://rblxdb.com/developers",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Games & Comics"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -32515,6 +32615,16 @@
       "link": "https://github.com/Revadike/InternalSteamWebAPI/wiki",
       "auth": "no",
       "cors": "no",
+      "categories": ["Games & Comics"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "SteamGPT",
+      "description": "Steam profiles, SteamID conversion, VAC/game bans, FACEIT stats and friends",
+      "link": "https://steamgpt.net",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Games & Comics"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -33190,6 +33300,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "ipwhois",
+      "description": "IP geolocation with country, city, coordinates, ISP, timezone and flag data",
+      "link": "https://ipwhois.io/documentation",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Kakao Maps",
       "description": "Kakao Maps provide multiple APIs for Korean maps",
       "link": "https://apis.map.kakao.com",
@@ -33845,6 +33965,16 @@
       "link": "http://opendata.dc.gov/pages/using-apis",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "DistrictAPI",
+      "description": "US school districts and schools by address, with enrollment and boundaries",
+      "link": "https://districtapi.dev/docs",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Government"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -34590,6 +34720,16 @@
       "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
+      "name": "Vett",
+      "description": "Screen names & companies against OFAC, PEP, watchlists & recalls",
+      "link": "https://wimberly.solutions/api/free-sanctions-check/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Clinical Trials Directory",
       "description": "Every clinical trial registered with ClinicalTrials.gov, indexed by condition and sponsor",
       "link": "https://trials.starfile.org/api",
@@ -35293,6 +35433,16 @@
       "name": "GoldBean",
       "description": "OCR, Translation, NLP & ERNIE LLM via Baidu AI (free tier available)",
       "link": "https://goldbean-api.xyz/docs",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Machine Learning"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Google Gemini",
+      "description": "Multimodal generative AI for text, vision, and code generation",
+      "link": "https://ai.google.dev/gemini-api/docs",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Machine Learning"],
@@ -36185,6 +36335,16 @@
       "link": "https://collegescorecard.ed.gov/data/",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "CuttingToolsAI",
+      "description": "Cross-brand carbide insert grade equivalents by ISO application class",
+      "link": "https://cuttingtoolsai.eu/api",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Open Data"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -37230,6 +37390,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Pexafy",
+      "description": "Semantic image search across 9+ free stock photo sources with a unified JSON schema",
+      "link": "https://docs.pexafy.com",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Photography"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Pexels",
       "description": "Free Stock Photos and Videos",
       "link": "https://www.pexels.com/api/",
@@ -37890,6 +38060,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "CSR.plus",
+      "description": "Generate certificate signing requests and private keys without OpenSSL",
+      "link": "https://csr.plus/docs/api",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Security"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "dead-drop",
       "description": "Ephemeral zero-knowledge encrypted data sharing",
       "link": "https://api.dead-drop.xyz/api/v1/docs",
@@ -38393,6 +38573,16 @@
       "name": "Shopee",
       "description": "Shopee's official API for integration of various services from Shopee",
       "link": "https://open.shopee.com/documents?version=1",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Shopping"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Sparepilot",
+      "description": "Spare parts catalog, OEM cross-references & price comparison for garden power equipment",
+      "link": "https://sparepilot.com/developers",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Shopping"],
@@ -39044,6 +39234,16 @@
       "description": "Embed codes for goals and highlights from Premier League, Bundesliga, Serie A and many more",
       "link": "https://www.scorebat.com/video-api/",
       "auth": "no",
+      "cors": "yes",
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Football Charts",
+      "description": "Tables, results, model probabilities and Monte Carlo season projections for 93 leagues",
+      "link": "https://www.football-charts.com/developers",
+      "auth": "apiKey",
       "cors": "yes",
       "categories": ["Sports & Fitness"],
       "openapiSpec": null,
@@ -41270,6 +41470,16 @@
       "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
+      "name": "Shotstack",
+      "description": "Cloud video editing API to create and render videos programmatically",
+      "link": "https://shotstack.io/",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Video"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Simkl",
       "description": "Movie, TV and Anime data",
       "link": "https://simkl.docs.apiary.io",
@@ -41435,6 +41645,16 @@
       "link": "https://rapidapi.com/unogs/api/unogsng",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Video"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "VidWords",
+      "description": "YouTube transcripts and subtitles as TXT, SRT, VTT or DOCX, plus AI video analysis",
+      "link": "https://vidwords.com/api-docs",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Video"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -41815,6 +42035,16 @@
       "link": "https://www.weatherbit.io/api",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Weather"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "World Time & Weather",
+      "description": "Current weather, local time, UTC offset and DST rules for 400 cities as static JSON",
+      "link": "https://worldtimeweather.com/api.html",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Weather"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -43220,16 +43450,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "jsonAi.cloud",
-      "description": "Save JSON schemas as api endpoints, feed it with your data and get structured JSON responses with AI.",
-      "link": "https://publicapis.dev/resource/jsonai-cloud/7lb02i8k",
-      "auth": null,
-      "cors": null,
-      "categories": ["Ai"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "Keen IO",
       "description": null,
       "link": "https://publicapis.dev/resource/keen-io/fnexxuoh",
@@ -43333,6 +43553,16 @@
       "name": "TranscriptFetch",
       "description": "YouTube transcript API for developers. Fetch captions from any video in production—no proxies, no IP blocks. Built for LLM, RAG, and MCP pipelines.",
       "link": "https://publicapis.dev/resource/transcriptfetch/bytmq702",
+      "auth": null,
+      "cors": null,
+      "categories": ["Ai"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Unplugg",
+      "description": "Forecasting API for timeseries data.",
+      "link": "https://publicapis.dev/resource/unplugg/w7n3x19q",
       "auth": null,
       "cors": null,
       "categories": ["Ai"],
@@ -43810,16 +44040,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Metacert",
-      "description": "Metacert Link Flagging.",
-      "link": "https://publicapis.dev/resource/metacert/eyd0f59n",
-      "auth": null,
-      "cors": null,
-      "categories": ["Anti Malware"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "Scanii",
       "description": "Simple REST API that can scan submitted documents/files for the presence of threats.",
       "link": "https://publicapis.dev/resource/scanii/6rg5pj49",
@@ -44090,16 +44310,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Rijksmuseum",
-      "description": "RijksMuseum Data.",
-      "link": "https://publicapis.dev/resource/rijksmuseum/b3v37dzt",
-      "auth": null,
-      "cors": null,
-      "categories": ["Art & Design"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "The Color",
       "description": "Swiss army knife for color.",
       "link": "https://publicapis.dev/resource/the-color/6641d7s4",
@@ -44336,26 +44546,6 @@
       "auth": null,
       "cors": null,
       "categories": ["Blockchain"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "A Bíblia Digital",
-      "description": "Do not worry about managing the multiple versions of the Bible.",
-      "link": "https://publicapis.dev/resource/a-biblia-digital/cgk9v80m",
-      "auth": null,
-      "cors": null,
-      "categories": ["Books"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Bhagavad Gita",
-      "description": "Bhagavad Gita text.",
-      "link": "https://publicapis.dev/resource/bhagavad-gita/tri643iv",
-      "auth": null,
-      "cors": null,
-      "categories": ["Books"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },
@@ -44610,16 +44800,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "CompanyData.com",
-      "description": "Connect your software to real-time company data from official trade registers. Search all active companies worldwide, including directors, owners, executives, enrichment, or KYC directly in your platform.",
-      "link": "https://publicapis.dev/resource/companydata-com/dvk9tea3",
-      "auth": null,
-      "cors": null,
-      "categories": ["Business"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "CompanyEnrich",
       "description": "API for B2B company data enrichment, domain enrichment, and website enrichment.",
       "link": "https://publicapis.dev/resource/companyenrich/yahpt4dw",
@@ -44773,56 +44953,6 @@
       "name": "SwiftKanban",
       "description": "Kanban software, Visualize Work, Increase Organizations Lead Time, Throughput & Productivity.",
       "link": "https://publicapis.dev/resource/swiftkanban/osuzjrzd",
-      "auth": null,
-      "cors": null,
-      "categories": ["Business"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Tenders in Hungary",
-      "description": "Get data for procurements in Hungary in JSON format.",
-      "link": "https://publicapis.dev/resource/tenders-in-hungary/5g2kyxfv",
-      "auth": null,
-      "cors": null,
-      "categories": ["Business"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Tenders in Poland",
-      "description": "Get data for procurements in Poland in JSON format.",
-      "link": "https://publicapis.dev/resource/tenders-in-poland/ydjrjtj8",
-      "auth": null,
-      "cors": null,
-      "categories": ["Business"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Tenders in Romania",
-      "description": "Get data for procurements in Romania in JSON format.",
-      "link": "https://publicapis.dev/resource/tenders-in-romania/x5qw9rix",
-      "auth": null,
-      "cors": null,
-      "categories": ["Business"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Tenders in Spain",
-      "description": "Get data for procurements in Spain in JSON format.",
-      "link": "https://publicapis.dev/resource/tenders-in-spain/5bxh8jcc",
-      "auth": null,
-      "cors": null,
-      "categories": ["Business"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Tenders in Ukraine",
-      "description": "Get data for procurements in Ukraine in JSON format.",
-      "link": "https://publicapis.dev/resource/tenders-in-ukraine/nuaa6bbd",
       "auth": null,
       "cors": null,
       "categories": ["Business"],
@@ -45320,16 +45450,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "BitcoinAverage",
-      "description": "Digital Asset Price Data for the blockchain industry.",
-      "link": "https://publicapis.dev/resource/bitcoinaverage/35x8m7pm",
-      "auth": null,
-      "cors": null,
-      "categories": ["Cryptocurrency"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "Bitfinex",
       "description": "Cryptocurrency Trading Platform.",
       "link": "https://publicapis.dev/resource/bitfinex/b0ihuaug",
@@ -45580,6 +45700,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "dYdX",
+      "description": "Decentralized cryptocurrency exchange.",
+      "link": "https://publicapis.dev/resource/dydx/lkpuyyf0",
+      "auth": null,
+      "cors": null,
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "1Forge",
       "description": "Forex currency market data.",
       "link": "https://publicapis.dev/resource/1forge/fixtp0bf",
@@ -45720,16 +45850,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "FreeForexAPI",
-      "description": "Real-time foreign exchange rates for major currency pairs.",
-      "link": "https://publicapis.dev/resource/freeforexapi/87tjv1hr",
-      "auth": null,
-      "cors": null,
-      "categories": ["Currency Exchange"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "FxFeed.io",
       "description": "Foreign exchange rates, currency conversion and time series data.",
       "link": "https://publicapis.dev/resource/fxfeed-io/qpnt3t0z",
@@ -45743,16 +45863,6 @@
       "name": "FxRatesAPI",
       "description": "Real-time exchange rates, historical rates and currency conversion.",
       "link": "https://publicapis.dev/resource/fxratesapi/4ekfukyl",
-      "auth": null,
-      "cors": null,
-      "categories": ["Currency Exchange"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "FyGraph",
-      "description": "GraphQL API of latest 1.000+ crypto and 167+ fiat updated every minute.",
-      "link": "https://publicapis.dev/resource/fygraph/oi1nxc43",
       "auth": null,
       "cors": null,
       "categories": ["Currency Exchange"],
@@ -46100,6 +46210,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "APILayer",
+      "description": "APILayer is a unified API marketplace with 40+ production-ready APIs for finance, geolocation, weather, data, and AI. Trusted by 2.2M+ developers.",
+      "link": "https://publicapis.dev/resource/apilayer/v1eijpxo",
+      "auth": null,
+      "cors": null,
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "APIs.guru",
       "description": "Wikipedia for Web APIs, OpenAPI/Swagger specs for public APIs.",
       "link": "https://publicapis.dev/resource/apis-guru/mfgjf7hb",
@@ -46213,16 +46333,6 @@
       "name": "Brave Search API",
       "description": "An index of billions of pages in a single call.",
       "link": "https://publicapis.dev/resource/brave-search-api/zdq8t0zr",
-      "auth": null,
-      "cors": null,
-      "categories": ["Development"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "BrowserCat",
-      "description": "Headless browser API for automation, scraping, and more.",
-      "link": "https://publicapis.dev/resource/browsercat/tq9dg58j",
       "auth": null,
       "cors": null,
       "categories": ["Development"],
@@ -46900,9 +47010,9 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Verifier",
-      "description": "Verifies that a given email is real.",
-      "link": "https://publicapis.dev/resource/verifier/20aw6v08",
+      "name": "Zyntra",
+      "description": "Unlimited e-mail inboxes with API access. Catch OTPs, reset links, and sign-up emails in test flows.",
+      "link": "https://publicapis.dev/resource/zyntra/yftx80m6",
       "auth": null,
       "cors": null,
       "categories": ["Email"],
@@ -47070,16 +47180,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Air Quality Index",
-      "description": "Real-time air quality data including AQI and pollutant concentrations for worldwide locations.",
-      "link": "https://publicapis.dev/resource/air-quality-index/5nqq71xu",
-      "auth": null,
-      "cors": null,
-      "categories": ["Environment"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "BreezoMeter Pollen",
       "description": "Daily Forecast pollen conditions data for a specific location.",
       "link": "https://publicapis.dev/resource/breezometer-pollen/yf7v8scx",
@@ -47183,16 +47283,6 @@
       "name": "PM2.5 Open Data Portal",
       "description": "Open low-cost PM2.5 sensor data.",
       "link": "https://publicapis.dev/resource/pm2-5-open-data-portal/z5j6cp3p",
-      "auth": null,
-      "cors": null,
-      "categories": ["Environment"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "PVWatts",
-      "description": "Energy production photovoltaic (PV) energy systems.",
-      "link": "https://publicapis.dev/resource/pvwatts/o4zyn0vi",
       "auth": null,
       "cors": null,
       "categories": ["Environment"],
@@ -47490,16 +47580,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Finturest IBAN",
-      "description": "Fast, accurate IBAN validation and generation.",
-      "link": "https://publicapis.dev/resource/finturest-iban/k0wwk0d7",
-      "auth": null,
-      "cors": null,
-      "categories": ["Finance"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "FRED",
       "description": "Economic data from the Federal Reserve Bank of St. Louis.",
       "link": "https://publicapis.dev/resource/fred/lkp48qak",
@@ -47563,6 +47643,16 @@
       "name": "IIN API",
       "description": "IIN API allows you to accurately identify the issuing bank, card type, country of origin, and other details from a credit or debit card number. This is essential for fraud prevention, payment processing, and customer verification.",
       "link": "https://publicapis.dev/resource/iin-api/vyom33uj",
+      "auth": null,
+      "cors": null,
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Indian Mutual Fund",
+      "description": "Get complete history of India Mutual Funds Data.",
+      "link": "https://publicapis.dev/resource/indian-mutual-fund/yv3g976d",
       "auth": null,
       "cors": null,
       "categories": ["Finance"],
@@ -48350,16 +48440,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Geodata.gov.gr",
-      "description": "Open geospatial data and API service for Greece.",
-      "link": "https://publicapis.dev/resource/geodata-gov-gr/22kmi4hf",
-      "auth": null,
-      "cors": null,
-      "categories": ["Geocoding"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "GeoDataSource",
       "description": "Geocoding of city name by using latitude and longitude coordinates.",
       "link": "https://publicapis.dev/resource/geodatasource/q3ak3z65",
@@ -48393,6 +48473,16 @@
       "name": "GeoJS",
       "description": "IP geolocation with ChatOps integration.",
       "link": "https://publicapis.dev/resource/geojs/lt2qy6ry",
+      "auth": null,
+      "cors": null,
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Geokeo",
+      "description": "Geokeo geocoding service- with 2500 free api requests daily.",
+      "link": "https://publicapis.dev/resource/geokeo/0be1yxi1",
       "auth": null,
       "cors": null,
       "categories": ["Geocoding"],
@@ -48523,16 +48613,6 @@
       "name": "City, Gdynia",
       "description": "Gdynia (PL) City Open Data.",
       "link": "https://publicapis.dev/resource/city-gdynia/jrwu7arr",
-      "auth": null,
-      "cors": null,
-      "categories": ["Government"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "City, Helsinki",
-      "description": "Helsinki(FI) City Open Data.",
-      "link": "https://publicapis.dev/resource/city-helsinki/f00ikkzj",
       "auth": null,
       "cors": null,
       "categories": ["Government"],
@@ -48683,6 +48763,16 @@
       "name": "FBI Wanted",
       "description": "Access information on the FBI Wanted program.",
       "link": "https://publicapis.dev/resource/fbi-wanted/6rn0z8ca",
+      "auth": null,
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "FEC",
+      "description": "Information on campaign donations in federal elections.",
+      "link": "https://publicapis.dev/resource/fec/zqjrch87",
       "auth": null,
       "cors": null,
       "categories": ["Government"],
@@ -49063,6 +49153,16 @@
       "name": "Jobicy",
       "description": "Remote Jobs API Feed.",
       "link": "https://publicapis.dev/resource/jobicy/b1ctf5ft",
+      "auth": null,
+      "cors": null,
+      "categories": ["Jobs"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Jobven",
+      "description": "Job postings collected directly from employer career pages, not job boards. Structured JSON over REST, with webhooks when listings change.",
+      "link": "https://publicapis.dev/resource/jobven/ww6arqzw",
       "auth": null,
       "cors": null,
       "categories": ["Jobs"],
@@ -50100,6 +50200,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "OpenSERP Cloud",
+      "description": "Managed SERP API for Google, Bing, Yandex and more. Get live browser-rendered search results through a single API with data extraction.",
+      "link": "https://publicapis.dev/resource/openserp-cloud/war82uhf",
+      "auth": null,
+      "cors": null,
+      "categories": ["Open Source Projects"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Shields",
       "description": "Concise, consistent, and legible badges in SVG and raster format.",
       "link": "https://publicapis.dev/resource/shields/5zdzgl6u",
@@ -50353,16 +50463,6 @@
       "name": "Udemy(instructor)",
       "description": "API for instructors on Udemy.",
       "link": "https://publicapis.dev/resource/udemy-instructor-/rlt44l5o",
-      "auth": null,
-      "cors": null,
-      "categories": ["Personality"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Vadivelu HTTP Codes",
-      "description": "On demand HTTP Codes with images.",
-      "link": "https://publicapis.dev/resource/vadivelu-http-codes/yb0yhmf4",
       "auth": null,
       "cors": null,
       "categories": ["Personality"],
@@ -50770,6 +50870,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Particle",
+      "description": "Podcast intelligence: podcast & episode search, transcripts, speakers, entity mentions, sponsor & advertising data, alerts and embeds.",
+      "link": "https://publicapis.dev/resource/particle/hl8vhcb6",
+      "auth": null,
+      "cors": null,
+      "categories": ["Podcasts"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "PodcastIndex",
       "description": "Get details on podcasts & episodes, Podcast Search.",
       "link": "https://publicapis.dev/resource/podcastindex/vabm7pve",
@@ -50822,7 +50932,7 @@
     {
       "name": "Hackerearth",
       "description": "For compiling and running code in several languages.",
-      "link": "https://publicapis.dev/resource/hackerearth/cieyd12h",
+      "link": "https://publicapis.dev/resource/hackerearth/hc5tb29z",
       "auth": null,
       "cors": null,
       "categories": ["Programming"],
@@ -50832,7 +50942,7 @@
     {
       "name": "Hackerearth",
       "description": "For compiling and running code in several languages.",
-      "link": "https://publicapis.dev/resource/hackerearth/hc5tb29z",
+      "link": "https://publicapis.dev/resource/hackerearth/cieyd12h",
       "auth": null,
       "cors": null,
       "categories": ["Programming"],
@@ -50853,16 +50963,6 @@
       "name": "Judge0 CE",
       "description": "Online code execution system.",
       "link": "https://publicapis.dev/resource/judge0-ce/i17ilqls",
-      "auth": null,
-      "cors": null,
-      "categories": ["Programming"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Let's Count",
-      "description": "Create, retrieve, update, increment, and decrement counters identified by namespace and key.",
-      "link": "https://publicapis.dev/resource/let-s-count/ufi9bm0u",
       "auth": null,
       "cors": null,
       "categories": ["Programming"],
@@ -50993,16 +51093,6 @@
       "name": "ISRO",
       "description": "ISRO Space Crafts Information.",
       "link": "https://publicapis.dev/resource/isro/x53e7s72",
-      "auth": null,
-      "cors": null,
-      "categories": ["Science & Math"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "ISRO Statistics",
-      "description": "ISRO Launches and Spacecrafts details.",
-      "link": "https://publicapis.dev/resource/isro-statistics/82rmotds",
       "auth": null,
       "cors": null,
       "categories": ["Science & Math"],
@@ -51190,6 +51280,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "World Bank",
+      "description": null,
+      "link": "https://publicapis.dev/resource/world-bank/znypd1at",
+      "auth": null,
+      "cors": null,
+      "categories": ["Science & Math"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Application Environment Verification",
       "description": "Android library and API to verify the safety of user devices, detect rooted devices and other risks.",
       "link": "https://publicapis.dev/resource/application-environment-verification/q28lkh7m",
@@ -51283,16 +51383,6 @@
       "name": "Complete Criminal Checks",
       "description": "Provides data of offenders from all U.S. States and Puerto Rico.",
       "link": "https://publicapis.dev/resource/complete-criminal-checks/9rcvlrsh",
-      "auth": null,
-      "cors": null,
-      "categories": ["Security"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "CRXcavator",
-      "description": "Chrome extension risk scoring.",
-      "link": "https://publicapis.dev/resource/crxcavator/otvbmnmz",
       "auth": null,
       "cors": null,
       "categories": ["Security"],
@@ -51473,6 +51563,16 @@
       "name": "National Vulnerability Database",
       "description": "U.S. National Vulnerability Database.",
       "link": "https://publicapis.dev/resource/national-vulnerability-database/dz0s2rjn",
+      "auth": null,
+      "cors": null,
+      "categories": ["Security"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "OWASP ZAP",
+      "description": "Automated security testing API for web apps.",
+      "link": "https://publicapis.dev/resource/owasp-zap/aglorckl",
       "auth": null,
       "cors": null,
       "categories": ["Security"],
@@ -51920,16 +52020,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Saidit",
-      "description": "Open Source Reddit Clone.",
-      "link": "https://publicapis.dev/resource/saidit/epb7hlfm",
-      "auth": null,
-      "cors": null,
-      "categories": ["Social"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "Slack",
       "description": "Team Instant Messaging.",
       "link": "https://publicapis.dev/resource/slack/c9d3olpu",
@@ -51953,6 +52043,16 @@
       "name": "TamTam",
       "description": "Bot API to interact with TamTam.",
       "link": "https://publicapis.dev/resource/tamtam/aa50f8fd",
+      "auth": null,
+      "cors": null,
+      "categories": ["Social"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Telegram Bot",
+      "description": "Simplified HTTP version of the MTProto API for bots.",
+      "link": "https://publicapis.dev/resource/telegram-bot/cmblaazq",
       "auth": null,
       "cors": null,
       "categories": ["Social"],
@@ -52170,16 +52270,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "NBA GraphQL",
-      "description": "Advanced NBA Player, Team, and Season Statistics and Data.",
-      "link": "https://publicapis.dev/resource/nba-graphql/vdlc2eqx",
-      "auth": null,
-      "cors": null,
-      "categories": ["Sports & Fitness"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "NBA Stats",
       "description": "Postman docs for comprehensive NBA player statistics, advanced metrics, and detailed shot chart data.",
       "link": "https://publicapis.dev/resource/nba-stats/dw8mflj6",
@@ -52250,6 +52340,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Sport Highlights",
+      "description": "Real time Sport Highlights.",
+      "link": "https://publicapis.dev/resource/sport-highlights/sye6o99x",
+      "auth": null,
+      "cors": null,
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Bacon Ipsum",
       "description": "A Meatier Lorem Ipsum Generator.",
       "link": "https://publicapis.dev/resource/bacon-ipsum/w1on0mlv",
@@ -52283,16 +52383,6 @@
       "name": "Faker",
       "description": "Generate massive amounts of fake (but realistic) data for testing and development.",
       "link": "https://publicapis.dev/resource/faker/ic59etu4",
-      "auth": null,
-      "cors": null,
-      "categories": ["Test Data"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "FakerAPI",
-      "description": "APIs collection to get fake data.",
-      "link": "https://publicapis.dev/resource/fakerapi/qehvi9ay",
       "auth": null,
       "cors": null,
       "categories": ["Test Data"],
@@ -52373,16 +52463,6 @@
       "name": "Mockaroo",
       "description": "Generate fake data to JSON, CSV, TXT, SQL and XML.",
       "link": "https://publicapis.dev/resource/mockaroo/4lk72qsd",
-      "auth": null,
-      "cors": null,
-      "categories": ["Test Data"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Random Data",
-      "description": "Random data generator.",
-      "link": "https://publicapis.dev/resource/random-data/i5x36so0",
       "auth": null,
       "cors": null,
       "categories": ["Test Data"],
@@ -52493,26 +52573,6 @@
       "name": "Analyse Keywords API",
       "description": "This API lets you extract high-frequency keywords, key phrases and latent semantic keywords from any URL.",
       "link": "https://publicapis.dev/resource/analyse-keywords-api/c6bfcgcw",
-      "auth": null,
-      "cors": null,
-      "categories": ["Text Analysis"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Aylien Text Analysis",
-      "description": "A collection of information retrieval and natural language APIs.",
-      "link": "https://publicapis.dev/resource/aylien-text-analysis/i46ikf5e",
-      "auth": null,
-      "cors": null,
-      "categories": ["Text Analysis"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Chatpdf",
-      "description": "Chat with pdf using GPT4 and ChatGPT.",
-      "link": "https://publicapis.dev/resource/chatpdf/073f37ke",
       "auth": null,
       "cors": null,
       "categories": ["Text Analysis"],
@@ -52693,16 +52753,6 @@
       "name": "Correios",
       "description": "Integration to provide information and prepare shipments using Correio's services.",
       "link": "https://publicapis.dev/resource/correios/m03x0fux",
-      "auth": null,
-      "cors": null,
-      "categories": ["Tracking"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "IndianPincodes",
-      "description": "API for getting Pincode details in India.",
-      "link": "https://publicapis.dev/resource/indianpincodes/eawobc7s",
       "auth": null,
       "cors": null,
       "categories": ["Tracking"],
@@ -53010,16 +53060,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Railway Transport for France",
-      "description": null,
-      "link": "https://publicapis.dev/resource/railway-transport-for-france/6gdcu4sw",
-      "auth": null,
-      "cors": null,
-      "categories": ["Transportation"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "REFUGE Restrooms",
       "description": "Provides safe restroom access for transgender, intersex and gender nonconforming individuals.",
       "link": "https://publicapis.dev/resource/refuge-restrooms/7yiuck9x",
@@ -53043,6 +53083,16 @@
       "name": "Sabre for Developers",
       "description": "Travel Search - Limited usage.",
       "link": "https://publicapis.dev/resource/sabre-for-developers/bkoqapei",
+      "auth": null,
+      "cors": null,
+      "categories": ["Transportation"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Schiphol Airport",
+      "description": null,
+      "link": "https://publicapis.dev/resource/schiphol-airport/tprvclzw",
       "auth": null,
       "cors": null,
       "categories": ["Transportation"],
