@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-21T00:41:22.375Z",
+  "timestamp": "2026-08-29T12:20:42.276Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -27380,6 +27380,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "BTCGlobe",
+      "description": "Bitcoin height, fees, mempool and peer data served live from two self-hosted nodes",
+      "link": "https://btcglobe.live/join#makers",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "btcnode.uk",
       "description": "Bitcoin blockchain data, fees, mempool, SEC insider trades, Reddit sentiment. x402 micropayments for paid endpoints.",
       "link": "https://btcnode.uk",
@@ -28024,6 +28034,16 @@
       "description": "Free Currency Exchange Rates API with 150+ Currencies & No Rate Limits",
       "link": "https://github.com/fawazahmed0/currency-api#readme",
       "auth": "no",
+      "cors": "yes",
+      "categories": ["Currency Exchange"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "CurrencyBeacon",
+      "description": "Real-time and historical currency exchange rates with free tier",
+      "link": "https://currencybeacon.com/",
+      "auth": "apiKey",
       "cors": "yes",
       "categories": ["Currency Exchange"],
       "openapiSpec": null,
@@ -30460,6 +30480,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "SMTPfast",
+      "description": "Send transactional email, manage contacts and broadcasts, free 3,000 emails/month",
+      "link": "https://smtpfa.st/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Email"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "uchecker",
       "description": "Bulk email verification with full SMTP server responses",
       "link": "https://api.uchecker.net/docs",
@@ -31040,6 +31070,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "EOD Historical Data",
+      "description": "Real-time and historical stock market data with 150+ exchanges",
+      "link": "https://eodhd.com/",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Fed Treasury",
       "description": "U.S. Department of the Treasury Data",
       "link": "https://fiscaldata.treasury.gov/api-documentation/",
@@ -31205,6 +31245,16 @@
       "link": "https://docs.klarna.com/klarna-payments/api/payments-api/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "LiquiLens",
+      "description": "Public-record bank and lender failure-risk evidence",
+      "link": "https://liquilens.in/developers/",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Finance"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -31383,6 +31433,16 @@
       "name": "Tax Data",
       "description": "Instant VAT number and tax validation across the globe",
       "link": "https://apilayer.com/marketplace/tax_data-api",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "TickerLayer",
+      "description": "Real-time and historical market data for stocks, forex, crypto and more",
+      "link": "https://tickerlayer.com",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Finance"],
@@ -37730,6 +37790,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "NASA InSight",
+      "description": "Mars weather data from InSight lander",
+      "link": "https://api.nasa.gov/",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Science & Math", "Science"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis", "mixedanalytics"]
+    },
+    {
       "name": "NASA ADS",
       "description": "NASA Astrophysics Data System",
       "link": "https://ui.adsabs.harvard.edu/help/api/api-docs.html",
@@ -38960,6 +39030,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "SocialCrawl",
+      "description": "Social and commerce data from 50+ platforms in one JSON schema",
+      "link": "https://www.socialcrawl.dev/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Social"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "SocialSwarm",
       "description": "Turn articles into ready-to-post X thread drafts with different hooks",
       "link": "https://social-swarm-main-aa77a19.zuplo.site",
@@ -39106,6 +39186,16 @@
       "auth": "apiKey",
       "cors": "no",
       "categories": ["Social"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "5DollarFootball",
+      "description": "Football fixtures, results, standings and historical odds with corner and card lines",
+      "link": "https://5dollarfootballapi.com/",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Sports & Fitness"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
     },
@@ -41390,6 +41480,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "KinoPipe",
+      "description": "Typed hosted video editing operations for agents and automation",
+      "link": "https://kinopipe.com/docs",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Video"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Lucifer Quotes",
       "description": "Returns Lucifer quotes",
       "link": "https://github.com/shadowoff09/lucifer-quotes",
@@ -41893,6 +41993,16 @@
       "name": "Open-Meteo",
       "description": "Global weather forecast API for non-commercial use",
       "link": "https://open-meteo.com/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Weather"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Open-Meteo Ensemble",
+      "description": "Weather ensemble forecasts from multiple models",
+      "link": "https://open-meteo.com/en/docs/ensemble-api",
       "auth": "no",
       "cors": "yes",
       "categories": ["Weather"],
@@ -43090,16 +43200,6 @@
       "sources": ["mixedanalytics"]
     },
     {
-      "name": "NASA",
-      "description": "National Aeronautics and Space Administration",
-      "link": "https://api.nasa.gov/",
-      "auth": "no",
-      "cors": null,
-      "categories": ["Science"],
-      "openapiSpec": null,
-      "sources": ["mixedanalytics"]
-    },
-    {
       "name": "Newton",
       "description": "Advanced math",
       "link": "https://github.com/aunyks/newton-api",
@@ -43560,16 +43660,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Unplugg",
-      "description": "Forecasting API for timeseries data.",
-      "link": "https://publicapis.dev/resource/unplugg/w7n3x19q",
-      "auth": null,
-      "cors": null,
-      "categories": ["Ai"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "Cataas",
       "description": "Cat as a service (cats pictures and gifs).",
       "link": "https://publicapis.dev/resource/cataas/bprc9b9b",
@@ -43901,18 +43991,8 @@
     },
     {
       "name": "Nekosia API",
-      "description": "Anime API with cute random images. Dominated colors & compressed images & avoiding duplicates.",
+      "description": "Random catgirl images with metadata, dominant colors, compressed versions, duplicate prevention, and its own booru.",
       "link": "https://publicapis.dev/resource/nekosia-api/qspui8zv",
-      "auth": null,
-      "cors": null,
-      "categories": ["Anime"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "PokéAPI",
-      "description": "Pokémon data, including imagery.",
-      "link": "https://publicapis.dev/resource/pokeapi/jgfk6dlr",
       "auth": null,
       "cors": null,
       "categories": ["Anime"],
@@ -45700,16 +45780,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "dYdX",
-      "description": "Decentralized cryptocurrency exchange.",
-      "link": "https://publicapis.dev/resource/dydx/lkpuyyf0",
-      "auth": null,
-      "cors": null,
-      "categories": ["Cryptocurrency"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "1Forge",
       "description": "Forex currency market data.",
       "link": "https://publicapis.dev/resource/1forge/fixtp0bf",
@@ -45930,6 +46000,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "ApexVerify",
+      "description": "Verify emails, phone numbers, and addresses with real-time accuracy. Keep your contact data clean, compliant, and reliable with our all-in-one suite.",
+      "link": "https://publicapis.dev/resource/apexverify/g94hyci7",
+      "auth": null,
+      "cors": null,
+      "categories": ["Data Validation"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "API Adresse",
       "description": "Official French address validation service.",
       "link": "https://publicapis.dev/resource/api-adresse/znztunxr",
@@ -46050,26 +46130,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Screenshot Scout",
-      "description": "Screenshot API for developers that captures any URL in one HTTP request with predictable output.",
-      "link": "https://publicapis.dev/resource/screenshot-scout/zxu9w53l",
-      "auth": null,
-      "cors": null,
-      "categories": ["Development"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "TalorData",
-      "description": "Get structured results from Google, Bing, Yandex, and DuckDuckGo through one API, with fast, reliable responses.",
-      "link": "https://publicapis.dev/resource/talordata/brxwu9n1",
-      "auth": null,
-      "cors": null,
-      "categories": ["Development"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "CoreClaw",
       "description": "Real-time public data, ready to use. Extract web data from Amazon, TikTok, Google Maps and more with 100+ ready-made tools.",
       "link": "https://publicapis.dev/resource/coreclaw/5m5g03ia",
@@ -46103,6 +46163,16 @@
       "name": "DATPAQ",
       "description": "Developer-first APIs. Enterprise-ready infrastructure. Sampla data, avatars, image processing and a lot more.",
       "link": "https://publicapis.dev/resource/datpaq/vnugdk4p",
+      "auth": null,
+      "cors": null,
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Screenshot Scout",
+      "description": "Screenshot API for developers that captures any URL in one HTTP request with predictable output.",
+      "link": "https://publicapis.dev/resource/screenshot-scout/zxu9w53l",
       "auth": null,
       "cors": null,
       "categories": ["Development"],
@@ -46430,9 +46500,9 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "WordsAPI",
-      "description": "An API for the English Language. Find definitions, related words, and more.",
-      "link": "https://publicapis.dev/resource/wordsapi/zswv3x4p",
+      "name": "Words",
+      "description": "Definitions and synonyms for more than 150,000 words.",
+      "link": "https://publicapis.dev/resource/words/zswv3x4p",
       "auth": null,
       "cors": null,
       "categories": ["Dictionaries"],
@@ -46720,16 +46790,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Monday",
-      "description": "Programmatically access and update data inside a monday.com account.",
-      "link": "https://publicapis.dev/resource/monday/1t7adkoa",
-      "auth": null,
-      "cors": null,
-      "categories": ["Documents & Productivity"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "Abstract Email Validation",
       "description": "Validate email addresses for deliverability and spam.",
       "link": "https://publicapis.dev/resource/abstract-email-validation/zdlp9npp",
@@ -46910,6 +46970,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "MailValid",
+      "description": "Real-time email verification API with SMTP, MX, disposable, role-based, and catch-all detection. Verify single or bulk emails with confidence scoring.",
+      "link": "https://publicapis.dev/resource/mailvalid/ue2h2nfy",
+      "auth": null,
+      "cors": null,
+      "categories": ["Email"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "NoParam",
       "description": "Email validation API for real-time & bulk checking.",
       "link": "https://publicapis.dev/resource/noparam/mf5qh40l",
@@ -46993,26 +47063,6 @@
       "name": "Temporary and Disposable emails API",
       "description": "This API provides temporary & disposable email addresses.",
       "link": "https://publicapis.dev/resource/temporary-and-disposable-emails-api/lduzo2kx",
-      "auth": null,
-      "cors": null,
-      "categories": ["Email"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Trueguard",
-      "description": "Trueguard offers API for detecting temporary emails, free-tier abusers and automated bots.",
-      "link": "https://publicapis.dev/resource/trueguard/pdhnb2fp",
-      "auth": null,
-      "cors": null,
-      "categories": ["Email"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Zyntra",
-      "description": "Unlimited e-mail inboxes with API access. Catch OTPs, reset links, and sign-up emails in test flows.",
-      "link": "https://publicapis.dev/resource/zyntra/yftx80m6",
       "auth": null,
       "cors": null,
       "categories": ["Email"],
@@ -47510,6 +47560,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "eunormia E-Invoice API",
+      "description": "Eunormia turns your invoice data into a ZUGFeRD/Factur-X PDF/A-3 per EN 16931 — and validates every result before it is delivered.",
+      "link": "https://publicapis.dev/resource/eunormia-e-invoice-api/2r090qx3",
+      "auth": null,
+      "cors": null,
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Fed Treasury",
       "description": "U.S. Department of the Treasury Data.",
       "link": "https://publicapis.dev/resource/fed-treasury/vscd7lu1",
@@ -47640,26 +47700,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "IIN API",
-      "description": "IIN API allows you to accurately identify the issuing bank, card type, country of origin, and other details from a credit or debit card number. This is essential for fraud prevention, payment processing, and customer verification.",
-      "link": "https://publicapis.dev/resource/iin-api/vyom33uj",
-      "auth": null,
-      "cors": null,
-      "categories": ["Finance"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Indian Mutual Fund",
-      "description": "Get complete history of India Mutual Funds Data.",
-      "link": "https://publicapis.dev/resource/indian-mutual-fund/yv3g976d",
-      "auth": null,
-      "cors": null,
-      "categories": ["Finance"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "BaconMockup",
       "description": "Resizable bacon placeholder images.",
       "link": "https://publicapis.dev/resource/baconmockup/28bxvyg8",
@@ -47683,6 +47723,16 @@
       "name": "Coffee",
       "description": "Random pictures of coffee.",
       "link": "https://publicapis.dev/resource/coffee/te63w5rz",
+      "auth": null,
+      "cors": null,
+      "categories": ["Food & Drink"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "DietlyAPI",
+      "description": "Food & nutrition API with 4.2M+ foods (Open Food Facts + community, normalized and confidence-ranked): calories, macros, micronutrients, barcode lookup, ~40ms s.",
+      "link": "https://publicapis.dev/resource/dietlyapi/8ph9ngem",
       "auth": null,
       "cors": null,
       "categories": ["Food & Drink"],
@@ -47906,16 +47956,6 @@
       "auth": null,
       "cors": null,
       "categories": ["Food & Drink"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Game Brain",
-      "description": "Search and discover video games with AI.",
-      "link": "https://publicapis.dev/resource/game-brain/3prsg5ck",
-      "auth": null,
-      "cors": null,
-      "categories": ["Games & Comics"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },
@@ -48480,16 +48520,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Geokeo",
-      "description": "Geokeo geocoding service- with 2500 free api requests daily.",
-      "link": "https://publicapis.dev/resource/geokeo/0be1yxi1",
-      "auth": null,
-      "cors": null,
-      "categories": ["Geocoding"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "Api Colombia",
       "description": "Community driven API for Colombia Public Data.",
       "link": "https://publicapis.dev/resource/api-colombia/cbqrql6x",
@@ -48763,16 +48793,6 @@
       "name": "FBI Wanted",
       "description": "Access information on the FBI Wanted program.",
       "link": "https://publicapis.dev/resource/fbi-wanted/6rn0z8ca",
-      "auth": null,
-      "cors": null,
-      "categories": ["Government"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "FEC",
-      "description": "Information on campaign donations in federal elections.",
-      "link": "https://publicapis.dev/resource/fec/zqjrch87",
       "auth": null,
       "cors": null,
       "categories": ["Government"],
@@ -49133,6 +49153,16 @@
       "name": "Himalayas",
       "description": "Remote job listings with salary, timezone, and location data.",
       "link": "https://publicapis.dev/resource/himalayas/3qlgjpqn",
+      "auth": null,
+      "cors": null,
+      "categories": ["Jobs"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Job Application API",
+      "description": "API to apply on jobs posted on carrer platform like workday, lever, icims and many more. Handles captcha, fill forms, submit applications, integrate in < 10min.",
+      "link": "https://publicapis.dev/resource/job-application-api/agii0yyd",
       "auth": null,
       "cors": null,
       "categories": ["Jobs"],
@@ -49550,28 +49580,8 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "SoundCloud",
-      "description": "With SoundCloud API you can build applications that will give more power to control your content.",
-      "link": "https://publicapis.dev/resource/soundcloud/ho3etrgu",
-      "auth": null,
-      "cors": null,
-      "categories": ["Music"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "World News",
-      "description": "Search through millions of semantically tagged worldwide news.",
-      "link": "https://publicapis.dev/resource/world-news/bpjkv3ls",
-      "auth": null,
-      "cors": null,
-      "categories": ["News"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "APITube News API",
-      "description": "Monitor news sources from around the world in real-time. Get the latest news articles from more than 500,000 news sources in 60 languages.",
+      "description": "Real-time and historical news from 300,000+ sources in 177 countries and 59 languages, enriched with sentiment, entities and topics, with 65+ search filters.",
       "link": "https://publicapis.dev/resource/apitube-news-api/m0zdprb1",
       "auth": null,
       "cors": null,
@@ -49823,6 +49833,16 @@
       "name": "Trove",
       "description": "Search through the National Library of Australia collection of 1000s of digitised newspapers.",
       "link": "https://publicapis.dev/resource/trove/bz523ycw",
+      "auth": null,
+      "cors": null,
+      "categories": ["News"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "World News",
+      "description": "Search through millions of semantically tagged worldwide news.",
+      "link": "https://publicapis.dev/resource/world-news/bpjkv3ls",
       "auth": null,
       "cors": null,
       "categories": ["News"],
@@ -50103,16 +50123,6 @@
       "name": "Udemy Coupons, Courses & Instructors Data",
       "description": "Retrieve Udemy courses, coupons, instructors, and metadata.",
       "link": "https://publicapis.dev/resource/udemy-coupons-courses-and-instructors-data/48b9vin5",
-      "auth": null,
-      "cors": null,
-      "categories": ["Open Data"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Umeå Open Data",
-      "description": "Open data of the city Umeå in northern Sweden.",
-      "link": "https://publicapis.dev/resource/umea-open-data/xfqthlik",
       "auth": null,
       "cors": null,
       "categories": ["Open Data"],
@@ -50500,6 +50510,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "CheckThatPhone",
+      "description": "Real-time phone validation API for US & Canada: carrier and line type from live carrier data, portability, deliverability, GeoIP and TCPA litigator scrub.",
+      "link": "https://publicapis.dev/resource/checkthatphone/thimiy5d",
+      "auth": null,
+      "cors": null,
+      "categories": ["Phone"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Cloudmersive Validate",
       "description": "Validate international phone numbers.",
       "link": "https://publicapis.dev/resource/cloudmersive-validate/6f2sui4g",
@@ -50843,16 +50863,6 @@
       "name": "Smart Adaptive Ultra-Fast Image Compressor & Converter",
       "description": "Compress, convert, and optimize images automatically with adaptive AI tuning.",
       "link": "https://publicapis.dev/resource/smart-adaptive-ultra-fast-image-compressor-and-converter/rs0pcb8e",
-      "auth": null,
-      "cors": null,
-      "categories": ["Photography"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Templated",
-      "description": "Generate images and PDFs with a simple API. Design in a Canva-like editor and render images with code.",
-      "link": "https://publicapis.dev/resource/templated/hx3evc3j",
       "auth": null,
       "cors": null,
       "categories": ["Photography"],
@@ -51280,16 +51290,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "World Bank",
-      "description": null,
-      "link": "https://publicapis.dev/resource/world-bank/znypd1at",
-      "auth": null,
-      "cors": null,
-      "categories": ["Science & Math"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "Application Environment Verification",
       "description": "Android library and API to verify the safety of user devices, detect rooted devices and other risks.",
       "link": "https://publicapis.dev/resource/application-environment-verification/q28lkh7m",
@@ -51563,16 +51563,6 @@
       "name": "National Vulnerability Database",
       "description": "U.S. National Vulnerability Database.",
       "link": "https://publicapis.dev/resource/national-vulnerability-database/dz0s2rjn",
-      "auth": null,
-      "cors": null,
-      "categories": ["Security"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "OWASP ZAP",
-      "description": "Automated security testing API for web apps.",
-      "link": "https://publicapis.dev/resource/owasp-zap/aglorckl",
       "auth": null,
       "cors": null,
       "categories": ["Security"],
@@ -52050,16 +52040,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Telegram Bot",
-      "description": "Simplified HTTP version of the MTProto API for bots.",
-      "link": "https://publicapis.dev/resource/telegram-bot/cmblaazq",
-      "auth": null,
-      "cors": null,
-      "categories": ["Social"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "American Football Highlights API",
       "description": "Real time American Football (NFL/NCAA) highlights.",
       "link": "https://publicapis.dev/resource/american-football-highlights-api/1ituihn9",
@@ -52271,8 +52251,8 @@
     },
     {
       "name": "NBA Stats",
-      "description": "Postman docs for comprehensive NBA player statistics, advanced metrics, and detailed shot chart data.",
-      "link": "https://publicapis.dev/resource/nba-stats/dw8mflj6",
+      "description": "NBA player statistics, season totals, advanced metrics, game data, and shot chart data.",
+      "link": "https://publicapis.dev/resource/nba-stats/ef27fmf4",
       "auth": null,
       "cors": null,
       "categories": ["Sports & Fitness"],
@@ -52281,8 +52261,8 @@
     },
     {
       "name": "NBA Stats",
-      "description": "NBA player statistics, season totals, advanced metrics, game data, and shot chart data.",
-      "link": "https://publicapis.dev/resource/nba-stats/ef27fmf4",
+      "description": "Postman docs for comprehensive NBA player statistics, advanced metrics, and detailed shot chart data.",
+      "link": "https://publicapis.dev/resource/nba-stats/dw8mflj6",
       "auth": null,
       "cors": null,
       "categories": ["Sports & Fitness"],
@@ -52333,16 +52313,6 @@
       "name": "Soccer / Football API",
       "description": "Reliable Soccer API for live scores (websocket), fixtures, results, standings, player stats, match events, and smarter football data experiences.",
       "link": "https://publicapis.dev/resource/soccer---football-api/4ojb5dfm",
-      "auth": null,
-      "cors": null,
-      "categories": ["Sports & Fitness"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Sport Highlights",
-      "description": "Real time Sport Highlights.",
-      "link": "https://publicapis.dev/resource/sport-highlights/sye6o99x",
       "auth": null,
       "cors": null,
       "categories": ["Sports & Fitness"],
@@ -53090,16 +53060,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Schiphol Airport",
-      "description": null,
-      "link": "https://publicapis.dev/resource/schiphol-airport/tprvclzw",
-      "auth": null,
-      "cors": null,
-      "categories": ["Transportation"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "1pt",
       "description": "A simple URL shortener.",
       "link": "https://publicapis.dev/resource/1pt/67gecnvf",
@@ -53600,16 +53560,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Shoof Aflam",
-      "description": "Arabic streaming guide — search 14,000+ movies/series, platform availability across 18 services.",
-      "link": "https://publicapis.dev/resource/shoof-aflam/kv2h08ta",
-      "auth": null,
-      "cors": null,
-      "categories": ["Video"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "7Timer!",
       "description": "Weather, especially for Astroweather.",
       "link": "https://publicapis.dev/resource/7timer-/c9cgukja",
@@ -53723,6 +53673,16 @@
       "name": "GribStream",
       "description": "Global weather forecast API for any use. Leverage the NBM and GFS models. Great for bulk pulls.",
       "link": "https://publicapis.dev/resource/gribstream/k7bgl2vo",
+      "auth": null,
+      "cors": null,
+      "categories": ["Weather"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Grill Index",
+      "description": "Scores grilling conditions 0–100 for any location: best cook window, week ahead, charcoal/gas/smoker tuning. No key needed.",
+      "link": "https://publicapis.dev/resource/grill-index/78i9pmor",
       "auth": null,
       "cors": null,
       "categories": ["Weather"],
@@ -53873,26 +53833,6 @@
       "name": "RainViewer",
       "description": "Radar data collected from different websites across the Internet.",
       "link": "https://publicapis.dev/resource/rainviewer/uljc5a21",
-      "auth": null,
-      "cors": null,
-      "categories": ["Weather"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Storm Glass",
-      "description": "Global marine weather from multiple sources.",
-      "link": "https://publicapis.dev/resource/storm-glass/rwqebptv",
-      "auth": null,
-      "cors": null,
-      "categories": ["Weather"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Tomorrow",
-      "description": "Weather API Powered by Proprietary Technology.",
-      "link": "https://publicapis.dev/resource/tomorrow/foqhghfg",
       "auth": null,
       "cors": null,
       "categories": ["Weather"],
