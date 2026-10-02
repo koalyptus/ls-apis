@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-25T02:28:00.909Z",
+  "timestamp": "2026-10-02T03:06:16.038Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -25140,11 +25140,31 @@
       "sources": ["apis-guru"]
     },
     {
+      "name": "OpenSwissData",
+      "description": "Swiss customs tariff (TARES), FINMA register and warnings, NOGA/NACE/ISIC code crosswalks",
+      "link": "https://github.com/cammac-creator/openswissdata/tree/main/sdks/mcp-server",
+      "auth": "no",
+      "cors": "glama",
+      "categories": ["Public"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "IPstack MCP",
       "description": "IP geolocation, threat and timezone lookups for agents",
       "link": "https://ipstack.com/mcp",
       "auth": "apiKey",
       "cors": "cursor · glama",
+      "categories": ["Public"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "corpusAI Cloud Pricing",
+      "description": "Cloud, GPU and LLM token prices for agents, free discovery tools and paid per-call data",
+      "link": "https://cloud.trycorpus.ai/docs#quick-start-for-agents",
+      "auth": "no",
+      "cors": "npm · mcp registry",
       "categories": ["Public"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -25164,6 +25184,16 @@
       "description": "Read/write local files",
       "link": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
       "auth": "no",
+      "cors": "–",
+      "categories": ["Public"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Twinbay",
+      "description": "Spin up stateful API twins, read request logs and grade agent runs",
+      "link": "https://docs.twinbay.ai/mcp-server",
+      "auth": "OAuth",
       "cors": "–",
       "categories": ["Public"],
       "openapiSpec": null,
@@ -26000,6 +26030,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "The Color API",
+      "description": "Convert and generate color schemes",
+      "link": "https://www.thecolorapi.com",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Art & Design"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Thisispaper",
       "description": "Curated architecture, design, photography and art projects with visual-similarity and taste metadata",
       "link": "https://www.thisispaper.com/intelligence/api-docs",
@@ -26760,6 +26800,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "RankFabrik Places",
+      "description": "Search businesses and points of interest by city, deduplicated with a coverage report",
+      "link": "https://rankfabrik.com/produits/etablissements",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Business"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Redash",
       "description": "Access your queries and dashboards on Redash",
       "link": "https://redash.io/help/user-guide/integrations-and-api/api",
@@ -27230,6 +27280,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Revdoku",
+      "description": "Cloud file storage, version history, sharing and incoming email attachments",
+      "link": "https://revdoku.com/api.md",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Cloud Storage & File Sharing"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Storj",
       "description": "Decentralized Open-Source Cloud Storage",
       "link": "https://docs.storj.io/dcs/",
@@ -27604,16 +27664,6 @@
       "description": "Cryptocurrency Trading Platform",
       "link": "https://docs.coindcx.com/",
       "auth": "apiKey",
-      "cors": "unknown",
-      "categories": ["Cryptocurrency"],
-      "openapiSpec": null,
-      "sources": ["github-public-apis"]
-    },
-    {
-      "name": "CoinDesk",
-      "description": "CoinDesk's Bitcoin Price Index (BPI) in multiple currencies",
-      "link": "https://old.coindesk.com/coindesk-api/",
-      "auth": "no",
       "cors": "unknown",
       "categories": ["Cryptocurrency"],
       "openapiSpec": null,
@@ -28320,6 +28370,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Daleelak",
+      "description": "Egyptian bank and dealer exchange rates, gold and silver prices",
+      "link": "https://getdaleelak.com/en/api",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Currency Exchange"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Economia.Awesome",
       "description": "Portuguese free currency prices and conversion with no rate limits",
       "link": "https://docs.awesomeapi.com.br/api-de-moedas",
@@ -28365,6 +28425,16 @@
       "link": "https://freeforexapi.com/Home/Api",
       "auth": "no",
       "cors": "no",
+      "categories": ["Currency Exchange"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Fulusly",
+      "description": "Exchange rates for 144 currencies with daily history back to the 1990s, English and Arabic",
+      "link": "https://fulusly.soft9.us/developers",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Currency Exchange"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -28500,6 +28570,26 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "sthan.io Address Autocomplete",
+      "description": "Real-time US address suggestions as users type",
+      "link": "https://sthan.io/products/address-autocomplete-usa",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Data Validation"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "sthan.io Address Parser",
+      "description": "Parse freeform US addresses into structured fields (house number, street, unit, city, state, ZIP)",
+      "link": "https://sthan.io/products/address-parser-usa",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Data Validation"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "sthan.io Address Verification",
       "description": "Validate and standardize US addresses, with ZIP+4 and deliverability status",
       "link": "https://sthan.io/products/address-verification-usa",
@@ -28600,6 +28690,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "AgentPay Domain Lookup",
+      "description": "DNS records, WHOIS/RDAP, IP ownership and domain reports for AI agents, paid per call via x402",
+      "link": "https://agentpay-lookup.agentpay-apis.workers.dev",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Agify.io",
       "description": "Estimates the age from a first name",
       "link": "https://agify.io",
@@ -28625,6 +28725,16 @@
       "link": "https://scubamike124.github.io/amberone-api/",
       "auth": "apiKey",
       "cors": "no",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "AnswerLine",
+      "description": "Answers, citations and sources from AI assistants and Google surfaces through one API",
+      "link": "https://answerline.dev",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -28821,8 +28931,8 @@
     },
     {
       "name": "ChartBytes",
-      "description": "Chart image API: turn a URL into a PNG or SVG chart (bar, pie, donut, stacked)",
-      "link": "https://chartbytes.onrender.com",
+      "description": "Chart image API: turn a URL into a PNG or SVG chart (bar, line, area, scatter, pie, donut, stacked)",
+      "link": "https://chartbytes.meridian-digital.pro",
       "auth": "no",
       "cors": "yes",
       "categories": ["Development"],
@@ -29100,6 +29210,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "GithubTrends",
+      "description": "GitHub Trending repositories with star history and open-source alternatives to paid tools",
+      "link": "https://githubtrends.app/api/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Gitlab",
       "description": "Automate GitLab interaction programmatically",
       "link": "https://docs.gitlab.com/ee/api/",
@@ -29125,6 +29245,16 @@
       "link": "https://developers.glitterly.app",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Go Module Proxy",
+      "description": "Go module versions and source metadata",
+      "link": "https://go.dev/ref/mod#goproxy-protocol",
+      "auth": "no",
+      "cors": "unknown",
       "categories": ["Development"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -29165,6 +29295,16 @@
       "link": "https://developers.google.com/keep/api/reference/rest",
       "auth": "OAuth",
       "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Google PageSpeed Insights",
+      "description": "Website performance and Lighthouse audit scores",
+      "link": "https://developers.google.com/speed/docs/insights/v5/get-started",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -29223,6 +29363,16 @@
       "name": "Hex",
       "description": "Elixir and Erlang package versions and docs",
       "link": "https://github.com/hexpm/specifications",
+      "auth": "no",
+      "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Homebrew Formulae",
+      "description": "Package and cask data for the Homebrew package manager",
+      "link": "https://formulae.brew.sh/api/",
       "auth": "no",
       "cors": "unknown",
       "categories": ["Development"],
@@ -29415,6 +29565,16 @@
       "link": "https://ipinfo.io/developers",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Ironfang Render",
+      "description": "Screenshots, PDFs, dynamic images, QR codes and video from URLs or HTML",
+      "link": "https://ironfang.com/render/docs",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Development"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -29970,10 +30130,10 @@
       "sources": ["github-public-apis"]
     },
     {
-      "name": "Renderwolf",
-      "description": "Screenshots, PDFs, dynamic images, QR codes and video from URLs or HTML",
-      "link": "https://ironfang.uk/renderwolf/docs",
-      "auth": "apiKey",
+      "name": "ReplyNodes",
+      "description": "Convert a public web page into clean Markdown",
+      "link": "https://replynodes.com/markdown-api/",
+      "auth": "no",
       "cors": "no",
       "categories": ["Development"],
       "openapiSpec": null,
@@ -30100,6 +30260,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Screenshot Happy",
+      "description": "Website screenshot API (PNG/JPEG/PDF) with full-page capture and visual-diff monitors",
+      "link": "https://screenshot-api-production-ffd7.up.railway.app/docs",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "ScreenshotAPI.net",
       "description": "Create pixel-perfect website screenshots",
       "link": "https://screenshotapi.net/",
@@ -30183,6 +30353,16 @@
       "name": "SiteIntel",
       "description": "Extract metadata, tech stack, emails, and screenshots from any URL",
       "link": "https://siteintel.duckdns.org",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "SnoopScan",
+      "description": "Scrape, crawl, map and search the web as clean markdown or JSON, with a free monthly tier",
+      "link": "https://snoopscan.com/docs",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Development"],
@@ -30280,6 +30460,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Timezone WorldTime",
+      "description": "Current time, UTC offset and DST for any time zone or IP, a drop-in WorldTimeAPI replacement",
+      "link": "https://www.timezone.io/docs/worldtimeapi",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "TinyMind Agent Tools",
       "description": "Free APIs by an AI agent on a VPS: actor lookup, word-of-the-day, poems, jokes, ping",
       "link": "https://tinymind.eu/api/",
@@ -30291,7 +30481,7 @@
     },
     {
       "name": "ToolForte",
-      "description": "Deterministic utilities: IBAN/VAT validation, cron parsing, regex, diffs, Dutch holidays and test data",
+      "description": "Deterministic utilities: IBAN/VAT validation, cron parsing, regex, diffs, Dutch holidays, test data",
       "link": "https://toolforte.com/developers",
       "auth": "apiKey",
       "cors": "unknown",
@@ -30310,10 +30500,30 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "URLpipe",
+      "description": "Turn a URL into Markdown, screenshots, metadata or Lighthouse audits, rendered in real Chrome",
+      "link": "https://urlpipe.dev/docs",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Utilorax",
       "description": "203 JSON endpoints: hashing, encoding, unit conversion, text, dates and file conversion",
       "link": "https://utilorax.com/api",
       "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Vornamencheck",
+      "description": "Gender probability for a first name, optionally per country; documentation in German",
+      "link": "https://vornamencheck.de/#api",
+      "auth": "no",
       "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
@@ -30530,6 +30740,26 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "WordSoHard",
+      "description": "Word definitions with Scrabble validity and tile score in one call, built for word games",
+      "link": "https://wordsohard.com/api",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Dictionaries"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "AgentPay Doc Tools",
+      "description": "PDF to text, RSS/Atom/JSON feeds to JSON and sitemaps to URL lists, paid per call via x402",
+      "link": "https://agentpay-tools.agentpay-apis.workers.dev",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Documents & Productivity"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Airtable",
       "description": "Integrate with Airtable",
       "link": "https://airtable.com/api",
@@ -30565,6 +30795,16 @@
       "link": "https://developers.asana.com/docs",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Documents & Productivity"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Assinafy",
+      "description": "Brazilian e-signature API with a free plan",
+      "link": "https://api.assinafy.com.br/v1/docs",
+      "auth": "apiKey",
+      "cors": "unknown",
       "categories": ["Documents & Productivity"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -30873,6 +31113,26 @@
       "name": "RunConvert",
       "description": "Convert video, audio, image, and document files programmatically",
       "link": "https://www.runconvert.com/docs",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Documents & Productivity"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Sahifa",
+      "description": "HTML/URL to PDF and screenshots with Arabic and right-to-left support; free tier",
+      "link": "https://sahifa.dev/en/docs",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Documents & Productivity"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Shortcut",
+      "description": "Manage stories, epics, iterations and objectives in a Shortcut workspace",
+      "link": "https://developer.shortcut.com",
       "auth": "apiKey",
       "cors": "no",
       "categories": ["Documents & Productivity"],
@@ -31215,6 +31475,16 @@
       "link": "https://developers.sendinblue.com/docs",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Email"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "SendRaven",
+      "description": "Email for AI agents: send email, receive replies as threads, with per-key send limits and approvals",
+      "link": "https://sendraven.ai/docs/api",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Email"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -31700,6 +31970,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "FindLocal",
+      "description": "Hyper-local US events: concerts, trivia, open mics, readings, storytimes",
+      "link": "https://findlocal.community/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Events"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "SeatGeek",
       "description": "Search events, venues and performers",
       "link": "https://platform.seatgeek.com/",
@@ -31742,7 +32022,7 @@
     {
       "name": "Alpaca",
       "description": "Realtime and historical market data on all US equities and ETFs",
-      "link": "https://alpaca.markets/docs/api-documentation/api-v2/market-data/alpaca-data-api-v2/",
+      "link": "https://docs.alpaca.markets/us/docs/about-market-data-api",
       "auth": "apiKey",
       "cors": "yes",
       "categories": ["Finance"],
@@ -31753,6 +32033,16 @@
       "name": "Alpha Vantage",
       "description": "Realtime and historical stock data",
       "link": "https://www.alphavantage.co/",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Arkleon",
+      "description": "Point-in-time SEC EDGAR fundamentals over /v1",
+      "link": "https://arkleon.com",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Finance"],
@@ -31844,6 +32134,16 @@
       "description": "Real-time U.S. congressional stock trade disclosures from Senate EFD and House Clerk",
       "link": "https://congressinvests.com",
       "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "contix",
+      "description": "Spain: IBAN validation with bank and BIC, EU VAT number check (VIES), Modelo 303 VAT sums",
+      "link": "https://contix.es/api/#herramientas",
+      "auth": "no",
       "cors": "yes",
       "categories": ["Finance"],
       "openapiSpec": null,
@@ -32310,11 +32610,31 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Segmara",
+      "description": "IPO calendars, filing stages and estimated lockup dates",
+      "link": "https://segmara.com/syndicate",
+      "auth": "user-agent",
+      "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "SmartAPI",
       "description": "Gain access to set of  and create end-to-end broking services",
       "link": "https://smartapi.angelbroking.com/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Stanza VAT Validator",
+      "description": "Validate EU and UK VAT numbers with country formats, checksums, and VIES status",
+      "link": "https://stanzaapi.com/tools/vat-validator",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Finance"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -32533,7 +32853,7 @@
       "name": "CalorieNinjas",
       "description": "Nutrition and calorie data for foods and recipes",
       "link": "https://calorieninjas.com/api",
-      "auth": "\\\u0007pikey\\",
+      "auth": "apiKey",
       "cors": "yes",
       "categories": ["Food & Drink"],
       "openapiSpec": null,
@@ -32650,6 +32970,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Noms",
+      "description": "Nutrition data for 3.7M foods and 298K brands across 230 countries, with barcodes and images",
+      "link": "https://noms.sh/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Food & Drink"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Open Brewery DB",
       "description": "Breweries, Cideries and Craft Beer Bottle Shops",
       "link": "https://www.openbrewerydb.org",
@@ -32675,6 +33005,16 @@
       "link": "https://punkapi.com/",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Food & Drink"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Racion",
+      "description": "Weekly meal plans with grocery prices and shopping lists, 22 countries",
+      "link": "https://racion.app/developers",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Food & Drink"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -33790,6 +34130,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "TickerMint",
+      "description": "Daily market prices and price history for Pokémon, One Piece, Lorcana and Yu-Gi-Oh cards",
+      "link": "https://tickermint.cards/developers",
+      "auth": "no",
+      "cors": "no",
+      "categories": ["Games & Comics"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Tronald Dump",
       "description": "The dumbest things Donald Trump has ever said",
       "link": "https://www.tronalddump.io/",
@@ -34560,6 +34910,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Moradas",
+      "description": "Portuguese address autocomplete and 7-digit postal codes (CP7)",
+      "link": "https://moradas.dev/docs",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Nominatim",
       "description": "Provides worldwide forward / reverse geocoding",
       "link": "https://nominatim.org/release-docs/latest/api/Overview/",
@@ -34755,6 +35115,36 @@
       "link": "https://spotsense.io/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "sthan.io India PIN Code Autocomplete",
+      "description": "Autocomplete Indian PIN codes as users type",
+      "link": "https://sthan.io/products/pincode-autocomplete-ind",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "sthan.io IP Geolocation",
+      "description": "Look up the geographic location of any IPv4 or IPv6 address",
+      "link": "https://sthan.io/products/ip-geolocation",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "sthan.io Reverse Geocoding",
+      "description": "Convert latitude and longitude to the nearest US street address",
+      "link": "https://sthan.io/products/reverse-geocoding-usa",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Geocoding"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -34975,6 +35365,16 @@
       "link": "https://dadosabertos.camara.leg.br/swagger/api.html",
       "auth": "no",
       "cors": "no",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Bureau of Labor Statistics",
+      "description": "US labor statistics: inflation, unemployment, wages and productivity",
+      "link": "https://www.bls.gov/developers/",
+      "auth": "no",
+      "cors": "unknown",
       "categories": ["Government"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -35260,6 +35660,16 @@
       "sources": ["github-public-apis", "mixedanalytics"]
     },
     {
+      "name": "FDA Import Alert Screening",
+      "description": "Screen firm names against FDA Import Alert Red, Yellow and Green Lists",
+      "link": "https://aerviklabs.com/apis/fda-import-alerts/",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "FEC",
       "description": "Information on campaign donations in federal elections",
       "link": "https://api.open.fec.gov/developers/",
@@ -35278,16 +35688,6 @@
       "categories": ["Government"],
       "openapiSpec": null,
       "sources": ["github-public-apis", "mixedanalytics"]
-    },
-    {
-      "name": "Food Standards Agency",
-      "description": "UK food hygiene rating data API",
-      "link": "http://ratings.food.gov.uk/open-data/en-GB",
-      "auth": "no",
-      "cors": "unknown",
-      "categories": ["Government"],
-      "openapiSpec": null,
-      "sources": ["github-public-apis"]
     },
     {
       "name": "gankdat",
@@ -35702,7 +36102,7 @@
     {
       "name": "Open Government, Portugal",
       "description": "Portugal Government Open Data",
-      "link": "https://dados.gov.pt/en/docapi/",
+      "link": "https://dados.gov.pt/en/recursos/desenvolvimento/referencia-api",
       "auth": "no",
       "cors": "yes",
       "categories": ["Government"],
@@ -35923,6 +36323,16 @@
       "name": "Right to Disconnect",
       "description": "Right-to-disconnect employment law by EU country: binding status, statute, and sanctions",
       "link": "https://righttodisconnect.jdries.nl/api/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Spatial India",
+      "description": "District-level data for India: Census, NFHS-5, NCRB, RBI and more, reconciled onto one map",
+      "link": "https://api.spatialindia.com",
       "auth": "no",
       "cors": "yes",
       "categories": ["Government"],
@@ -36200,6 +36610,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "DeepDNA",
+      "description": "Cited gene, variant and CPIC drug-gene lookups for developers and AI agents",
+      "link": "https://deepdna.ai/docs/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Health"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Edamam",
       "description": "Food and nutrition data API with recipe search",
       "link": "https://developer.edamam.com/",
@@ -36450,6 +36870,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Allowly Hiring Evidence",
+      "description": "Deterministic hiring policy decisions and signed evidence records",
+      "link": "https://allowly.ai/docs/solutions/hiring/api/",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Jobs"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Arbeitnow",
       "description": "API for Job board aggregator in Europe / Remote",
       "link": "https://documenter.getpostman.com/view/18545278/UVJbJdKh",
@@ -36552,7 +36982,7 @@
     {
       "name": "Jobs2Careers",
       "description": "Job aggregator",
-      "link": "http://api.jobs2careers.com/api/spec.pdf",
+      "link": "https://docs.talroo.com/api/search",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Jobs"],
@@ -36690,6 +37120,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Vibeworker",
+      "description": "Upwork job listings with client data and AI fit scores, plus webhooks and RSS",
+      "link": "https://tryvibeworker.com/docs",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Jobs"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "WhatJobs",
       "description": "Job search engine",
       "link": "https://www.whatjobs.com/affiliates",
@@ -36725,6 +37165,16 @@
       "link": "https://aiforthai.in.th/index.php",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Machine Learning"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "AnswerLine",
+      "description": "ChatGPT, Gemini, Copilot, AI Mode and Google Search/News results as structured JSON",
+      "link": "https://answerline.dev/docs",
+      "auth": "apiKey",
+      "cors": "unknown",
       "categories": ["Machine Learning"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -36990,6 +37440,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "onomeo",
+      "description": "OpenAI-compatible, 47 LLMs, small check-in credits, strict limits, optional paid top-up, public beta",
+      "link": "https://onomeo.com/docs",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Machine Learning"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "OpenVisionAPI",
       "description": "Open source computer vision API based on open source models",
       "link": "https://openvisionapi.com",
@@ -37070,11 +37530,31 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "TokenRoute",
+      "description": "One OpenAI-compatible endpoint for hundreds of LLMs, with a free tier and per-token pricing",
+      "link": "https://tokenroute.app/docs/quickstart",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Machine Learning"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Unplugg",
       "description": "Forecasting API for timeseries data",
       "link": "https://unplu.gg/test_api.html",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Machine Learning"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Voxell Forge",
+      "description": "OpenAI-compatible text embeddings API, free-forever model with no credit card required",
+      "link": "https://voxell.ai/docs/#forge",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Machine Learning"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -37470,6 +37950,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "daily.dev",
+      "description": "Developer news feeds, posts, bookmarks, tags and search from daily.dev",
+      "link": "https://docs.daily.dev/public-api/",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["News"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "DataCube AI",
       "description": "Daily curated AI industry news, funding rounds and trends in 8 languages",
       "link": "https://www.datacubeai.space/en/tools/ai-news-api",
@@ -37620,6 +38110,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Scoopkit",
+      "description": "AI-industry news deduplicated into structured events with a versioned category taxonomy",
+      "link": "https://scoopkit.dev",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["News"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Spaceflight News",
       "description": "Spaceflight related news 🚀",
       "link": "https://spaceflightnewsapi.net",
@@ -37670,16 +38170,6 @@
       "sources": ["github-public-apis"]
     },
     {
-      "name": "18F",
-      "description": "Unofficial US Federal Government API Development",
-      "link": "http://18f.github.io/API-All-the-X/",
-      "auth": "no",
-      "cors": "unknown",
-      "categories": ["Open Data"],
-      "openapiSpec": null,
-      "sources": ["github-public-apis"]
-    },
-    {
       "name": "49 Gallery Historical Data",
       "description": "Normalized historical records and 25 daily-updated reference series",
       "link": "https://api.181649.com/docs",
@@ -37704,6 +38194,16 @@
       "description": "An Indian Government platform that provides a lot of APIS for KYC, business, education & employment",
       "link": "https://www.apisetu.gov.in/",
       "auth": "no",
+      "cors": "yes",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "APIllow",
+      "description": "Zillow property data: 50+ fields per listing by address, URL, ZPID or ZIP, with sold data and comps",
+      "link": "https://apillow.co/docs.html",
+      "auth": "apiKey",
       "cors": "yes",
       "categories": ["Open Data"],
       "openapiSpec": null,
@@ -37792,7 +38292,7 @@
     {
       "name": "CoworkingView",
       "description": "Coworking spaces and offices in 63 European and Gulf cities with operator-published prices",
-      "link": "https://coworkingview.com/openapi.json",
+      "link": "https://coworkingview.com/en/api",
       "auth": "no",
       "cors": "no",
       "categories": ["Open Data"],
@@ -37805,6 +38305,16 @@
       "link": "https://cuttingtoolsai.eu/api",
       "auth": "no",
       "cors": "yes",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "DevLifeCheck",
+      "description": "Security-update end dates, recalls and evidence for 1,300+ phones, tablets, Chromebooks and routers",
+      "link": "https://devlifecheck.com/developers",
+      "auth": "no",
+      "cors": "no",
       "categories": ["Open Data"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -38153,6 +38663,16 @@
       "name": "Statistics of the World",
       "description": "Economic data for 218 countries — GDP, population, inflation, and 440+ indicators from IMF and World Bank",
       "link": "https://statisticsoftheworld.com/api-docs",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "StatOrigin",
+      "description": "Industry statistics, each traced to its primary source with a verbatim quote, CC BY 4.0",
+      "link": "https://statorigin.org/docs/api",
       "auth": "no",
       "cors": "yes",
       "categories": ["Open Data"],
@@ -38770,21 +39290,21 @@
       "sources": ["github-public-apis"]
     },
     {
-      "name": "Bruzu",
-      "description": "Image generation with query string",
-      "link": "https://docs.bruzu.com",
-      "auth": "apiKey",
-      "cors": "yes",
-      "categories": ["Photography"],
-      "openapiSpec": null,
-      "sources": ["github-public-apis"]
-    },
-    {
       "name": "CheetahO",
       "description": "Photo optimization and resize",
       "link": "https://cheetaho.com/docs/getting-started/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Photography"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Compresso",
+      "description": "Visually lossless image compression for PNG, JPEG and WebP",
+      "link": "https://compresso.space/developers",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Photography"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -38904,6 +39424,16 @@
       "description": "Generate and edit images with AI, no key or account required",
       "link": "https://kavel.readthedocs.io/",
       "auth": "no",
+      "cors": "no",
+      "categories": ["Photography"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Lightdrift",
+      "description": "Search 1.85M openly licensed images by text or image, with license and attribution per result",
+      "link": "https://docs.lightdrift.ai",
+      "auth": "apiKey",
       "cors": "no",
       "categories": ["Photography"],
       "openapiSpec": null,
@@ -39150,6 +39680,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Botlero",
+      "description": "Sourced, quoted specs for humanoid robots",
+      "link": "https://botlero.com/api/robots",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Science & Math"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "CodeCogs",
       "description": "Render LaTeX equations in PNG, GIF, SVG, EMF, PDF, JSON, or download formats with styling options",
       "link": "https://editor.codecogs.com/docs/4-LaTeX_rendering.php",
@@ -39173,6 +39713,16 @@
       "name": "CycleCalcs",
       "description": "Interpreted astronomy: sun and moon times, moon phases, planets, eclipses, seasons",
       "link": "https://www.cyclecalcs.com/api.html",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Science & Math"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "DataCite",
+      "description": "Search and retrieve DOI metadata for research datasets and publications",
+      "link": "https://support.datacite.org/docs/rest-api",
       "auth": "no",
       "cors": "yes",
       "categories": ["Science & Math"],
@@ -39344,16 +39894,6 @@
       "description": "Number of the day, random number, number facts and anything else you want to do with numbers",
       "link": "https://math.tools/api/numbers/",
       "auth": "apiKey",
-      "cors": "no",
-      "categories": ["Science & Math"],
-      "openapiSpec": null,
-      "sources": ["github-public-apis"]
-    },
-    {
-      "name": "Numbers",
-      "description": "Facts about numbers",
-      "link": "http://numbersapi.com",
-      "auth": "no",
       "cors": "no",
       "categories": ["Science & Math"],
       "openapiSpec": null,
@@ -39535,6 +40075,16 @@
       "link": "https://tle.ivanstanojevic.me/#/docs",
       "auth": "no",
       "cors": "no",
+      "categories": ["Science & Math"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Unpaywall",
+      "description": "Open-access status and legal full-text links for scholarly articles",
+      "link": "https://unpaywall.org/products/api",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Science & Math"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -39893,6 +40443,16 @@
       "name": "LoginRadius",
       "description": "Managed User Authentication Service",
       "link": "https://www.loginradius.com/docs/",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Security"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Maskbreak",
+      "description": "Detect VPNs, proxies, Tor, bots and antidetect browsers at signup, login and checkout",
+      "link": "https://maskbreak.com/api",
       "auth": "apiKey",
       "cors": "yes",
       "categories": ["Security"],
@@ -41040,6 +41600,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Football Leagues",
+      "description": "Standings, fixtures, live scores, lineups and player stats for 11 European football competitions",
+      "link": "https://football-api.yuvron.online/reference",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Football Standings",
       "description": "Display football standings e.g epl, la liga, serie a etc. The data is based on espn site",
       "link": "https://github.com/azharimm/football-standings-api",
@@ -41085,6 +41655,16 @@
       "link": "https://appac.github.io/mlb-data-api-docs/",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "MoviOdds",
+      "description": "Real-time bet365 soccer odds, every market, pre-match and in-play, over REST and WebSocket",
+      "link": "https://moviodds.com/doc",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Sports & Fitness"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -41560,6 +42140,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "loremfile",
+      "description": "Hotlinkable CC0 sample files in 78 formats, each with a SHA-256 in a JSON manifest",
+      "link": "https://loremfile.dev/docs/manifest",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Test Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Loripsum",
       "description": "The \"lorem ipsum\" generator that doesn't suck",
       "link": "http://loripsum.net/",
@@ -41685,6 +42275,16 @@
       "link": "https://palabras-aleatorias-public-api.herokuapp.com",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Test Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Supercrontab Mock Endpoints",
+      "description": "Mock endpoints in 8 formats, each returning any of 14 HTTP status codes",
+      "link": "https://supercrontab.com/mock",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Test Data"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -42390,6 +42990,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "On va où ?",
+      "description": "Bike, scooter, motorcycle, wheelchair and walking routes across Europe, with safety indicators",
+      "link": "https://onvaou.app/developers/routing-api.html",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Transportation"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Open Charge Map",
       "description": "Global public registry of electric vehicle charging locations",
       "link": "https://openchargemap.org/site/develop/api",
@@ -42910,16 +43520,6 @@
       "sources": ["github-public-apis"]
     },
     {
-      "name": "Wander Atlas",
-      "description": "Hourly quiet and busy crowd windows for 620+ tourist attractions in 20 countries",
-      "link": "https://wanderatlasguides.com/api/",
-      "auth": "no",
-      "cors": "yes",
-      "categories": ["Transportation"],
-      "openapiSpec": null,
-      "sources": ["github-public-apis"]
-    },
-    {
       "name": "Windsock",
       "description": "Aircraft valuations, FAA registry lookups, cost of ownership and aviation market data",
       "link": "https://windsock.ai/app/docs",
@@ -43261,10 +43861,20 @@
     },
     {
       "name": "Wheelwise",
-      "description": "UK used-car listings with fair-price grade, 36-month resale forecast and true monthly cost per advert",
+      "description": "UK used-car listings with fair-price grade, 36-month resale forecast and monthly cost per advert",
       "link": "https://cars.limoja.ai/api/search?q=BMW&limit=1",
       "auth": "no",
       "cors": "no",
+      "categories": ["Vehicle"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "WhichTrim",
+      "description": "US vehicle recalls, complaints, fuel economy, crash ratings, service bulletins and VIN decoding",
+      "link": "https://whichtrim.com/developers/",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Vehicle"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -45411,7 +46021,7 @@
     },
     {
       "name": "TranscriptFetch",
-      "description": "Transcript data from any YouTube, TikTok or Instagram video, or a whole channel or playlist, inside your assistant. Analyze a video, a creator, or a whole topic.",
+      "description": "The transcript API for social media video. Get transcripts at scale from YouTube, TikTok or Instagram.",
       "link": "https://publicapis.dev/resource/transcriptfetch/bytmq702",
       "auth": null,
       "cors": null,
@@ -47251,8 +47861,8 @@
     },
     {
       "name": "Non-Working Days",
-      "description": "Simple REST API for checking working, non-working or short days for Russia, CIS, USA and other.",
-      "link": "https://publicapis.dev/resource/non-working-days/fv96mj09",
+      "description": "Database of ICS files for non working days.",
+      "link": "https://publicapis.dev/resource/non-working-days/vkeq9dvc",
       "auth": null,
       "cors": null,
       "categories": ["Calendar"],
@@ -47261,8 +47871,8 @@
     },
     {
       "name": "Non-Working Days",
-      "description": "Database of ICS files for non working days.",
-      "link": "https://publicapis.dev/resource/non-working-days/vkeq9dvc",
+      "description": "Simple REST API for checking working, non-working or short days for Russia, CIS, USA and other.",
+      "link": "https://publicapis.dev/resource/non-working-days/fv96mj09",
       "auth": null,
       "cors": null,
       "categories": ["Calendar"],
@@ -48250,16 +48860,6 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Screenshot Scout",
-      "description": "Screenshot API for developers that captures any URL in one HTTP request with predictable output.",
-      "link": "https://publicapis.dev/resource/screenshot-scout/zxu9w53l",
-      "auth": null,
-      "cors": null,
-      "categories": ["Development"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
       "name": "NiuProxy",
       "description": "Residential proxies for web scraping, AI agents and automation, with flexible IP rotation, 190+ countries, and HTTP(S)/SOCKS5 support.",
       "link": "https://publicapis.dev/resource/niuproxy/xwdgddyb",
@@ -48503,6 +49103,16 @@
       "name": "BrowserCat",
       "description": "Headless browser API for automation, scraping, and more.",
       "link": "https://publicapis.dev/resource/browsercat/tq9dg58j",
+      "auth": null,
+      "cors": null,
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Browshot",
+      "description": "Easily make screenshots of web pages in any screen size, as any device.",
+      "link": "https://publicapis.dev/resource/browshot/7194139j",
       "auth": null,
       "cors": null,
       "categories": ["Development"],
@@ -49540,6 +50150,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Agent Toolbelt",
+      "description": "AI-generated stock analysis (investment thesis, valuation, insider signal, earnings) from live fundamentals, as structured JSON.",
+      "link": "https://publicapis.dev/resource/agent-toolbelt/ksrhrvxq",
+      "auth": null,
+      "cors": null,
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Aletheia",
       "description": "Insider trading data, earnings call analysis, financial statements, and more.",
       "link": "https://publicapis.dev/resource/aletheia/f5vza2bi",
@@ -49803,16 +50423,6 @@
       "name": "IEX Cloud",
       "description": "Realtime & Historical Stock and Market Data.",
       "link": "https://publicapis.dev/resource/iex-cloud/ltmm9f85",
-      "auth": null,
-      "cors": null,
-      "categories": ["Finance"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "IG",
-      "description": "Spreadbetting and CFD Market Data.",
-      "link": "https://publicapis.dev/resource/ig/3qr7eagh",
       "auth": null,
       "cors": null,
       "categories": ["Finance"],
@@ -52920,6 +53530,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "PixelVault",
+      "description": "Agent-first image hosting with instant CDN URLs.",
+      "link": "https://publicapis.dev/resource/pixelvault/lvcg0lhi",
+      "auth": null,
+      "cors": null,
+      "categories": ["Photography"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "PlaceKeanu",
       "description": "Resizable Keanu Reeves placeholder images with grayscale and young Keanu options.",
       "link": "https://publicapis.dev/resource/placekeanu/uvgrpkx8",
@@ -53010,19 +53630,19 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Templated",
-      "description": "Generate images and PDFs with a simple API. Design in a Canva-like editor and render images with code.",
-      "link": "https://publicapis.dev/resource/templated/hx3evc3j",
+      "name": "iTunes",
+      "description": "Apple Podcasts Directory.",
+      "link": "https://publicapis.dev/resource/itunes/q2828bad",
       "auth": null,
       "cors": null,
-      "categories": ["Photography"],
+      "categories": ["Podcasts"],
       "openapiSpec": null,
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "iTunes",
-      "description": "Apple Podcasts Directory.",
-      "link": "https://publicapis.dev/resource/itunes/q2828bad",
+      "name": "Listen Notes Podcast API",
+      "description": "Search podcasts and episodes, fetch metadata, get recommendations, and access audience insights. REST API with a free plan and official SDKs.",
+      "link": "https://publicapis.dev/resource/listen-notes-podcast-api/rwldek5n",
       "auth": null,
       "cors": null,
       "categories": ["Podcasts"],
@@ -53080,6 +53700,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "CatchDoms Expired Domains API",
+      "description": "Expired domains API for SEOs, domain investors and drop-catchers: live auctions from 22 platforms - 183k+ deleted ccTLDs aged domains - weekly pending delete.",
+      "link": "https://publicapis.dev/resource/catchdoms-expired-domains-api/xls4f0fu",
+      "auth": null,
+      "cors": null,
+      "categories": ["Programming"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Codeforces",
       "description": "Get access to Codeforces data.",
       "link": "https://publicapis.dev/resource/codeforces/x98dgwfl",
@@ -53102,7 +53732,7 @@
     {
       "name": "Hackerearth",
       "description": "For compiling and running code in several languages.",
-      "link": "https://publicapis.dev/resource/hackerearth/hc5tb29z",
+      "link": "https://publicapis.dev/resource/hackerearth/cieyd12h",
       "auth": null,
       "cors": null,
       "categories": ["Programming"],
@@ -53112,7 +53742,7 @@
     {
       "name": "Hackerearth",
       "description": "For compiling and running code in several languages.",
-      "link": "https://publicapis.dev/resource/hackerearth/cieyd12h",
+      "link": "https://publicapis.dev/resource/hackerearth/hc5tb29z",
       "auth": null,
       "cors": null,
       "categories": ["Programming"],
@@ -53553,6 +54183,16 @@
       "name": "Complete Criminal Checks",
       "description": "Provides data of offenders from all U.S. States and Puerto Rico.",
       "link": "https://publicapis.dev/resource/complete-criminal-checks/9rcvlrsh",
+      "auth": null,
+      "cors": null,
+      "categories": ["Security"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "Defend Network",
+      "description": "Free no-auth JSON feed of exploited CVEs with CVSS, EPSS and CISA KEV status.",
+      "link": "https://publicapis.dev/resource/defend-network/b1kq6h20",
       "auth": null,
       "cors": null,
       "categories": ["Security"],
@@ -54140,6 +54780,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "5DollarFootballAPI",
+      "description": "Football fixtures, live scores, standings and tick-by-tick bet365 odds (+18 more bookmakers) with corner and card lines.",
+      "link": "https://publicapis.dev/resource/5dollarfootballapi/k2h4djiz",
+      "auth": null,
+      "cors": null,
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "American Football Highlights API",
       "description": "Real time American Football (NFL/NCAA) highlights.",
       "link": "https://publicapis.dev/resource/american-football-highlights-api/1ituihn9",
@@ -54413,16 +55063,6 @@
       "name": "Sport Highlights",
       "description": "Real time Sport Highlights.",
       "link": "https://publicapis.dev/resource/sport-highlights/sye6o99x",
-      "auth": null,
-      "cors": null,
-      "categories": ["Sports & Fitness"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Sportmonks Cricket",
-      "description": "Live cricket score, player statistics and fantasy API.",
-      "link": "https://publicapis.dev/resource/sportmonks-cricket/xeybk130",
       "auth": null,
       "cors": null,
       "categories": ["Sports & Fitness"],
