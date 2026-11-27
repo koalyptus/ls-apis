@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T04:51:43.631Z",
+  "timestamp": "2026-11-27T05:50:22.743Z",
   "providers": [
     {
       "name": "apis-guru",
@@ -25280,6 +25280,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Dispola",
+      "description": "Same-day appointment openings at Quebec salons and clinics: hair, nails, massage, physio",
+      "link": "https://dispola.ca/en",
+      "auth": "no",
+      "cors": "glama · mcp registry",
+      "categories": ["Public"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Edgepedia",
       "description": "Search and read Edgepedia, a free and growing encyclopedia with citations",
       "link": "https://github.com/EdgePlat/edgepedia-mcp",
@@ -25315,6 +25325,16 @@
       "link": "https://github.com/findip-net/findip-mcp",
       "auth": "apiKey",
       "cors": "glama · mcp registry",
+      "categories": ["Public"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "FMCSA Carrier Intelligence",
+      "description": "FMCSA carrier authority, insurance and identity data; free MC lookup, paid per-call records",
+      "link": "https://kmcto.github.io/fmcsa-carrier-intelligence/",
+      "auth": "no",
+      "cors": "mcp registry",
       "categories": ["Public"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -25560,6 +25580,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Scrape.ly",
+      "description": "Search 500+ ready-made web scrapers, run them in the cloud and read structured results from datasets",
+      "link": "https://scrape.ly/docs/mcp",
+      "auth": "OAuth",
+      "cors": "glama · mcp registry",
+      "categories": ["Public"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "ShapelessAI",
       "description": "Write, schedule and publish social posts, carousels and short video to 8 networks",
       "link": "https://shapelessai.com/docs/mcp",
@@ -25655,6 +25685,16 @@
       "link": "https://docs.twinbay.ai/mcp-server",
       "auth": "OAuth",
       "cors": "–",
+      "categories": ["Public"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Unique.domains",
+      "description": "Find the strongest domain names you can still buy and analyse any one in depth with an AI assistant",
+      "link": "https://github.com/UniqueDomains/mcp-server",
+      "auth": "no",
+      "cors": "glama · mcp registry",
       "categories": ["Public"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -26420,6 +26460,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "DummyImg",
+      "description": "Generate placeholder images of any size with custom text, colors, fonts and formats",
+      "link": "https://www.dummyimg.in/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Art & Design"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "EmojiHub",
       "description": "Get emojis by categories and groups",
       "link": "https://github.com/cheatsnake/emojihub",
@@ -26505,6 +26555,16 @@
       "link": "https://img.icons8.com/",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Art & Design"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Logoapi Favicons",
+      "description": "Favicon for any website by domain: curated SVG, else the site's own favicon, else a name tile",
+      "link": "https://logoapi.sh/favicon",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Art & Design"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -26673,6 +26733,16 @@
       "name": "Auth0",
       "description": "Easy to implement, adaptable authentication and authorization platform",
       "link": "https://auth0.com",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Authentication & Authorization"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Frontegg",
+      "description": "Customer identity for B2B SaaS: authentication, SSO, SCIM, MFA, RBAC and multi-tenancy",
+      "link": "https://developers.frontegg.com/ciam/api/overview",
       "auth": "apiKey",
       "cors": "yes",
       "categories": ["Authentication & Authorization"],
@@ -27250,6 +27320,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "CEA Digital",
+      "description": "Real estate LLC skip trace, video hook transcripts, eBay sold comps and building permits",
+      "link": "https://ceadigital.io/tools",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Business"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Charity Search",
       "description": "Non-profit charity data",
       "link": "http://charityapi.orghunter.com/",
@@ -27450,6 +27530,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "LeadMerlin",
+      "description": "Local business leads from Google Maps with owner names, checked emails and website tech stack",
+      "link": "https://leadmerlin.com/docs/",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Business"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Legal Sandbox Georgia",
       "description": "Find verified legal specialists in Georgia from natural-language queries",
       "link": "https://legal.ge/api/openapi.json",
@@ -27461,7 +27551,7 @@
     },
     {
       "name": "Logoapi",
-      "description": "Free SVG company logos by domain, plus search by name. No signup",
+      "description": "SVG logos by domain, stock ticker or crypto symbol, plus favicons and search by name. No signup",
       "link": "https://logoapi.sh/docs",
       "auth": "no",
       "cors": "yes",
@@ -27555,6 +27645,16 @@
       "link": "https://redash.io/help/user-guide/integrations-and-api/api",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Business"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "RegBase Japan Company Verification",
+      "description": "Signed evidence records for Japanese companies by corporate number, with Ed25519 verification",
+      "link": "https://regbase.local-connect-design.trade",
+      "auth": "no",
+      "cors": "unknown",
       "categories": ["Business"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -27743,6 +27843,16 @@
       "name": "Verif Entreprise FR",
       "description": "French company checks by SIREN: status, insolvency (BODACC), VAT (VIES); free preview",
       "link": "https://api-production-24833.up.railway.app",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Business"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Vibe Manufacturing",
+      "description": "Manufacturer directory with supplier matching, cost estimates and prototype sourcing plans",
+      "link": "https://vibe-manufacturing.com/agents",
       "auth": "no",
       "cors": "yes",
       "categories": ["Business"],
@@ -29770,6 +29880,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "VeriApi",
+      "description": "Turkish exchange rates, gold prices, prayer times, earthquakes and holidays",
+      "link": "https://veriapi.pro/dokumantasyon",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Currency Exchange"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "XRates",
       "description": "Latest and historical exchange rates aggregated from ECB, CBR and open data feeds, 300+ currencies",
       "link": "https://xratesapi.com/docs",
@@ -29793,6 +29913,16 @@
       "name": "Attestwire",
       "description": "Validate EN 16931 e-invoices: XRechnung, ZUGFeRD, Factur-X, Peppol BIS",
       "link": "https://api.attestwire.com/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Data Validation"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "EU VAT Format Check",
+      "description": "EU VAT format and check-digit checker for 11 countries (format only, not a registration check)",
+      "link": "https://rapidapi.com/sorobandataworks/eu-vat-number-format-checksum-checker",
       "auth": "apiKey",
       "cors": "yes",
       "categories": ["Data Validation"],
@@ -30570,6 +30700,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "DuckDuckGo",
+      "description": "Instant answers, abstracts and definitions",
+      "link": "https://api.duckduckgo.com/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "EndOfLife.date",
       "description": "Software end-of-life dates and support lifecycles",
       "link": "https://endoflife.date/docs/api",
@@ -30615,6 +30755,16 @@
       "link": "https://framejet.dev/docs",
       "auth": "apiKey",
       "cors": "no",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "FreeQrly",
+      "description": "Generate static QR codes (URL, WiFi, vCard, text, geo) as SVG or PNG. Free, no API key",
+      "link": "https://freeqrly.com/developers/",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -30925,6 +31075,16 @@
       "link": "https://hipsum.co",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Hundredth Run GPU Prices",
+      "description": "GPU rental prices from 25 cloud providers with source URLs, as static JSON and CSV, CC BY 4.0",
+      "link": "https://hundredthrun-compute-desk.pages.dev/open-data",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -32300,6 +32460,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "TradingAIHub",
+      "description": "Directory of finance and trading AI tools (MCP servers, agent skills, APIs), re-checked weekly",
+      "link": "https://tradingaihub.com/developers/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Tyk",
       "description": "Api and service management platform",
       "link": "https://tyk.io/open-source-api-gateway/",
@@ -32314,6 +32484,16 @@
       "description": "Link-preview metadata for any URL: title, Open Graph, Twitter tags, favicon, oEmbed",
       "link": "https://unfurlr.onrender.com/docs",
       "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Unique.domains",
+      "description": "Analyse any domain name in depth and search 34 million one-word names for the right one to buy",
+      "link": "https://unique.domains/api",
+      "auth": "no",
       "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
@@ -32405,6 +32585,16 @@
       "link": "https://my.we.inc/docs/api",
       "auth": "apiKey",
       "cors": "no",
+      "categories": ["Development"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "What Is My IP by RahaKit",
+      "description": "Free IP lookup API returning IPv4/IPv6, geolocation, ASN and network details as JSON",
+      "link": "https://rahakit.com/what-is-my-ip/",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Development"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -32990,6 +33180,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "PagedPDF",
+      "description": "Convert HTML to PDF in current Chrome, with repeating table headers and page numbers",
+      "link": "https://pagedpdf.com/docs/",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Documents & Productivity"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "PandaDoc",
       "description": "DocGen and eSignatures API",
       "link": "https://developers.pandadoc.com",
@@ -33280,6 +33480,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "AgentiSend",
+      "description": "Transactional email API for apps, with per-key send budgets and a kill switch for AI agents",
+      "link": "https://agentisend.com/docs",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Email"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "AGPC Domain Check",
       "description": "Check a domain's SPF, DKIM, DMARC and MX with a graded shareable report",
       "link": "https://guild.tradeuniquecapital.com/api",
@@ -33545,6 +33755,16 @@
       "link": "https://mailfornet.com/api",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Email"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "MailMint",
+      "description": "Parse inbound emails into JSON fields you define, each with a confidence score and evidence",
+      "link": "https://mailmint.app.mintapis.com/docs",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Email"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -33870,6 +34090,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "memeidea",
+      "description": "Meme trend scoreboards: lifecycle stage, momentum, trending and new templates",
+      "link": "https://memeidea.com/api/",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Entertainment"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Memesio",
       "description": "Meme creation API with templates, editable captions and hosted share links",
       "link": "https://memesio.com/developers/api",
@@ -34190,6 +34420,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Rebase Grid",
+      "description": "European electricity prices, load, generation, forecasts and cross-border flows",
+      "link": "https://grid.rebase.energy/docs/v1",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Environment"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "sensor.community",
       "description": "Community air quality sensor network data worldwide",
       "link": "https://github.com/opendata-stuttgart/meta/wiki/EN-APIs",
@@ -34315,6 +34555,16 @@
       "link": "https://findlocal.community/docs",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Events"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Lineup Atlas",
+      "description": "Club nights, festivals and artist tour dates worldwide",
+      "link": "https://lineupatlas.com/en/data-partners",
+      "auth": "no",
+      "cors": "no",
       "categories": ["Events"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -34490,6 +34740,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "bluerate",
+      "description": "Licensed US mortgage loan officers by state, city, ZIP, loan type or language, with NMLS IDs",
+      "link": "https://www.bluerate.ai/developers",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Boleto.Cloud",
       "description": "A api to generate boletos in Brazil",
       "link": "https://boleto.cloud/",
@@ -34513,6 +34773,16 @@
       "name": "BriefTape",
       "description": "Real-time AI-summarized SEC filings, Fed, FDA and BLS data, ticker-tagged",
       "link": "https://brieftape.com",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "CalcBloc",
+      "description": "Take-home pay, employer cost and official tax tables for US, UK, AU, NZ, CA, IE, IN",
+      "link": "https://calcbloc.com/developers",
       "auth": "apiKey",
       "cors": "yes",
       "categories": ["Finance"],
@@ -36670,6 +36940,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "PokéWallet",
+      "description": "Pokémon TCG, One Piece and 10 more card games: cards, sets, TCGplayer and Cardmarket prices",
+      "link": "https://pokewallet.io/api-docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Games & Comics"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Psychonauts",
       "description": "Psychonauts World Characters Information and PSI Powers",
       "link": "https://psychonauts-api.netlify.app/",
@@ -36755,6 +37035,16 @@
       "link": "https://developer.riotgames.com/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Games & Comics"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "RoWatcher",
+      "description": "Roblox game player counts every 5 minutes, plus daily history",
+      "link": "https://rowatcher.com/docs/api",
+      "auth": "no",
+      "cors": "no",
       "categories": ["Games & Comics"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -37250,6 +37540,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Danadresse",
+      "description": "Danish addresses: autocomplete, lookup, reverse geocoding, cleansing (DAWA-compatible)",
+      "link": "https://api.danadresse.dk/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Ducks Unlimited",
       "description": "API explorer that gives a query URL with a JSON response of locations and cities",
       "link": "https://gis.ducks.org/datasets/du-university-chapters/api",
@@ -37683,6 +37983,16 @@
       "name": "ipwhois",
       "description": "IP geolocation with country, city, coordinates, ISP, timezone and flag data",
       "link": "https://ipwhois.io/documentation",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Geocoding"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Japan Places",
+      "description": "Japan POI datasets and derived signals: municipality census, station catchments, chains, grants",
+      "link": "https://japan-places.local-connect-design.trade/",
       "auth": "no",
       "cors": "yes",
       "categories": ["Geocoding"],
@@ -38231,7 +38541,7 @@
     },
     {
       "name": "Zornade",
-      "description": "Cadastral parcels, geocoding, OMI valuations, risk and demographics for Italy (85M parcels)",
+      "description": "Cadastral parcels, geocoding, OMI valuations, risk and demographics for Italy (88M parcels)",
       "link": "https://app.zornade.com/api/",
       "auth": "apiKey",
       "cors": "yes",
@@ -38755,6 +39065,16 @@
       "link": "https://www.thegazette.co.uk/data",
       "auth": "OAuth",
       "cors": "unknown",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Global law",
+      "description": "Legislation of 200+ countries as a dated history: find by citation, read as of a date, search",
+      "link": "https://lexifina.com/api/global-law",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Government"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -39415,6 +39735,16 @@
       "link": "https://openstates.org/api/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Political Polls",
+      "description": "Election vote-intention polls and averages by country, each poll with its release link",
+      "link": "https://pushbuild.com/apis/political-polls.html",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Government"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -40620,6 +40950,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "WARN Layoff Notices",
+      "description": "US state WARN Act layoff and plant-closure notices: employer, location, date, workers affected",
+      "link": "https://pushbuild.com/apis/warn-layoff-notices.html",
+      "auth": "apiKey",
+      "cors": "no",
+      "categories": ["Jobs"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "WhatJobs",
       "description": "Job search engine",
       "link": "https://www.whatjobs.com/affiliates",
@@ -40814,6 +41154,16 @@
       "description": "Parse dreams into structured entities, emotions, agency, threat, and outcomes",
       "link": "https://mydreamthreads.xyz/dream-interpretation-api",
       "auth": "no",
+      "cors": "yes",
+      "categories": ["Machine Learning"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Eden AI",
+      "description": "Unified API for 500+ LLMs and expert models for OCR, speech and translation",
+      "link": "https://www.edenai.co/docs/v3/quickstart/first-llm-call",
+      "auth": "apiKey",
       "cors": "yes",
       "categories": ["Machine Learning"],
       "openapiSpec": null,
@@ -41950,6 +42300,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Agent Data Hub",
+      "description": "Official statistics, central bank rates and FX, with source and licence in every answer",
+      "link": "https://api.agentdatahub.de/docs",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "API Setu",
       "description": "An Indian Government platform that provides a lot of APIS for KYC, business, education & employment",
       "link": "https://www.apisetu.gov.in/",
@@ -42084,6 +42444,16 @@
       "description": "Neighbourhoods and homes in London and England: sale prices, rents, crime, schools, flood risk",
       "link": "https://getcloseknit.com/openapi.json",
       "auth": "no",
+      "cors": "no",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Cloudflare Radar",
+      "description": "Internet traffic, attack, outage and domain ranking trends from Cloudflare's network",
+      "link": "https://developers.cloudflare.com/radar/",
+      "auth": "apiKey",
       "cors": "no",
       "categories": ["Open Data"],
       "openapiSpec": null,
@@ -42700,6 +43070,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Tranco",
+      "description": "Research-oriented top sites ranking hardened against manipulation, with daily domain ranks",
+      "link": "https://tranco-list.eu/api_documentation",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Open Data"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Turkpidya",
       "description": "Türkiye data: gold prices, lira rates, earthquakes, prayer times, fuel, duty pharmacies",
       "link": "https://turkpidya.com/developers/",
@@ -42791,7 +43171,7 @@
     },
     {
       "name": "Vuntum",
-      "description": "Sourced, dated facts on consumer robots and physical AI, licensed CC BY 4.0",
+      "description": "Sourced, dated facts on consumer robots and physical AI, licensed CC BY-NC 4.0",
       "link": "https://vuntum.com/en/api-mcp",
       "auth": "no",
       "cors": "yes",
@@ -43290,6 +43670,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "AreaCodeCheck",
+      "description": "Country and dialling code for any phone number, plus area code and timezone for +1 numbers",
+      "link": "https://areacodecheck.com/phone-api",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Phone"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Numlookup",
       "description": "Phone number validation and carrier lookup API with global coverage",
       "link": "https://numlookupapi.com",
@@ -43395,6 +43785,16 @@
       "link": "https://screenshotlayer.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Photography"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "AI GIF Maker",
+      "description": "Turn text into animated GIFs with AI GIF Maker",
+      "link": "https://aigifmaker.readthedocs.io/en/latest/",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Photography"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -43830,6 +44230,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "LeekCF Hinter",
+      "description": "Graded hints for Codeforces problems, from a small nudge to the full solution",
+      "link": "https://leekcf-hinter-api.leekcf.workers.dev",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Programming"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Mintlify",
       "description": "For programmatically generating documentation for code",
       "link": "https://docs.mintlify.com",
@@ -43865,6 +44275,16 @@
       "link": "https://info.arxiv.org/help/api/user-manual.html",
       "auth": "no",
       "cors": "unknown",
+      "categories": ["Science & Math"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Astroletra",
+      "description": "Moon phase and sign, aspects, retrogrades and next lunation by time zone",
+      "link": "https://astroletra.com/datos/api/",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Science & Math"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -45010,6 +45430,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Shodan InternetDB",
+      "description": "Open ports, hostnames, CPEs, tags and known vulnerabilities for an IP address",
+      "link": "https://internetdb.shodan.io/docs",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Security"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Spyse",
       "description": "Access data on all Internet assets and build powerful attack surface management applications",
       "link": "https://spyse-dev.readme.io/reference/quick-start",
@@ -45250,6 +45680,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "EverBee Research",
+      "description": "Etsy listing, shop and keyword analytics: estimated sales, revenue, search volume and competition",
+      "link": "https://research-open-api.everbee.com/docs/swagger.html",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Shopping"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Flipkart Marketplace",
       "description": "Product listing management, Order Fulfilment in the Flipkart Marketplace",
       "link": "https://seller.flipkart.com/api-docs/FMSAPI.html",
@@ -45340,6 +45780,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "OpenAxia",
+      "description": "Source-linked specifications and certifications for blind, shutter, awning and door motors",
+      "link": "https://openaxia.com/agent",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Shopping"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "OpenShopGraph",
       "description": "Source-dated return, shipping and payment facts for online shops",
       "link": "https://openshopgraph.com/en/developers/",
@@ -45353,6 +45803,16 @@
       "name": "OpenTiendas",
       "description": "Official e-commerce API and webhooks",
       "link": "https://opentiendas.dev/redocusaurus/plugin-redoc-0.yaml",
+      "auth": "apiKey",
+      "cors": "unknown",
+      "categories": ["Shopping"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Outfit Showcase",
+      "description": "Issue a 30-day, 100-use virtual clothing try-on showcase link per request",
+      "link": "https://github.com/hanchenxing1/outfit-showcase-card-api",
       "auth": "apiKey",
       "cors": "unknown",
       "categories": ["Shopping"],
@@ -45455,6 +45915,16 @@
       "link": "https://developer.tokopedia.com/openapi/guide/#/",
       "auth": "OAuth",
       "cors": "unknown",
+      "categories": ["Shopping"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "uglyHD",
+      "description": "Cost per TB of new, used and refurbished drives and per GB of server RAM, from eBay and retailers",
+      "link": "https://uglyhd.com/api-docs",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Shopping"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -45720,6 +46190,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "Lemmy",
+      "description": "Federated link aggregator and forum; read posts, comments and communities on any instance",
+      "link": "https://join-lemmy.org/api/main",
+      "auth": "no",
+      "cors": "yes",
+      "categories": ["Social"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "Line",
       "description": "Line Login, Share on Line, Social Plugins and more",
       "link": "https://developers.line.biz/",
@@ -45855,6 +46335,16 @@
       "link": "https://www.redditapis.com/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Social"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Redlisten",
+      "description": "Public Reddit posts and comments: search, live feeds, keyword alerts and trends",
+      "link": "https://redlisten.com",
+      "auth": "apiKey",
+      "cors": "yes",
       "categories": ["Social"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -46390,6 +46880,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "GolfCourse",
+      "description": "Data for 30,000+ golf courses: location, tee boxes, par, yardages, course rating and slope rating",
+      "link": "https://api.golfcourseapi.com/docs/api/",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "HaterPicks",
       "description": "Australian sports odds and player props from every major Australian bookmaker, free tier",
       "link": "https://www.haterpicks.app/api",
@@ -46414,6 +46914,16 @@
       "description": "Football data API for live scores, fixtures, odds, and predictive xG models",
       "link": "https://kickoffapi.com",
       "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "LiftRadar",
+      "description": "Ski resorts across Europe: open lifts and slopes, snow depth and avalanche level",
+      "link": "https://liftradar.eu/api",
+      "auth": "no",
       "cors": "yes",
       "categories": ["Sports & Fitness"],
       "openapiSpec": null,
@@ -46590,6 +47100,16 @@
       "sources": ["github-public-apis"]
     },
     {
+      "name": "PinnFeed",
+      "description": "Real-time Pinnacle odds over REST and WebSocket, with no-vig prices, drops and closing lines",
+      "link": "https://pinnfeed.io/docs",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
       "name": "PinnWire",
       "description": "Real-time Pinnacle odds for 13 sports — live and prematch over REST, WebSocket and SSE drop alerts",
       "link": "https://pinnwire.com/docs.html",
@@ -46695,6 +47215,16 @@
       "link": "https://developers.decathlon.com/products/sport-vision",
       "auth": "apiKey",
       "cors": "yes",
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "Sports Jedi",
+      "description": "Model picks, confidence scores, win probabilities and parlay scoring for NFL, NCAAF, NBA and MLB",
+      "link": "https://api.sportsjedi.com/v1/docs",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Sports & Fitness"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -47445,6 +47975,16 @@
       "link": "https://cws.correios.com.br/ajuda",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Tracking"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "lastscanned",
+      "description": "Parcel and ocean-container tracking across 549 carriers with webhooks and a free tier",
+      "link": "https://docs.lastscanned.com",
+      "auth": "apiKey",
+      "cors": "no",
       "categories": ["Tracking"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -48991,7 +49531,7 @@
     },
     {
       "name": "Arcmira",
-      "description": "Search indexed YouTube transcripts for timestamped passages and mentions",
+      "description": "YouTube transcript search and monitoring for your AI: exact quotes, full transcripts and speakers",
       "link": "https://arcmira.com/docs",
       "auth": "apiKey",
       "cors": "yes",
@@ -49128,6 +49668,16 @@
       "categories": ["Video", "Inspiration"],
       "openapiSpec": null,
       "sources": ["github-public-apis", "mixedanalytics"]
+    },
+    {
+      "name": "GenMagic",
+      "description": "One key for 90+ image and video models (Veo, Kling, Seedance, FLUX) plus speech, OpenAI-compatible",
+      "link": "https://genmagic.co/developers",
+      "auth": "apiKey",
+      "cors": "yes",
+      "categories": ["Video"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
     },
     {
       "name": "Harry Potter Charactes",
@@ -49415,6 +49965,16 @@
       "link": "https://the-one-api.dev/",
       "auth": "apiKey",
       "cors": "unknown",
+      "categories": ["Video"],
+      "openapiSpec": null,
+      "sources": ["github-public-apis"]
+    },
+    {
+      "name": "The Subtitle Database",
+      "description": "Subtitles for movies and TV episodes by IMDb or TMDB id",
+      "link": "https://thesubtitledb.org/developer/api",
+      "auth": "no",
+      "cors": "yes",
       "categories": ["Video"],
       "openapiSpec": null,
       "sources": ["github-public-apis"]
@@ -51880,6 +52440,26 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Nozu API",
+      "description": "A public REST API for Turkish anime and manga catalog data. - Türkçe Anime ve manga katalog verileri için public REST API.",
+      "link": "https://publicapis.dev/resource/nozu-api/dxopva6g",
+      "auth": null,
+      "cors": null,
+      "categories": ["Anime"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "PokéAPI",
+      "description": "Pokémon data, including imagery.",
+      "link": "https://publicapis.dev/resource/pokeapi/jgfk6dlr",
+      "auth": null,
+      "cors": null,
+      "categories": ["Anime"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Shikimori",
       "description": "Anime discovery, tracking, forum, rates.",
       "link": "https://publicapis.dev/resource/shikimori/59jmnbg0",
@@ -52013,6 +52593,16 @@
       "name": "Scanii",
       "description": "Simple REST API that can scan submitted documents/files for the presence of threats.",
       "link": "https://publicapis.dev/resource/scanii/6rg5pj49",
+      "auth": null,
+      "cors": null,
+      "categories": ["Anti Malware"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
+      "name": "SniffCat",
+      "description": "IP abuse lookup, reporting and threat intelligence.",
+      "link": "https://publicapis.dev/resource/sniffcat/rcqqewls",
       "auth": null,
       "cors": null,
       "categories": ["Anti Malware"],
@@ -52780,6 +53370,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "akta.pro",
+      "description": "Private company data, news signals and alternative data on 20M+ companies via one API.",
+      "link": "https://publicapis.dev/resource/akta-pro/f79ymw13",
+      "auth": null,
+      "cors": null,
+      "categories": ["Business"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Apache Superset",
       "description": "API to manage your BI dashboards and data sources on Superset.",
       "link": "https://publicapis.dev/resource/apache-superset/silztj4y",
@@ -53490,6 +54090,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "0xArchive",
+      "description": "Real-time and historical Hyperliquid and Lighter market data.",
+      "link": "https://publicapis.dev/resource/0xarchive/0tfll1xb",
+      "auth": null,
+      "cors": null,
+      "categories": ["Cryptocurrency"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "1inch",
       "description": "API for querying decentralize exchange.",
       "link": "https://publicapis.dev/resource/1inch/tnsdj99n",
@@ -53763,16 +54373,6 @@
       "name": "Coinremitter",
       "description": "Cryptocurrencies Payment & Prices.",
       "link": "https://publicapis.dev/resource/coinremitter/v3gbesrg",
-      "auth": null,
-      "cors": null,
-      "categories": ["Cryptocurrency"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "CoinStats",
-      "description": "Blockchain and DeFi across 120+ chains, market, historical data, portfolio tracking, news, sentiment, MCP, and agent skills.",
-      "link": "https://publicapis.dev/resource/coinstats/ancy3m2m",
       "auth": null,
       "cors": null,
       "categories": ["Cryptocurrency"],
@@ -54540,9 +55140,9 @@
       "sources": ["publicapis-dev"]
     },
     {
-      "name": "Words",
-      "description": "Definitions and synonyms for more than 150,000 words.",
-      "link": "https://publicapis.dev/resource/words/zswv3x4p",
+      "name": "WordsAPI",
+      "description": "An API for the English Language. Find definitions, related words, and more.",
+      "link": "https://publicapis.dev/resource/wordsapi/zswv3x4p",
       "auth": null,
       "cors": null,
       "categories": ["Dictionaries"],
@@ -55740,6 +56340,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Filingrail",
+      "description": "SEC EDGAR filings, XBRL financials, Form 4 insider trades, 8-K events and 13F holdings, each record linked to its source filing.",
+      "link": "https://publicapis.dev/resource/filingrail/rp7xj2wd",
+      "auth": null,
+      "cors": null,
+      "categories": ["Finance"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Finage",
       "description": "Finage is a stock, currency, cryptocurrency, indices, and ETFs real-time & historical data provider.",
       "link": "https://publicapis.dev/resource/finage/vfwc00j3",
@@ -55773,16 +56383,6 @@
       "name": "FinFeedAPI",
       "description": "Developer-first market data API.",
       "link": "https://publicapis.dev/resource/finfeedapi/vlz7xlke",
-      "auth": null,
-      "cors": null,
-      "categories": ["Finance"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Finnhub",
-      "description": "Real-Time RESTful APIs and Websocket for Stocks, Currencies, and Crypto.",
-      "link": "https://publicapis.dev/resource/finnhub/rz6hp2xz",
       "auth": null,
       "cors": null,
       "categories": ["Finance"],
@@ -56690,6 +57290,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Brazil CNPJ",
+      "description": "Query Brazilian companies by CNPJ with full Receita Federal registry data, no key required.",
+      "link": "https://publicapis.dev/resource/brazil-cnpj/o9nsb6xk",
+      "auth": null,
+      "cors": null,
+      "categories": ["Government"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Brazil Receita WS",
       "description": "Consult companies by CNPJ for Brazilian companies.",
       "link": "https://publicapis.dev/resource/brazil-receita-ws/smcib0qy",
@@ -56903,16 +57513,6 @@
       "name": "Deutscher Bundestag DIP",
       "description": "This API provides read access to DIP entities (e.g. activities, persons, printed material).",
       "link": "https://publicapis.dev/resource/deutscher-bundestag-dip/a74wyf15",
-      "auth": null,
-      "cors": null,
-      "categories": ["Government"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "District of Columbia Open Data",
-      "description": "Contains D.C. government public datasets, including crime, GIS, financial data, and so on.",
-      "link": "https://publicapis.dev/resource/district-of-columbia-open-data/nhr32oxc",
       "auth": null,
       "cors": null,
       "categories": ["Government"],
@@ -58920,6 +59520,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Pexafy Stock Photos",
+      "description": "Semantic image search across free stock photo sources (Unsplash, Pexels, Pixabay & more), one unified JSON schema, plain-language and reverse image search.",
+      "link": "https://publicapis.dev/resource/pexafy-stock-photos/bnnpcd0c",
+      "auth": null,
+      "cors": null,
+      "categories": ["Photography"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "Pexels",
       "description": "Free Stock Photos and Videos.",
       "link": "https://publicapis.dev/resource/pexels/3c2o18fq",
@@ -59033,16 +59643,6 @@
       "name": "Sirv",
       "description": "Image management solutions like optimization, manipulation, hosting.",
       "link": "https://publicapis.dev/resource/sirv/p9j3hz4a",
-      "auth": null,
-      "cors": null,
-      "categories": ["Photography"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Smart Adaptive Ultra-Fast Image Compressor & Converter",
-      "description": "Compress, convert, and optimize images automatically with adaptive AI tuning.",
-      "link": "https://publicapis.dev/resource/smart-adaptive-ultra-fast-image-compressor-and-converter/rs0pcb8e",
       "auth": null,
       "cors": null,
       "categories": ["Photography"],
@@ -60360,6 +60960,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Blacktop Motorsport API",
+      "description": "Motorsport results, standings and schedules, with live timing for F1, NASCAR, IndyCar and WRC.",
+      "link": "https://publicapis.dev/resource/blacktop-motorsport-api/q5mm2dyk",
+      "auth": null,
+      "cors": null,
+      "categories": ["Sports & Fitness"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "City Bikes",
       "description": "City Bikes around the world.",
       "link": "https://publicapis.dev/resource/city-bikes/b7h7r33g",
@@ -60563,16 +61173,6 @@
       "name": "NHL Records and Stats",
       "description": "NHL historical data and statistics.",
       "link": "https://publicapis.dev/resource/nhl-records-and-stats/s97ygkf1",
-      "auth": null,
-      "cors": null,
-      "categories": ["Sports & Fitness"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Oddsmagnet",
-      "description": "Odds history from multiple UK bookmakers.",
-      "link": "https://publicapis.dev/resource/oddsmagnet/gujp3sc8",
       "auth": null,
       "cors": null,
       "categories": ["Sports & Fitness"],
@@ -61570,6 +62170,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "TrafficEye.AI",
+      "description": "ANPR/ALPR and vehicle recognition API for license plate OCR, country, make, model, generation, color and vehicle attributes from images.",
+      "link": "https://publicapis.dev/resource/trafficeye-ai/h9s9ukeg",
+      "auth": null,
+      "cors": null,
+      "categories": ["Vehicle"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "An API of Ice And Fire",
       "description": "Game Of Thrones API.",
       "link": "https://publicapis.dev/resource/an-api-of-ice-and-fire/fcgc2i0f",
@@ -61740,6 +62350,16 @@
       "sources": ["publicapis-dev"]
     },
     {
+      "name": "Hyperserve",
+      "description": "Video backend API to upload any format, transcode to MP4, and deliver via CDN.",
+      "link": "https://publicapis.dev/resource/hyperserve/pnsk4n7g",
+      "auth": null,
+      "cors": null,
+      "categories": ["Video"],
+      "openapiSpec": null,
+      "sources": ["publicapis-dev"]
+    },
+    {
       "name": "iLoveVideoEditor",
       "description": "Render videos from JSON: motion templates, effects, transitions, batch rendering.",
       "link": "https://publicapis.dev/resource/ilovevideoeditor/r5mol3js",
@@ -61843,16 +62463,6 @@
       "name": "Rendobar",
       "description": "Serverless FFmpeg in the cloud for video and audio transcoding, trimming and conversion.",
       "link": "https://publicapis.dev/resource/rendobar/z1jcaw5r",
-      "auth": null,
-      "cors": null,
-      "categories": ["Video"],
-      "openapiSpec": null,
-      "sources": ["publicapis-dev"]
-    },
-    {
-      "name": "Ron Swanson Quotes",
-      "description": null,
-      "link": "https://publicapis.dev/resource/ron-swanson-quotes/011b13lo",
       "auth": null,
       "cors": null,
       "categories": ["Video"],
@@ -62051,7 +62661,7 @@
     },
     {
       "name": "Meteosource",
-      "description": "Global weather forecasts based on machine learning and historical data.",
+      "description": "Weather forecasts, official alerts, 20 years of history, air quality, and solar and wind production for any location.",
       "link": "https://publicapis.dev/resource/meteosource/b6aqi3et",
       "auth": null,
       "cors": null,
